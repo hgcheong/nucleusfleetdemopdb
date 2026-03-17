@@ -1,0 +1,468 @@
+
+#ApiSignIn
+
+POST {{baseUrl}}/auth/token HTTP/1.1
+content-type: application/json
+ 
+{
+  "SignIn": "ck.ng@accenxis.com",
+  "UserId": "ck.ng@accenxis.com",
+  "PwdHash": "Ec@rd1234",
+  "UserType": "I",
+  "ApplName":"Nuclues",
+  "ApplVer": "1",
+  "ReqType": "LOGIN"
+}
+###
+#Program Management
+
+#ApiPrgList
+
+POST {{baseUrl}}/sp/ApiPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+
+#ApiPrg
+
+POST {{baseUrl}}/sp/ApiPrg/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+        "PrgEttyId": 1
+}
+###
+
+#ApiPrgSave
+
+POST {{baseUrl}}/sp/ApiPrgSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId":null,
+    "Pic":"ASSOC",
+    "PrgName":"Kad Happy Go",
+    "Dscp":"Kad Happy Go",
+    "FromDate":"2023-08-01",
+    "ToDate":"2026-01-01",
+    "PrgType":"POSTPAID",
+    "MktSegmt":"B2B",
+    "ImprintFmt":null
+}
+
+###
+
+#ApiPrgMchtTxnPlanList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId":1,
+}
+
+###
+
+#ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId":1,
+}
+
+###
+
+
+#ApiPrgMchtTxnPlanSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId":1,
+    "MsgTypeId": 4,
+    "Poe": "WEB",
+    "SrcPrvder": null
+
+}
+
+###
+
+
+#Merchant
+
+#ApiPrgMchtAutoPymt
+
+POST {{baseUrl}}/sp/ApiPrgMchtAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId":"1",
+}
+###
+
+#ApiPrgMchtAutoPymtSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+      "DrAutoPymtInd": null,
+      "DrAutoExecDays": null,
+      "DrPymtType": "DDR",
+      "DrBank": "AMBB",
+      "DrBranchCd": null,
+      "DrBankAcctNo": "1234567899",
+      "DrBankAcctType": "FIXED DEPOSIT",
+      "DrAcctHolderName": "AMBB",
+      "DrPayeeCd": null,
+      "DrPayeeRef": null,
+      "DrBankAcctId": null,
+      "CrAutoPymtInd": null,
+      "CrAutoExecDays": null,
+      "CrPymtType": "DCR",
+      "CrBank": "AMBB",
+      "CrBranchCd": null,
+      "CrBankAcctNo": "1234567890",
+      "CrBankAcctType": "FIXED DEPOSIT",
+      "CrAcctHolderName": "AMBB",
+      "CrPayeeCd": null,
+      "CrPayeeRef": null,
+      "CrBankAcctId": null,
+      "PrgEttyId": 5
+    },
+###
+
+
+#ApiPrgMchtTadFeeList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId":1,
+}
+###
+
+#ApiPrgMchtTadFee
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 5,
+    "FeeId":5,
+}
+###
+
+#ApiPrgMchtTadFeeSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId":null,
+    "PlanId" : null,
+    "TxnPlan": 1,
+    "MnM": "EFTPOST",
+    "Vendor":"ADV",
+    "SchdId":null,
+    "Dscp":"Fee 2",
+    "FromDate":null,
+    "ToDate":null,
+    "Sts": "A",
+    }
+###
+
+#ApiPrgMchtTadFeePlanList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId":1,
+
+    }
+###
+
+#ApiPrgMchtTadFeePlan
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "PlanId":6,
+    "FeeId":1
+}
+###
+
+#ApiPrgMchtTadFeePlanSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "PrgEttyId": 1,
+      "FeeId": 1,
+      "TxnPlan":1,
+      "PlanId":6,
+      "MdfDate": "2024-05-09T19:11:06.52",
+      "FromDate":"2024-06-06",
+      "ToDate":"2024-07-07"
+}
+###
+
+#ApiPrgMchtTadFeePlanDel
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeePlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "PlanId":6,
+    "FeeId":1
+}
+###
+
+#ApiPrgMchtTxnFeeList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 5,
+}
+###
+
+#ApiPrgMchtTxnFee
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 5,
+
+}
+###
+
+#ApiPrgMchtTxnFeeSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "BillingValue":"10",
+      "FromDate":null,
+      "ToDate":null,
+      "Dscp": "ABC",
+      "PrgEttyId": 5,
+      "MediaType" : "MAG",
+      "TxnCtgry":1,
+      "SchdId":1,
+      "FeeId": null,
+      "AggateCd":"none"
+    }
+###
+
+#ApiPrgMchtTxnFeePlanList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "PrgEttyId": 5,
+      "FeeId": 1,
+
+    }
+###
+
+#ApiPrgMchtTxnFeePlan
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "PrgEttyId": 5,
+      "FeeId": 1,
+
+    }
+###
+
+#ApiPrgMchtTxnFeePlanSave
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "PrgEttyId": 5,
+      "FeeId": 1,
+      "TxnPlan":1,
+      "PlanId":null,
+      "FromDate":"2023-01-01",
+      "ToDate":"2024-07-01"
+
+}
+###
+
+#ApiPrgMchtTxnFeePlanDel
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeePlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "PrgEttyId": 5,
+      "FeeId": 1,
+      "PlanId":2,
+
+}
+###
+
+#Customer
+
+#ApiPrgCustAutoPymt
+POST {{baseUrl}}/sp/ApiPrgCustAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 5,
+}
+###
+
+#ApiPrgCustAutoPymtSave
+POST {{baseUrl}}/sp/ApiPrgCustAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+      "CrAutoPymtInd": null,
+      "CrAutoExecDays": null,
+      "CrPymtType": "DCR",
+      "CrBank": "ABB",
+      "CrBranchCd": null,
+      "CrBankAcctNo": "1234567890",
+      "CrBankAcctType": "FIXED DEPOSIT",
+      "CrAcctHolderName": "ABC",
+      "CrPayeeCd": null,
+      "CrPayeeRef": null,
+      "PrgEttyId": 5
+}
+###
+
+#ApiPrgCustMediaRangeList
+POST {{baseUrl}}/sp/ApiPrgCustMediaRangeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+
+      "PrgEttyId": 5,
+      "ColCnt":null
+}
+###
+
+#ApiPrgCustMediaRange
+POST {{baseUrl}}/sp/ApiPrgCustMediaRange/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+
+      "PrgEttyId": 5,
+      "ColCnt":null
+}
+###
+
+#ApiPrgCustMediaRangeSave
+POST {{baseUrl}}/sp/ApiPrgCustMediaRangeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+
+      "PrgEttyId": 5,
+      "RangeId":null,
+      "FromMediaNo":123412341234,
+      "ToMediaNo": 234523452345
+}
+###
+
+#ApiPrgCustMediaTypeList
+POST {{baseUrl}}/sp/ApiPrgCustMediaTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+
+      "PrgEttyId": 5,
+
+}
+###
+
+#ApiPrgCustMediaType
+POST {{baseUrl}}/sp/ApiPrgCustMediaType/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+
+      "PrgEttyId": 5,
+      "MediaTypeId": null
+
+}
+###
+
+#ApiPrgCustMediaTypeSave
+POST {{baseUrl}}/sp/ApiPrgCustMediaTypeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+
+      "PrgEttyId": 5,
+      "MediaTypeId": null,
+      "MediaType":"MAG",
+      "AutoRnwl": null,
+      "RequireImprint":null,
+      "RequireAtvtion":null,
+      "TacType":null,
+      "MaxTxnPinAttempt": null,
+      "ExpMth": 0,
+      "RnwlMth":0,
+      "ImprintFmt":null,
+      "Track2ExpDatePos":""
+
+}
+###

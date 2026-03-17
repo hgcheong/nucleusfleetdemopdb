@@ -1,0 +1,11 @@
+//ApiTaskQueSmryList
+
+
+###
+POST {{baseUrl}}/sp/ApiTaskQueSmryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}

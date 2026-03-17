@@ -1,0 +1,119 @@
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiMgmtLocTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": 1,
+  "LocEttyId": 57,
+
+},
+### 
+
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiMgmtLocTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": 1,
+  "LocEttyId": 57,
+  "MsgTypeId":null,
+  "MsgTypePlanId":null,
+  "Poe":null,
+  "SrcPrvder":null
+
+},
+### 
+
+//ApiPrgMchtTxnList
+
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiMgmtLocTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": 1,
+  "LocEttyId": 102,
+  "Poe":"Web",
+  "MsgTypePlanId": null,
+  "TxnPlan": 0,
+  "FromDate":null,
+  "ToDate":null,
+  "MdfDate":null
+},
+### 
+
+
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiMgmtLocTxnPlanFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": "57",
+  "PrgEttyId": "1",
+  "MsgTypePlanId": "9",
+  "TxnPlan": 2,
+  "FromDate": "2024-07-03 00:00:00.000",
+  "ToDate": "2024-07-31 00:00:00.000"
+}
+
+  #  "PoeDscp": "FRONT END PROCESSOR",
+  #           "MsgTypeDscp": "200 Transaction Advice (Normal Sale) - FPS 200-33000",
+  #           "SrcPrvderDscp": "INVENCO",
+  #           "DealerTypeDscp": "DEALER OWNED DEALER OPERATED",
+  #           "CrtionDate": "2025-01-20T18:57:13.2",
+  #           "MsgTypePlanId": 31,
+  #           "TxnMsgCd": 12020,
+  #           "Poe": "FEP",
+  #           "LocEttyId": 2310,
+  #           "PrgEttyId": 1
+
+  //ApiMgmtLocTxnPlan
+###
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "PrgEttyId": 1,
+  "LocEttyId": 2310,
+
+}
+
+###
+  POST {{baseUrl}}/sp/ApiMgmtLocTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": 1,
+  "LocEttyId": 2310,
+  "TxnMsgCd":12020,
+  "MsgTypePlanId":31,
+  "Poe":"FEP",
+  "SrcPrvder": "INVENCO"
+ // "SrcPrvder":"INVENCO"
+
+},
+### 
+
+api/view/async/VwSrcPrvder/
+
+
+###
+  POST {{baseUrl}}/view/async/VwSrcPrvder HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}

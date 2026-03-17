@@ -1,0 +1,353 @@
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+}
+### 
+
+//ApiEnrlCustMediaType
+POST {{baseUrl}}/sp/ApiEnrlCustMediaType/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "MediaType": "CHIP"
+}
+
+###
+POST {{baseUrl}}/sp/ApiPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TxnType":"TXNFee"
+}
+###
+
+
+//ApiEnrlCustMediaFee
+
+
+
+//ApiEnrlCustMediaFee
+
+
+//ApiEnrlCustMediaFeePlanList
+
+//ApiEnrlCustMediaFeeIndSave
+###
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeeIndSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 528,
+  "PrgEttyId": 1,
+  "MediaType": "MAG",
+  "FeeInd": "Y"
+}
+### 
+
+//ApiEnrlCustTxnFeeIndSave
+###
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFeeIndSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "FeeInd": "Y"
+}
+### 
+###
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "FeeId":null,
+  //"PlanId":2,
+  "MediaType": "MAG",
+  "FeeType": "ANNUAL FEE"
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "FeeId":null,
+ // "PlanId":3,
+  "MediaType": "CHIP",
+  "FeeType": "ANNUAL FEE"
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": null,
+  "PrgEttyId": 1,
+  "FeeId":7,
+  "PlanId":4,
+  "MediaType": "CHIP",
+  "FeeType": "ANNUAL FEE"
+}
+### 
+
+
+
+
+
+###
+#ContactType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"FEETYPE",
+"BitInd":null
+}
+###
+
+###
+#MediaType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MEDIATYPE",
+"BitInd":null
+}
+###
+
+
+//ApiEnrlCustMediaFeePlanSave
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "FeeId":null,
+  "MediaType": "CHIP",
+  "FeeType": "ANNUAL FEE",
+  "TxnPlan": 1,
+  "PlanId" : null,
+  "FromDate" : "2023-08-01",
+  "ToDate": "2027-12-31",
+}
+###
+
+//ApiEnrlCustMediaFeePlanDel
+
+//ApiEnrlCustMediaFeePlanDel
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeePlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "FeeId":1,
+  "TxnPlan": 1,
+  "PlanId" : 1,
+
+}
+###
+//VwTxnPlan
+##
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+
+}
+### 
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "FeeId": 11
+}
+### 
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFeeDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "FeeId": 1
+}
+### 
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "FeeId": 1,
+      "MediaType": "ALL",
+      "TxnCtgry": 0,
+      "Dscp": "ABC",
+      "SchdId": 0,
+      "AggateCd": "MEDIA",
+      "BillingValue": "AMT",
+}
+
+//VwAggateCd
+
+###
+POST {{baseUrl}}/view/async/VwAggateCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwBillingValue
+
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwTxnPlan
+##
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+//ApiEnrlCustTxnFeePlan
+
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 20,
+  "PrgEttyId": 1,
+  "FeeId": 2,
+  "PlanId": null
+}
+### 
+//ApiEnrlCustTxnFeePlanList
+
+POST {{baseUrl}}/sp/ApiEnrlCustTxnFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "FeeId": 11,
+}
+### 
+
+
+//ApiEnrlCustMediaFeeSave
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "FeeId": null,
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustMediaFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "FeeId": null,
+}
+### 

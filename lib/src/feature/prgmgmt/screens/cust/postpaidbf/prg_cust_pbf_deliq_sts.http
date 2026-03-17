@@ -1,0 +1,102 @@
+##ApiPrgCustPostpaidBFDelqc
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+}
+### 
+
+##ApiPrgCustPostpaidBFDelqcSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqcSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+}
+### 
+
+
+//NOT BEING USED NOW
+##ApiPrgCustPostpaidBFDelqcSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqcSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+}
+### 
+
+
+##ApiPrgCustPostpaidBFDelqcCtgryList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqcCtgryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+       "DelqcId": 1
+}
+### 
+
+##ApiPrgCustPostpaidBFDelqcCtgrySave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqcCtgrySave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+
+      "TxnCtgry": 10,
+      "PrgEttyId": 1,
+      "DelqcId": 1,
+      "CtgryId": null
+    }
+### 
+
+##ApiPrgCustPostpaidBFDelqcCtgry
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqcCtgry/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "TxnCtgry":0,
+      "PrgEttyId": 1,
+      "DelqcId": null,
+      "CtgryId": null
+    }
+### 
+
+//ApiPrgCustPostpaidBFDelqcCtgryDel
+##ApiPrgCustPostpaidBFDelqcCtgryDel
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFDelqcCtgryDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+
+      "PrgEttyId": 1,
+      "DelqcId": 1,
+      "CtgryId": 1
+    }
+### 
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

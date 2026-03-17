@@ -1,0 +1,138 @@
+Flexible(
+    flex: 2,
+        child: FormBuilderField(
+        name: 'TxnPlan',
+        builder: (field) {
+        return AcxSearchBoxMap(
+        returnSelectedRef: (dynamic val) {
+            field.didChange(val['TxnPlan']);
+        },
+                              // selectedRef:  {'TxnPlan': txn},
+                              inputText: 'Fee Plan',
+                              inputIcon: const Icon(Icons.search),
+                              querysql: '/view/async/VwTxnPlan',
+                              searchText: 'TxnPlanDscp',
+                              keyField: 'TxnPlan',
+                              params: const {});
+                        })),
+
+FormBuilderField(
+    name: 'TxnPlan',
+    builder: (field) {
+    return AcxSearchBoxMap(
+    returnSelectedRef: (dynamic val) {
+        field.didChange(val['TxnPlan']);
+    },
+    selectedRef:  {'TxnPlan': field.value},
+    inputText: 'Fee Plan',
+    inputIcon: const Icon(Icons.search),
+    querysql: '/view/async/VwTxnPlan',
+    searchText: 'TxnPlanDscp',
+    keyField: 'MsgTypeId',
+    params: const {});
+    }
+),
+FormBuilderField(
+    name: 'TxnPlan',
+    builder: (field) {
+    return AcxSearchBoxMap(
+    returnSelectedRef: (dynamic val) {
+        field.didChange(val['TxnPlan']);
+    },
+    selectedRef:  {'TxnPlan': field.value},
+    inputText: 'Fee Plan',
+    inputIcon: const Icon(Icons.search),
+    querysql: '/view/async/VwTxnMsgType',
+    searchText: 'TxnPlanDscp',
+    keyField: 'TxnPlan',
+    params: const {});
+    }
+),
+
+     FormBuilderField(
+                                        name: 'SchdId',
+                                        builder: (FormFieldState<dynamic> field) {
+                                          return AcxSearchBoxView(
+                                              returnSelectedRef: (VwSchdBillingItem val) {
+                                                field.didChange(val.id);
+                                              },
+                                              selectedRef: VwSchdBillingItem(id: formInitialValue.value['SchdId']),
+                                              inputText: 'Billing Frequency',
+                                              //    inputIcon: const Icon(Icons.search),
+                                              querysql: '/view/async/VwSchdBilling',
+                                              params: const {});
+                                        }),
+
+
+--------------------------------
+//LibRef
+  FormBuilderField(
+                              name: 'CrExpUnit',
+                              builder: (FormFieldState<dynamic> field) {
+                                return AcxSearchBox(
+                                    returnSelectedRef: (Libref? val) {
+                                      val != null
+                                          ? field.didChange(val.refCd)
+                                          : field.didChange(null);
+                                    },
+                                    selectedRef: Libref(
+                                        refCd: formNewValue['CrExpUnit']
+                                            .toString()),
+                                    inputText:
+                                        'Credit ExpiryUnit',
+                                    querysql: '/sp/GetLibRef/queryasyncnouser',
+                                    params: const {
+                                      "RefType": "CrExpUnit",
+                                      "BitInd": null
+                                    });
+                              }),
+----------------------------------------
+
+----------------------------------------
+   FormBuilderTextField(
+                                        name: 'Dscp',
+                                        decoration: InputDecoration(
+                                          labelText: getlabelbykeyval(
+                                              theClmName.value, 'Dscp'),
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.always,
+                                        ),
+                                      ),
+
+----------------------------------------
+
+
+//PlutoGrid
+
+
+Delete With Confirmation
+
+   IconButton(
+                      onPressed: () async {
+                        bool confirmed = await ConfirmDialog.show(
+                          title: "Delete?",
+                          body: "Are you sure you want to Delete?",
+                          destructive: true,
+                          confirmText: "OK",
+                          cancelText: "Cancel",
+                        );
+
+                        if (!confirmed) {
+                          return;
+                        }
+
+                        final queryDel = QueryObject(
+                            querysql: '/sp/ApiPrgCustTxnFeeDel/queryasync',
+                            params: {
+                              "PrgEttyId": prgEttyId,
+                              "FeeId":  feeId,
+                            },
+                            showMsg: false);
+                        final resultDel = ref.read(ReturndatafreezedProvider(queryDel).future);
+                        resultDel.then((value) {
+                          ref.invalidate(ReturndatafreezedProvider(query));
+                          Toast.showresult(value);
+                        });
+                      },
+                      icon: const Icon(Icons.delete)),
+

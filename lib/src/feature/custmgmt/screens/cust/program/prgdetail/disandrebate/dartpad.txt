@@ -1,0 +1,141 @@
+void main() {
+  
+  var data = [
+        {
+      "PrdDscp": "PETRO-EV",
+      "PrdCtgryDscp": "ELECTRONIC VEHICLE",
+      "PrdSubCtgryDscp": "LPG",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "4000"
+    },
+    {
+      "PrdDscp": "INFINITI EURO 5 DIESEL B7",
+      "PrdCtgryDscp": "FUEL",
+      "PrdSubCtgryDscp": "DIESEL",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "1007"
+    },
+    {
+      "PrdDscp": "INFINITI EURO 5 DIESEL B10",
+      "PrdCtgryDscp": "FUEL",
+      "PrdSubCtgryDscp": "DIESEL",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "1010"
+    },
+    {
+      "PrdDscp": "INFINITI RON95 EURO 4M",
+      "PrdCtgryDscp": "FUEL",
+      "PrdSubCtgryDscp": "DIESEL",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "2095"
+    },
+    {
+      "PrdDscp": "INFINITI RON97 EURO 4M",
+      "PrdCtgryDscp": "FUEL",
+      "PrdSubCtgryDscp": "DIESEL",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "2097"
+    },
+    {
+      "PrdDscp": "PETROGAS",
+      "PrdCtgryDscp": "LPG",
+      "PrdSubCtgryDscp": "PETROL",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "3010"
+    },
+    {
+      "PrdDscp": "PETRO LUBRICANT",
+      "PrdCtgryDscp": "LUBS",
+      "PrdSubCtgryDscp": "ELECTRONIC VEHICLE",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "5000"
+    },
+    {
+      "PrdDscp": "PETRO-MART",
+      "PrdCtgryDscp": "MART",
+      "PrdSubCtgryDscp": "SERVICE",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "7000"
+    },
+    {
+      "PrdDscp": "SERVICES",
+      "PrdCtgryDscp": "SERVICES",
+      "PrdSubCtgryDscp": "LUBRICANT OIL",
+      "PrdSts": "N",
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 7,
+      "PrdId": null,
+      "FeePrdId": null,
+      "PrdCd": "6000"
+    }
+
+  ];
+
+  
+  
+  Set<String> theValue = <String>{};
+   data.asMap().entries.forEach((ele){
+     theValue.add(ele.value['PrdCtgryDscp'].toString());
+   });
+  
+  var identifier = new Map();
+  theValue.forEach((item){
+     List<dynamic> toAdd = [];
+    data.asMap().entries.forEach((ele){
+      if(ele.value['PrdCtgryDscp'].toString() == item){
+        toAdd.add(ele.value);
+      }
+    });
+    identifier[item] = toAdd;
+  });
+  
+  identifier.entries.forEach((val){ 
+
+    List<dynamic> toVV = val.value;
+    toVV.forEach((item){
+
+    });
+
+  });
+}

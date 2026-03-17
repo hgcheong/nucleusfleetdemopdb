@@ -1,0 +1,70 @@
+
+POST {{baseUrl}}/sp/ApiMgmtMchtUserList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtUser/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+    "WebId": null,
+    "EttyType": null
+}
+### 
+
+//ApiMgmtMchtUserTypeList
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtUserTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+
+}
+### 
+
+//ApiMgmtMchtUserEttyList
+
+POST {{baseUrl}}/sp/ApiMgmtMchtUserEttyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+    "EttyType": "FLTLOC"
+
+}
+### 
+
+//
+
+//ApiMgmtMchtUserEttyList
+
+POST {{baseUrl}}/sp/ApiMgmtMchtUserSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+    "MchtEttyId": 83,
+      "EttyId": null,
+      "WebId": null,
+      "SignIn": "TestUser",
+      "Role": "FLTLOC",
+      "FirstName": "Test",
+      "LastName": "User",
+      "MobileNo": "0122312322",
+      "Email": "Test@test.com",
+      //"EttyType": 13,
+      "UserSts": "A",
+    }
+

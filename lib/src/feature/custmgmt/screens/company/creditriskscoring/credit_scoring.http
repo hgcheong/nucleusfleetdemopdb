@@ -1,0 +1,188 @@
+//ApiMgmtCrRiskList
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCrRiskList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 17
+}
+###
+
+
+//ApiMgmtCrRisk
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCrRisk/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+      "CmpyEttyId": 17,
+      "CrScoreId": 4,
+   //   "PrgEttyId":1
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSubordinate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+    "CmpyEttyId": 17,
+      "CrScoreId": 4,
+      "PrgEttyId":1
+}
+###
+
+//Finyear
+
+//ApiMgmtCrRisk
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   
+    "CustEttyId": 16,
+    "CmpyEttyId": 17,
+     "CrScoreId": 4,
+     "PrgEttyId":7,
+     "FinYear": 2023,
+      "FinMonth": "DEC",
+      "Revenue": 432,
+      "Purchase": 10,
+      "CostGoodsSold": null,
+      "PLBeforeTax": null,
+      "FinChrg": null,
+      "PrefDividend": null,
+      "FixedAsset": null,
+      "Invtry": null,
+      "DbtrAmt": 12,
+      "CurrAsset": null,
+      "CrdtrAmt": null,
+      "CurrLiab": null,
+      "LongTermLiab": 321,
+      "PaidUpCapital": null,
+      "ShareshldrFund": null,
+      "OrdinaryShares": null,
+      "Note": "Nothing 32?",
+      "MdfDate": null,
+
+
+      }
+###
+
+
+//To Display Column like
+RefDscp
+InputValue
+CrScoreIdDscp
+ScorePts
+TotalScore
+Weighted%
+
+Summary
+AvgScoreDscp
+CrScoreIdDscp
+TotalScore
+TotalWeighted
+TotalWeightedAverageScore
+
+"LegalActionTitle": "Legal Action",
+"LegalActDirInd": "N",
+"LegalActCmpyInd": "N",
+"LegalActTradeInd": "N",
+Y N Null for Sts
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCrRiskEvaluate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 17,
+  "CrScoreId": 4,
+}
+###
+
+//Dscp InputVal CrScoreIdDscp ScorePts TotalScore Weighted%
+
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskEvaluateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 17,
+  "CrScoreId": 4,
+  "RefCd": "NETCASHINFLOW",
+  "InputVal": 200000,
+   "Sts": "A",
+
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskScore/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+    "CmpyEttyId": 17,
+    "CrScoreId": 4
+
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskScoreSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+                             
+}
+
+
+//ApiMgmtCrDepList
+###
+POST {{baseUrl}}/sp/ApiMgmtCrDepList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 10, "CmpyEttyId": 37}
+###
+
+///cmpy/10/detail/37/creval/secdep/secdepdtl/7
+
+
+//ApiMgmtCrDep
+###
+POST {{baseUrl}}/sp/ApiMgmtCrDep/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 10, "CmpyEttyId": 37, "DepId":7}
+###
+//ApiMgmtCmpyPrgAccptList
+
+//ApiMgmtCmpyPrgAccptList
+###
+POST {{baseUrl}}/sp/ApiMgmtCmpyPrgAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 10, "CmpyEttyId": 37}

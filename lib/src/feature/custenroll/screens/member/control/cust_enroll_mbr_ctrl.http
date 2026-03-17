@@ -1,0 +1,383 @@
+
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrTxnLimitPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "MbrEttyId": 93,
+  "LimitId": 7
+}
+`
+###
+POST {{baseUrl}}/sp/ApiEnrlMbrTxnLimitPrdSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrdSts": "Y",
+"CustEttyId": 16,
+"MbrEttyId": 93,
+"LimitId": 7,
+"PrdCd": "1007"
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlMbrTxnLimitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "MbrEttyId": 93
+}
+
+# {
+#       "PrgDscp": null,
+#       "TxnCtgryDscp": null,
+#       "LimitTypeDscp": null,
+#       "CrtionDate": null,
+#       "CrtBy": null,
+#       "CustEttyId": 10,
+#       "PrgEttyId": null,
+#       "MbrEttyId": 2,
+#       "LimitId": null
+#     }
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrTxnLimit/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "PrgEttyId": 1,
+  "MbrEttyId": 93,
+  "LimitId" : 8
+}
+
+
+
+
+    # {
+    #   "PrgDscp": null,
+    #   "Dscp": null,
+    #   "TxnCtgry": null,
+    #   "LimitType": null,
+    #   "LimitMsuremt": null,
+    #   "MinThsld": null,
+    #   "MaxThsld": null,
+    #   "CntThsld": null,
+    #   "CustEttyId": 10,
+    #   "PrgEttyId": 1,
+    #   "MbrEttyId": 8,
+    #   "LimitId": null
+    # }
+
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrTxnLimitSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+  "CustEttyId": 16,
+  "MbrEttyId": 93,
+  "PrgEttyId": 1,
+  "LimitId": 8,
+  "TxnCtgry": 0,
+  "LimitType": "LIFE",
+  "LimitMsuremt": "AMT",
+  "Dscp": "Test Single",
+  "MinThsld": 0,
+  "MaxThsld": 1,
+  "CntThsld": 1,
+    }
+//ApiEnrlCustPrgList
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrTxnLimitPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 8
+
+}
+
+# {
+#       "PrgDscp": "XFleet Postpaid",
+#       "BillingLevel": "COMPANY",
+#       "StsDscp": "SIGNED UP",
+#       "BillingEttyType": 2,
+#       "MbrEttyId": 8,
+#       "CustEttyId": 10,
+#       "PrgEttyId": 1
+#     },
+### 
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwLimitType
+
+##
+POST {{baseUrl}}/view/async/VwLimitType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwApplyOn
+
+##
+POST {{baseUrl}}/view/async/VwApplyOn HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 46,
+  "PrgEttyId":1
+}
+
+###
+//ApiEnrlMbrLocAccptLocList
+
+POST {{baseUrl}}/sp/ApiEnrlMbrLocAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 46,
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrLocAccpt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "MbrEttyId": 93,
+  "PrgEttyId": 1,
+  "AccptId": 11
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrLocAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MbrEttyId": "93",
+  "CustEttyId": "16",
+  "PrgEttyId": "1",
+  "AccptId": "11",
+  "Dscp": "Test Detail",
+  "AccptType": "W",
+  "Mon": "0",
+  "Tue": "1",
+  "Wed": "0",
+  "Thu": "0",
+  "Fri": "1",
+  "Sat": "0",
+  "Sun": "0",
+  "FromTime": "00:00",
+  "ToTime": "23:59",
+  "FromDate": "2024-01-29",
+  "ToDate": "2080-12-31"
+}
+###
+
+
+//ApiEnrlMbrLocAccptLocList
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ACCPTTYPE",
+"BitInd":null
+}
+###
+
+
+
+
+////ApiEnrlMbrPrgPrdList
+POST {{baseUrl}}/sp/ApiEnrlMbrLocAccptLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "MbrEttyId": 93,
+  "PrgEttyId": 1,
+  "AccptId": 11
+}
+###
+
+//ApiEnrlMbrLocAccptLocSearch
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrLocAccptLocSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "16",
+//  "MbrEttyId": "93",
+  "PrgEttyId": "1",
+  "AccptId": "11",
+  "LocName": null
+}
+
+//
+
+//ApiEnrlMbrPrdAccptList
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 46,
+  "PrgEttyId": 1,
+
+}
+###
+POST {{baseUrl}}/sp/ApiEnrlMbrPrgPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 46,
+
+}
+###
+//ApiEnrlMbrPrdAccpt
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccpt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 46,
+  "PrgEttyId": 1
+
+}
+###
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 46,
+  "PrgEttyId":1,
+  "PrdCd": "1007",
+  "Sts" : "Y",
+  "Dscp": "Test",
+  "PrdId": null
+  
+}
+###
+
+//ApiEnrlMbrPrdAccptList
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 2,
+  "PrgEttyId":1
+
+}
+###
+
+//ApiEnrlMbrPrdAccptPrgList
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccptPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "MbrEttyId": 93,
+}
+
+//ApiEnrlMbrPrdAccptList
+
+###
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccpt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 2,
+  "PrgEttyId":1
+
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlMbrPrdAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrdCd": "1007",
+  "PrdSts": "N",
+  "MbrEttyId": 2,
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+
+
+}

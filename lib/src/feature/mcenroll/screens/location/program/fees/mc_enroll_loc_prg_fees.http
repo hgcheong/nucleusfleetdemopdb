@@ -1,0 +1,330 @@
+//ApiEnrlLocTadFeeList
+
+
+
+//ApiEnrlLocTadFeeSave
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTadFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "Dscp": "Test",
+   // "BillingFreq": null,
+    "MnM": "ADV",
+    "Vendor": "GHL",
+    "LocEttyId": 102,
+    "PrgEttyId": 1,
+    "FromDate":null,
+    "ToDate":null,
+    "SchdId":1,
+    "MdfDate":null,
+    "FeeId": null
+}
+
+###
+//SchdId
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+
+///sp/GetLibRef/queryasyncnouser
+//SchdId
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "TADVendor",
+"BitInd": null
+}
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "TADMnM",
+"BitInd": null
+}
+//ApiEnrlLocTadFee
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTadFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "PrgEttyId": 1,
+  "LocEttyId": 102,
+  "FeeId": null,
+}
+//ApiEnrlLocTadFeeDel
+//ApiEnrlLocTadFee
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTadFeeDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "PrgEttyId": 1,
+  "LocEttyId": 102,
+  "FeeId": null,
+}
+//ApiEnrlLocTadFeeDel
+
+//ApiEnrlLocTadFeePlanList
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTadFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "PrgEttyId": 1,
+  "LocEttyId": 15,
+  "FeeId": 1,
+}
+
+//ApiEnrlLocTadFeePlan
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTadFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "PrgEttyId": 1,
+  "LocEttyId": 15,
+  "FeeId": 1,
+  "PlanId":14
+}
+
+//ApiEnrlLocTadFeePlanSave
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTadFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+{
+      "TxnPlan": 1,
+      "FromDate": null,
+      "ToDate": null,
+      "LocEttyId": 102,
+      "PrgEttyId": 1,
+      "FeeId": 2,
+      "PlanId": null
+}
+
+///view/async/VwTxnPlan
+
+###
+//VwTxnPlan
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  //"MchtEttyId": 10,
+  "PrgEttyId": 1,
+  "LocEttyId": 72,
+ // "BillingEttyType": 2,
+ // "AccptId": 12,
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  //"MchtEttyId": 10,
+  "LocEttyId": 15,
+      "PrgEttyId": 1,
+      "FeeId": 4,
+      "MediaType": "ALL",
+      "TxnCtgry": 0
+ // "BillingEttyType": 2,
+ // "AccptId": 12,
+}
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MEDIATYPE",
+"BitInd":null
+}
+###
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "FeeId": 4,
+  "PrgEttyId": 1,
+  "LocEttyId": 15,
+  "TxnCtgry": 0,
+  "MediaType":"ALL"
+
+}
+
+VwLibTxnCtgry
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "FeeId": null,
+  "PrgEttyId": 1,
+  "LocEttyId": 102,
+  "TxnCtgry": 0,
+  "MediaType":"ALL",
+  "Dscp": "TT",
+  "SchdId": 0,
+  "Aggatecd":"ACCT",
+  "BillingValue" : "AMT",
+  "FromDate":null,
+  "ToDate": null,
+  "MdfDate": null
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+POST {{baseUrl}}/view/async/VwAggateCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+###
+POST {{baseUrl}}/view/async/VwAggateCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+///view/async/VwLibTxnCtgry
+###
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "FeeId": 4,
+ "PrgEttyId": 1,
+  "LocEttyId": 15,
+
+
+
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "FeeId": 20,
+ "PrgEttyId": 1,
+  "LocEttyId": 102,
+"PlanId": 27
+
+
+}
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     // "TxnPlanDscp": null,
+      "TxnPlan": 1,
+      "FromDate": null,
+      "ToDate": null,
+      "LocEttyId": 102,
+      "PrgEttyId": 1,
+      "FeeId": 20,
+      "PlanId": null,
+      "MdfDate":null
+}
+
+//ApiEnrlLocTxnFeePlanDel
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnFeePlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     // "TxnPlanDscp": null,
+    //  "TxnPlan": 1,
+    //  "FromDate": null,
+    // "ToDate": null,
+    // "MsgTypePlanId":null,
+      "LocEttyId": 102,
+      "PrgEttyId": 1,
+      "FeeId": 20,
+      "PlanId": 28,
+
+}
+

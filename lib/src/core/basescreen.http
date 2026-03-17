@@ -1,0 +1,24 @@
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 11
+
+}
+### 
+
+///sp/ApiMgmtMainSearch/queryasync/
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "RefCd": "CONTACTNO",
+"Str": "ram"
+
+}

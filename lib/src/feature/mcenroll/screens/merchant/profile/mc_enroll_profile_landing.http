@@ -1,0 +1,76 @@
+
+POST {{baseUrl}}/sp/ApiEnrlMchtList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+### 
+
+///sp/ApiEnrlAddrList/queryasync
+
+
+POST {{baseUrl}}/sp/ApiEnrlAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 100
+}
+### 
+
+
+///sp/ApiEnrlAddrList/queryasync
+
+
+POST {{baseUrl}}/sp/ApiEnrlContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId":11
+}
+### 
+###
+POST {{baseUrl}}/sp/ApiEnrlContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 675,
+  "ContactType": "PIC",
+  "ContactId": 254
+}
+### 
+
+
+///view/async/VwAcctMgrMcht
+POST {{baseUrl}}/view/async/VwAcctMgrMcht HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiEnrlContactSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId": 675,
+  "ContactType": "PIC",
+  "ContactId": 254,
+      "FullName": "Lt Kdr Nurul Ashikin Binti Mohd Nor",
+      "Dsgntion": "4737",
+      "ContactSts": "A",
+      "MobileNo": "0126688441",
+      "WorkPhoneNo": "0366885821",
+      "WorkPhoneExt": "1234",
+      "FaxNo": "0366885821",
+      "WorkEmail": null,
+      "PsnlEmail": null,
+      "MdfDate":null
+}
+### 

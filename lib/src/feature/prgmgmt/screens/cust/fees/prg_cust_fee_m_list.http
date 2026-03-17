@@ -1,0 +1,99 @@
+//ApiPrgCustMediaFeeList
+
+##ApiPrgCustMediaFeeList
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+
+}
+### 
+
+##ApiPrgCustMediaFee
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "MediaType":"MAG"
+
+}
+### 
+
+//ApiPrgCustMediaFeePlanList
+
+##ApiPrgCustMediaFeePlanList
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "MediaType":"ALL",
+      "FeeType":"ISSUE FEE"
+
+}
+### 
+
+//ApiPrgCustMediaFeePlanSave
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "4",
+  "FeeType": "ISSUE FEE",
+  "PlanId": null,
+  "MediaType": "ALL",
+  "TxnPlan": 3,
+  "FromDate": "2023-06-30",
+  "ToDate": "2023-07-31"
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "MediaType":"ALL",
+      "FeeType":"ANNUAL FEE",
+      "PlanId": 14
+
+
+
+}
+### 
+
+//ApiPrgCustMediaFeePlanDel
+POST {{baseUrl}}/sp/ApiPrgCustMediaFeePlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+      "MediaType":"CHIP",
+      "FeeType":"ANNUAL FEE",
+      "TxnPlan": 14
+
+
+
+}
+### 
+##
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

@@ -1,0 +1,107 @@
+##ApiPrgCustPostpaidBFCycleList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+}
+### 
+
+##ApiPrgCustPostpaidBFCycle
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycle/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "BillingId": 3
+}
+### 
+
+##ApiPrgCustPostpaidBFCycleSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "Dscp": "Testing2 Dscp",
+      "DueDays": 20,
+      "GracePeriod": 3,
+      "MinRepymtRate": 100.0000,
+      "MinRepymtAmt": 1.0000,
+      "InterestFreePeriod": 0,
+      "DelqcBlockDays": 0,
+      "BillingId": 3,
+      "PrgEttyId": 1
+    }
+### 
+
+##ApiPrgCustPostpaidBFCycleDateList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleDateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+      "BillingId": 9
+}
+###
+
+
+##ApiPrgCustPostpaidBFCycleDate
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleDate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "BillingId": 3,
+      "SchdId": 0
+}
+###
+
+##ApiPrgCustPostpaidBFCycleDateSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleDateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "BillingId": 3,
+      "SchdId": 2
+}
+###
+
+//ApiPrgCustPostpaidBFCycleDateSave
+
+#VwSchdBilling
+# 
+
+##ApiPrgCustPostpaidBFCycleDateDel
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleDateDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "BillingId": 3,
+      "SchdId": 2
+}
+###
+
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

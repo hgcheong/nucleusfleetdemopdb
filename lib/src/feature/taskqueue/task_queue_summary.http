@@ -1,0 +1,65 @@
+c//ApiTaskQueSmryList
+
+###
+POST {{baseUrl}}/sp/ApiTaskQueSmryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiTaskQueList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "WfCd": "ENRLCRASSESS",
+      "WfPrcsId": 3,
+      "WfGrpId":null
+    //  "UsrId": 3
+}
+
+###
+POST {{baseUrl}}/sp/ApiTaskQue/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "WfCd": "ENRLCRASSESS",
+      "WfPrcsId": 2,
+      //"UsrId": 3,
+      "RecId": 27
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiTaskQueSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+"WfCd": "ENRLCRASSESS",
+"WfPrcsId": 2,
+"Note":"Approved for processing",
+"WfTaskId": 48,
+"TaskId": 114,
+"Seq": null,
+"RecId": 27,
+"Sp":"EnrlCrAssessAppvlFinal",
+
+}
+###
+
+# dbo.ApiTaskQueList 
+#       - List out all the queuing task
+#       - Prompting to user with 3 buttons (TaskSts): 
+#          <Approve>, 
+#          <Return To Previous Queue> or 
+#          <Reject> 
+#         with a box for user to enter Note

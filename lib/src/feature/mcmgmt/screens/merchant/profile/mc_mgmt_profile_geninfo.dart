@@ -1,0 +1,322 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+
+import 'package:nucleusv2/constants.dart';
+import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
+import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
+import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
+import 'package:nucleusv2/src/core/components/shared/acx_status_dialog.dart';
+import 'package:nucleusv2/src/core/core_imports.dart';
+import 'package:nucleusv2/src/utils/helpers.dart';
+import 'package:nucleusv2/src/utils/utils_import.dart';
+
+const int wid=742;
+
+@RoutePage()
+class MchtMgmtProfileGenInfo extends StatelessWidget {
+  const MchtMgmtProfileGenInfo({
+    super.key,
+    @PathParam.inherit('mchtEttyId') this.mchtEttyId,
+  });
+
+  final String? mchtEttyId;
+  @override
+  Widget build(BuildContext context) { 
+
+ if (isPageDeniedView(AcxAuthAccess.pageDeniedList, wid)) {
+            return const NotAuthorised();
+}
+    return MchtMgmtGeneralInfo(
+      mchtEttyId: mchtEttyId,
+    );
+  }
+}
+
+class MchtMgmtGeneralInfo extends ConsumerWidget {
+  const MchtMgmtGeneralInfo({
+    super.key,
+    this.mchtEttyId,
+  });
+
+  final String? mchtEttyId;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+
+ 
+
+ if (isPageDeniedView(AcxAuthAccess.pageDeniedList, wid)) {
+        return const NotAuthorised();
+    }
+    final mchtMgmtFormKey = GlobalKey<FormBuilderState>();
+    var querySql = QueryObject(
+        querysql: '/sp/ApiMgmtMchtProfile/queryasync',
+        params: {"MchtEttyId": mchtEttyId == 'new' ? null : mchtEttyId},
+        showMsg: false);
+    Map<String, dynamic> formNewValue = {
+      "MchtEttyId": convStrNewOrNullToNull(mchtEttyId),
+      "TaxCtgry": null,
+      "TaxNo": null,
+      "AcctMgrContactNo": null,
+      "CmpyName": null,
+      "RgstionName": null,
+      "RgstionNo": null,
+      "SegmtType": null,
+      "ApplRef": null,
+      "ApplSrc": null,
+      "SubmtDate": null,
+      "RgstionDate": null,
+      "AcctMgrName": null,
+      "AgrmtNo": null,
+      "CmpyType": null,
+      "AgrmtDate": null,
+      "BusnType": null,
+      "CmpySize": null,
+      "MchtSts": null,
+      "DedupInd": null,
+    };
+
+    final formData = ref.watch(ReturndatafreezedProvider(querySql));
+    return AsyncValueWidget<Returndata>(
+      value: formData,
+      data: (theData) {
+        if (theData.data != null) {
+          formNewValue = convertFormValueToDisplay(
+              theData.data![0] as Map<String, dynamic>, theData.columnInfo);
+        }
+        return SingleChildScrollView(
+          child: SizedBox(
+               height: 1280,
+            child: FormBuilder(
+                key: mchtMgmtFormKey,
+                initialValue: formNewValue,
+                child: Row(
+                  children: [
+                    const FbHiddenText( name: 'MchtEttyId'),
+                    const FbHiddenText(name: 'Region'),
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView(
+                          //    crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SelectableText('Merchant Info'),
+                            const Row(
+                              children: [
+                                Expanded(
+                                    child: FbText(
+                                        name: 'AgrmtNo',
+                                        label: 'Agreement Number')),
+                                        sbw10,
+                                Expanded(
+                                    child: FbDateTimePicker(
+                                        name: 'AgrmtDate', label: 'Agreement Date'))
+                              ],
+                            ),
+                           const FbText(
+                              name: 'MchtNo',
+                              label: 'Merchant No.'
+                            ),
+                            const FbText(
+                              name: 'CmpyName',
+                              label: 'Merchant Name',
+                            ),
+                           const FbText(
+                              name: 'RgstionName',
+                              label: 'Business Registration Name',
+                            ),
+                                   const  Row(
+                            children: [
+                              Expanded(
+                                child: FbText(
+                                  name: 'RgstionNo',
+                                         label: 'Business Registration No',
+                       
+                                ),
+                              ),
+                   
+                            ],
+                          ),
+                            const  Row(
+                            children: [
+                              Expanded(
+                                child: FbText(
+                                  name: 'OldRgstionNo',
+                                    label: 'Old Registration No',
+                                ),
+                              ),
+                            ],
+                          ),
+                            Row(
+                          children: [
+                            
+                            Expanded(
+                              child: FbDateTimePicker(
+                                  name: 'RgstionDate',
+                                  label: 'Date of Incorporation'),
+                            ),
+                            sbw10,
+                                   Expanded(
+                              child: FbLibref(
+                                  name: 'CmpySize',
+                                  label: "Company Size",
+                                  initialValue: formNewValue['CmpySize'],
+                                  params: const {
+                                    "RefType": "BUSNSIZE",
+                                    "BitInd": null,
+                                  }),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                     
+                            const Expanded(
+                                child:
+                                    FbText(name: 'TaxNo', label: 'Tax Number')),
+                           sbw10,
+                            Expanded(
+                              child: FbLibref(
+                                  name: 'TaxCtgry',
+                                  initialValue: formNewValue['TaxCtgry'],
+                                  label: 'Tax Category',
+                                  params: const {
+                                    "RefType": "TaxCtgry",
+                                    "BitInd": null
+                                  }),
+                            )
+                          ],
+                        ),
+                            FbLibref(
+                              name: 'SegmtType',
+                              label: "Business Segment",
+                              params: const {
+                                "RefType": "BUSNSEGMT",
+                                "BitInd": null
+                              },
+                              initialValue: formNewValue['SegmtType'],
+                            ),
+                            FbLibref(
+                              name: 'CmpyType',
+                              label: 'Company Type',
+                              params: const {"RefType": "CMPYTYPE", "BitInd": null},
+                              initialValue: formNewValue['CmpyType'],
+                            ),
+                            FbLibref(
+                              name: 'BusnType',
+                              label: "Business Type",
+                              params: const {"RefType": "BusnType", "BitInd": null},
+                              initialValue: formNewValue['BusnType'],
+                            ),
+            
+                            // convStrNewOrNullToNull(mchtEttyId) == null
+                            //     ? const FbSwitch(
+                            //         name: 'DedupInd',
+                            //         label: 'Create Location with same information provided',
+                            //       )
+                            //     : const FbHiddenText(name: 'DedupInd')
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SelectableText('Application Info'),
+                            const FbText(
+                              name: 'ApplRef',
+                              label: 'Application Reference',
+                            ),
+                            FbLibref(
+                                name: 'ApplSrc',
+                                label: 'Application Source',
+                                params: const {
+                                  "RefType": "APPLSRC",
+                                  "BitInd": null
+                                },
+                                initialValue: formNewValue['ApplSrc']),
+                            const Flexible(
+                                child: FbDateTimePicker(
+                                    name: 'SubmtDate', label: 'Submission Date')),
+                 
+                                 FbLibView(name: 'AcctMgrId', label: 'Account Manager', params: {}, keyField: 'AcctMgrId', searchText: 'AcctMgrName', querySql: '/view/async/VwAcctMgrMcht'),
+                    
+                            Row(
+                              children: [
+                                // Expanded(child: FbText(name: 'SiteId', label: 'Site Id')),
+                                const Expanded(
+                                  child: FbText(
+                                    name: 'MchtStsDscp',
+                                    label: 'Status',
+                                    readOnly: true,
+                                  ),
+                                ),
+                               formNewValue['MchtEttyId'] ==null? const IconButton(
+                                
+                                  onPressed: null,
+                                  icon:  Icon(Icons.arrow_right)):  IconButton(
+                                    onPressed: () async {
+                                      await showAcxDialog(
+                                          context,
+                                          AcxStatusDialog(
+                                            stsType: StatusType.mchtSts,
+                                            ettyId: mchtEttyId,
+                                          ));
+            
+                                      ref.invalidate(
+                                          ReturndatafreezedProvider(querySql));
+                                    },
+                                    icon: const Icon(Icons.arrow_right)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(children: [
+                        AcxSaveButtonManual(onSave: () {
+                            if (isPageDeniedAction(AcxAuthAccess.actionDeniedList, wid)) {
+                                      Toast.message("Action Not Authorised");
+                                      return;
+                                    }
+                          mchtMgmtFormKey.currentState!.save();
+                          Map<String, dynamic> toPost = convertFormValueToSave(
+                              mchtMgmtFormKey.currentState!.value,
+                              theData.columnInfo);
+                          toPost.remove('MchtStsDscp');
+                          toPost.remove('MchtNo');
+                          final querySave = QueryObject(
+                              querysql: '/sp/ApiMgmtMchtProfileSave/queryasync?logId=${convStrNewOrNullToNull(mchtEttyId) ?? 0}',
+                              params: toPost,
+                              showMsg: false);
+                          final saveResult =
+                              ref.read(ReturndatafreezedProvider(querySave).future);
+                          saveResult.then((Returndata value) {
+                            Toast.showresult(value);
+                            if (isSuccess(value.message)) {
+                              ref.invalidate(ReturndatafreezedProvider(querySql));
+                            }
+                          });
+                        }),
+                        sbh10,
+                        AcxBackToList(
+                            listUrl: '/mcmgmt/mcht/$mchtEttyId/quickinfo/overview'),
+                            sbh10,
+                            AcxAuditLogReqBtn('ApiMgmtMchtProfileSave', ettyId: mchtEttyId.toString(),)
+                      ]),
+                    )
+                  ],
+                )),
+          ),
+        );
+      },
+    );
+  }
+}

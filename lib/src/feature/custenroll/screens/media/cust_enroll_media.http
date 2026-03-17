@@ -1,0 +1,206 @@
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CustEttyId": 3
+}
+###
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CustEttyId": 3,
+ "MediaEttyId":27,
+ "PrgEttyId":1
+}
+###
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "PrgDscp": null,
+      "MediaCtgryDscp": null,
+      "VhcRgsNo": null,
+      "FirstName": null,
+      "LastName": null,
+      "CrtionDate": null,
+      "CrtBy": null,
+      "CustEttyId": 10,
+      "PrgEttyId": null,
+      "MbrEttyId": null,
+      "MediaEttyId": null,
+      "MediaCtgry": null
+    }
+###
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMedia/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "MediaEttyId": 16
+}
+###
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "MediaEttyId": 16,
+  "CustEttyId": 10,
+}
+###
+
+###
+POST {{baseUrl}}/sp/ApiEnrlMediaCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CustEttyId": 247
+}
+
+
+
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaCostCtrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CmpyEttyId": 18,
+ "CustEttyId": 16,
+ // "CostCtrEttyId": null
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiEnrlMediaMbrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CmpyEttyId": 18,
+ "CustEttyId": 16,
+ "CostCtrEttyId": 25
+}
+###
+
+//ApiEnrlMediaSubscribePrgList
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlMediaSubscribePrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+ "CustEttyId": 16,
+  "MbrEttyId" :null
+}
+###
+
+//VwMediaCtgry
+
+//VwMediaCtgry
+##
+POST {{baseUrl}}/view/async/VwMediaCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+//ApiEnrlMediaPropSave
+
+
+POST {{baseUrl}}/sp/ApiEnrlMediaPropSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "PrgEttyId": 18,
+ "CustEttyId": 16,
+ "CostCtrEttyId": 25,
+ "MediaCtgry": "LOYALTY",
+ "MbrEttyId": null
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiPrgMediaCtgryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+
+  "PrgEttyId" :1
+}
+###
+
+
+ApiMgmtMediaRenewList       
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+//ApiMgmtMediaRenewSave
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId":1,
+  "CustEttyId":528,
+  "CmpyEttyId": 529,
+  "MediaEttyId": 1
+}
+
+
+//ApiMgmtMediaRenewSave
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId":1,
+  "CustEttyId":528,
+  "CmpyEttyId": 529,
+  "MediaEttyId": 1
+}

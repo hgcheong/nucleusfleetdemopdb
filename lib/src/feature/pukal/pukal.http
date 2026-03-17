@@ -1,0 +1,178 @@
+Hi Cheong,
+We will have the following sp to handle PUKAL process in order to generate reports & files
+
+1.	Side bar (PUKAL Billing Process)
+
+2.	ApiMgmtCustBillingPukal 
+	- To allow user to list out PUKAL billing transactions By monthly basis 
+
+	Parameters:-
+	@PrgEttyId	bigint,
+	@Yr			smallint = NULL,
+	@Mn			tinyint = NULL,
+	@ColCnt		tinyint OUTPUT,
+	@UserId		tUserId = NULL,
+	@SrcIpAddr	tIpAddr = NULL,
+	@MsgId		tMsgId OUTPUT	
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingPukal/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrgEttyId":1,
+"Yr":2025,
+"Mn":01
+}
+###
+
+
+3.	ApiMgmtCustBillingPukalSave
+	- To change billing transaction amount of PUKAL transaction if there is required. 
+	***It can only be change for those OUTBOUND/ ERROR, REJECTED status only
+
+	Parameters:-
+	@PrgEttyId	bigint,
+	@PukalId		bigint,
+	@AcctId		bigint,
+--	@ObjCd		varchar(20),
+	@BillAmt		money,
+	@UserId		tUserId = NULL,
+	@SrcIpAddr	tIpAddr = NULL,
+	@MsgId		tMsgId OUTPUT
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingPukalSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrgEttyId":1,
+"Yr":2025,
+"Mn":04
+}
+4.	ApiRptFilePukalRerun
+	- To re-run all the reports and re-generate GFM files for re-check details.
+
+	Parameters:-
+	@RptType	tRefCd,
+	@PId		tPrcsId,
+	@RunId		bigint,
+	@UserId		tUserId = NULL,
+	@SrcIpAddr	tSrcIpAddr = NULL,
+	@MsgId		tMsgId OUTPUT
+
+5. 	ApiRptFilePukalSave 
+	- A button to get user (click twices) to make Final confirmation. Calling this sp to turn the report or file status to "ACTIVE" 
+
+	Parameters:-
+	@RptType	tRefCd,
+	@PId		tPrcsId,
+	@RunId		bigint,
+	@UserId		tUserId = NULL,
+	@SrcIpAddr	tSrcIpAddr = NULL,
+	@MsgId		tMsgId OUTPUT
+
+	    "data": [
+        {
+            "CmpyName": "BOUSTEAD PETROLEUM MARKETING SDN BHD",
+            "AcctNo": 4000026,
+            "BillingDate": "2025-01-31T00:00:00",
+            "BillingAmt": 9.1200,
+            "ObjCdDscp": "B0226201 PETROL",
+            "PukalStsDscp": "PUKAL READY FOR OUTBOUND",
+            "AcctOffcSad": "1012",
+            "SortKey": "9999",
+            "DeptGrpCd": "24010101",
+            "Vot": "B10",
+            "TrustFund": null,
+            "Acctble": "25010101",
+            "PrgActvtyCd": "010101",
+            "ProjCd": "001070131101",
+            "PukalId": 14,
+            "ErrCd": 0,
+            "RunId": 5438,
+            "ObjCd": "B0226201",
+            "PukalSts": "B",
+            "AgencyId": "200042",
+            "BusnArea": "1012",
+            "PrgEttyId": 1,
+            "EttyId": 1382,
+            "AcctId": 119,
+            "MdfDate": "2025-05-29T14:57:06.677"
+        },
+
+//SELECT * FROM VwPrgKadInden
+
+///view/async/VwMyCity'
+
+###
+POST {{baseUrl}}/view/async/VwPrgKadInden HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+------------------------------------------------
+--To list all PUKAL inbound failure records which is to allow user maintains  
+------------------------------------------------
+EXEC ApiMgmtCustBillingAcctPukalInboundTxnList
+@PId tPrcsId = NULL,
+@RunId bigint = NULL,
+@RptInd tRefCd = 'PRE',
+@UserId tUserId = NULL,
+@SrcIpAddr tSrcIpAddr = NULL,
+@MsgId tMsgId OUTPUT
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPukalInboundTxnList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+//	"PId":null,
+//	"RunId": null,
+	"PrgEttyId":1,
+	//"RptInd": "PRE"
+}
+
+------------------------------------------------
+--User to save a new PUKAL outbound record derive from a failure transaction. Getting them to re-send
+------------------------------------------------
+EXEC ApiMgmtCustBillingAcctPukalInboundTxnSave
+@PrgEttyId bigint,
+@PukalId bigint,
+@AcctId bigint,
+@TxnId bigint,
+@LinkTxnId bigint OUTPUT,
+@BillAmt money,
+@UserId tUserId = NULL,
+@SrcIpAddr tIpAddr = NULL,
+@MsgId tMsgId OUTPUT
+
+
+------------------------------------------------
+--Enable user to re-run the PUKAL outbound report & files to check their maintained specific records
+------------------------------------------------
+EXEC ApiRptFilePukalTxnRerun
+@PId tPrcsId = NULL,
+@RunId bigint = NULL,
+@RptInd tRefCd = 'PREVIEW',
+@UserId tUserId = NULL,
+@SrcIpAddr tSrcIpAddr = NULL,
+@MsgId tMsgId OUTPUT
+
+------------------------------------------------
+--Host to generates final PUKAL outbound files and reports after user click to confirm there
+------------------------------------------------
+EXEC ApiRptFilePukalTxnSave
+@RptType tRefCd,
+@PId tPrcsId,
+@RunId bigint OUTPUT,
+@UserId tUserId = NULL,
+@SrcIpAddr tSrcIpAddr = NULL,
+@MsgId tMsgId OUTPUT
+

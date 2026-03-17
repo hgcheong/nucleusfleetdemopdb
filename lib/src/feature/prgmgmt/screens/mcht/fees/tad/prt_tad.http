@@ -1,0 +1,23 @@
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :1
+    
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :1,
+    "PlanId":  16
+}
+###

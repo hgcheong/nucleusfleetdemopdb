@@ -1,0 +1,347 @@
+Row(
+      children: [
+        Expanded(
+          flex: 5,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 5,
+                child: Card(
+                  child: ListView(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Media Info',
+                          style: hdrStyle,
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Text("Media Number"),
+                        title: const Text(
+                          '7022 0010 0000 0123',
+                          textAlign: TextAlign.right,
+                        ),
+                        trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_right)),
+                      ),
+                     
+                      ListTile(
+                        leading: const Text("Early Termination Date"),
+                        title: const Text(
+                          '',
+                          textAlign: TextAlign.right,
+                        ),
+                        trailing: IconButton(
+                            onPressed: () async {
+                              await showDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                      child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      width: 400,
+                                      height: 400,
+                                      child: Card(
+                                        child: Column(children: [
+                                          const Text(
+                                            'Early Termination',
+                                            style: hdrStyle,
+                                          ),
+                                          const Expanded(
+                                            child: FbText(
+                                              label: 'Media Number',
+                                              name: 'mdn',
+                                            ),
+                                          ),
+                                          const Expanded(child: FbDateTimePicker(label: 'Termination date', name: 'termdate')),
+                                          Expanded(
+                                            child: FbLibViewExt(
+                                              name: '',
+                                              label: 'Reason to change',
+                                              searchText: 'CmpyName',
+                                              keyField: 'UserId',
+                                              datasrc: dropDownViewStatement,
+                                            ),
+                                          ),
+                                          const FbText(name: 'Remarks', label: 'Remarks'),
+                                          IconButton(
+                                              onPressed: () {
+                                                AutoRouter.of(context).pop();
+                                              },
+                                              icon: const Icon(Icons.save))
+                                        ]),
+                                      ),
+                                    ),
+                                  ));
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.arrow_right)),
+                      ),
+                      const ListTile(
+                        leading: Text("Creation Date"),
+                        title: Text(
+                          '01 Aug 2016',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Text("Current Status"),
+                        title: const Text(
+                          'Active',
+                          textAlign: TextAlign.right,
+                        ),
+                        trailing: IconButton(
+                            onPressed: () async {
+                              await showDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                      child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      width: 400,
+                                      height: 500,
+                                      child: Card(
+                                        child: Column(children: [
+                                          const Text(
+                                            'Change Status',
+                                            style: hdrStyle,
+                                          ),
+                                          const Expanded(
+                                            child: FbText(
+                                              label: 'Media Number',
+                                              name: 'mdn',
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: FbLibViewExt(
+                                              name: '',
+                                              label: 'Change Status To',
+                                              searchText: 'CmpyName',
+                                              keyField: 'UserId',
+                                              datasrc: dropDownViewStatement,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: FbLibViewExt(
+                                              name: '',
+                                              label: 'Reason to Change',
+                                              searchText: 'CmpyName',
+                                              keyField: 'UserId',
+                                              datasrc: dropDownViewStatement,
+                                            ),
+                                          ),
+                                          const FbText(name: 'Remarks', label: 'Remarks'),
+                                          IconButton(
+                                              onPressed: () {
+                                                AutoRouter.of(context).pop();
+                                              },
+                                              icon: const Icon(Icons.save))
+                                        ]),
+                                      ),
+                                    ),
+                                  ));
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.arrow_right)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Card(
+                  child: ListView(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Additional Info',
+                          style: hdrStyle,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("Activation Date"),
+                        title: Text(
+                          '15 Aug 2016',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("First Transaction Date"),
+                        title: Text(
+                          '16 Aug 2016',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("Old Media Number"),
+                        title: Text(
+                          '',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("New Media Number"),
+                        title: Text(
+                          '',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: Column(
+            children: [
+              Expanded(
+                child: Card(
+                  child: ListView(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Media Holder Info',
+                          style: hdrStyle,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("Name"),
+                        title: Text(
+                          'Gordon Waller',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("Vehicle Reg.Number"),
+                        title: Text(
+                          'ABC1234D',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text("Attached to"),
+                        title: Text(
+                          'Marvelous Pvt. Ltd. Sales & Marketing',
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: [
+              PopupMenuButton(
+                onSelected: (val) async {
+                  switch (val) {
+                    case 'REQ':
+                      await showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                              child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              width: 400,
+                              height: 200,
+                              child: Card(
+                                child: Column(children: [
+                                  const Text(
+                                    'Media Replacement',
+                                    style: hdrStyle,
+                                  ),
+                                  const Expanded(
+                                    child: FbText(
+                                      label: 'Media Number',
+                                      name: 'mdn',
+                                    ),
+                                  ),
+                                  const Expanded(child: FbDateTimePicker(name: 'expiry', label: 'Expiry Date')),
+                                  IconButton(
+                                      onPressed: () {
+                                        AutoRouter.of(context).pop();
+                                      },
+                                      icon: const Icon(Icons.save))
+                                ]),
+                              ),
+                            ),
+                          ));
+                        },
+                      );
+                      break;
+                    case 'PIN':
+                      await showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                              child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              width: 400,
+                              height: 200,
+                              child: Card(
+                                child: Column(children: [
+                                  const Text(
+                                    'Forgotten your PIN',
+                                    style: hdrStyle,
+                                  ),
+                                  const Expanded(
+                                    child: FbText(
+                                      label: 'Media Number',
+                                      name: 'mdn',
+                                    ),
+                                  ),
+                                  const Text('PIN will be sent to registered Email'),
+                                  const Expanded(child: FbText(name: 'confirm', label: 'Confirm Email')),
+                                  IconButton(onPressed: () {}, icon: const Icon(Icons.save))
+                                ]),
+                              ),
+                            ),
+                          ));
+                        },
+                      );
+                    default:
+                  }
+                },
+                itemBuilder: (context) {
+                  return <PopupMenuEntry<String>>[
+                    PopupMenuItem<String>(
+                      onTap: () async {},
+                      value: 'REQ',
+                      child: const Text('Media Replacement'),
+                    ),
+                    PopupMenuItem<String>(
+                      onTap: () async {},
+                      value: 'PIN',
+                      child: const Text('Forgot PIN'),
+                    ),
+                  ];
+                },
+              ),
+              const AcxBackToList(
+                listUrl: '././list',
+              )
+            ],
+          ),
+        )
+      ],
+    );

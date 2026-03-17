@@ -1,0 +1,246 @@
+
+POST {{baseUrl}}/sp/ApiEnrlMbrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+}
+### 
+
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbr/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CustEttyId":null,
+  "MbrEttyId": 100
+}
+
+# {
+#       "MbrRnk": 1,
+#       "VipCd": "0",
+#       "CustEttyId": 10,
+#       "CmpyEttyId": 37,
+#       "CostCtrEttyId": 40,
+#       "MbrEttyId": 43,
+#       "MediaCnt": 0
+#     }
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlMbrSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "MbrRnk": null,
+      "VipCd": 0,
+      "CustEttyId": 10,
+      "CmpyEttyId": 37,
+      "CostCtrEttyId": null,
+      "MbrEttyId": null
+### 
+
+
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCostCtrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"VIPIND",
+"BitInd":null
+}
+
+# {
+#       "RefType": "VIPIND",
+#       "RefCd": "0",
+#       "Dscp": "NORMAL CUSTOMER",
+#       "BitInd": 0,
+#       "Sts": "A"
+#     },
+###
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"LEAVEMEMBER",
+"BitInd":null
+}
+###
+
+//vwlibmbrrnk
+
+//vwlibmbrrnk
+##
+POST {{baseUrl}}/view/async/vwlibmbrrnk HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//apienrlettylist
+
+##
+POST {{baseUrl}}/sp/apienrlettylist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "EttyId": 45
+}
+###
+
+//ApiEnrlMbrPsnl
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPsnl/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 43
+}
+
+#  {
+#       "FirstName": null,
+#       "LastName": null,
+#       "EmployeeCd": null,
+#       "EmploymtStartDate": null,
+#       "Title": null,
+#       "PsnlIdType": null,
+#       "PsnlId": null,
+#       "Gender": null,
+#       "Email": null,
+#       "CustEttyId": 10,
+#       "MbrEttyId": null,
+#       "PersonId": null,
+#       "EmailId": null
+#     }
+
+###
+//ApiEnrlMbrPsnl
+
+POST {{baseUrl}}/sp/ApiEnrlMbrPsnlSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "FirstName": null,
+      "LastName": null,
+      "EmployeeCd": null,
+      "EmploymtStartDate": null,
+      "Title": null,
+      "PsnlIdType": null,
+      "PsnlId": null,
+      "Gender": null,
+      "Email": null,
+      "CustEttyId": 10,
+      "MbrEttyId": null,
+      "PersonId": null,
+      "EmailId": null
+    }
+
+###
+    
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"PsnlIdType",
+"BitInd":null
+}
+
+  # {
+  #     "RefType": "PSNLIDTYPE",
+  #     "RefCd": "CSC",
+  #     "Dscp": "CIVIL SERVICE CODE",
+  #     "BitInd": 16,
+  #     "Sts": "A"
+  #   },
+###
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"VHCBRAND",
+"BitInd":null
+}
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"VHCTYPE",
+"BitInd":null
+}
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"VHCMODEL",
+"BitInd":null
+}
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"VHCCTGRY",
+"BitInd":null
+}
+###
+
+
+//ApiEnrlMbrVhc
+POST {{baseUrl}}/sp/ApiEnrlMbrVhc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "MbrEttyId": 43
+}
+###

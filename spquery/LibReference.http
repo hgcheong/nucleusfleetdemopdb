@@ -1,0 +1,220 @@
+#ACCESSGRPID
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ACCESSGRPID",
+"BitInd":null
+}
+###
+
+#ACCPTSTS
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ACCPTSTS",
+"BitInd":null
+}
+###
+
+#ACCPTTYPE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ACCPTTYPE",
+"BitInd":null
+}
+###
+
+#POE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"POE",
+"BitInd":null
+}
+###
+
+#Srcprvder
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"Srcprvder",
+"BitInd":null
+}
+###
+
+
+#BANK
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BANK",
+"BitInd":null
+}
+###
+
+#BANKACCTTYPE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BANKACCTTYPE",
+"BitInd":null
+}
+###
+
+#PYMTTYPE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"PYMTTYPE",
+"BitInd":null
+}
+###
+
+#PYMTTYPE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"PYMTTYPE",
+"BitInd":null
+}
+###
+
+#TADTYPE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TADTYPE",
+"BitInd":null
+}
+###
+
+#TADVENDOR
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TADVENDOR",
+"BitInd":null
+}
+###
+
+#BILLFREQ
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BILLFREQ",
+"BitInd":null
+}
+###
+
+#MediaType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MediaType",
+"BitInd":null
+}
+###
+
+#TxnCtgry
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TxnCtgry",
+"BitInd":null
+}
+###
+
+#MediaType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MediaType",
+"BitInd":null
+}
+###
+
+#DAY
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"DAY",
+"BitInd":null
+}
+###
+
+#AUTOEXECDAY
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"AUTOEXECDAY",
+"BitInd":null
+}
+###
+
+#TADMNM
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TADMNM",
+"BitInd":null
+}
+###
+
+#TADVENDOR
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TADVENDOR",
+"BitInd":null
+}
+###
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"RPSTRYTYPE",
+"BitInd":null
+}
+
+
+

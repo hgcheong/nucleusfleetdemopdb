@@ -1,0 +1,55 @@
+import 'package:nucleusv2/src/core/app/api_service.dart';
+import 'package:nucleusv2/src/core/models/paginated_response.dart';
+import 'package:nucleusv2/src/feature/user/models/user.dart';
+
+class UserService extends ApiService {
+  Future<User> me() async {
+    try {
+      final response = await getHttp('/auth/me');
+      return User.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<User> retrieve(String uuid) async {
+    try {
+      final response = await getHttp('/user/$uuid');
+      return User.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<PaginatedResponse<User>> list({int page = 1, int limit = 10}) async {
+    try {
+      final params = {
+        ...buildPage(page),
+        ...buildLimit(limit),
+      };
+
+      final response = await getHttp('/user', params: params);
+
+      List<User> results =
+          response['results'].map<User>((item) => User.fromJson(item)).toList();
+
+      return PaginatedResponse(
+        count: response['count'],
+        page: response['page'],
+        num_pages: response['num_pages'],
+        results: results,
+      );
+    } catch (e) {
+      return PaginatedResponse.empty();
+    }
+  }
+
+  Future<User> updateMe(Map<String, dynamic> params) async {
+    try {
+      final response = await patchHttp('/user/current', params: params);
+      return User.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+}

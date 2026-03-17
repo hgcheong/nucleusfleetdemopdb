@@ -1,0 +1,105 @@
+//ApiMgmtCustDashboard
+
+//This one is not ready
+POST {{baseUrl}}/sp/ApiMgmtCustDashboard01/querymulti HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 1
+
+}
+### 
+
+//ApiMgmtCustOverview
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+
+}
+### 
+
+//
+  {"StsDscp":null,
+    "CmpyName":null,
+    "RgstionName":null,
+        "RgstionNo":null,
+        "RgstionDate":null,
+        "SubmtDate":null,
+        "CrtionDate":null,
+        "AcctMgrName":null,
+        "AcctContactNo":null,
+        "CmpyCnt":null,
+        "CcCtr":null,
+        "MbrCnt":null,
+        "MediaCnt":null,
+        "PrgCnt":null,
+        "CustEttyId":null
+  }
+
+
+
+
+//ApiMgmtMchtAppvHistList
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAppvHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 16
+
+}
+### 
+
+//queryasyncoltp
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAppvHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 16
+
+}
+### 
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAppvHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 16
+
+}
+### 
+//queryasyncoltp
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctOnlineTxnList/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": null,
+  "LocEttyId": null,
+  "MediaNo":null,
+  "ToDate":null,
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctOnlineTxnPrdList/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": null,
+  "TxnId":null,
+  # "LocEttyId": null,
+  # "MediaNo":null,
+  # "ToDate":null,
+}

@@ -1,0 +1,99 @@
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpy/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CustEttyId": 16,
+ "CmpyEttyId": 17
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CustEttyId": 16,
+ "CmpyEttyId": 58
+}
+### 
+
+
+//ApiMgmtCustOverviewChkList
+
+POST {{baseUrl}}/sp/ApiMgmtCustOverviewChkList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 
+
+//ApiMgmtAddrList
+
+
+POST {{baseUrl}}/sp/ApiMgmtAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "CustEttyId": 16,
+  "EttyId": 84
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "CustEttyId": 16,
+  "EttyId": 84
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "CustEttyId": 16,
+  "EttyId": 84,
+  "ContactType": "Billing",
+  "ContactId": 30
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtContactDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": "84",
+  "ContactId": 30,
+  "ContactType": "BILLING"
+}
+### 
+

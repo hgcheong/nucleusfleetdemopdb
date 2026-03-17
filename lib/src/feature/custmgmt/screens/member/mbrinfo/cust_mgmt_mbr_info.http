@@ -1,0 +1,74 @@
+//VwLibMbrRnk
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtMbrCostCtrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 81
+
+}
+### 
+
+
+//ApiMgmtMbr
+
+
+POST {{baseUrl}}/sp/ApiMgmtMbrCostCtrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "528",
+  "CmpyEttyId": null
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMbrCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+ // "CmpyEttyId": 17
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TITLE",
+"BitInd":null
+}
+###
+
+//ApiMgmtMbrPsnl
+
+POST {{baseUrl}}/sp/ApiMgmtMbrPsnl/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MbrEttyId": "1269",
+  "CustEttyId": "1262"
+}
+### 
+
+//ApiMgmtMbrVhc
+
+POST {{baseUrl}}/sp/ApiMgmtMbrVhc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MbrEttyId": "46",
+  "CustEttyId": "10"
+}
+### 

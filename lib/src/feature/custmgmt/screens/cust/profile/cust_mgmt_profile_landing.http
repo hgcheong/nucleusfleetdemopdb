@@ -1,0 +1,219 @@
+//ApiMgmtCustProfile
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustProfile/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 1262
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 1262
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "ContactId": 182,
+   "EttyId": 1262,
+   "ContactType" :"PIC"
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 10
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustProfileSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "CmpyName": "Perbadanan Putrajaya Bhd",
+      "RgstionName": "Perbadanan Putrajaya Bhd",
+      "RgstionNo": "X012812",
+      "RgstionDate": "1964-02-01T00:00:00",
+      "FirstName": "Osman",
+      "LastName": "Adhmad",
+      "Dsgntion": "DIRECT",
+      "ApplRef": "PPBX012812",
+      "ApplSrc": "ENR",
+      "TaxCtgry": "null",
+      "TaxNo": "null",
+      "CmpyType": "COMMUNITY",
+      "CmpySize": "C",
+      "BusnType": "ASSORTGIFT",
+      "SegmtType": "ADVERTISE",
+      "AcctMgrName": "Jaya Kuma",
+      "AcctMgrContactNo": "01992381983",
+      "SrcRef": null,
+      "SubmtDate": "2023-07-28T00:00:00",
+      //"CrtionDate": "2023-08-25T17:04:38.553",
+     // "AppvDate": "1900-01-01T00:00:00",
+      "AcctMgrId": 6,
+      "CustEttyId": 1262,
+     "CustMdfDate": "2024-04-15",
+      "CmpyMdfDate": "2024-04-15",
+      "ContMdfDate": "2024-04-15",
+
+}
+### 
+
+//ApiMgmtAddr
+
+POST {{baseUrl}}/sp/ApiMgmtAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 16
+}
+### 
+
+
+POST {{baseUrl}}ApiMgmtAddrSave HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+    {
+      "EttyId": 6,
+      "ContactId": 3,
+      "AddrType": "MAILING",
+      "BdgName": null,
+      "Street1": "Center Poi23nt",
+      "Street2": "BU",
+      "Street3": null,
+      "CityCd": "MY:C:KUL",
+      "PostCd": "56700",
+      "CtryCd": null,
+      "StateCd": "MY:KUL",
+      "GeoLoc": "POINT (-132.349 55.651)",  
+    }
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtAddr/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+    {
+      "EttyId": 16,
+      "ContactId": null,
+      "AddrType": "ROC",
+  }
+###
+
+
+//ApiMgmtContactList
+
+POST {{baseUrl}}/sp/ApiMgmtContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 16
+}
+### 
+
+//ApiMgmtContact
+
+POST {{baseUrl}}/sp/ApiMgmtContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 8,
+  "ContactId": 5,
+  "ContactType": "PIC"
+}
+### 
+
+//ApiMgmtContactSave
+
+POST {{baseUrl}}/sp/ApiMgmtContactSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 8,
+  "ContactId": 5,
+  "ContactType": "PIC"
+}
+### 
+
+
+#ContactType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ContactType",
+"BitInd":null
+}
+###
+
+#AddressType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ADDRTYPE",
+"BitInd":null
+}
+###
+
+#BUSNSIZE
+//ApiMgmtAddrDel
+POST {{baseUrl}}/sp/ApiMgmtAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": "908",
+  //"AddrId": 151,
+  "AddrType": "ROC",
+  "ContactId": 84
+}
+
+
+//ApiMgmtAddrDel
+###
+POST {{baseUrl}}/sp/ApiMgmtAddrDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": "908",
+  //"AddrId": 151,
+  "AddrType": "ROC",
+  "ContactId": 84
+}

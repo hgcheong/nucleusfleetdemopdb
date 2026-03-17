@@ -1,0 +1,211 @@
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "MsgTypePlanId": 1,
+    "PlanId":2,
+    "Poe":"FEP"
+},
+### 
+
+##ApiPrgMchtTxnPlanSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 97,
+    "MsgTypeId": 1,
+    "MsgTypePlanId": 1,
+    "Poe": "FEP",
+    "PlanId" : null,
+    //"SrcPrvder": null,
+    "TxnPlan" :1,
+    "FromDate" :"2023-12-26",
+    "ToDate":"2024-11-30",
+
+},
+### 
+
+##ApiPrgMchtTxnPlanList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 97,
+    "MsgTypePlanId": 1,
+},
+### 
+
+
+
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "97",
+    "Poe": "FEP",
+    "PlanId":null,
+ //   "MsgTypeId": 2,
+    "MsgTypePlanId": 1
+},
+### 
+
+##ApiPrgMchtTxnSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+  "MsgTypeId": 1,
+  "SrcPrvder": "MY:CODO",
+  "Poe" : "FEP",
+  "MsgTypePlanId":null,
+
+}
+### 
+
+##ApiPrgMchtTxn
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "97",
+  "Poe" : "FEP",
+  "MsgTypePlanId":1,
+}
+### 
+
+##ApiPrgMchtTxnList
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+}
+### 
+
+##ApiPrgMchtTxn
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "97",
+    "Poe": "FEP",
+ //   "MsgTypeId": 2,
+    "MsgTypePlanId": 1
+
+}
+### 
+
+
+##
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+   "MsgTypePlanId": 1
+
+}
+### 
+
+##
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "97",
+   "MsgTypePlanId": 14
+
+}
+### 
+
+##ApiPrgMchtTxnSave
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "PrgEttyId": "1",
+    "Poe": "FEP",
+    "MsgTypeId": 1,
+    "MsgTypePlanId": 6,
+    "SrcPrvder": "MY:COCO"
+}
+### 
+
+#VwSrcPrvder
+# 
+
+POST {{baseUrl}}/view/async/VwSrcPrvder HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+### 
+
+
+
+#VwTxnPlan
+# 
+
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+#VwTxnMsgType
+# 
+
+POST {{baseUrl}}/view/async/VwTxnMsgType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+
+POST {{baseUrl}}/view/async/VwDealerType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+//ApiPrgMchtTxnList
+

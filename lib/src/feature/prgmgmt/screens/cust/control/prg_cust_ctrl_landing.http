@@ -1,0 +1,109 @@
+##ApiPrgCustTxnLimitList
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnLimitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+}
+### 
+
+//ApiPrgCustTxnLimit
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnLimit/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "LimitId": null
+}
+### 
+
+//ApiPrgCustTxnLimitSave
+
+##ApiPrgCustTxnLimitSave
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnLimitSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "97",
+  "Sts": "A",
+  "Dscp": null,
+  "TxnCtgry": 0,
+  "LimitId": null,
+  "LimitType": "DAY",
+  "MinThsld": "1",
+  "MaxThsld": "12",
+  "CntThsld": "10",
+  "LimitMsuremt": "PROD"
+}
+### 
+
+//VwLimitType
+##
+POST {{baseUrl}}/view/async/VwLimitType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwBillingValue
+//use for LimitMsuremt
+##
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//ApiPrgCustRebatePrdList
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnLimitPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+//"RebateId": 12,
+"PrgEttyId": 97,
+"LimitId": 2
+
+}
+### 
+
+
+//ApiPrgCustRebatePrdList
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnLimitPrdSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+//"RebateId": 12,
+"PrgEttyId": 97,
+"PrdCd": "3010",
+"Sts":"Y",
+"LimitId": 2
+
+}
+### 

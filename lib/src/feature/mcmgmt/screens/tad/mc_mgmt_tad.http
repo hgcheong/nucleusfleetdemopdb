@@ -1,0 +1,147 @@
+
+POST {{baseUrl}}/sp/ApiMgmtTadList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtTadList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 834
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlMchtTadList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 834
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtTad/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 834
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtTadSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 834
+}
+### 
+
+POST {{baseUrl}}/sp/ApiMgmtTad/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+    "LocEttyId" : 86,
+    "TadEttyId": null,
+}
+### 
+
+//ApiMgmtTadOverview
+
+POST {{baseUrl}}/sp/ApiMgmtTadOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+    "LocEttyId" : 86,
+    "TadEttyId": 90,
+}
+### 
+
+POST {{baseUrl}}/sp/ApiMgmtTadSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TadNo": 12,
+      "MnM": "ADV",
+      "Vendor": "GHL",
+      "SerialNo": null,
+      "InstallDate": null,
+      "Installer": null,
+      "SttlmtInd": "Y",
+      "AcqringNw": null,
+      "MchtEttyId": 100,
+
+      "LocEttyId": 102,
+      "TadEttyId": null,
+ 
+}
+###
+
+//###
+//MnM
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "TadMnM",
+"BitInd": null
+}
+
+//TadVendor
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "TadVendor",
+"BitInd": null
+}
+
+###
+POST {{baseUrl}}/sp/ApiMchtMgmtBusnUnitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 100
+}
+
+//ApiEnrlEttyList for location
+###
+POST {{baseUrl}}/sp/ApiEnrlEttyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId": 837,   
+}
+### 
+
+    # {
+    #   "Dscp": "AB / 123123 / LOC#102",
+    #   "EttyTypeDscp": "LOCATION",
+    #   "LocEttyId": 102,
+    #   "EttyId": 101
+    # }
+
+
+

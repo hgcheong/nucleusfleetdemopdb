@@ -1,0 +1,176 @@
+//ApiPrgCustTxnFeeList
+
+##ApiPrgCustTxnFeeList
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+
+}
+### 
+
+##ApiPrgCustTxnFee
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": "97",
+      "FeeId":null
+
+}
+### 
+
+##ApiPrgCustTxnFeeDel
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeeDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "FeeId":2
+
+}
+### 
+
+
+//ApiPrgCustTxnFeePlanList
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "PrgEttyId": 4,
+      "FeeId": 2
+}
+### 
+
+
+
+//ApiPrgCustTxnFeePlanSave
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeePlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "FromDate": "2023-07-01",
+      "ToDate": "2023-12-31",
+      "TxnPlan": 1,
+      "PrgEttyId": 4,
+      "FeeId": 2,
+      "PlanId": null
+}
+### 
+
+
+
+##ApiPrgCustTxnFeeSave
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "MediaType": "ALL",
+      "TxnCtgry": 0,
+      "Dscp": "Test",
+      "SchdId": 0,
+      "AggateCd": 1,
+      "BillingValue": 10,
+      "Sts":"A",
+      "PrgEttyId": 4,
+      "FeeId": null
+
+}
+### 
+
+//ApiPrgCustTxnFeePlan
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "FeeId": 2,
+      "PlanId": 18
+
+}
+### 
+
+//ApiPrgCustTxnFeePlanDel
+
+POST {{baseUrl}}/sp/ApiPrgCustTxnFeePlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "FeeId": 2,
+      "PlanId": 18
+
+}
+### 
+
+#MediaType 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MediaType",
+"BitInd":null
+}
+###
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwAggateCd
+
+POST {{baseUrl}}/view/async/VwAggateCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwBillingValue
+
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

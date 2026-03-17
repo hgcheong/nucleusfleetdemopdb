@@ -1,0 +1,165 @@
+##ApiPrgCustPostpaidBFChrg
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFChrg/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97
+}
+### 
+
+##ApiPrgCustPostpaidBFChrgSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFChrgSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "PrgEttyId": 1, 
+   "ChrgId": null, 
+   "FncChrgInd": null, "FncChrgTxnPlanRefNo": "", "FncChrgFreeThsld": null, "FncCalcMethod": null, 
+   "LpcChrgInd": null, 
+   "LpcTxnPlanRefNo": "", 
+   "LpcFreeThsld": null
+
+}
+### 
+
+//ApiPrgCustPostpaidBFCycleDateList
+
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleDateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+      "ChrgId" :null,
+      "FncChrgTxnPlanRefNo": null,
+      "LpcTxnPlanRefNo": null,
+
+}
+### 
+
+##ApiPrgCustPostpaidBFTxnPlanList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+      "ChrgId" :null,
+      "FncChrgTxnPlanRefNo": null,
+      "LpcTxnPlanRefNo": null,
+
+}
+### 
+
+
+##ApiPrgCustPostpaidBFTxnPlan
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "ChrgId": 1,
+      "PlanId":2,
+      "TxnPlanRefNo": 16,
+}
+### 
+
+##ApiPrgCustPostpaidBFTxnPlanSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "ChrgId": 1,
+      "PlanId":null,
+      "TxnPlan" :1,
+      "TxnPlanRefNo": 8,
+      "FromDate": "2023-01-01",
+       "ToDate": "2023-12-31",
+}
+### 
+
+##
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwFncChrgCalc
+##
+POST {{baseUrl}}/view/async/VwFncChrgCalc HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+##ApiPrgCustPostpaidBFTxnCtgryList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFTxnCtgryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+      "ChrgId": null,
+}
+### 
+
+//ApiPrgCustPostpaidBFTxnCtgrySave
+
+##ApiPrgCustPostpaidBFTxnCtgrySave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFTxnCtgrySave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "ChrgId": 1,
+      "CtgryId": null,
+      "TxnCtgry": 80,
+}
+### 
+
+##ApiPrgCustPostpaidBFTxnCtgryDel
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFTxnCtgryDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "ChrgId": 1,
+      "CtgryId": 16,
+      "TxnCtgry": 60,
+}
+### 
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

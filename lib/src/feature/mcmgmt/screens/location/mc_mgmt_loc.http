@@ -1,0 +1,67 @@
+
+POST {{baseUrl}}/sp/ApiMgmtLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 83
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 86,
+   "MchtEttyId": 83,
+
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocOverView/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 86,
+   "MchtEttyId": 83,
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "MchtEttyId": 100,
+      "BusnUnitEttyId": 101,
+      "LocEttyId": 102,
+      "LocNo": "LOC#102",
+      "LocName": "AB",
+      "SiteId": 102,
+      "DealerType": null,
+      "AgrmtNo": "32432",
+      "AgrmtDate": "2024-02-01T00:00:00",
+      "RgstionNo": "123123",
+      "RgstionName": "AB",
+      "RgstionDate": "2024-02-05T00:00:00",
+      "CmcmtDate": "2024-02-19T00:00:00",
+      "CmpyType": "COMMUNITY",
+      "BusnType": "DEFAULT",
+      "SegmtType": "AGRI",
+      "CmpySize": "M",
+      "TaxCtgry": "GST6",
+      "TaxNo": "767568",
+      "GeoLoc": null, 
+      "LocMdfDate": "2024-02-19T18:31:16.887",
+      "CmpyMdfDate": "2024-02-19T18:31:16.887"
+
+}
+
+
+

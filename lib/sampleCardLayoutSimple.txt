@@ -1,0 +1,82 @@
+Row(
+      children: [
+        Expanded(
+          flex: 5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Location Info',
+                  style: hdrStyle,
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Card(
+                  child: ListView(
+                    children: const [
+        
+                
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Contract Info',
+                  style: hdrStyle,
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Card(
+                  child: ListView(
+                    children: const [
+             
+                    ],
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Tax Info',
+                  style: hdrStyle,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Card(
+                  child: ListView(
+                    children: const [
+                 
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        const Expanded(
+          flex: 1,
+          child: Column(
+            children: [   
+              AcxBackToList(
+                listUrl: '././list',
+              )
+            ],
+          ),
+        )
+      ],
+    );

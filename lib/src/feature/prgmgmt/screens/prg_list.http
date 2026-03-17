@@ -1,0 +1,62 @@
+POST {{baseUrl}}/sp/ApiPrg/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 157
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+### 
+
+POST {{baseUrl}}/sp/GetPrgType/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+### 
+
+//ApiPrgMchtTadFee
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :1
+    
+}
+### 
+
+//ApiPrgMchtAutoPymt
+POST {{baseUrl}}/sp/ApiPrgMchtAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+ 
+}
+### 
+
+//ApiPrgMchtAutoPymt
+POST {{baseUrl}}/sp/ApiLogReqList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "SPNAME": "ApiWebMbrPrdAccptSave",
+    "FromDate": null,
+    "EttyId" : 908
+}
+### 

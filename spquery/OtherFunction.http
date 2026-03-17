@@ -1,0 +1,35 @@
+#ApiConstructLblName
+
+POST {{baseUrl}}/sp/ApiConstructLblName/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "I",
+  "ObjName": "ApiPrg",
+  "ApplVer": null,
+  "SignIn": "ck.ng@accenxis.com"
+}
+
+###
+
+#ApiConstructLblName
+
+POST {{baseUrl}}/sp/ApiConstructLblName/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "I",
+  "ObjName": "ApiPrgMchtAutoPymt",
+  "ApplVer": null,
+  "SignIn": "ck.ng@accenxis.com"
+}
+
+###
+
+//This libview is special because we can add more conditions
+//{{apiURL}}/api/view/async/vwlibref/addcond
+//{
+//"view":"and RefType='UserSts' and dbo.ufnBitUserActvSusp (BitInd) > 0"
+//}

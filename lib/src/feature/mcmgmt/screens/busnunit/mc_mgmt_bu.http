@@ -1,0 +1,38 @@
+
+POST {{baseUrl}}/sp/ApiMgmtBusnUnitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 55,
+
+}
+
+//
+###
+POST {{baseUrl}}/sp/ApiMgmtBusnUnit/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "BusnUnitEttyId": null,
+   "MchtEttyId": 55
+
+}
+
+//
+###
+POST {{baseUrl}}/sp/ApiMgmtBusnUnitSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "BusnUnitEttyId": 118,
+  "MchtEttyId": 100,
+  "BusnUnit": "1011297",
+  "Dscp": "Testing 212",
+  "LocCnt": 112,
+  "TadCnt": 0
+
+
+}

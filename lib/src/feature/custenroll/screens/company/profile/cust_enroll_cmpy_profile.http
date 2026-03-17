@@ -1,0 +1,195 @@
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpy/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CustEttyId": 16,
+ "CmpyEttyId": 17
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CustEttyId": 16,
+ "CmpyEttyId": 58
+}
+### 
+
+
+//ApiEnrlCustOverviewChkList
+
+POST {{baseUrl}}/sp/ApiEnrlCustOverviewChkList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 
+
+//ApiEnrlAddrList
+
+
+POST {{baseUrl}}/sp/ApiEnrlAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "CustEttyId": 16,
+  "EttyId": 84
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "CustEttyId": 16,
+  "EttyId": 84
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "CustEttyId": 16,
+  "EttyId": 84,
+  "ContactType": "Billing",
+  "ContactId": 30
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlContactDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": "84",
+  "ContactId": 30,
+  "ContactType": "BILLING"
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiUserInternalList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "GrpId":5
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlAddrDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "EttyId": 330,
+      "AddrType": "DELIVERY",
+      "AddrId": 212,
+      "ContactId":null
+}
+
+///sp/ApiEnrlAddr/queryasync
+###
+POST {{baseUrl}}/sp/ApiEnrlAddr/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": "711",
+  "ContactId": "269",
+  "AddrType": "ROC"
+}
+
+###
+POST {{baseUrl}}ApiEnrlAddrSave HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+      "EttyId": 711,
+      "ContactId": 269,
+      "AddrType": "ROC",
+      "BdgName": "WISMA AI-ROC",
+      "Street1": "AR-1",
+      "Street2": "AR-2",
+      "Street3": "AR-3",
+      "CityCd": "MY:14:KL",
+      "PostCd": "50000",
+      "StateCd": "MY:14",
+      "CtryCd": "MY",
+      "GeoLoc": null,
+      "MdfDate": "2025-08-13T16:11:30.44"
+    }
+###
+POST {{baseUrl}}/view/async/vwColltorCust HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//ApiEnrlCmpyDirectorshipList
+
+///sp/ApiEnrlAddr/queryasync
+###
+POST {{baseUrl}}/sp/ApiEnrlCmpyDirectorshipList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId":1
+}
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCmpyDirectorship/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "IndvdId":null,
+  "EttyId":1
+}
+
+//ApiMgmtCmpyDirectorshipList
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCmpyDirectorshipList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId":1
+}
+

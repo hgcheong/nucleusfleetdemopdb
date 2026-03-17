@@ -1,0 +1,42 @@
+
+POST {{baseUrl}}/sp/ApiPrgSubsList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+### 
+
+//ApiPrgSubs
+POST {{baseUrl}}/sp/ApiPrgSubs/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "SubsId": 11
+}
+
+
+//ApiPrgSubsPrdList
+###
+##
+POST {{baseUrl}}/sp/ApiPrgSubsPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "SubsId": 11
+}
+### 
+
+##
+POST {{baseUrl}}/sp/ApiPrgSubsLocateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "SubsId": 11,
+
+}
+### 
+

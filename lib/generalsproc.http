@@ -1,0 +1,95 @@
+//ApiMgmtMainSearch
+
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "RefCd": "ACCTNO",
+     "Str": "1",
+    //   "Int":"8A3",
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "RefCd": "CUSTNAME",
+     "Str": "per",
+    //   "Int":"8A3",
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "RefCd": "TADNO",
+     "Int": "2024",
+    //   "Int":"8A3",
+}
+###
+
+
+
+
+//Attr
+POST {{baseUrl}}/view/async/VwAttr HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+//Attr
+POST {{baseUrl}}/sp/ConstructPgTitle/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+ "CustEttyId" : 1,
+
+ }
+###
+
+//VwCustBillingEttyType
+
+
+    {
+      "No": 10000004,
+      "Name": "BHP Sales Marketing Sdn Bhd",
+        "MchtNo": 10000004,
+      "Company Name": "BHP Sales Marketing Sdn Bhd",
+       "CUSTNo": 10000004,
+      "CUSTOMER Company Name": "BHP Sales Marketing Sdn Bhd",
+             "CUSTNo": 10000004,
+      "CUSTOMER Company Name": "BHP Sales Marketing Sdn Bhd",
+      "EttyId": 83
+    }
+
+
+    "RefCd": "LOCNAME",
+    "EttyId": 85,
+    "Dscp": "SDJFLKDSJFLKDSJFLKSDJF"
+
+
+
+
+Company Name - Cust Company
+Others Contact -/depending on type
+Email -/depending on type
+Customer Registered Company - 
+Customer No - Customer
+Member email - Member Main Page
+Mobile NO /depend on type
+PERSON - IN - CHARGE - Land customer
+Vehicle - Member

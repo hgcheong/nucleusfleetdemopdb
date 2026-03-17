@@ -1,0 +1,65 @@
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 102,
+   "MchtEttyId": 100,
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "LocNo": "LOC#102",
+      "LocName": "AB",
+      "SiteId": 102,
+      "DealerType": null,
+      "AgrmtNo": "32432",
+      "AgrmtDate": "2024-02-01T00:00:00",
+      "RgstionNo": "123123",
+      "RgstionName": "AB",
+      "RgstionDate": "2024-02-05T00:00:00",
+      "CmcmtDate": "2024-02-19T00:00:00",
+      "CmpyType": "COMMUNITY",
+      "BusnType": "DEFAULT",
+      "SegmtType": "AGRI",
+      "CmpySize": "M",
+      "TaxCtgry": "GST6",
+      "TaxNo": "767568",
+      "GeoLoc": null,
+      "TadCnt": 0,
+      "PrgCnt": 0,
+      "MchtEttyId": 100,
+      "BusnUnitEttyId": 101,
+      "LocEttyId": 102,
+ "LocMdfDate": "2024-02-21T17:09:43.257",
+      "CmpyMdfDate": "2024-02-21T17:09:43.257"
+
+}
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"DealerType",
+"BitInd":null
+}
+###
+//VwSubsidyType
+##
+POST {{baseUrl}}/view/async/VwLibSite  HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

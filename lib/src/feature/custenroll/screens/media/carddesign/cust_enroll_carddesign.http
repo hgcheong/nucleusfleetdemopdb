@@ -1,0 +1,46 @@
+//ApiEnrlMediaProp
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaDsgn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "4",
+  "PrgEttyId": "1",
+  "MbrEttyId": "17",
+  "MediaEttyId": "18",
+//   "CardDsgn":"STD",
+ //  "MediaCtgry": "VEHICLE",
+}
+###
+
+//ApiEnrlMediaProp
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaDsgnSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "CustEttyId": "4",
+  "PrgEttyId": "1",
+  "MbrEttyId": "17",
+  "MediaEttyId": "18",
+   "CardDsgn":"STD",
+  // "MediaCtgry": "FLEET",
+   "NameOnMedia1":"John",
+     "NameOnMedia2":"Johny"
+}
+###
+
+
+
+#DSGNTION 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CardDsgn",
+"BitInd":null
+}
+###

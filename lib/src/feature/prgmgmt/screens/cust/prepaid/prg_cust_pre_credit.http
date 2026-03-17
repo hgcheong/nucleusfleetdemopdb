@@ -1,0 +1,54 @@
+##ApiPrgCustPrepaidSetup
+
+POST {{baseUrl}}/sp/ApiPrgCustPrepaidSetup/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4
+}
+
+###
+
+
+#CrExpType 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CrExpType",
+"BitInd":null
+}
+###
+
+#CrExpUnit 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CrExpUnit",
+"BitInd":null
+}
+###
+
+
+##ApiPrgCustPrepaidSetupSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPrepaidSetupSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+      "Reloadable": "Y",
+      "CrExpType": "FIRSTSALES",
+      "CrExpUnit": "MTH",
+      "CrExpValue": 10,
+      "CrExpDate": null,
+      "MaxCrBal": 10,
+      "PrgEttyId": 4,
+      "SetupId": null
+    }
+
+###

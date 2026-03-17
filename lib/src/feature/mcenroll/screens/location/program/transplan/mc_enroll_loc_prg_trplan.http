@@ -1,0 +1,146 @@
+##ApiPrgMchtTxnPlan
+
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 46,
+  "PrgEttyId": 1
+},
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "MsgTypePlanId": 2,
+      "TxnMsgCd": 1,
+      "Poe": "Web",
+      "LocEttyId": 46,
+      "PrgEttyId": 1,
+      "SrcPrvder":null
+
+},
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "MsgTypePlanId": 2,
+      "PrgEttyId": 1,
+      "LocEttyId": 46,
+
+
+
+},
+
+### 
+//ApiPrgMchtTxnList
+
+##ApiPrgMchtTxnPlan
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "Poe": "Web",
+  "LocEttyId": 46,
+  "PrgEttyId": 1,
+  "MsgTypePlanId": null,
+  "DealerType": null,
+  "SrcPrvder":"ALL",
+  "MdfDate":null,
+  "TxnMsgCd": 1,
+},
+### 
+
+#VwTxnMsgType
+### 
+POST {{baseUrl}}/view/async/VwTxnMsgType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+//VwSrcPrvder
+###
+POST {{baseUrl}}/view/async/VwSrcPrvder HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "LocEttyId" : 46,
+  "PrgEttyId" : 1, 
+  "MsgTypePlanId" : 2,
+
+
+},
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "TxnPlan":null,
+      "LocEttyId": 46,
+      "PrgEttyId": 1,
+      "MsgTypePlanId": 2,
+      "PlanId": null
+
+
+},
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanFeeDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "TxnPlan":null,
+      "LocEttyId": 46,
+      "PrgEttyId": 1,
+      "MsgTypePlanId": 2,
+      "PlanId": null
+
+
+},
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnPlanFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "TxnPlan": 1,
+      "FromDate": "2024-06-27",
+      "ToDate": "2024-012-27",
+      "LocEttyId": 46,
+      "PrgEttyId": 1,
+      "MsgTypePlanId": 2,
+      "PlanId": null,
+      "MdfDate": null
+},

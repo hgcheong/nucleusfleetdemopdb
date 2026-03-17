@@ -1,0 +1,220 @@
+//ApiPrgSubsLocateList
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":10
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+      "Dscp": "East Malaysia",
+      "SubsId": 2,
+      "SubsLocateId": null,
+      "PlanRateId":null,
+}
+### 
+
+//ApiPrgSubsPlanList
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":10,
+   "PlanRateId":15,
+   "TxnPlanRefNo":31
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiPrgSubsPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":10,
+   "PlanRateId":15,
+   "TxnPlanRefNo":31,
+ //  "SchemaId": null,
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiPrgSubsPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnSchema": 1,
+      "FromDate": '20240529',
+      "ToDate": '20250528',
+      "SubsId": 2,
+      "SubsLocateId": 10,
+      "PlanRateId": 15,
+      "SchemaId": null,
+      "TxnPlanRefNo": 32
+}
+
+
+//ApiPrgSubsLocSearch
+
+//ApiPrgSubsLoc
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 11,
+   "SubsLocateId":null,
+   "PlanRateId":null,
+   "TxnPlanRefNo":null
+
+}
+
+//ApiPrgSubsLocList
+###
+POST {{baseUrl}}/sp/ApiPrgSubsLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":4,
+//   "PlanRateId":9,
+//   "TxnPlanRefNo":null
+
+}
+
+//ApiPrgSubsLocList
+###
+POST {{baseUrl}}/sp/ApiPrgSubsLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":4,
+//   "PlanRateId":9,
+//   "TxnPlanRefNo":null
+
+}
+
+//ApiPrgSubsLocSearch
+###
+POST {{baseUrl}}/sp/ApiPrgSubsLocSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":4,
+   "LocName":null
+//   "PlanRateId":9,
+//   "TxnPlanRefNo":null
+
+}
+
+//ApiPrgSubsLocSearch
+###
+POST {{baseUrl}}/sp/ApiPrgSubsLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":4,
+   "LocEttyId":null
+//   "PlanRateId":9,
+//   "TxnPlanRefNo":null
+
+}
+
+
+//ApiPrgSubsLocSearch
+###
+POST {{baseUrl}}/sp/ApiPrgSubsLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId":4,
+   "LocName":null
+//   "PlanRateId":9,
+//   "TxnPlanRefNo":null
+
+}
+
+
+//ApiPrgSubsVhcTypeList
+      # "Dscp": "East Malaysia",
+      # "TxnSchemaRefNoOpr": 33,
+      # "TxnSchemaRefNoLoc": 31,
+      # "TxnSchemaRefNoMbr": 32,
+      # "SubsId": 2,
+      # "SubsLocateId": 10,
+      # "PlanRateId": 15
+
+      //ApiPrgSubsLocSearch
+###
+POST {{baseUrl}}/sp/ApiPrgSubsVhcTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SubsId": 2,
+      "SubsLocateId": 10,
+      "PlanRateId": 15
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiPrgSubsVhcTypeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SubsId": 2,
+      "SubsLocateId": 10,
+      "PlanRateId": 15,
+      "VhcType":"EXP",
+      "VhcTypeSts" : "Y"
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiPrgSubsPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1
+}
+### 

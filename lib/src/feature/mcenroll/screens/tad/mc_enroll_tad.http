@@ -1,0 +1,95 @@
+###
+POST {{baseUrl}}/sp/ApiEnrlMchtTadList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 13
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlMchtTad/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 13,
+    "TadId": 1,
+    "TadEttyId": 38,
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlMchtTadSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TadNo": 12,
+      "MnM": "ADV",
+      "Vendor": "GHL",
+      "SerialNo": null,
+      "InstallDate": null,
+      "Installer": null,
+      "StllmtInd": null,
+      "AcqringNw": null,
+      "MchtEttyId": 100,
+      "BusnUnitEttyId": 101,
+      "LocEttyId": 102,
+      "TadEttyId": null,
+      "TadId": null
+}
+###
+
+//###
+//MnM
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "TadMnM",
+"BitInd": null
+}
+
+//TadVendor
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "TadVendor",
+"BitInd": null
+}
+
+###
+POST {{baseUrl}}/sp/ApiEnrlMchtBusnUnitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 100
+}
+
+//ApiEnrlEttyList for location
+###
+POST {{baseUrl}}/sp/ApiEnrlEttyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId": 14,   
+}
+### 
+
+    # {
+    #   "Dscp": "AB / 123123 / LOC#102",
+    #   "EttyTypeDscp": "LOCATION",
+    #   "LocEttyId": 102,
+    #   "EttyId": 101
+    # }
+
+
+//ApiEnrlEttyList

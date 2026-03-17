@@ -1,0 +1,53 @@
+
+
+POST {{baseUrl}}/sp/ApiTaskQueSmryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiTaskQueList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+     "WfGrpId": 4,
+      "WfCd": "ENRLCRASSESS",
+      "WfPrcsId": 2,
+    //  "UsrId": 3
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiTaskQue/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "WfCd": "ENRLCRASSESS",
+     "WfPrcsId": 2,
+      "RecId": 26,
+}
+
+###
+POST {{baseUrl}}/sp/ApiTaskQueSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "WfCd": "ENRLCRASSESS",
+       "WfPrcsId": 2,
+      "RecId": 26,
+      "WfTaskId": 51,
+      "Seq":null,
+      "TaskId": 124,
+      "Note": "Final Approval",
+      "Sp":"EnrlCrAssessAppvlFinal"
+}

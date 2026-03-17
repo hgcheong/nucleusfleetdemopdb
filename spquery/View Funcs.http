@@ -1,0 +1,78 @@
+#VwLibTxnCtygry
+
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+//VwNird
+
+POST {{baseUrl}}/view/async/VwNird HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+#VwSchdBilling
+
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+
+#VwTxnPlan
+
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TxnType":null
+}
+###
+
+//
+
+#VwTxnMsgType
+
+POST {{baseUrl}}/view/async/VwTxnMsgType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+
+#VwTxnMsgType
+
+POST {{baseUrl}}/view/async/VwPrdCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+
+#VwTxnMsgType
+
+POST {{baseUrl}}/view/async/VwFeeCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###

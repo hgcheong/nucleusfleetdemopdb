@@ -1,0 +1,176 @@
+
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 10
+}
+### 
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctPostpaidSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+    
+}
+### 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BillingType",
+"BitInd":null
+}
+###
+
+
+//VwSchdBilling
+
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctPrepaid/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+    "PrgEttyId": 1
+    
+}
+### 
+
+//ApiEnrlEttyList
+###
+POST {{baseUrl}}/sp/ApiEnrlEttyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId": 100,
+
+    
+}
+### 
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CrExpType",
+"BitInd":null
+}
+###
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CrExpUnit",
+"BitInd":null
+}
+###
+
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctPrepaid/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+    "PrgEttyId": 1,
+    "AcctId":null,
+    "AcctType":null,
+    "SchdId":null
+    
+}
+### 
+
+
+
+
+//ApiEnrlCmpyAutoPymt
+###
+POST {{baseUrl}}/sp/ApiEnrlCustAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "CustEttyId": 10,
+      "PrgEttyId": 91,
+      "EttyId": 37,
+      "AcctType": "POSTPAID",
+      "AcctId":16,
+
+    
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "AutoPymtInd": null,
+      "PymtType": "DDR",
+      "Bank": null,
+      "BranchCd": null,
+      "BankAcctType": null,
+      "BankAcctNo": null,
+      "AcctHolderName": null,
+      "PayeeCd": null,
+      "PayeeRef": null,
+      "AutoExecDays": null,
+      "BankAcctId": null,
+      "CustEttyId": 10,
+      "PrgEttyId": 91,
+      "EttyId": 37,
+      "AcctId": 16,
+      "AcctType": "POSTPAID",
+      "BillingType": null,
+      "MdfDate": null
+    
+}
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "AutoPymtInd": null,
+      "PymtType": "DDR",
+      "Bank": null,
+      "BranchCd": null,
+      "BankAcctType": null,
+      "BankAcctNo": null,
+      "AcctHolderName": null,
+      "PayeeCd": null,
+      "PayeeRef": null,
+      "AutoExecDays": null,
+      "BankAcctId": null,
+      "CustEttyId": 10,
+      "PrgEttyId": 91,
+      "EttyId": 37,
+      "MdfDate": null,
+      "AcctType": "POSTPAID",
+      "AcctId":16,
+
+    
+}

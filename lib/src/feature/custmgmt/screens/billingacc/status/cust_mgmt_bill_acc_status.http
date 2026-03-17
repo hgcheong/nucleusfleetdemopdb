@@ -1,0 +1,68 @@
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocSts/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 86,
+//   "CustEttyId": 83,
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocStsSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 86,
+   "LocEttyId": 86,
+   "ChgSts": "D",
+     "RsnCd":"IA",
+     "Rmrk":"Not active"
+
+}
+
+
+POST {{baseUrl}}/sp/ApiMgmtLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 86,
+   "CustEttyId": 83,
+
+}
+
+
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"LOCSTSRSNCD",
+"BitInd":null
+}
+###
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"LOCSTS",
+"BitInd":null
+}
+###
+
+ POST {{baseUrl}}/sp/ConstructPgTitle/queryasync HTTP/1.1
+ Authorization: Bearer {{authorization}}
+ content-type: application/json
+
+ {
+  "CustEttyId": 27,
+  "Decending" : null 
+   }

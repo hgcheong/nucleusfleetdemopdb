@@ -1,0 +1,219 @@
+[
+    {
+        "data": [
+            {
+                "SponsorDscp": null,
+                "SubsTypeDscp": null,
+                "SubsRefNo": null,
+                "FromDate": null,
+                "ToDate": null,
+                "QuotaLimit": null,
+                "Note": null,
+                "QuotaStsDscp": null,
+                "CustEttyId": null,
+                "CmpyEttyId": null,
+                "QuotaId": null,
+                "SubsId": null,
+                "Title": "Subsidy Quota",
+            }
+        ],
+        "output": [
+            {
+                "parameter": "@MsgId",
+                "value": 10001
+            },
+            {
+                "parameter": "@Return_Value",
+                "value": 0
+            }
+        ],
+        "rowcount": 1,
+        "columnInfo": [
+            {
+                "title": "SponsorDscp",
+                "data": "SponsorDscp",
+                "dataType": "nvarchar",
+                "visible": true
+            },
+            {
+                "title": "SubsTypeDscp",
+                "data": "SubsTypeDscp",
+                "dataType": "nvarchar",
+                "visible": true
+            },
+            {
+                "title": "SubsRefNo",
+                "data": "SubsRefNo",
+                "dataType": "varchar",
+                "visible": true
+            },
+            {
+                "title": "FromDate",
+                "data": "FromDate",
+                "dataType": "date",
+                "visible": true
+            },
+            {
+                "title": "ToDate",
+                "data": "ToDate",
+                "dataType": "date",
+                "visible": true
+            },
+            {
+                "title": "QuotaLimit",
+                "data": "QuotaLimit",
+                "dataType": "money",
+                "visible": true
+            },
+            {
+                "title": "Note",
+                "data": "Note",
+                "dataType": "nvarchar",
+                "visible": true
+            },
+            {
+                "title": "QuotaStsDscp",
+                "data": "QuotaStsDscp",
+                "dataType": "nvarchar",
+                "visible": true
+            },
+            {
+                "title": "CustEttyId",
+                "data": "CustEttyId",
+                "dataType": "bigint",
+                "visible": true
+            },
+            {
+                "title": "CmpyEttyId",
+                "data": "CmpyEttyId",
+                "dataType": "bigint",
+                "visible": true
+            },
+            {
+                "title": "QuotaId",
+                "data": "QuotaId",
+                "dataType": "bigint",
+                "visible": true
+            },
+            {
+                "title": "SubsId",
+                "data": "SubsId",
+                "dataType": "bigint",
+                "visible": true
+            },
+            {
+                "title": "Title",
+                "data": "Title",
+                "dataType": "varchar",
+                "visible": true
+            }
+        ],
+        "message": {
+            "msgId": 10001,
+            "dscp": "Record Exists",
+            "msgSeverity": 0,
+            "bitInd": 0
+        },
+        "error": null
+    },
+    {
+        "data": null,
+        "output": [
+            {
+                "parameter": "@MsgId",
+                "value": 10001
+            },
+            {
+                "parameter": "@Return_Value",
+                "value": 0
+            }
+        ],
+        "rowcount": 0,
+        "columnInfo": [
+            {
+                "title": "VhcRgsNo",
+                "data": "VhcRgsNo",
+                "dataType": "varchar",
+                "visible": true
+            },
+            {
+                "title": "VhcQuotaLimit",
+                "data": "VhcQuotaLimit",
+                "dataType": "money",
+                "visible": true
+            },
+            {
+                "title": "SpentAmt",
+                "data": "SpentAmt",
+                "dataType": "money",
+                "visible": true
+            },
+            {
+                "title": "SpentRate",
+                "data": "SpentRate",
+                "dataType": "decimal",
+                "visible": true
+            },
+            {
+                "title": "Title",
+                "data": "Title",
+                "dataType": "varchar",
+                "visible": true
+            }
+        ],
+        "message": {
+            "msgId": 10001,
+            "dscp": "Record Exists",
+            "msgSeverity": 0,
+            "bitInd": 0
+        },
+        "error": null
+    },
+    {
+        "data": [
+            {
+                "SpentAmt": null,
+                "SpentRate": null,
+                "Title": "Quota Usage Rate"
+            }
+        ],
+        "output": [
+            {
+                "parameter": "@MsgId",
+                "value": 10001
+            },
+            {
+                "parameter": "@Return_Value",
+                "value": 0
+            }
+        ],
+        "rowcount": 1,
+        "columnInfo": [
+            {
+                "title": "SpentAmt",
+                "data": "SpentAmt",
+                "dataType": "money",
+                "visible": true
+            },
+            {
+                "title": "SpentRate",
+                "data": "SpentRate",
+                "dataType": "money",
+                "visible": true
+            },
+            {
+                "title": "Title",
+                "data": "Title",
+                "dataType": "varchar",
+                "visible": true
+            }
+        ],
+        "message": {
+            "msgId": 10001,
+            "dscp": "Record Exists",
+            "msgSeverity": 0,
+            "bitInd": 0
+        },
+        "error": null
+    }
+]

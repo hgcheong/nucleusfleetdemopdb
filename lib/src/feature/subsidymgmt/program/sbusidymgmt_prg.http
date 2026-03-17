@@ -1,0 +1,161 @@
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiPrgSubs/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1
+}
+### 
+
+//ApiPrgSubsPlanList
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1,
+
+}
+### 
+
+//ApiPrgSubsLocateSave
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1,
+   "SubsLocateId": null
+
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1,
+
+}
+### 
+
+//ApiPrgSubsPlanList
+POST {{baseUrl}}/sp/ApiPrgSubsPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1,
+   "SubsLocateId":null,
+   "PlanRateId":null,
+   "TxnPlanRefNo":null
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"SubsId": 1, "Dscp": "SKDS 1.0", "Sponsor": "GOV", "BillingFreq": "MTHLY", "Sts": "A", "SubsidyType": "DISC", "ApplyOn":
+"PROD"
+}
+### 
+
+//VwSubsidyType
+##
+POST {{baseUrl}}/view/async/VwSubsSubsidy HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+//VwBillingFreq
+
+POST {{baseUrl}}/view/async/VwBillingFreq HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+POST {{baseUrl}}/view/async/VwSubsidyType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwApplyOn
+
+POST {{baseUrl}}/view/async/VwApplyOn HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwSponsor
+
+POST {{baseUrl}}/view/async/VwSponsor HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1
+}
+### 
+
+ApiPrgSubsPrdSave
+
+
+###
+POST {{baseUrl}}/sp/ApiPrgSubsPrdSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 1,
+   "PrdCd":"1010",
+   "PrdSts" :"Y"
+}
+### 

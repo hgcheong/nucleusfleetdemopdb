@@ -1,0 +1,57 @@
+//ApiPrgMchtTxnFeeList
+
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+   
+    
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :2
+}
+###
+
+//ApiPrgMchtTxnFeePlan
+//ApiPrgMchtTxnFeePlanList
+
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :2
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeePlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :2,
+    "PlanId":12
+}
+###
+POST {{baseUrl}}/view/async/VwFeeCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###

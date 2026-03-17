@@ -1,0 +1,56 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:nucleusv2/src/utils/utils_import.dart';
+import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/core/components/shared/acx_contact_form.dart';
+import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
+
+// {
+//   "EttyId": 8,
+//   "ContactId": 5,
+//   "ContactType": "PIC"
+// }
+
+const int wid=558;
+
+@RoutePage()
+class CustMgmtCostContact extends StatelessWidget {
+  const CustMgmtCostContact(
+      {super.key,
+      @PathParam.inherit('custEttyId') this.custEttyId,
+      @PathParam.inherit('costCtrEttyId') this.costCtrEttyId,
+      @PathParam('contactId') this.contactId,
+      @PathParam('contactType') this.contactType});
+
+  final String? custEttyId;
+  final String? costCtrEttyId;
+  final String? contactId;
+  final String? contactType;
+  @override
+  Widget build(BuildContext context) { 
+
+ if (isPageDeniedView(AcxAuthAccess.pageDeniedList, wid)) {
+            return const NotAuthorised();
+}
+    final query = QueryObject(
+        querysql: '/sp/ApiMgmtContact/queryasync',
+        params: {
+         "EttyId": costCtrEttyId,
+          "ContactId": convStrNewOrNullToNull(contactId),
+         "ContactType": contactType
+        },
+        showMsg: false);
+    const querySave = 'ApiMgmtContactSave';
+
+    return AcxContactForm(
+      ettyId: costCtrEttyId,
+      contactId: contactId,
+      contactType: contactType,
+      query: query,
+      querySaveSql: querySave,
+      backToListUrl:
+          '/custmgmt/costcen/$custEttyId/profile/$costCtrEttyId/contact',
+    );
+  }
+}
+
+///custmgmt/cmpy/16/detail/84/profile/contact

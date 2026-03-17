@@ -1,0 +1,184 @@
+
+//ApiMgmtCustCrRisk
+
+POST {{baseUrl}}/sp/ApiMgmtCrRisk/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+}
+###
+
+//ApiMgmtCustCrRiskSave
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "MaxCrExpsr": 12,
+      "SecuritySumReq":  null,
+      "SecureAmt": null,
+      "RcmmdCrLimit": null,
+      "RcmmdSecuritySum": null,
+      "ProposeSecuritySum": null,
+      "QttvFactorRate":  null,
+      "QltvFactorRate":  null,
+      "Note": null,
+      "CustEttyId": 6,
+      "CrScore":   32
+
+    }
+###
+
+//ApiMgmtCrDepList
+
+//ApiMgmtCrDepList
+
+POST {{baseUrl}}/sp/ApiMgmtCrDepList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+ // "ColCnt":3
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrDep/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "DepId": null,
+  "CustEttyId": 6
+  
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrDepSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+
+//ApiMgmtCustCrRisk
+
+POST {{baseUrl}}/sp/ApiMgmtCrRisk/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+}
+###
+
+//ApiMgmtCustCrRiskSave
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "MaxCrExpsr": 12,
+      "SecuritySumReq":  null,
+      "SecureAmt": null,
+      "RcmmdCrLimit": null,
+      "RcmmdSecuritySum": null,
+      "ProposeSecuritySum": null,
+      "QttvFactorRate":  null,
+      "QltvFactorRate":  null,
+      "Note": null,
+      "CustEttyId": 6,
+      "CrScore":   32
+
+    }
+###
+
+//ApiMgmtCrDepList
+
+//ApiMgmtCrDepList
+
+POST {{baseUrl}}/sp/ApiMgmtCrDepList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6,
+  "ColCnt":3
+}
+###
+
+//ApiMgmtCrDepSave
+
+POST {{baseUrl}}/sp/ApiMgmtCrDepList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 9,
+  "ColCnt":null
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrDep/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "DepId": 1,
+  "CustEttyId": 6
+  
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrDepSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "CollateralType": "BANK",
+      "SecurityRefNo": "EXRQQIO2",
+      "Bank": "AMBB",
+      "BranchCd": null,
+      "IssDate": "2023-01-02",
+      "ExpDate": "2025-01-1",
+      "SecuritySum": 100,
+      "RvwDate": "2024-06-06",
+      "Note": "Testing",
+      "CustEttyId": null,
+      "DepId": null
+}
+###
+
+###
+#ContactType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BANK",
+"BitInd":null
+}
+###
+
+//VwCollateralType
+##
+POST {{baseUrl}}/view/async/VwCollateralType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+

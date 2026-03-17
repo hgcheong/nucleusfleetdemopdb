@@ -1,0 +1,364 @@
+//ApiMnlTxnSmryList
+dbo.ApiMnlTxnItem
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItem/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TxnId":57,
+    "PrdId":4
+}
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItemDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TxnId":null,
+    "PrdId":null,
+    "PrdCd":null
+}
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItemSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+       "PrdCd": null,
+      "TxnAmt": null,
+      "BillAmt": null,
+      "TaxAmt": null,
+      "TaxCd": null,
+      "Dscp": null,
+      "Qty": null,
+      "UnitPrice": null,
+      "PrdId": null,
+      "TxnId":null,
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnSmryList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+//ApiMnlTxnPukalList
+
+
+ApiAcctList//
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnTypePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnType":"FEE"
+}
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnPukalList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnType":null
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnPukal/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnId":29,
+}
+
+###
+POST {{baseUrl}}/sp/ApiAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+POST {{baseUrl}}/sp/ApiMnlTxnList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+ "TxnType":"FEE",
+}
+
+//ApiMnlTxnFee
+{
+  "TxnId": "39",
+  "TxnType": "FEE"
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "TxnId": "39",
+  "TxnType": "ADJUST"
+}
+
+//ApiMnlTxnItemList
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItemList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "TxnId": "39",
+
+}
+
+//ApiMgmtMainSearch
+###
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "RefCd": "MediaNo",
+"Int": "123"
+}
+
+//ApiMgmtMainSearch
+###
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "RefCd": "LocNo",
+"Str": "SEm"
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "TxnId": null
+}\
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnPukal/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "TxnId": null
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"AuthCd":null
+,"AuthMediaNo":null
+,"BillAmt":null
+,"CrExpDate":null
+,"DocNo":null
+,"Dscp":null
+,"LocNo":null
+,"MediaNo": ""
+,"OdmReading":null
+,"RcptNo":null
+,"Rrn":null
+,"Stan":"10001"
+,"TadNo":null
+,"TxnAmt":10
+,"TxnDate":null
+,"TxnId":null
+,"TxnPlan":0
+,"TxnSts":null
+,"TxnTime":null
+}
+
+//VwTxnPlan
+###
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItem /queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrdId":null
+,"TxnId":null
+
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItem /queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"AuthCd":null
+,"AuthMediaNo":null
+,"BillAmt":null
+,"CrExpDate":null
+,"DocNo":null
+,"Dscp":null
+,"LocNo":null
+,"MediaNo": ""
+,"OdmReading":null
+,"RcptNo":null
+,"Rrn":null
+,"Stan":"10001"
+,"TadNo":null
+,"TxnAmt":10
+,"TxnDate":null
+,"TxnId":null
+,"TxnPlan":0
+,"TxnSts":null
+,"TxnTime":null
+}
+
+
+//ApiMnlTxnItemList 
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItemList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "TxnId": null
+}
+
+
+//ApiMnlTxnItemList 
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItem/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "TxnId": null,
+ "PrdId":null
+}
+
+
+
+//ApiMnlTxnItemList 
+###
+POST {{baseUrl}}/sp/ApiMnlTxnItemSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "PrdCd": null,
+      "TxnAmt": null,
+      "BillAmt": null,
+      "TaxAmt": null,
+      "TaxCd": null,
+      "Dscp": null,
+      "Qty": null,
+      "UnitPrice": null,
+      "TxnId": null,
+      "PrdId": null
+}
+
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwlibprd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwlibprd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//view/async/vwtaxcd
+
+###
+POST {{baseUrl}}/view/async/vwtaxcd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//ApiMnlTxnPukalRej 
+###
+POST {{baseUrl}}/sp/ApiMnlTxnPukalRej/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnId": selectedRow.cells['TxnType']!.value,
+      "AcctId": selectedRow.cells['TxnPlan']!.value,
+}
+
+//ApiMnlTxnPukalRej 
+###
+POST {{baseUrl}}/sp/ApiMnlTxnPukalSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnId": selectedRow.cells['TxnType']!.value,
+      "AcctId": selectedRow.cells['TxnPlan']!.value,
+      "PrcsDate":
+}
+
+//ApiMnlTxnPukalRej 
+###
+POST {{baseUrl}}/sp/ApiMnlTxnPukal/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "TxnId": 59,
+      "AcctId": 26
+
+}

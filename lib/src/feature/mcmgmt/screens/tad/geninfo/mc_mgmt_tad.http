@@ -1,0 +1,37 @@
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtTadOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "TadEttyId": 90,
+   "MchtEttyId": 83,
+ //  "TadId":86
+
+}
+
+//ApiEnrlMchtBusnUnitList
+###
+POST {{baseUrl}}/sp/ApiMgmtBusnUnitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ //"TadEttyId": 90,
+   "MchtEttyId": 834,
+ //  "TadId":86
+
+}
+
+//ApiEttyList 
+###
+POST {{baseUrl}}/sp/ApiEttyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ //"TadEttyId": 90,
+   "EttyId": 834,
+ //  "TadId":86
+}

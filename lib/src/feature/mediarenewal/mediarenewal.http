@@ -1,0 +1,116 @@
+//Vendor
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+//ApiMgmtMediaReissueRplcList
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaReissueRplcList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+    # {
+    #   "MediaNo": "78971341000000082",
+    #   "IssueTypeDscp": "MEDIA REISSUE",
+    #   "Program": "X-Fleet Kad Inden",
+    #   "CompanyName": "LSAC LOGISTICS (M) SDN BHD",
+    #   "NameOnMedia1": "LIM SHAU LIANG",
+    #   "NameOnMedia2": "LSAC LOGISTICS (M) SDN BHD",
+    #   "ExpiryDate": "2044-07-18T00:00:00",
+    #   "VehicledNo": "VKA1818",
+    #   "MediaCatergory": "VEHICLE CARD",
+    #   "Reason": "OTHERS",
+    #   "Status": "ACTIVE",
+    #   "SKDS": null,
+    #   "Note": "Wrongly Spell Name of Media",
+    #   "EID": 846,
+    #   "TrackId": 1,
+    #   "VhcRgsNo": "VKA1818",
+    #   "PrgEttyId": 1,
+    #   "CmpyEttyId": 843,
+    #   "MediaEttyId": 846,
+    #   "MediaCtgry": "VEHICLE",
+    #   "MediaId": 49,
+    #   "IssueType": "REISSUE"
+    # }
+//ApiMgmtMediaReissueRplcList
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaReissueRplcSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EID": 846 
+}
+
+//InputTbl paramname udtparamname
+//tbMediaIssue udttype 
+
+//ApiMgmtMediaRenewSearch  
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CmpyEttyId": "920",
+  "MediaEttyId": "535",
+  "FromDate": "2024-09-04 00:00:00.000",
+  "ToDate": "2024-09-30 00:00:00.000"
+}
+
+//ApiMgmtMediaRenew
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenew/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "CustEttyId":528,
+    "CmpyEttyId":529,
+    "MediaEttyId":535,
+    "MediaNo":null,
+    "IssId":null
+}
+
+//ApiMgmtMediaRenewSave    
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CmpyEttyId":529,
+"MediaEttyId":null,
+"MediaNo":null,
+"MediaId":null,
+"PrgEttyId":1,
+"CustEttyId":null,
+
+}
+
+//ApiMgmtMediaRenewDel      
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaRenewDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CmpyEttyId":529,
+"MediaEttyId":null,
+"MediaNo":null,
+"MediaId":null,
+"PrgEttyId":1,
+"CustEttyId":null,
+
+}

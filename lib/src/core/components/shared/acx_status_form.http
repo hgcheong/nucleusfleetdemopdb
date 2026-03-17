@@ -1,0 +1,75 @@
+###
+POST {{baseUrl}}/sp/ApiMgmtSts/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 11,
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtStsSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 86,
+  "ChgSts": "A",
+  "RsnCd":"AT",
+  "Rmrk":"GoodCustomer",
+  "EffvDate":"2024-03-29"
+}
+
+//GetEttyStsList
+###
+POST {{baseUrl}}/sp/GetEttyStsList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 11
+}
+###
+
+
+###
+POST {{baseUrl}}/sp/GetEttyRsnCdList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 86
+}
+###
+
+//ApiMgmtMchtUserTypeList
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtUserTypeList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 83
+}
+###
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"RSNCD",
+"BitInd":null
+}
+###
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"LOCSTS",
+"BitInd":null
+}
+###

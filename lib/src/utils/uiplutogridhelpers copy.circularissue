@@ -1,0 +1,883 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:nucleusv2/constants.dart';
+
+import 'package:nucleusv2/src/core/app_router.dart';
+import 'package:nucleusv2/src/core/models/langkeypair/langkeypair.dart';
+import 'package:nucleusv2/src/core/models/returndata/column_info.dart';
+import 'package:nucleusv2/src/core/models/returndata/output.dart';
+import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
+import 'package:pluto_grid_plus/pluto_grid_plus.dart';
+
+Widget buildDataTableExtCheckBox(Returndata srcReturnData, Set<PlutoRow> checkedItem, String idField, List<Langkeypair> langClmName, {Function? onSelected, Function? onChecked, Function? onCheckAll, bool useCheckBox = true}) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+
+  int? colCnt = 0;
+  int? msgId = 0;
+  int? returnValue = 0;
+
+  if (srcReturnData.data != null) {}
+
+  if (outputParam != null) {
+    if (outputParam.where((element) => element.parameter == '@ColCnt').isEmpty) {
+      colCnt = clmInfo!.length;
+    } else {
+      final colCnt0 = outputParam.singleWhere((Output element) {
+        return element.parameter == '@ColCnt';
+      });
+      colCnt = int.tryParse(colCnt0.value.toString());
+    }
+    final msgId0 = outputParam.singleWhere((Output element) {
+      return element.parameter == '@MsgId';
+    });
+    msgId = int.tryParse(msgId0.value.toString());
+
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error $msgId in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    if (data[0][idField] == null) {
+      return SizedBox(
+        height: 300,
+        child: PlutoGrid(
+            noRowsWidget: const SelectableText('No Data'),
+            mode: PlutoGridMode.select,
+            configuration: defaultPlutoConfig,
+            columns: getColumns(
+              clmInfo,
+              colCnt!,
+              langClmName,
+            ),
+            rows: const []),
+      );
+    }
+    final allRows = getRows(data, clmInfo, colCnt!);
+    return SizedBox(
+      height: 300,
+      child: Column(
+        children: [
+          Expanded(
+            child: PlutoGrid(
+              key: UniqueKey(),
+              mode: PlutoGridMode.select,
+              configuration: defaultPlutoConfig,
+              columns: getColumns(clmInfo, colCnt, langClmName, useCheckBox: useCheckBox),
+              rows: allRows,
+              onRowChecked: (PlutoGridOnRowCheckedEvent event) {
+                if (event.isAll) {
+                  if (event.isChecked!) {
+                    checkedItem.addAll(allRows);
+                  } else {
+                    checkedItem.clear();
+                  }
+                } else {
+                  if (event.isChecked!) {
+                    checkedItem.add(event.row!);
+                  } else {
+                    checkedItem.remove(event.row!);
+                  }
+                }
+
+                if (onCheckAll != null) {
+                  onCheckAll(event);
+                }
+
+                if (onChecked != null) {
+                  if (event.row != null) {
+                    onChecked(event.row);
+                  }
+                }
+              },
+              onRowDoubleTap: (event) {
+                if (onSelected != null) {
+                  //To be consistent with the delete we return as Plutorow instead of as Map<String, dynamic>
+                  //  onSelected(event.row.cells);
+                  onSelected(event.row);
+                }
+              },
+              onLoaded: (PlutoGridOnLoadedEvent event) {
+                event.stateManager.setShowColumnFilter(true);
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  } else {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+Widget buildDataTableSimple(Returndata srcReturnData, String idField, String navPrefix) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+  int? colCnt = 0;
+  int? msgId = 0;
+  int? returnValue = 0;
+  if (outputParam != null) {
+    if (outputParam.where((element) => element.parameter == '@ColCnt').isEmpty) {
+      colCnt = clmInfo!.length;
+    } else {
+      final colCnt0 = outputParam.singleWhere((Output element) {
+        return element.parameter == '@ColCnt';
+      });
+      colCnt = int.tryParse(colCnt0.value.toString());
+    }
+    final msgId0 = outputParam.singleWhere((Output element) {
+      return element.parameter == '@MsgId';
+    });
+    msgId = int.tryParse(msgId0.value.toString());
+
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error $msgId in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: 600,
+          child: PlutoGrid(
+            mode: PlutoGridMode.select,
+            configuration: defaultPlutoConfig,
+            columns: getColumns(clmInfo, colCnt!, []),
+            rows: getRows(data, clmInfo, colCnt),
+            onRowDoubleTap: (event) {
+              var urlNav = '$navPrefix/${event.row.cells[idField]!.value.toString()}';
+              singleton<AppRouter>().pushNamed(urlNav);
+            },
+            onLoaded: (PlutoGridOnLoadedEvent event) {
+              event.stateManager.setShowColumnFilter(true);
+            },
+          ),
+
+          // rows: []),
+        ),
+      ],
+    );
+  } else {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+Widget buildDataTable(Returndata srcReturnData, String idField, String navPrefix, List<Langkeypair> langClmName, Function? onSelected, bool useNav) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+  int? colCnt = 0;
+  int? msgId = 0;
+  int? returnValue = 0;
+  if (outputParam != null) {
+    if (outputParam.where((element) => element.parameter == '@ColCnt').isEmpty) {
+      colCnt = clmInfo!.length;
+    } else {
+      final colCnt0 = outputParam.singleWhere((Output element) {
+        return element.parameter == '@ColCnt';
+      });
+      colCnt = int.tryParse(colCnt0.value.toString());
+    }
+    final msgId0 = outputParam.singleWhere((Output element) {
+      return element.parameter == '@MsgId';
+    });
+    msgId = int.tryParse(msgId0.value.toString());
+
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error $msgId in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    if (data[0][idField] == null) {
+      return PlutoGrid(
+          noRowsWidget: const SelectableText('No Data'),
+          mode: PlutoGridMode.select,
+          configuration: defaultPlutoConfig,
+          columns: getColumns(
+            clmInfo,
+            colCnt!,
+            langClmName,
+          ),
+          rows: const []);
+    }
+    return PlutoGrid(
+      mode: PlutoGridMode.select,
+      configuration: defaultPlutoConfig,
+      columns: getColumns(
+        clmInfo,
+        colCnt!,
+        langClmName,
+      ),
+      rows: getRows(data, clmInfo, colCnt),
+      onRowDoubleTap: (event) {
+        if (useNav) {
+          var urlNav = '$navPrefix/${event.row.cells[idField]!.value.toString()}';
+          singleton<AppRouter>().pushNamed(urlNav);
+        } else {
+          if (onSelected != null) {
+            onSelected(event.row);
+          }
+        }
+      },
+      onLoaded: (PlutoGridOnLoadedEvent event) {
+        event.stateManager.setShowColumnFilter(true);
+      },
+    );
+  }
+  return const Center(
+    child: CircularProgressIndicator(),
+  );
+}
+
+Widget buildDataTableExtActionItems(Returndata srcReturnData, String idField, String navPrefix, List<Langkeypair> langClmName, bool useNav, {Function? onSelected, Function? onChecked, Function? onCheckAll, Function? onPopUp, List<Map<String, dynamic>>? popMenuItems, bool useCheckBox = false, Icon? popUpIcon}) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+
+  int? colCnt = 0;
+  int? msgId = 0;
+  int? returnValue = 0;
+  if (srcReturnData.data != null) {}
+
+  if (outputParam != null) {
+    if (outputParam.where((element) => element.parameter == '@ColCnt').isEmpty) {
+      colCnt = clmInfo!.length;
+    } else {
+      final colCnt0 = outputParam.singleWhere((Output element) {
+        return element.parameter == '@ColCnt';
+      });
+      colCnt = int.tryParse(colCnt0.value.toString());
+    }
+
+    final msgId0 = outputParam.singleWhere((Output element) {
+      return element.parameter == '@MsgId';
+    });
+    msgId = int.tryParse(msgId0.value.toString());
+
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error $msgId in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    if (data[0][idField] == null) {
+      return SizedBox(
+        height: 300,
+        child: PlutoGrid(noRowsWidget: const SelectableText('No Data'), mode: PlutoGridMode.select, configuration: defaultPlutoConfig, columns: getColumnsActionItems(clmInfo, colCnt!, langClmName, idField, onPopUp, popMenuItems!.toList(), popUpIcon: popUpIcon), rows: const []),
+      );
+    }
+    return Column(
+      children: [
+        // SelectableText(data.toString()),
+        // ElevatedButton(onPressed: () {}, child: const SelectableText('ONT')),
+        Expanded(
+          child: PlutoGrid(
+            //    key: UniqueKey(),
+            mode: PlutoGridMode.select,
+            configuration: defaultPlutoConfig,
+            columns: getColumnsActionItems(clmInfo, colCnt!, langClmName, useCheckBox: useCheckBox, idField, onPopUp, popMenuItems!.toList(), popUpIcon: popUpIcon),
+            rows: getRows(data, clmInfo, colCnt),
+            onRowChecked: (PlutoGridOnRowCheckedEvent event) {
+              if (onCheckAll != null) {
+                onCheckAll(event);
+              }
+    
+              if (onChecked != null) {
+                if (event.row != null) {
+                  onChecked(event.row);
+                }
+              }
+            },
+            onRowDoubleTap: (event) {
+              // if (useNav) {
+              //   var urlNav =
+              //       '$navPrefix/${event.row.cells[idField]!.value.toString()}';
+              //   singleton<AppRouter>().pushNamed(urlNav);
+              // } else {
+              //   if (onSelected != null) {
+              //     onSelected(event.row.cells);
+              //   }
+              // }
+    
+              if (onSelected != null) {
+                //changed to by row instead of cells like extcheckbox
+                onSelected(event.row);
+              }
+            },
+            onLoaded: (PlutoGridOnLoadedEvent event) {
+              event.stateManager.setShowColumnFilter(true);
+            },
+          ),
+        ),
+      ],
+    );
+  } else {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+Widget buildDataTableExt(Returndata srcReturnData, String idField, String navPrefix, List<Langkeypair> langClmName, bool useNav, {Function? onSelected, Function? onChecked, Function? onCheckAll, bool useCheckBox = false}) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+
+  int? colCnt = 0;
+  int? msgId = 0;
+  int? returnValue = 0;
+  if (srcReturnData.data != null) {}
+
+  if (outputParam != null) {
+    if (outputParam.where((element) => element.parameter == '@ColCnt').isEmpty) {
+      colCnt = clmInfo!.length;
+    } else {
+      final colCnt0 = outputParam.singleWhere((Output element) {
+        return element.parameter == '@ColCnt';
+      });
+      colCnt = int.tryParse(colCnt0.value.toString());
+    }
+
+    final msgId0 = outputParam.singleWhere((Output element) {
+      return element.parameter == '@MsgId';
+    });
+    msgId = int.tryParse(msgId0.value.toString());
+
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error $msgId in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    if (data[0][idField] == null) {
+      return SizedBox(
+        height: 300,
+        child: PlutoGrid(
+            noRowsWidget: const SelectableText('No Data'),
+            mode: PlutoGridMode.select,
+            configuration: defaultPlutoConfig,
+            columns: getColumns(
+              clmInfo,
+              colCnt!,
+              langClmName,
+            ),
+            rows: const []),
+      );
+    }
+    return PlutoGrid(
+      key: UniqueKey(),
+      mode: PlutoGridMode.select,
+      configuration: defaultPlutoConfig,
+      columns: getColumns(clmInfo, colCnt!, langClmName, useCheckBox: useCheckBox),
+      rows: getRows(data, clmInfo, colCnt),
+      onRowChecked: (PlutoGridOnRowCheckedEvent event) {
+        if (onCheckAll != null) {
+          onCheckAll(event);
+        }
+        
+        if (onChecked != null) {
+          if (event.row != null) {
+            onChecked(event.row);
+          }
+        }
+      },
+      onRowDoubleTap: (event) {
+        // if (useNav) {
+        //   var urlNav =
+        //       '$navPrefix/${event.row.cells[idField]!.value.toString()}';
+        //   singleton<AppRouter>().pushNamed(urlNav);
+        // } else {
+        //   if (onSelected != null) {
+        //     onSelected(event.row.cells);
+        //   }
+        // }
+        
+        if (onSelected != null) {
+          //changed to by row instead of cells like extcheckbox
+          onSelected(event.row);
+        }
+      },
+      onLoaded: (PlutoGridOnLoadedEvent event) {
+        event.stateManager.setShowColumnFilter(true);
+      },
+    );
+  } else {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+Widget buildDataTableCreditEval(Returndata srcReturnData, String idField, List<Langkeypair> langClmName, List<String> showColumn, List<String> readOnlyColumn, Function? onChanged) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+
+  int? colCnt = 0;
+  int? msgId = 0;
+  int? returnValue = 0;
+  if (srcReturnData.data != null) {}
+
+  if (outputParam != null) {
+    if (outputParam.where((element) => element.parameter == '@ColCnt').isEmpty) {
+      colCnt = clmInfo!.length;
+    } else {
+      final colCnt0 = outputParam.singleWhere((Output element) {
+        return element.parameter == '@ColCnt';
+      });
+      colCnt = int.tryParse(colCnt0.value.toString());
+    }
+
+    final msgId0 = outputParam.singleWhere((Output element) {
+      return element.parameter == '@MsgId';
+    });
+    msgId = int.tryParse(msgId0.value.toString());
+
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error $msgId in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    if (data[0][idField] == null) {
+      return SizedBox(
+        height: 300,
+        child: PlutoGrid(noRowsWidget: const SelectableText('No Data'), mode: PlutoGridMode.select, configuration: defaultPlutoConfig, columns: getColumnsCreEval(clmInfo, colCnt!, langClmName, showColumn, readOnlyColumn), rows: const []),
+      );
+    }
+    return SizedBox(
+      height: 1280,
+      child: Column(
+        children: [
+          // SelectableText(data.toString()),
+          // ElevatedButton(onPressed: () {}, child: const SelectableText('ONT')),
+          Expanded(
+            child: PlutoGrid(
+              key: UniqueKey(),
+              mode: PlutoGridMode.normal,
+              rowColorCallback: (rowColorContext) {
+                if (rowColorContext.row.cells['RefCd']!.value.toString().toUpperCase() == 'SUBTOTAL') {
+                  return Colors.blueAccent;
+                } else {
+                  return bgColor;
+                }
+              },
+              onChanged: (PlutoGridOnChangedEvent eva) {
+                if (onChanged != null) {
+                  onChanged(eva);
+                }
+              },
+              configuration: defaultPlutoConfig,
+              columns: sCreEval(clmInfo, colCnt!, langClmName, showColumn, readOnlyColumn),
+              rows: getRows(data, clmInfo, colCnt),
+              onRowDoubleTap: (event) {
+                //   
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  } else {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+Widget buildDataTableExtS3(Returndata srcReturnData, String idField, String navPrefix, List<Langkeypair> langClmName, bool useNav, {Function? onRowDoubleTap, required Function onSelected, Function? onChecked, Function? onCheckAll, bool useCheckBox = false}) {
+  final List<ColumnInfo>? clmInfo = srcReturnData.columnInfo;
+  final List<dynamic>? data = srcReturnData.data;
+  final List<Output>? outputParam = srcReturnData.output;
+
+  int? colCnt = 0;
+  // int? msgId = 0;
+  int? returnValue = 0;
+  if (srcReturnData.data != null) {}
+
+  if (outputParam != null) {
+    colCnt = clmInfo!.length;
+    final thereturnValue = outputParam.singleWhere((Output element) {
+      return element.parameter == '@Return_Value';
+    });
+    returnValue = int.tryParse(thereturnValue.value.toString());
+  }
+
+  if (returnValue != 0) {
+    return ErrorWidget.withDetails(message: 'Error  in Retriveing Data');
+  }
+
+  if (clmInfo != null && data != null) {
+    return PlutoGrid(
+      key: UniqueKey(),
+      mode: PlutoGridMode.selectWithOneTap,
+      configuration: defaultPlutoConfig,
+      columns: getColumnsS3(clmInfo, colCnt, langClmName, useCheckBox: useCheckBox),
+      rows: getRowsS3(data, clmInfo, colCnt),
+      onRowChecked: (PlutoGridOnRowCheckedEvent event) {
+        if (onCheckAll != null) {
+          onCheckAll(event);
+        }
+
+        if (onChecked != null) {
+          if (event.row != null) {
+            onChecked(event.row);
+          }
+        }
+      },
+      onSelected: (event) {
+        onSelected(event.row);
+      },
+      onRowDoubleTap: (event) {
+        if (onRowDoubleTap != null) {
+          onRowDoubleTap(event.row);
+        }
+      },
+      onLoaded: (PlutoGridOnLoadedEvent event) {
+        event.stateManager.setShowColumnFilter(true);
+      },
+    );
+  } else {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+List<PlutoColumn> getColumnsCreEval(List<ColumnInfo> clminfo, int colCnt, List<Langkeypair> langclmName, List<String> showColumn, List<String> readOnlyColumn) {
+  List<PlutoColumn> toReturn = [];
+  for (var i = 0; i < clminfo.length; i++) {
+    PlutoColumnType theClmType = getColumnType(clminfo[i]);
+    final fieldName = clminfo[i].data.toString();
+    final isReadyOnly = readOnlyColumn.where((element) => element == fieldName);
+    final isToShow = showColumn.where((element) => element == fieldName);
+    toReturn.add(PlutoColumn(
+        title: langclmName.isEmpty
+            ? clminfo[i].title.toString()
+            : langclmName
+                .singleWhere(
+                  (element) => element.keyVal.toString() == clminfo[i].title.toString(),
+                  orElse: () {
+                    return Langkeypair(keyVal: clminfo[i].data.toString(), fieldNm: clminfo[i].data.toString());
+                  },
+                )
+                .fieldNm
+                .toString(),
+        field: clminfo[i].data.toString(),
+        readOnly: isReadyOnly.isNotEmpty,
+        textAlign: theClmType.isNumber ? PlutoColumnTextAlign.right : PlutoColumnTextAlign.left,
+        hide: isToShow.isEmpty,
+        type: theClmType));
+  }
+
+  return toReturn;
+}
+
+List<PlutoColumn> getColumns(List<ColumnInfo> clminfo, int colCnt, List<Langkeypair> langclmName, {bool useCheckBox = false}) {
+  List<PlutoColumn> toReturn = [];
+  for (var i = 0; i < clminfo.length; i++) {
+    PlutoColumnType theClmType = getColumnType(clminfo[i]);
+
+    toReturn.add(PlutoColumn(
+        enableRowChecked: i == 0 ? useCheckBox : false,
+        title: langclmName.isEmpty
+            ? clminfo[i].title.toString()
+            : langclmName
+                .singleWhere(
+                  (element) => element.keyVal.toString() == clminfo[i].title.toString(),
+                  orElse: () {
+                    return Langkeypair(keyVal: clminfo[i].data.toString(), fieldNm: clminfo[i].data.toString());
+                  },
+                )
+                .fieldNm
+                .toString(),
+        field: clminfo[i].data.toString(),
+        textAlign: theClmType.isNumber ? PlutoColumnTextAlign.right : PlutoColumnTextAlign.left,
+        hide: i > colCnt - 1 ? true : false,
+        type: theClmType));
+  }
+
+  return toReturn;
+}
+
+List<PlutoColumn> getColumnsActionItems(List<ColumnInfo> clminfo, int colCnt, List<Langkeypair> langclmName, String idField, Function? onPopUp, List<Map<String, dynamic>> popMenuItems, {bool useCheckBox = false, Icon? popUpIcon}) {
+  List<PlutoColumn> toReturn = [];
+  for (var i = 0; i < clminfo.length; i++) {
+    PlutoColumnType theClmType = getColumnType(clminfo[i]);
+
+    toReturn.add(PlutoColumn(
+        enableRowChecked: i == 0 ? useCheckBox : false,
+        title: langclmName.isEmpty
+            ? clminfo[i].title.toString()
+            : langclmName
+                .singleWhere(
+                  (element) => element.keyVal.toString() == clminfo[i].title.toString(),
+                  orElse: () {
+                    return Langkeypair(keyVal: clminfo[i].data.toString(), fieldNm: clminfo[i].data.toString());
+                  },
+                )
+                .fieldNm
+                .toString(),
+        field: clminfo[i].data.toString(),
+        textAlign: theClmType.isNumber ? PlutoColumnTextAlign.right : PlutoColumnTextAlign.left,
+        hide: i > colCnt - 1 ? true : false,
+        type: theClmType));
+  }
+  toReturn.add(PlutoColumn(
+      width: 60,
+      title: '',
+      field: idField,
+      type: PlutoColumnType.text(),
+      renderer: (rendererContext) {
+        return PopupMenuButton(
+          icon: popUpIcon,
+          // onSelected: (val) async {
+          //   switch (val) {
+          //     case 'REQ':
+          //       await showDialog(
+          //         barrierDismissible: false,
+          //         context: context,
+          //         builder: (context) {
+          //           return Dialog(
+          //               child: Padding(
+          //             padding: const EdgeInsets.all(8.0),
+          //             child: SizedBox(
+          //               width: 400,
+          //               height: 200,
+          //               child: Card(
+          //                 child: Column(children: [
+          //                   const SelectableText(
+          //                     'Media Replacement',
+          //                     style: hdrStyle,
+          //                   ),
+          //                   const Expanded(
+          //                     child: FbText(
+          //                       label: 'Media Number',
+          //                       name: 'mdn',
+          //                     ),
+          //                   ),
+          //                   const Expanded(child: FbDateTimePicker(name: 'expiry', label: 'Expiry Date')),
+          //                   IconButton(
+          //                       onPressed: () {
+          //                         singleton<AppRouter>().pop();
+          //                       },
+          //                       icon: const Icon(Icons.save))
+          //                 ]),
+          //               ),
+          //             ),
+          //           ));
+          //         },
+          //       );
+          //       break;
+          //     case 'PIN':
+          //       await showDialog(
+          //         barrierDismissible: false,
+          //         context: context,
+          //         builder: (context) {
+          //           return Dialog(
+          //               child: Padding(
+          //             padding: const EdgeInsets.all(8.0),
+          //             child: SizedBox(
+          //               width: 400,
+          //               height: 200,
+          //               child: Card(
+          //                 child: Column(children: [
+          //                   const SelectableText(
+          //                     'Forgotten your PIN',
+          //                     style: hdrStyle,
+          //                   ),
+          //                   const Expanded(
+          //                     child: FbText(
+          //                       label: 'Media Number',
+          //                       name: 'mdn',
+          //                     ),
+          //                   ),
+          //                   const SelectableText('PIN will be sent to registered Email'),
+          //                   const Expanded(child: FbText(name: 'confirm', label: 'Confirm Email')),
+          //                   IconButton(onPressed: () {}, icon: const Icon(Icons.save))
+          //                 ]),
+          //               ),
+          //             ),
+          //           ));
+          //         },
+          //       );
+          //     default:
+          //   }
+          // },
+          itemBuilder: (context) {
+            return <PopupMenuEntry<String>>[
+              ...popMenuItems.map((v) {
+                return PopupMenuItem<String>(
+                  onTap: () async {
+                    onPopUp!({"value": v["value"], "row": rendererContext.row});
+                  },
+                  value: v["value"],
+                  child: SelectableText(v["text"]),
+                );
+              })
+              //   PopupMenuItem<String>(
+              //     onTap: () async {
+              //       onPopUp!(rendererContext.row);
+              //     },
+              //     value: 'REQ',
+              //     child: const SelectableText('Media Replacement'),
+              //   ),
+              //   PopupMenuItem<String>(
+              //     onTap: () async {
+              //         onPopUp!(rendererContext.row);
+              //     },
+              //     value: 'PIN',
+              //     child: const SelectableText('Forgot PIN'),
+              //   ),
+            ];
+          },
+        );
+      }));
+  return toReturn;
+}
+
+PlutoColumnType getColumnType(ColumnInfo clminfo) {
+  switch (clminfo.dataType) {
+    case 'nvarchar':
+      return PlutoColumnType.text();
+    case 'varchar':
+      return PlutoColumnType.text();
+    case 'date':
+      return PlutoColumnType.text();
+    case 'datetime':
+      return PlutoColumnType.text();
+    case 'bigint':
+      return PlutoColumnType.number();
+    case 'decimal':
+      return PlutoColumnType.number(format: '##0.000');
+    case 'int':
+      return PlutoColumnType.number();
+    case 'money':
+      return PlutoColumnType.number(format: '##0.000');
+    default:
+      return PlutoColumnType.text();
+  }
+}
+
+List<PlutoRow> getRows(List<dynamic> data, List<ColumnInfo> clminfo, int colCnt) {
+  final List<PlutoRow> rows = [];
+  final dateFormat = DateFormat.yMMMEd();
+  final timeFormat = DateFormat.jms();
+  for (var g = 0; g < data.length; g++) {
+    Map<String, PlutoCell> cells = {};
+    for (var i = 0; i < clminfo.length; i++) {
+      var theVal = data[g][clminfo[i].data] == null
+          ? ''
+          : (clminfo[i].dataType == 'date') || (clminfo[i].dataType == 'datetime') == true
+              ? '${dateFormat.format(DateTime.parse(data[g][clminfo[i].data]))} ${timeFormat.format(DateTime.parse(data[g][clminfo[i].data]))}'
+              : data[g][clminfo[i].data].toString();
+      cells[clminfo[i].data.toString()] = PlutoCell(value: theVal);
+    }
+    //something not right here
+    // for (var i = 0; i < clminfo.length; i++) {
+    //   var theVal = data[g][clminfo[i].title] == null
+    //       ? ''
+    //       : (clminfo[i].dataType == 'date') || (clminfo[i].dataType == 'datetime') == true
+    //           ? '${dateFormat.format(DateTime.parse(data[g][clminfo[i].title]))} ${timeFormat.format(DateTime.parse(data[g][clminfo[i].title]))}'
+    //           : data[g][clminfo[i].title].toString();
+    //   cells[clminfo[i].title.toString()] = PlutoCell(value: theVal);
+    // }
+    rows.add(PlutoRow(cells: cells));
+  }
+  return rows;
+}
+
+List<PlutoColumn> getColumnsS3(List<ColumnInfo> clminfo, int colCnt, List<Langkeypair> langclmName, {bool useCheckBox = false}) {
+  List<PlutoColumn> toReturn = [];
+  for (var i = 0; i < clminfo.length; i++) {
+    PlutoColumnType theClmType = getColumnType(clminfo[i]);
+    toReturn.add(PlutoColumn(
+        enableRowChecked: i == 0 ? useCheckBox : false,
+        title: langclmName
+            .singleWhere(
+              (element) => element.keyVal.toString() == clminfo[i].title.toString(),
+              orElse: () {
+                return Langkeypair(keyVal: clminfo[i].title.toString(), fieldNm: clminfo[i].title.toString());
+              },
+            )
+            .fieldNm
+            .toString(),
+        field: clminfo[i].data.toString(),
+        textAlign: theClmType.isNumber ? PlutoColumnTextAlign.right : PlutoColumnTextAlign.left,
+        hide: i > colCnt - 1 ? true : false,
+        type: theClmType));
+  }
+  return toReturn;
+}
+
+PlutoColumnType getColumnTypeS3(ColumnInfo clminfo) {
+  if (clminfo.dataType == null) return PlutoColumnType.text();
+  switch (clminfo.dataType) {
+    case 'nvarchar':
+      return PlutoColumnType.text();
+    case 'varchar':
+      return PlutoColumnType.text();
+    case 'date':
+      return PlutoColumnType.text();
+    case 'datetime':
+      return PlutoColumnType.text();
+    case 'bigint':
+      return PlutoColumnType.number();
+    case 'decimal':
+      return PlutoColumnType.number(format: '##0.000');
+    case 'int':
+      return PlutoColumnType.number();
+    case 'money':
+      return PlutoColumnType.number(format: '##0.000');
+    default:
+      return PlutoColumnType.text();
+  }
+}
+
+List<PlutoRow> getRowsS3(List<dynamic> data, List<ColumnInfo> clminfo, int colCnt) {
+  final List<PlutoRow> rows = [];
+  final dateFormat = DateFormat.yMMMEd();
+  final timeFormat = DateFormat.jms();
+  for (var g = 0; g < data.length; g++) {
+    Map<String, PlutoCell> cells = {};
+    for (var i = 0; i < clminfo.length; i++) {
+      var theVal = data[g][clminfo[i].data] == null
+          ? ''
+          : clminfo[i].data == 'lastModified'
+              ? '${dateFormat.format(DateTime.parse(data[g][clminfo[i].data]))} ${timeFormat.format(DateTime.parse(data[g][clminfo[i].data]))}'
+              : data[g][clminfo[i].data].toString();
+      cells[clminfo[i].data.toString()] = PlutoCell(value: theVal);
+    }
+    rows.add(PlutoRow(cells: cells));
+  }
+  return rows;
+}

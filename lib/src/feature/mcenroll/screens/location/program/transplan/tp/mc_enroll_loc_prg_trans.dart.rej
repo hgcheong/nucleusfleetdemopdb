@@ -1,0 +1,24 @@
+diff a/nucleusfleet/lib/src/feature/mcenroll/screens/location/program/transplan/tp/mc_enroll_loc_prg_trans.dart b/nucleusfleet/lib/src/feature/mcenroll/screens/location/program/transplan/tp/mc_enroll_loc_prg_trans.dart	(rejected hunks)
+@@ -154,16 +154,18 @@
+                               //       ref.invalidate(ReturndatafreezedProvider(query));
+                               // },);
+ 
+-                              var mstTypeOutput = getOutputValue(value.output, '@MsgTypePlanId');
+-                              singleton<AppRouter>().navigatePath('./transplan/tp/dtl/$poe/$txnMsgCd/$mstTypeOutput').then((value) {
++                                 var msgTypePlanId = getOutputValue(value.output, '@MsgTypePlanId');
++                  var txnMsgCd = getOutputValue(value.output, '@TxnMsgCd');
++                var oPoe = getOutputValue(value.output, '@Poe');
++                              singleton<AppRouter>().navigatePath('/nucleusfleet/prgmgmt/mchtsetup/$prgEttyId/tranplan/tp/dtl/$oPoe/$txnMsgCd/$msgTypePlanId').then((val){
+                                  ref.invalidate(ReturndatafreezedProvider(query));
+                               });
+                           
+                             }
+                           });
+                         }),sbh10,
+-                        const AcxBackToList(
+-                          listUrl: '././list',
++                         AcxBackToList(
++                          listUrl: '/prgmgmt/mchtsetup/$prgEttyId/tranplan/tp/list',
+                         )
+                       ],
+                     ),

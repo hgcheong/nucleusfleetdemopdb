@@ -1,0 +1,114 @@
+//Usually used for Overview Screen we will have
+
+1)Status Summary
+2)List of Button
+
+Container(
+              height: 110,
+              width: 180.0,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 6.0),
+                child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                  ...displayfield.map((element) {
+                    final val = returnData.data![i][element];
+                    if (val != null) {
+                      return Text(returnData.data![i][element]);
+                    } else {
+                      return const Text('');
+                    }
+                  }).toList(),
+                  // Text(returnData.data![i][displayfield]),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.blue,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        deleteSelectedRef != null
+                            ? IconButton(
+                                onPressed: () {
+                                  Debugger.log(returnData.data![i]);
+                                  deleteSelectedRef!(returnData.data![i]);
+                                },
+                                icon: const Icon(Icons.delete))
+                            : Container(),
+                        IconButton(
+                            onPressed: () {
+                              Debugger.log(returnData.data![i]);
+                              returnSelectedRef(returnData.data![i]);
+                            },
+                            icon: const Icon(Icons.edit))
+                      ],
+                    ),
+                  )
+                ]),
+              ),
+            )
+
+
+3)Check List
+
+
+Save Button
+ AcxSaveButtonManual(onSave: () {
+                        formKey.currentState!.save();
+                        final querySave = QueryObject(querysql: '/sp/ApiPrgMchtTxnSave/queryasync', params: formKey.currentState!.value, showMsg: false);
+                        final saveResult = ref.read(ReturndatafreezedProvider(querySave).future);
+                        saveResult.then((Returndata value) {
+                          Toast.showresult(value);
+                          if (isSuccess(value.message)) {
+                            String theNewId = getOutputValue(value.output, '@MsgTypePlanId').toString();
+                            final currentPath = AutoRouter.of(context).currentPath;
+                            String afterSavedPath = getAfterSavePath(currentPath, theNewId);
+                            AutoRouter.of(context).navigatePath(afterSavedPath);
+                            ref.invalidate(ReturndatafreezedProvider(query));
+                          }
+                        });
+                      }),
+
+ AcxSaveButtonManual(onSave: () {
+                              formKey.currentState!.save();
+                              final querySave = QueryObject(querysql: '/sp/ApiPrgCustMediaTypeSave/queryasync', params: formKey.currentState!.value, showMsg: false);
+                              final saveResult = ref.read(ReturndatafreezedProvider(querySave).future);
+                              saveResult.then((Returndata value) {
+                                Toast.showresult(value);
+                                if (isSuccess(value.message)) {
+                                  AutoRouter.of(context).navigatePath(getAfterSavePath(context, value.output, '@MediaTypeId'));
+                                  ref.invalidate(ReturndatafreezedProvider(query)); rp
+                                }
+                              });
+                            }),
+
+How to handle multiple futures
+
+ var futures = <Future>[];
+                  for (var i = 0; i < rows.length; i++) {
+                    final queryDel = QueryObject(
+                        querysql: '/sp/ApiPrgCustTxnFeeDel/queryasync',
+                        params: {
+                          "PrgEttyId": prgEttyId,
+                          "FeeId": rows.elementAt(i).cells["FeeId"]!.value.toString(),
+                        },
+                        showMsg: false);
+                    final resultDel = ref.read(ReturndatafreezedProvider(queryDel).future);
+                    futures.add(resultDel);
+
+                    //   Toast.message(rows.elementAt(i).cells["FeeId"]!.value.toString());
+                  }
+                  await Future.wait(futures).then((value) {
+                    ref.invalidate(listQuery);
+                  });
+
+
+
+
+
+'././list',
+
+this meames go up 2 level and then the path

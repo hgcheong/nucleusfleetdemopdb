@@ -1,0 +1,86 @@
+ApiPrgMchtTxnPlanList
+ApiPrgMchtTxnPlan
+ApiPrgMchtTxnPlanSave
+ApiPrgMchtTxnPlanDel
+
+ApiPrgMchtTxnPlanFeeList
+ApiPrgMchtTxnPlanFee
+ApiPrgMchtTxnPlanFeeSave
+
+
+###
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+
+},
+### 
+///
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MsgTypePlanId": 5,
+      "TxnMsgCd": 2,
+      "Poe": "APP",
+      "PrgEttyId": 1,
+        "SrcPrvder": "PAYNET"
+
+},
+
+
+//ApiPrgMchtTxnPlanSave
+
+###
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+      "MsgTypePlanId": null,
+      "TxnMsgCd": 2,
+      "Poe": "WEB",
+      "SrcPrvder": "PAYNET",
+      "DealerType": "MY:COCO",
+      //"TxnPlan": null,
+      "PrgEttyId": 1,
+      "MdfDate": "2024-06-20T15:43:09.593"
+    }
+
+    //ApiPrgMchtTxnPlanSave
+
+###
+POST {{baseUrl}}/sp/ApiPrgMchtTxnPlanDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+"MsgTypePlanId": 5,
+ "PrgEttyId": 1,
+    }
+
+//
+//VwSrcPrvder
+###
+POST {{baseUrl}}/view/async/VwSrcPrvder HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwPoe
+###
+POST {{baseUrl}}/view/async/VwPoe HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}

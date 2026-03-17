@@ -1,0 +1,152 @@
+
+POST {{baseUrl}}/sp/ApiMgmtMchtBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+      
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAcct/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+    "PrgEttyId":1,
+     "EttyId": 86,
+      
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtSts/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+     "EttyId": 11,
+      
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "PrgDscp": "Xfleet Postpaid",
+      "BillingTo": "458001020304001",
+      "BillingName": "BHPETROL BANDAR BARU SALAK TINGGI",
+      "BillingLevelDscp": "LOCATION",
+      "BillingTypeDscp": "NO BILLING",
+      "AcctTypeDscp": null,
+      "AcctBal": 0.0000,
+      "AcctStsDscp": "ACTIVE",
+      "AcctSts": "A",
+      "PrgEttyId": 1,
+      "MchtEttyId": 83,
+      "EttyId": 86,
+      "AcctId": 11,
+      "AcctNo": 86,
+      "AcctType": "REIMBURSE",
+      "BillingEttyType": 13    
+}
+### 
+
+//ApiMgmtMchtAcctSttlmt 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctSttlmt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 83,
+    "PrgEttyId": 1,
+    "EttyId": 86,    
+}
+### 
+
+//ApiMgmtMchtTxnPostedSearch
+
+POST {{baseUrl}}/sp/ApiMgmtMchtTxnPostedSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "MchtEttyId": 83,
+      "LocEttyId": null
+    //  "AcctId": 12
+}
+
+
+//ApiMchtMgmtLocAutoPymt
+
+POST {{baseUrl}}/sp/ApiMgmtMchtLocAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "MchtEttyId": 83,
+      "EttyId": 87,
+      "PrgEttyId": 1,
+    //  "AcctId": 12
+}
+
+//ApiMchtMgmtLocAutoPymtSave
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtLocAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "DrAutoPymtInd": null,
+      "DrAutoExecDays": null,
+      "DrPymtType": "DDR",
+      "DrBank": null,
+      "DrBranchCd": null,
+      "DrBankAcctNo": null,
+      "DrBankAcctType": null,
+      "DrAcctHolderName": null,
+      "DrPayeeCd": null,
+      "DrPayeeRef": null,
+      "DrBankAcctId": null,
+      "DrSts": null,
+      "CrAutoPymtInd": null,
+      "CrAutoExecDays": null,
+      "CrPymtType": "DCR",
+      "CrBank": null,
+      "CrBranchCd": null,
+      "CrBankAcctNo": null,
+      "CrBankAcctType": null,
+      "CrAcctHolderName": null,
+      "CrPayeeCd": null,
+      "CrPayeeRef": null,
+      "CrBankAcctId": null,
+      "CrSts": null,
+   "MchtEttyId": 83,
+      "EttyId": 87,
+      "PrgEttyId": 1
+}
+
+
+//
+//VwBank
+###
+POST {{baseUrl}}/view/async/VwBank HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}

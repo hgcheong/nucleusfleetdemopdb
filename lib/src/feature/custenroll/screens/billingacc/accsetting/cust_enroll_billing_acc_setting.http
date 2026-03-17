@@ -1,0 +1,95 @@
+//ApiEnrlCmpyAutoPymt
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 10, "PrgEttyId": 1, "EttyId": 37, "AcctId": 29, "AcctType": "POSTPAID"}
+### 
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 4
+}
+### 
+
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctPostpaid/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 10, "PrgEttyId": 1, "EttyId": 37, "AcctId": 29, "AcctType": "POSTPAID", "SchdId": null}
+### 
+
+//ApiEnrlCustBillingAcctPostpaidSave
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCustBillingAcctPostpaidSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 10,
+    "PrgEttyId": 1,
+    "EttyId": 37,
+    "AcctId": 11,
+    "AcctType":"POSTPAID",
+    "SchdId": null,
+    "CrLimit":null,
+    "MaxCrBal":null,
+    "FncChrgInd":null,
+     "LpcChrgInd":null,
+     "PymtTerm":null,
+     "StmtOptHardcopy":null,
+     "BillingModelId":0,
+     "BillingType":null,
+   //  "BillingEttyType":2,
+     "MdfDate":null
+     
+    
+}
+### 
+
+///sp/GetLibRef/queryasyncnouser
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType": "AUTOEXECDAY", "BitInd": null}
+
+
+
+//ApiCustBillingCycList
+###
+POST {{baseUrl}}/sp/ApiCustBillingCycList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "PrgEttyId": '',
+    "BillingType":"BALFWD"
+    
+}
+### 
+
+viewcustbillingtype
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwcustbillingtype HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}

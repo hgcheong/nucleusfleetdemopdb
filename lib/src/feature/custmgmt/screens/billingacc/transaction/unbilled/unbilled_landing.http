@@ -1,0 +1,152 @@
+//ApiCustMgmtAcctTxn 
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAcctTxnBilledSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ // "locEttyId": 83,
+ // "TadEttyId": null,
+ "AcctId":14,
+   "PrgEttyId":1,
+   "CustEttyId":528,
+   "EttyId":529,
+   "MediaNo":null,
+  "FromDate": '20240301',
+  "ToDate": '20250331',
+  "TxnCtgry":null
+
+//   "CustEttyId": 83
+}
+
+//ApiMgmtCustAcctTxnPrdList
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAcctTxnPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "AcctId":14,
+    "PrgEttyId":null,
+    "CustEttyId":null,
+    "EttyId":null,
+    "TxnId": null,
+//   "CustEttyId": 83
+}
+//ApiMgmtCustAcctTxnBilledSearch
+//ApiMgmtCustAcctTxnDetailList
+
+        {
+            "TxnDate": "2025-03-26T00:00:00",
+            "TxnTime": "09:29:58",
+            "PostDate": "2025-03-26T00:00:00",
+            "BillAmt": 5.0000,
+            "Dscp": "BHPetrol KTAB SB",
+            "MediaNo": 78971349999920335,
+            "AuthMediaNo": 0,
+            "LocName": "BHPetrol KTAB SB",
+            "TxnCtgryDscp": "SALE",
+            "TadNo": "10000002",
+            "AuthCd": null,
+            "TadBatchNo": 92,
+            "TaxInvcNo": "23d175",
+            "Stan": 3518,
+            "DriverName": null,
+            "VhcRgsNo": "BHP1234",
+            "VhcTypeDscp": "LORRY",
+            "PrgEttyId": 1,
+            "TxnId": 301,
+            "AcctId": 119,
+            "EttyId": null
+        },
+
+
+//ApiMgmtCustAcctTxnPrdList
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAcctTxnDetailList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "AcctId":"119",
+ //   "PrgEttyId":"1",
+    "TxnId": "301",
+
+}
+
+
+//ApiMgmtCustAcctTxnUnbillSearch
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAcctTxnUnbillSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": "1381",
+    "EttyId": "1382",
+    "PrgEttyId": "1",
+    "AcctId": "119",
+    "TxnCtgry": null,
+    "MediaNo": null,
+    "FromDate": "2025-04-01 00:00:00.000",
+    "ToDate": "2025-05-20 00:00:00.000"
+  }
+
+  //ApiMgmtCustAcctTxnUnbillSearch
+###
+POST {{baseUrl}}/sp/RpeDrivewayTxnUnbillSearch/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "EttyId": "1382",
+      "PrgEttyId": "1",
+      "AcctId": "119",
+      "TxnCtgry": null,
+      "MediaNo": null,
+      "FromDate": "2025-05-19 00:00:00.000",
+      "ToDate": "2025-05-20 00:00:00.000"
+} 
+
+//dbo.RpeDrivewayTxnUnbillItemList
+
+###
+POST {{baseUrl}}/sp/RpeDrivewayTxnUnbillItemList/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "AcctId": "119",
+      "TxnId":396,
+    //  "PrgEttyId":null
+} 
+
+
+  "data": [
+    {
+      "TxnDate": "2025-04-11T00:00:00",
+      "TxnTime": "10:07:43",
+      "PostDate": "2025-04-11T00:00:00",
+      "BillAmt": 5.0000,
+      "Dscp": "BHPetrol KTAB SB",
+      "MediaNo": "78971349999920384",
+      "AuthMediaNo": "78971349999920343",
+      "LocName": "BHPetrol KTAB SB",
+      "TxnCtgryDscp": "SALE",
+      "TadNo": "10000002",
+      "AuthCd": null,
+      "TadBatchNo": 109,
+      "TaxInvcNo": "798627",
+      "Stan": 3837,
+      "DriverName": "HANIS BINTI HASSAN",
+      "VhcRgsNo": "BHP4478",
+      "VhcTypeDscp": "LORRY",
+      "EttyId": 1382,
+      "PrgEttyId": 1,
+      "TxnId": 396,
+      "AcctId": 119,
+      "LocNo": "BMUATMYF0000001",
+      "SignIn": null,
+      "UsrId": null
+    },

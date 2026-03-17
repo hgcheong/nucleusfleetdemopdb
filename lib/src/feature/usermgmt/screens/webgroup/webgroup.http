@@ -1,0 +1,106 @@
+
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+
+    }
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroup/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+       "GrpId": "12",
+      "UserType": "I"
+    }
+
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+       "UserGrp": "Management",
+      "UserType": "I",
+      "MdfDate":null
+    }
+
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "GrpId": 4,
+  "UserType": "I",
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType":"I",
+  "GrpId": 1,
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "ModuleId": 134,
+      "UserType":"I",
+       "GrpId": 1,
+       "SetupId":0,
+    },
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "ModuleId": 46,
+      "UserType":"I",
+       "GrpId": 1,
+           "SetupId":null
+    },
+
+//ApiSignInAccessCtrlList
+###
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "I",
+  "SignIn": "hg.cheong",
+  "EttyId" : null,
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UId":null,
+  "AccessRightInd" :"W",
+  "GrpId":1,
+  "ModuleId":1,
+  "ModuleName":null,
+  "UserType": "I",
+  "SignIn": "hg.cheong",
+  "EttyId" : null,
+}

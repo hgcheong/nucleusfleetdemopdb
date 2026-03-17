@@ -1,0 +1,125 @@
+##ApiPrgCustMediaRangeList
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaRangeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+
+}
+### 
+
+##ApiPrgCustMediaRange
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaRange/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "RangeId": 1,
+      "PrgEttyId": 1
+
+}
+### 
+
+##ApiPrgCustMediaRangeSave
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaRangeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "RangeId": 1,
+      "FromMediaNo": "639991000000000",
+      "ToMediaNo": "639991999999999",
+}
+### 
+
+//ApiPrgCustMediaTypeList
+
+##ApiPrgCustMediaTypeList
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+
+}
+### 
+
+//ApiPrgCustMediaType
+
+##ApiPrgCustMediaType
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaType/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+      "MediaTypeId": 5,
+
+}
+### 
+
+
+##ApiPrgCustMediaTypeSave
+
+POST {{baseUrl}}/sp/ApiPrgCustMediaTypeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+      "MediaType": "ALL",
+      "ImprintFmt":"Y2M2",
+      "AutoRnwl":false,
+      "RequireImprint": false,
+      "RequireAtvtion":false,
+      "RequireTac":false,
+      "TacType":"ACTV",
+      "MaxTxnPinAttempt":false,
+      "ExpMth":12,
+      "RnwlMth":12,
+      "Track2ExpDatePos":0,
+      "MediaTypeId": 9
+
+}
+### 
+
+#MediaType 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MediaType",
+"BitInd":null
+}
+###
+
+#IMPRTEXPFMT 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"IMPRTEXPFMT",
+"BitInd":null
+}
+###
+
+#TAGCDTYPE 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TACTYPE",
+"BitInd":null
+}
+###

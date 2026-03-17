@@ -1,0 +1,227 @@
+//ApiMgmtCrRiskList
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCrRiskList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 17
+}
+###
+
+
+//ApiMgmtCrRisk
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCrRisk/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+      "CmpyEttyId": 17,
+      "CrScoreId": 4
+}
+###
+
+//Finyear
+
+//ApiMgmtCrRisk
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   
+    "CustEttyId": 16,
+    "CmpyEttyId": 17,
+     "CrScoreId": 4,
+     "FinYear": 2023,
+      "FinMonth": "DEC",
+      "Revenue": 432,
+      "Purchase": 10,
+      "CostGoodsSold": null,
+      "PLBeforeTax": null,
+      "FinChrg": null,
+      "PrefDividend": null,
+      "FixedAsset": null,
+      "Invtry": null,
+      "DbtrAmt": 12,
+      "CurrAsset": null,
+      "CrdtrAmt": null,
+      "CurrLiab": null,
+      "LongTermLiab": 321,
+      "PaidUpCapital": null,
+      "ShareshldrFund": null,
+      "OrdinaryShares": null,
+      "Note": "Nothing 32?",
+      "MdfDate": null,
+
+
+      }
+###
+
+
+//To Display Column like
+RefDscp
+InputValue
+CrScoreIdDscp
+ScorePts
+TotalScore
+Weighted%
+
+Summary
+AvgScoreDscp
+CrScoreIdDscp
+TotalScore
+TotalWeighted
+TotalWeightedAverageScore
+
+"LegalActionTitle": "Legal Action",
+"LegalActDirInd": "N",
+"LegalActCmpyInd": "N",
+"LegalActTradeInd": "N",
+Y N Null for Sts
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCrRiskEvaluate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 17,
+  "CrScoreId": 4,
+}
+###
+
+//Dscp InputVal CrScoreIdDscp ScorePts TotalScore Weighted%
+
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskEvaluateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 17,
+  "CrScoreId": 4,
+  "RefCd": "NETCASHINFLOW",
+  "InputVal": 200000,
+   "Sts": "A",
+
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskScore/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 16,
+    "CmpyEttyId": 17,
+    "CrScoreId": 4
+
+}
+###
+
+//ApiMgmtCrRiskSubordinate
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSubordinate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+        "CustEttyId": 528,
+        "CmpyEttyId": 529,
+        "PrgEttyId": 4,
+         "CrScoreId": 23,
+}
+
+//ApiMgmtCrRiskSubordinateSave
+###
+POST {{baseUrl}}/sp/ApiMgmtCrRiskSubordinateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "FinYear": 2025,
+    "FinMonth": "Mar",
+    "FlowYear":2025,
+    "FlowMonth":"Feb",
+    "OpnBal":2222,
+    "InFlow":5000,
+    "OutFlow":2000,
+    "CustEttyId": 528,
+    "CmpyEttyId": 529,
+    "PrgEttyId": 4,
+}
+
+POST {{baseUrl}}/sp/ApiMgmtCrRiskScoreSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "CustEttyId": 16,
+      "CmpyEttyId": 17,
+      "CrScoreId": 4,
+      "ReqCrLimit": 0.0000,
+      "ProposedCrLimit": 0.0000,
+      "MaxCrLimit": 0.0000,
+      "CollateralFD": 5.0000,
+      "CollateralBG": 0.0000,
+      "CollateralCash": 0.0000,
+      "CollateralJsg": 0.0000,
+       "Sts": "A",
+      "Note": "Nothing 32?",
+      "MdfDate": "2024-03-08T20:53:10.88"
+
+
+}
+
+
+
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"Month",
+"BitInd":null
+}
+###
+
+  "CmpyType": "Private Limited Company (Sdn Bhd)",
+            "TotalWeighted": 2.9998,
+            "CrRiskCd": "5",
+            "CrRiskCdDscp": "UNACCEPTABLE. ASK FOR PREPAID",
+            "CrCtgryCd": "5",
+            "CrCtgryCdDscp": "CUSTOMERS WITH HIGH RISK (RISK CODE ABOVE 3) & CUSTOMERS NEED TO MONITOR CLOSELY",
+            "ActionDscp": "Reject & Propose Cash Card (If SKDS)",
+            "ReqCrLimit": 0.0000,
+            "ProposedCrLimit": 0.0000,
+            "MaxCrLimit": 0.0000,
+            "CollateralFD": 0.0000,
+            "CollateralBG": 0.0000,
+            "CollateralCash": 0.0000,
+            "CollateralJsg": 0.0000,
+            "Note": "Reevaluate",
+            "Sts": "N",
+            "LegalActCmpyInd": "N",
+            "LegalActDirInd": "N",
+            "LegalActTradeInd": "N",
+            "LongTermLiab": 0.0000,
+            "CustEttyId": 528,
+            "CmpyEttyId": 529,
+            "PrgEttyId": 4,
+            "CrScoreId": 23,
+            "MdfDate": "2025-02-20T00:31:22.117"

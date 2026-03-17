@@ -1,0 +1,94 @@
+# EXEC dbo.ApiMchtReimburseRun
+# 	@PId		tPrcsId = NULL,
+# 	@RptInd		tRefCd = 'PREVIEW',
+# 	@UserId		tUserId = NULL,
+# 	@SrcIpAddr	tIpAddr = NULL,
+# 	@MsgId		tMsgId OUTPUT
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMchtReimburseRun/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PId": null,
+  "RptInd": "PREVIEW",
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+//hi Cheong,
+Besides of merchant reimbursement extraction (reports/files) tab, put an additional tab to handle email (reimbursement)
+(1) ApiTaskEmailNudgeList	- User to retrieves list of SOA emailed to merchant of a particular day
+(2) ApiTaskEmailNudgeSave 	- Users have an option in either tick one/ or TagALL = 'Y' to resend merchant SOA
+
+
+###
+POST {{baseUrl}}/sp/ApiTaskEmailNudgeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrcsDate": null
+}
+
+###
+POST {{baseUrl}}/sp/ApiTaskEmailNudgeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrcsDate": null
+}
+
+(1) dbo.ApiMchtReimburseAuth ...User clicks TAB to retrieve authorise persons immediately
+(2) dbo.ApiMchtReimburseAuthSave .....To save the info once the user confirmed to their changes
+
+
+###
+POST {{baseUrl}}/sp/ApiMchtReimburseAuth/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMchtReimburseAuthSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+  {
+      "AuthVarName": "ReimburseAuth1",
+      "AuthName": "Fong Phey Sun",
+      "AuthDept": "Senior Analyst, FleetCard",
+      "AppvVarName": "ReimburseAuth2",
+      "AppvName": "Siti Masyitah Ahmad Sapiuddin",
+      "AppvDept": "Manager, Fleetcard Operations"
+}
+
+###
+POST {{baseUrl}}/sp/ApiDemoTxn/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "TxnReqType": "CEQ",
+    "FromDate": null,
+    "ToDate": null,
+    "Single" : '6394910211388930',
+
+
+}

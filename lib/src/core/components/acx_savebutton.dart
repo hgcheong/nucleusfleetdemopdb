@@ -1,0 +1,87 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_form_builder/flutter_form_builder.dart';
+// import 'package:flutter_hooks/flutter_hooks.dart';
+// import 'package:hooks_riverpod/hooks_riverpod.dart';
+// import 'package:nucleusv2/src/core/app/api_service.dart';
+
+// import 'package:nucleusv2/src/utils/utils_import.dart';
+
+// class AcxSaveButton extends HookConsumerWidget {
+//   const AcxSaveButton(
+//       {super.key,
+//       required this.saveUrl,
+//       required this.saveForm,
+//       required this.onSave,
+//       this.dateFieldToConvert});
+//   final GlobalKey<FormBuilderState> saveForm;
+//   final String saveUrl;
+//   final Function onSave;
+//   final List<String>? dateFieldToConvert;
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final isLoading = useState(false);
+
+//     if (context.mounted) {
+//       return isLoading.value == true
+//           ? ElevatedButton(
+//               // style: ElevatedButton.styleFrom(
+//               // //  shape: const CircleBorder(),
+//               // //  padding: const EdgeInsets.all(24),
+//               // ),
+//               child: const SizedBox(
+//                 width: 30,
+//                 child: LinearProgressIndicator(
+//                   color: Colors.white,
+//                 ),
+//               ),
+//               onPressed: () {})
+//           : ElevatedButton(
+//               // style: ElevatedButton.styleFrom(
+//               //   shape: const CircleBorder(),
+//               //  padding: const EdgeInsets.all(24),
+//               //  ),
+//               child: const SizedBox(
+//                 width: 30,
+//                 child: Icon(
+//                   // color: Color.fromARGB(255, 192, 205, 215),
+//                   Icons.save,
+//                 ),
+//               ),
+//               onPressed: () async {
+//                 try {
+//                   final stateVal = saveForm.currentState;
+//                   isLoading.value = true;
+
+//                   if (stateVal != null) {
+//                     if (stateVal.value != {}) {
+//                       Map<String, dynamic> toPost = stateVal.value;
+//                       if (dateFieldToConvert != null) {
+//                         toPost =
+//                             convertFormDateValue(toPost, dateFieldToConvert!);
+//                       }
+//                       final res = await ApiService().postHttpReturnData(saveUrl,
+//                           params: toPost, showMsg: true);
+//                       if (isSuccess(res.message)) {
+//                         onSave(res);
+//                       } else {
+//                         Toast.error(res.error.toString());
+//                       }
+//                     }
+//                   } else {
+//                     Toast.error('Please fill up the entry screen');
+//                     return;
+//                   }
+//                 } catch (e) {
+//                   //Ran into issue with TypeErrorImpl then if I call the to string method in the error it will throw unexpected null value. So temporary will not show the e.toString. this only occurs if the response message in the ReturnData message is null;
+
+//                   Toast.error(e.toString());
+//                 } finally {
+//                   isLoading.value = false;
+//                 }
+//               },
+//             );
+//     } else {
+//       return Container();
+//     }
+//   }
+// }

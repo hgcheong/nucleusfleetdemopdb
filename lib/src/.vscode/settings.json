@@ -1,0 +1,30 @@
+{
+    "rest-client.environmentVariables": {
+
+        "devaws": {
+            "baseUrl":"https://dev.myvnc.com/nucleus/api",
+            "baseUrlEDriveway":"https://tips.myvnc.com/api",
+            "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiaGcuY2hlb25nIiwic3ViIjoiaGcuY2hlb25nIiwianRpIjoiNmZiOTFkMGYtYTJkMS00ZTVjLTk3NDYtMzRkYTdkNWU0OTcyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiSSIsIlVzZXJUeXBlIjoiSSIsIkFwcGxOYW1lIjoiTnVjbHVlcyIsIkFwcGxWZXIiOiIxIiwiZXhwIjoxNzM1NDAxMzIzLCJpc3MiOiJodHRwOi8vd3d3LmVjYXJkLmNvbSIsImF1ZCI6Imh0dHA6Ly93d3cuZWNhcmQuY29tIn0.UG5hgTRVJycvAe25BMz4ep8vsKiJhmWqtH5wV24eG1Q"
+        },
+        "devlocal":{
+            "baseUrl":"https://localhost:44388/api",
+            "baseUrlEDriveway":"https://tips.myvnc.com/api",
+            "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiaGdjaGVvbmdAb3V0bG9vay5jb20iLCJzdWIiOiJoZ2NoZW9uZ0BvdXRsb29rLmNvbSIsImp0aSI6Ijc4YmRlMjNmLTg1ZTEtNDJiNC1iMmVkLTk1Mjk1ZWZiY2RmMCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkkiLCJVc2VyVHlwZSI6IkkiLCJBcHBsTmFtZSI6Ik51Y2x1ZXMiLCJBcHBsVmVyIjoiMSIsImV4cCI6MTcyMDI4MjAyNCwiaXNzIjoiaHR0cDovL3d3dy5lY2FyZC5jb20iLCJhdWQiOiJodHRwOi8vd3d3LmVjYXJkLmNvbSJ9.ksUMpX6rSKt6AdRwFA-z1Yx9jfcCEZsf0tTKey1uEgY"
+        },
+        "prod":{
+            "baseUrl":"https://dev.myvnc.com/nucleus/api",
+            "baseUrlEDriveway":"https://tips.myvnc.com/api",
+            "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiaGdjaGVvbmdAb3V0bG9vay5jb20iLCJzdWIiOiJoZ2NoZW9uZ0BvdXRsb29rLmNvbSIsImp0aSI6Ijk0MDViYTY5LWMyZDMtNDU2MS1iYTc2LTE2ZjYxMTBiNWQ2NCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkkiLCJVc2VyVHlwZSI6IkkiLCJBcHBsTmFtZSI6Ik51Y2x1ZXMiLCJBcHBsVmVyIjoiMSIsImV4cCI6MTcxODM5MDQ3NiwiaXNzIjoiaHR0cDovL3d3dy5lY2FyZC5jb20iLCJhdWQiOiJodHRwOi8vd3d3LmVjYXJkLmNvbSJ9.0kfP-w0cYY9SPdvpXniQrorEdp5nJ2r-wDdDh0hfLqU"
+        },
+        "uat":{
+            "baseUrl":"https://dev.myvnc.com/nucleus/api",
+            "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiaGdjaGVvbmdAb3V0bG9vay5jb20iLCJzdWIiOiJoZ2NoZW9uZ0BvdXRsb29rLmNvbSIsImp0aSI6Ijk0MDViYTY5LWMyZDMtNDU2MS1iYTc2LTE2ZjYxMTBiNWQ2NCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkkiLCJVc2VyVHlwZSI6IkkiLCJBcHBsTmFtZSI6Ik51Y2x1ZXMiLCJBcHBsVmVyIjoiMSIsImV4cCI6MTcxODM5MDQ3NiwiaXNzIjoiaHR0cDovL3d3dy5lY2FyZC5jb20iLCJhdWQiOiJodHRwOi8vd3d3LmVjYXJkLmNvbSJ9.0kfP-w0cYY9SPdvpXniQrorEdp5nJ2r-wDdDh0hfLqU"
+        },
+        // "production": {
+        //     "host": "example.com",
+        //     "token": "{{$shared prodToken}}",
+        //     "secretKey" : "prodSecret"
+        // }
+    }
+}
+//ec2-47-128-90-52.ap-southeast-1.compute.amazonaws.com

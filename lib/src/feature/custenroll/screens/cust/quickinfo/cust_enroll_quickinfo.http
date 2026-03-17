@@ -1,0 +1,37 @@
+//ApiEnrlCustOverview
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 
+
+//ApiEnrlCustOverviewChkList
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustOverviewChkList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+
+}
+### 
+
+//ApiEnrlMchtAppvHistList
+
+POST {{baseUrl}}/sp/ApiEnrlCustAppvHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyid": 155
+
+}
+### 

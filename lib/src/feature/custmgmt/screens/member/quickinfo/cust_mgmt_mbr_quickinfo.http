@@ -1,0 +1,13 @@
+//VwLibMbrRnk
+###
+POST {{baseUrl}}/sp/ApiMgmtMbrOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 81
+
+}
+### 
+

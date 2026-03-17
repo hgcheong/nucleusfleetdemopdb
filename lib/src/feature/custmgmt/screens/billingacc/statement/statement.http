@@ -1,0 +1,156 @@
+//ApiCustMgmtAcctTxn 
+###
+POST {{baseUrl}}/sp/ApiCustMgmtAcctSttlmtList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "locEttyId": 83,
+  "TadEttyId": null,
+  "FromDate": null,
+  "ToDate": null
+//   "CustEttyId": 83,
+
+}
+
+
+//ApiCustMgmtAcctTxn 
+###
+POST {{baseUrl}}/sp/ApiCustMgmtAcctSttlmt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "locEttyId": 83,
+  "TadEttyId": null,
+  "FromDate": null,
+  "ToDate": null
+//   "CustEttyId": 83,
+
+}
+
+
+//ApiCustMgmtAcctTxn 
+
+###
+POST {{baseUrl}}/sp/ApiCustMgmtAcctTxn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "custEttyId": 83,
+  "TadEttyId": null,
+  "FromDate": null,
+  "ToDate": null
+//   "CustEttyId": 83,
+}
+
+//ApiCustMgmtTxnPostedSearch
+###
+POST {{baseUrl}}/sp/ApiCustMgmtTxnPostedSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 55,
+  "LocEttyId":null,
+  "TxnCtgry":null,
+  "MediaNo":null,
+  "FromDate": null,
+  "ToDate": null
+//   "CustEttyId": 83,
+}
+
+
+
+
+//.ApiMgmtEttyTadList
+
+###
+POST {{baseUrl}}/sp/ApiMgmtEttyTadList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 83,
+  "CustEttyId": 83,
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAcctStmtSmry/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "CustEttyId": null,
+  "PrgEttyId": null,
+}
+
+  #  "AcctTypeDscp": "POSTPAID ACCOUNT",
+  #           "BillingTo": "Tradewinds Bhd",
+  #           "BillingLevelDscp": "COMPANY",
+  #           "PrgDscp": "X-Fleet Program (Government Postpaid Kad Inden)",
+  #           "BillingTypeDscp": "BALANCE FORWARD BILLING",
+  #           "CycleDscp": "Xfleet Kad Inden",
+  #           "BillingModelId": 1,
+  #           "CustEttyId": 528,
+  #           "PrgEttyId": 1,
+  #           "EttyId": 529,
+  #           "AcctId": 14,
+  #           "AcctType": "POSTPAID",
+  #           "BillingType": "BALFWD",
+  #           "BillingEttyType": 2
+    #  {
+    #         "BillingDate": "2025-01-31T00:00:00",
+    #         "DueDate": null,
+    #         "OpeningBalance": 0.0000,
+    #         "ClosingBalance": 0.0000,
+    #         "CreditLimit": 0.0000,
+    #         "DelinquencyStatus": null,
+    #         "AcctId": 160,
+    #         "PrgEttyId": null,
+    #         "CustEttyId": null,
+    #         "EttyId": null,
+    #         "StmtId": 32,
+    #         "RptType": "STMT",
+    #         "Url": null
+    #     }
+
+    ###
+###
+
+# AcctId
+# : 
+# 160
+# CustEttyId
+# : 
+# 528
+# PrgEttyId
+# : 
+# 1
+
+POST {{baseUrl}}/sp/ApiMgmtCustAcctStmtSmry/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "AcctId":160,
+  "CustEttyId": 528,
+  "PrgEttyId": 1,
+}
+
+###
+
+POST {{baseUrl}}/sp/ApiMgmtCustAcctStmtList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+          "BillingDate": "2025-05-31",
+          "AcctId": 160,
+          "PrgEttyId": 1,
+          "CustEttyId": 528,
+          "EttyId": null,
+
+}

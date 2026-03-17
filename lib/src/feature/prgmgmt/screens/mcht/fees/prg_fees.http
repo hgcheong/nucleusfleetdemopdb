@@ -1,0 +1,66 @@
+//ApiPrgMchtTadFee
+
+POST {{baseUrl}}/sp/ApiPrgMchtTadFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :1
+    
+}
+### 
+
+///view/async/VwSchdBilling
+
+
+//
+##
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+##
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+//ApiPrgMchtTxnFee
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFee/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "PrgEttyId": 1,
+    "FeeId" :1
+    
+}
+###
+
+POST {{baseUrl}}/sp/ApiPrgMchtTxnFeeSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "4",
+  "FeeId": null,
+  "MediaType": "ALL",
+  "TxnCtgry": 0,
+  "SchdId": 0,
+  "AggateCd": "ACCT",
+  "BillingValue": "AMT",
+  "Dscp": "Desscription",
+  "Sts": "A"
+}

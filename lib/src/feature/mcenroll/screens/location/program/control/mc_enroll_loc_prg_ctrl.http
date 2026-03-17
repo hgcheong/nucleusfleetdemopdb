@@ -1,0 +1,58 @@
+//ApiEnrlLocTxnAccptList
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"PrgEttyId": 1,
+//"MchtEttyId": 100,
+"LocEttyId": 102
+}
+
+###
+//ApiEnrlLocTxnAccptList
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+//"PrgDscp": null,
+    //  "TxnCtgryDscp": "ALL",
+   //   "StsDscp": "UNACCEPTED",
+  //    "Dscp": null,
+      "LocEttyId": 102,
+      "PrgEttyId": 1,
+      "AccptId": null,
+     "TxnCtgry": "0",
+   //   "Sts": "X"
+}
+
+
+# ###
+# POST {{baseUrl}}/sp/ApiEnrlLocTxnAccpt/queryasync HTTP/1.1
+# Authorization: Bearer {{authorization}}
+# content-type: application/json
+
+# {
+#    "LocEttyId": 102,
+#       "PrgEttyId": 1,
+#       "AccptId": 1,
+#       "TxnCtgry": "0",
+# }
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocTxnAccptDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "LocEttyId": 102,
+      "PrgEttyId": 1,
+      "AccptId": 1,
+      "TxnCtgry": "0",
+}

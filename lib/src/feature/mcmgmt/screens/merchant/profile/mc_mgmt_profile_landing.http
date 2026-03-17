@@ -1,0 +1,55 @@
+
+POST {{baseUrl}}/sp/ApiMchtMgmtList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtMcht/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+### 
+
+
+///sp/ApiEnrlAddrList/queryasync
+
+
+POST {{baseUrl}}/sp/ApiMgmtAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 55
+}
+### 
+
+
+///sp/ApiEnrlAddrList/queryasync
+
+
+POST {{baseUrl}}/sp/ApiEnrlContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 100
+}
+### 
+
+//ApiEnrlDocList
+###
+POST {{baseUrl}}/sp/ApiEnrlDocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 100,
+  "RpstryType":
+}
+### 

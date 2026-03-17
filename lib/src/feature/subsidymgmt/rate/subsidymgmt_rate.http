@@ -1,0 +1,185 @@
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+### 
+
+
+//ApiPrgSubs
+POST {{baseUrl}}/sp/ApiPrgSubs/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "SubsId": 2
+}
+###
+POST {{baseUrl}}/sp/ApiPrgSubsLocateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+}
+### 
+
+//ApiPrgSubsLocateList
+
+##
+POST {{baseUrl}}/sp/ApiPrgSubsLocate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SubsId": 2,
+  "SubsLocateId": 11
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId" :11,
+   "PlanRateId":16,
+   "TxnPlanRefNo":33 
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsLocateId" :11,
+   "PlanRateId":16,
+   "TxnPlanRefNo":33,
+  // "SchemaId":572
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlanSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "TxnSchema": 111,
+      "FromDate": '20260525',
+      "ToDate": '20270524',
+      "SubsId": 2,
+      "SubsLocateId": 11,
+      "PlanRateId": 16,
+      "SchemaId": 571,
+      "TxnPlanRefNo": 33,
+    //  "PrdSts":null
+}
+### 
+
+
+//ApiPrgSubsLocate
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlan/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "SubsId": 11,
+ "SubsLocateId": 1,
+ "PlanRateId": null,
+ "TxnPlanRefNo": null
+}
+### 
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "SubsId": 2,
+ "SubsLocateId" :1,
+ "PlanRateId": null,
+ "TxnPlanRefNo" :null
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsLocateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "Dscp": "9 Type Vehicle Gategory",
+      "MbrTxnPlanRefNo": null,
+      "LocTxnPlanRefNo": null,
+      "OprTxnPlanRefNo": null,
+      "SubsId": 11,
+      "SubsLocateId": 1,
+      "PlanRateId": null
+}
+
+### 
+
+
+
+
+
+
+//ApiPrgSubsVhcTypeList
+
+
+POST {{baseUrl}}/sp/ApiPrgSubsPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId" : null
+
+}
+### 
+
+
+//VwSubsSubsidy
+
+POST {{baseUrl}}/view/async/VwSubsSubsidy HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//ApiPrgSubsVhcTypeList
+
+POST {{baseUrl}}/sp/ApiPrgSubsVhcTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "SubsId": 2,
+   "SubsLocateId" :11,
+   "PlanRateId": 16
+
+}
+### \
+
+//VwTxnSchema
+
+POST {{baseUrl}}/view/async/VwTxnSchema HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

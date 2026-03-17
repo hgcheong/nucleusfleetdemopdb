@@ -1,0 +1,270 @@
+//ec2-47-128-90-52.ap-southeast-1.compute.amazonaws.com
+
+//ApiSignIn
+###
+POST {{baseUrl}}/auth/token HTTP/1.1
+content-type: application/json
+
+{
+  "SignIn": "user3@bhpetrol.com.my",
+  "UserId": "user3@bhpetrol.com.my",
+  "PwdHash": "t0nTflPYn1YBESD4dCJTTn4Ep0eNZ25wwX/XLhGc2dUcEA0igOAx0KJUrz7AD2Xkk2tav2ZVoryditGl6gG7HGdgazuV0bfugO0S+33zILzbliyymX2NisyjfQgEXWBb7RMjMtBd/+ghirCLrNrg9lBGMQlQsLUX3lViMeVEwCTIHzUloQqgCrOgElXvT6IaRi3qWmyUuo1XW9rD52Lc8LJY7QXv/nA/rRlmzIgjo3yMjJ/93PJRentzRKo2ErhuHt+y6yuX8o/V5ozzTVeKjWEMdt9V7jYOlzOEG3VZIPrrm5B/w6qYbWGbjtJYSzR0TGuoimP8pqeV0c5kDLNleg==",
+  "UserType": "I",
+  "ApplName":"Nuclues",
+  "ApplVer": "1",
+  "ReqType": "LOGIN"
+}
+
+
+//ApiSignIn
+###
+POST https://localhost:44388/api/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "RefType": "TxnPlan",
+  "BitInd":null
+   
+}
+
+//ApiSignInAccessRightInd
+###
+POST {{baseUrl}}/sp/ApiSignInAccessRightInd/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"SignIn":"hg.cheong",
+"UserType":"I",
+"ModuleId":null,
+"Sproc":"ApiSignInAccessRightInd"
+}
+###
+//ApiSignInAccessCtrlList
+
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"EttyId":null,
+"SignIn":"hg.cheong",
+"UserType":"I",
+}
+###
+//ApiSignInList
+
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"UserType":"E",
+}
+
+
+
+//Syncdlvrprg
+
+###
+POST {{baseUrl}}/sp/Syncdlvrprg/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+
+###
+POST {{baseUrl}}/sp/DsaDlvrLocTad/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+###
+POST {{baseUrl}}/sp/DsaDlvrResp/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"@RC":100005,"@StartId":0,"@LastId":72,"@OrigData":"DsaDlvrLocTad","@RunId":5502}
+
+
+# update LibVariable set BigValue = 0, Sts = 'A', DateTimeValue = NUll where VarName = 'DsaLocTadId'
+update LibVariable set BigValue = 0, Sts = 'A', DateTimeValue = NUll where VarName = 'DSAPRGID'
+update LibVariable set BigValue = 0, Sts = 'A', DateTimeValue = NUll where VarName = 'DsaLocTadId'
+update LibVariable set BigValue = 0, Sts = 'A', DateTimeValue = NUll where status = 'P'
+
+1) Call Syncdlvprg input - list of params
+2) Call SyncRecvPrg input - list of params udtparamname -> udttype -> tbSyncPrg
+3) use result from 2 and call 
+
+
+Hi Cheong,
+
+sProcs:
+
+//ApiSignInWebGroupList
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+(1)  ApiSignInWebGroupList
+      ...List of web user group 
+       (e.g. CustSvcDept, CustSvcDept-Sam, Sales&MarketingDept, EDP, CrCollectionDept)
+
+(2)  ApiSignInWebGroup
+      ...Select a specific web user group
+
+//ApiSignInWebGroupList
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroup/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "UserType":"I",
+   "GrpId":12
+}
+
+(3)  ApiSignInWebGroupSave
+      ...Create or save a web user group
+
+//ApiSignInWebGroupSave
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+ {
+      "UserGrp": "Nucleus v1",
+      "UserType": "I",
+      "GrpId": 2,
+      "MdfDate": null
+}
+
+
+(4)  ApiSignInWebGroupDel
+      ...Allowing to delete a unwanted web user group
+//ApiSignInWebGroupDel
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "GrpId": 2,
+   "UserType":"I",
+}
+(5)  ApiSignInTmplModuleList
+      ...List all screens of a web user group 
+//ApiSignInTmplModuleList
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  
+   "UserType":"I",
+   "GrpId": 1
+}
+
+(6)  ApiSignInTmplModuleSave
+      ...Setting a parituclar screen for web user group
+//ApiSignInTmplModuleSave
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "Dscp": "Bulk Media",
+     "ModuleName": "bulkmedia/main",
+     "ModuleType": "BREADCRUMBS",
+     "Apps": null,
+      "ModuleId": 10,
+       "TmplId": 1,
+   "AssignedInd": "N",
+     "UserType": "I",
+      "GrpId": 1, 
+     "SetupId": 291
+    }
+(7)  ApiSignInTmplModuleDel
+      ...To delete a parituclar screen for web user group
+(6)  ApiSignInTmplModuleSave
+      ...Setting a parituclar screen for web user group
+//ApiSignInTmplModuleSave
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "ModuleId": 96,
+      "UserType": "I",
+      "GrpId": 1,
+      "SetupId": 19
+    }
+(5)  ApiSignInAccessCtrlList
+      ...List screens (assigned and unassigned) of a @SignIn
+###
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+"SignIn":"hg.cheong",
+"UserType":"I",
+"EttyId":null
+    }
+
+###
+(6)  ApiSignInAccessCtrlSave
+      ...Call to save a web module ID (It defaults as "W"=write access. Giving "R"= ready access only or "D"= disable to access) of a @SignIn
+###
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+"SignIn":"hg.cheong",
+"UserType":"I",
+"EttyId":null,
+ "AccessRightInd": "D",
+ "ModuleId": 68,
+  "GrpId": 1,
+    "ModuleName": "custenroll",
+     "SetupId": 18,
+   "UId": 24
+    }
+###
+(7)  ApiSignInList
+      ...To list all the internal users
+###
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "UserType":"I", 
+}
+
+(8)  ApiSignInAccessRightInd
+      ...Verify and return Access Right Indicator Read,Write,Disable
+
+
+-- 
+Best regards,
+Sam
+
+//Steps needed to regenerate AccessRight

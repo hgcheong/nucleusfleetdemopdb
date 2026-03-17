@@ -1,0 +1,40 @@
+
+//ApiMgmtCustAcctTxnPrdList
+###
+POST {{baseUrl}}/sp/RpeDrivewayTxnSearch/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+       "AcctId":53,
+    "TxnDate":null,
+   // "MediaNo": 78971340999920368
+
+//   "CustEttyId": 83
+}
+
+//ApiMgmtCustAcctTxnPrdList
+###
+POST {{baseUrl}}/sp/RpeDrivewayTxnItemSearch/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "Id": "896348",
+  "AcctId": null,
+ // "LogId": "1971225"
+    "LocationNo": "BMUATMYF0000001"
+
+
+//   "CustEttyId": 83
+}
+
+# Parameters:
+# 1) @CustEttyId
+# 2) @EttyId ....Company Entity ID
+# 3) @AcctId
+# 4) @TxnInd = an identifier. It is either SALE transaction (0) or OTHERs type of transaction (1)
+# 5) @MediaNo = by specific media
+# 6) @LocNo = by specific location 
+# 7) @TadNo = by specific TAD
+# 8) @TxnDate = by specific transaction date

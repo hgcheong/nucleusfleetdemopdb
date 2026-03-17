@@ -1,0 +1,49 @@
+
+
+POST {{baseUrl}}/sp/ApiMgmtCust/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 703
+
+}
+### 
+
+//ApiMgmtCustOverview
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 703
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustProfile/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 703
+
+}
+### 
+
+//ApiMgmtCustOverviewChkList
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustOverviewChkList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": null
+
+}
+### 
+

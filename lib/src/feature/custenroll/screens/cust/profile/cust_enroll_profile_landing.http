@@ -1,0 +1,185 @@
+//ApiEnrlCustProfile
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustProfile/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustProfileSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "16",
+  "TaxCtgry": null,
+  "TaxNo": null,
+  "AcctMgrContactNo": "0124440102",
+  "AcctMgrId": "8",
+  "SrcRef": null,
+  "CmpyName": "FGV Ladang (Johor) Sdn Bhd",
+  "RgstionName": "FGV Johor Sdn Bhd",
+  "RgstionNo": "102902-U",
+  "SegmtType": "ECOMM",
+  "BusnType": "COMMSVC",
+  "CmpyType": "INTERNATIONAL",
+  "FirstName": "Moikil Bin",
+  "LastName": "Ismail",
+  "Dsgntion": null,
+  "MobileNo": null,
+  "Email": null,
+  "ApplRef": "FGV",
+  "ApplSrc": "ENR",
+  "SubmtDate": "2023-08-22",
+  "RgstionDate": "1980-12-02",
+  "AcctMgrName": "Samsul Arul"
+}
+### 
+
+//ApiEnrlAddr
+
+POST {{baseUrl}}/sp/ApiEnrlAddrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 16
+}
+### 
+
+
+POST {{baseUrl}}ApiEnrlAddrSave HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+    {
+      "EttyId": 6,
+      "ContactId": 3,
+      "AddrType": "MAILING",
+      "BdgName": null,
+      "Street1": "Center Poi23nt",
+      "Street2": "BU",
+      "Street3": null,
+      "CityCd": "MY:C:KUL",
+      "PostCd": "56700",
+      "CtryCd": null,
+      "StateCd": "MY:KUL",
+      "GeoLoc": "POINT (-132.349 55.651)",  
+    }
+###
+
+
+POST {{baseUrl}}/sp/ApiEnrlAddr/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+
+    {
+      "EttyId": 16,
+      "ContactId": null,
+      "AddrType": "ROC",
+  }
+###
+
+
+//ApiEnrlContactList
+
+POST {{baseUrl}}/sp/ApiEnrlContactList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 16
+}
+### 
+
+//ApiEnrlContact
+
+POST {{baseUrl}}/sp/ApiEnrlContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 8,
+  "ContactId": 5,
+  "ContactType": "PIC"
+}
+### 
+
+//ApiEnrlContactSave
+
+POST {{baseUrl}}/sp/ApiEnrlContactSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 8,
+  "ContactId": 5,
+  "ContactType": "PIC"
+}
+### 
+
+
+#ContactType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ContactType",
+"BitInd":null
+}
+###
+
+#AddressType
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ADDRTYPE",
+"BitInd":null
+}
+###
+
+#BUSNSIZE
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BUSNSIZE",
+"BitInd":null
+}
+###
+
+
+///sp/ApiEnrlAddr/queryasync
+
+
+POST {{baseUrl}}/sp/ApiEttyDirectorshipList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "EttyId": 711
+}
+
+###
+POST {{baseUrl}}/sp/ApiEttyDirectorship/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "EttyId": 711,
+ "IndvdId":null
+}
+###

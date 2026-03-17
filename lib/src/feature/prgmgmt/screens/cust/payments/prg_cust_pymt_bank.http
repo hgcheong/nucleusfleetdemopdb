@@ -1,0 +1,46 @@
+#CrExpType 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CrExpType",
+"BitInd":null
+}
+###
+
+##ApiPrgCustAutoPymt
+
+POST {{baseUrl}}/sp/ApiPrgCustAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 4,
+
+}
+### 
+
+
+##ApiPrgCustAutoPymtSave
+
+POST {{baseUrl}}/sp/ApiPrgCustAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "DrAutoPymtInd": null,
+      "DrAutoExecDays": null,
+      "DrPymtType": "DDR",
+      "DrBank": null,
+      "DrBranchCd": null,
+      "DrBankAcctNo": "1234",
+      "DrBankAcctType": null,
+      "DrAcctHolderName": "TEsting",
+      "DrPayeeCd": null,
+      "DrPayeeRef": null,
+      "DrBankAcctId": null,
+      "PrgEttyId": 4
+
+}
+### 

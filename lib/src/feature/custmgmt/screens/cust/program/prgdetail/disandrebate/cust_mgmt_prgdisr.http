@@ -1,0 +1,265 @@
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustRebateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 528,
+  "PrgEttyId": 1,
+  "MediaType": null
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustRebate/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 528,
+  "PrgEttyId": 1,
+  "MediaType":"ALL",
+  "RebateId":10
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustRebateSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+      "Dscp": "Test",
+      "MediaType": null,
+      "TxnCtgry": 10,
+      "SchdId": 3,
+      "AggateCd": "ACCT",
+      "BillingValue": null,
+      "FromDate": "2023-08-01",
+      "ToDate": "2024-08-01",
+      "TxnPlan": 1,
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": null,
+      "MdfDate": null
+    }
+###
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustRebateDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "RebateId": 6,
+      "MediaType":null,
+      "TxnCtgry":10
+    }
+###
+
+    //VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+//VwTxnPlan
+
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+POST {{baseUrl}}/view/async/VwSchdBillingRebate HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+POST {{baseUrl}}/view/async/VwAggateCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//ApiMgmtCustRebatePlanList
+###
+POST {{baseUrl}}/sp/ApiMgmtCustRebatePlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "MediaType": null
+}
+###
+
+#MEDIATYPE 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MEDIATYPE",
+"BitInd":null
+}
+###
+
+//VwSchdBillingRebate
+
+POST {{baseUrl}}/view/async/VwSchdBillingRebate HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+//VwBillingValue
+
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//ApiMgmtCustRebateLocList
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebateLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 10
+}
+###
+
+//ApiMgmtCustRebateLoc
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebateLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+//  "MediaType": null,
+  "RebateId": 10
+}
+###
+
+//ApiMgmtCustRebateLocSearch
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebateLocSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 10,
+  "LocName": null,
+  "LocNo": null,
+  "StateCd": null
+
+}
+###
+
+//ApiMgmtCustRebateLocSave
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebateLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 10,
+  "LocNo":"TEMP29"
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebateLocDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 10,
+  "FeeLocId": ,
+   "LocNo":"TEMP29"
+}
+###
+
+//ApiMgmtCustRebatePrdList
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebatePrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 7
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebatePrdSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 7,
+  "PrdCd": 1007,
+
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustRebatePrdDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "PrgEttyId": 1,
+  "RebateId": 7,
+  "PrdCd": 1007,
+
+}
+###

@@ -1,0 +1,68 @@
+##ApiPrgCustPostpaidOICycleList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidOICycleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+}
+### 
+
+##ApiPrgCustPostpaidOICycle
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidOICycle/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+        "BillingId": null
+
+}
+### 
+
+##ApiPrgCustPostpaidOICycleSave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidOICycleSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "Dscp": "Test Cycle 2",
+      "DelqcBlockDays": 2,
+      "MatchPymtInvcInd": "N",
+      "BillingId": 10,
+      "PrgEttyId": 97,
+      "SchdType": null,
+      "SchdId": null
+}
+### 
+
+##ApiPrgCustPostpaidOICycleDateList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidOICycleDateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "BillingId": 8,
+      "SchdType": "STMT"
+
+}
+### 
+
+##ApiPrgCustPostpaidOICycleDateList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidOICycleDateList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+      "BillingId": 8,
+      "SchdType": null
+
+}
+### 

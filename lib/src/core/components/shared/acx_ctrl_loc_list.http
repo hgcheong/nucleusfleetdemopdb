@@ -1,0 +1,10 @@
+//ApiMgmtLocAccptLocList
+
+
+POST {{baseUrl}}/sp/ApiMgmtLocAccptLocList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "AccptId": 49
+}

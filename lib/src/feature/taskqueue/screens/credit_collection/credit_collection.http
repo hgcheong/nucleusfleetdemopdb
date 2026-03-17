@@ -1,0 +1,129 @@
+
+//dbo.ApiTaskCollEventList
+
+
+POST {{baseUrl}}/sp/ApiTaskCollEventList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId":null,
+    "TaskId":null,
+    "AcctId":null,
+    "StmtId":null
+}
+###
+
+//ApiTaskCollSearch
+
+POST {{baseUrl}}/sp/ApiTaskCollSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CmpyName":"Trade",
+    "AcctNo":null
+}
+###
+
+//ApiTaskCollAcct
+
+POST {{baseUrl}}/sp/ApiTaskCollAcct/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+6
+{
+    "CustEttyId":528,
+    "AcctId":157,
+    "AcctNo":null
+}
+###
+
+//ApiTaskCollAcctContact
+
+POST {{baseUrl}}/sp/ApiTaskCollAcctContact/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId":528,
+    "AcctId":157,
+    "AcctNo":null
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiTaskCollAcctOverDue/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId":null,
+  "TaskId":null,
+  "AcctId":null,
+  "StmtId":null
+}
+###
+
+
+
+//ApiTaskCollCrDep
+
+POST {{baseUrl}}/sp/ApiTaskCollCrDep/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId":null,
+
+}
+###
+
+//ApiTaskCollReassign
+
+POST {{baseUrl}}/sp/ApiTaskCollReassign/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId":null,
+    "CustEttyId":null
+
+}
+###
+
+//ApiTaskCollReassignHist
+
+POST {{baseUrl}}/sp/ApiTaskCollReassignHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+    "CustEttyId":null,
+    "TaskId":null,
+    "AcctId":null,
+    "AcctNo":null
+
+}
+###
+
+//ApiTaskCollReassignSave
+
+POST {{baseUrl}}/sp/ApiTaskCollReassignSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+    "CustEttyId":null,
+    "TaskId":null,
+    "AcctId":null,
+    "AcctNo":null,
+    "ColltorId":null,
+    "RsnCd":null,
+    "Note":null,
+    "TaskSts":null
+
+}
+###

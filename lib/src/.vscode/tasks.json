@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "pub",
+        "run",
+        "build_runner",
+        "watch"
+      ],
+      "problemMatcher": [
+        "$dart-build_runner"
+      ],
+      "group": "build",
+      "label": "flutter: flutter pub run build_runner watch",
+      "detail": ""
+    },
+    {
+      "type": "flutter",
+      "command": "dart",
+      "args": [
+        "run",
+        "build_runner",
+        "watch"
+      ],
+      "problemMatcher": [
+        "$dart-build_runner"
+      ],
+      "group": "build",
+      "label": "flutter: flutter pub run build_runner watch",
+      "dependsOn":["flutter: flutter pub get"]
+    },
+    {
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "pub",
+        "get"
+      ],
+      "problemMatcher": [],
+      "label": "flutter: flutter pub get",
+      "detail": ""
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+//SchdId
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/VwMyCity HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwlibprd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwmediaissue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwlibtax HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+###
+#    {
+#       "Dscp": "BILLING CYCLE",
+#       "Id": 0,
+#       "FromDate": 0,
+#       "ToDate": 0,
+#       "SchdDay": 0,
+#       "SchdRcrsvType": null,
+#       "SchdRcrsvInterval": 0,
+#       "ToTime": 0,
+#       "TimeRcrsvType": null,
+#       "TimeRcrsvInterval": 0,
+#       "LastSchd": null,
+#       "LastRun": null,
+#       "NextRunDate": 0,
+#       "NextRunTime": 0,
+#       "BitInd": 1,
+#       "Sts": null
+#     },
+
+//TxnPlan
+POST {{baseUrl}}/view/async/VwTxnPlan HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+#    {
+#       "TxnPlan": 1,
+#       "TxnPlanDscp": "Default Plan",
+#       "MnlIndDscp": "YES",
+#       "ManualTxnInd": "Y",
+#       "WfId": 0,
+#       "BitInd": 0,
+#       "Sts": "A"
+#     },
+
+
+///view/async/VwLibTxnCtgry
+###
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+//VwSchdBillingItem
+###
+POST {{baseUrl}}/view/async/VwSchdBilling HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+POST {{baseUrl}}/view/async/VwAggateCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+/view/async/VwBillingValue
+
+###
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+###
+POST {{baseUrl}}/view/async/VwTxnSts HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwTxnSchema
+###
+POST {{baseUrl}}/view/async/VwTxnSchema HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+//VwFeeCtgry
+###
+POST {{baseUrl}}/view/async/VwFeeCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+//VwFeeCtgry
+###
+POST {{baseUrl}}/view/async/VwPymtTerm HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwPukalBusnArea
+###
+POST {{baseUrl}}/view/async/VwPukalBusnArea HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwPukalBusnArea
+###
+POST {{baseUrl}}/view/async/VwPukalSts HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwPukalBusnArea
+###
+POST {{baseUrl}}/view/async/VwPukalObjCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}

@@ -1,0 +1,56 @@
+##ApiPrgCustPostpaidBFPymtPriority
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFPymtPriority/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 97,
+}
+### 
+
+##ApiPrgCustPostpaidBFPymtPrioritySave
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFPymtPrioritySave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+   {
+      "BillingTypeDscp": "BALANCE FORWARD BILLING",
+      "TxnCtgryDscp": null,
+      "TxnGrp": null,
+      "Seq": null,
+      "BillingType": "BALFWD",
+      "PrgEttyId": 1,
+      "TxnCtgry": null,
+      "CtgryId": null
+    }
+### 
+
+//FNC
+
+/sp/ApiPlanList/queryasync
+
+###
+POST {{baseUrl}}/sp/ApiPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+   {
+      "TxnType": "LPC",
+  
+    }
+### 
+
+//LPC
+
+###
+POST {{baseUrl}}/sp/ApiPlanList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+   {
+      "TxnType": "FNC",
+  
+    }
+### 

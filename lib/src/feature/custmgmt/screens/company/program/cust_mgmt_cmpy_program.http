@@ -1,0 +1,51 @@
+# dbo.ApiMgmCmpyPrgAccptList
+# dbo.ApiMgmCmpyPrgAccpt
+# dbo.ApiMgmCmpyPrgAccptSave
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyPrgAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CustEttyId": 528,
+ "CmpyEttyId": 529
+}
+### 
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyPrgAccpt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"CustEttyId": 16,
+ "CmpyEttyId": 17,
+ "PrgEttyId":1,
+ "AccptId":
+}
+### 
+    # "BillingLevel": "COMPANY",
+    #   "BillingTypeDscp": "BALANCE FORWARD BILLING",
+    #   "StsDscp": "ACCEPTED",
+    #   "PrgDscp": "X-Fleet Government Kad Inden (Postpaid)",
+    #   "CustEttyId": 528,
+    #   "CmpyEttyId": 529,
+    #   "PrgEttyId": 1,
+    #   "AccptId": 18,
+    #   "BillingEttyType": 2,
+    #   "BillingType": "BALFWD",
+    #   "Sts": "A"
+
+
+    
+POST {{baseUrl}}/sp/ApiMgmtCmpyPrgAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CustEttyId": 528,
+"CmpyEttyId": 529,
+"PrgEttyId": 1,
+      "AccptId": 18,
+      "BillingType": "BALFWD",
+      "BillingEttyType":2 
+} 

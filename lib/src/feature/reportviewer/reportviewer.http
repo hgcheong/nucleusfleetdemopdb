@@ -1,0 +1,608 @@
+
+POST {{baseUrl}}/sp/rprptlist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+###
+
+
+POST {{baseUrl}}/view/async/VwNird HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+
+###
+POST {{baseUrl}}/sp/RpCustTxnList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "FromDate": "2025-01-01",
+    "ToDate":"2025-06-30"
+}
+
+//result
+{
+    "data": [
+        {
+            "Description": "Customer Account Delinquency Report",
+            "RptName": "CustomerAccountDelinquency",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustAcctDelinquent.rdl",
+            "SaveFileName": "CustomerAcctDelinqent",
+            "UserId": "hg.cheong",
+            "RptId": 2090,
+            "ColData": "EttyId;FromDate;ToDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 2
+        },
+        {
+            "Description": "Customer Bank Guarantee Next Interval Review Date",
+            "RptName": "CustomerBGNIRD",
+            "EttyType": 1,
+            "Obj": "dbo.RpSetOffEmailNIRD",
+            "SaveFileName": "CustomerBGNIRD",
+            "UserId": "hg.cheong",
+            "RptId": 2094,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Fees Transaction Report",
+            "RptName": "CustomerFees",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustFeesTxn.rdl",
+            "SaveFileName": "CustomerFeesTxn",
+            "UserId": "hg.cheong",
+            "RptId": 2050,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Media Generation Report",
+            "RptName": "CustomerMediaGeneration",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustMediaGen.rdl",
+            "SaveFileName": "CustomerMediaGeneration",
+            "UserId": "hg.cheong",
+            "RptId": 2060,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Miscellaneous Transaction Analysis Report",
+            "RptName": "CustomerMiscellaneousTransaction",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustMiscTxnAnalysis.rdl",
+            "SaveFileName": "CustomerMiscTxnAnalysis",
+            "UserId": "hg.cheong",
+            "RptId": 2020,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Payment Report",
+            "RptName": "CustomerPayment",
+            "EttyType": 1,
+            "Obj": "dbo.CustomerPayment.rdl",
+            "SaveFileName": "CustomerPayment",
+            "UserId": "hg.cheong",
+            "RptId": 2040,
+            "ColData": "FromDate;ToDate;Param1;Param2",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 64
+        },
+        {
+            "Description": "Customer Posted Transaction Report",
+            "RptName": "CustomerPostedTransaction",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustPostedTxn.rdl",
+            "SaveFileName": "CustomerPostedTxn",
+            "UserId": "hg.cheong",
+            "RptId": 2030,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Product Analysis Report",
+            "RptName": "CustomerProductAnalysis",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustPrdAnalysis.rdl",
+            "SaveFileName": "CustomerPrdAnalysis",
+            "UserId": "hg.cheong",
+            "RptId": 2091,
+            "ColData": "EttyId;FromDate;ToDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 2
+        },
+        {
+            "Description": "Customer PUKAL Account Billing",
+            "RptName": "CustomerPUKALAccountBilling",
+            "EttyType": 1,
+            "Obj": "dbo.CustomerPukalBillingAp504.rdl",
+            "SaveFileName": "CustomerPukalBillingAp504",
+            "UserId": "hg.cheong",
+            "RptId": 2042,
+            "ColData": "FromYear;FromMonth;Param1;Param2",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 128
+        },
+        {
+            "Description": "Customer PUKAL Account Maintenance",
+            "RptName": "CustomerPUKALAccountMaintenance",
+            "EttyType": 1,
+            "Obj": "dbo.CustomerPukalMaintenanceAp503.rdl",
+            "SaveFileName": "CustomerPukalMaintenanceAp503",
+            "UserId": "hg.cheong",
+            "RptId": 2041,
+            "ColData": "FromYear;FromMonth;Param1;Param2",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 128
+        },
+        {
+            "Description": "Customer Reconciliation Report",
+            "RptName": "CustomerReconciliation",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustRecon.rdl",
+            "SaveFileName": "CustomerReconcilation",
+            "UserId": "hg.cheong",
+            "RptId": 2070,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Sales Analysis Report",
+            "RptName": "CustomerSalesAnalysis",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustSalesAnalysis.rdl",
+            "SaveFileName": "CustomerSalesAnalysis",
+            "UserId": "hg.cheong",
+            "RptId": 2010,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Security Deposit Report",
+            "RptName": "CustomerSecurityDeposit",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustSecurityDeposit.rdl",
+            "SaveFileName": "CustomerSecurityDeposity",
+            "UserId": "hg.cheong",
+            "RptId": 2092,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer Security Deposit Review Report",
+            "RptName": "CustomerSecurityDepositReview",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustSecurityDepositRvw.rdl",
+            "SaveFileName": "CustomerSecurityDepositReview",
+            "UserId": "hg.cheong",
+            "RptId": 2093,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Customer SOA",
+            "RptName": "CustomerSOA",
+            "EttyType": 0,
+            "Obj": "dbo.CustomerSOA.rdl",
+            "SaveFileName": "CustomerSOA",
+            "UserId": "hg.cheong",
+            "RptId": 2080,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 4
+        },
+        {
+            "Description": "Customer Unposted Transaction Report",
+            "RptName": "CustomerUnpostedTransaction",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustUnpostedTxn.rdl",
+            "SaveFileName": "CustomerUnpostedTxn",
+            "UserId": "hg.cheong",
+            "RptId": 2031,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Imprint File",
+            "RptName": "ImprintFile",
+            "EttyType": 0,
+            "Obj": "dbo.RpImprtFile.spr",
+            "SaveFileName": "ImprintFile",
+            "UserId": "hg.cheong",
+            "RptId": 400,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Laporan Terperinci Pembayaran Bil Ditolak PUKAL",
+            "RptName": "LaporanTerperinciPembayaranDitolaklPukal",
+            "EttyType": 0,
+            "Obj": "dbo.RpPukalRejectedTxn.rdl",
+            "SaveFileName": "PukalAccountPostedTxn",
+            "UserId": "hg.cheong",
+            "RptId": 301,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 4
+        },
+        {
+            "Description": "Laporan Terperinci Pembayaran Bil PUKAL",
+            "RptName": "LaporanTerperinciPembayaranBilPukal",
+            "EttyType": 0,
+            "Obj": "dbo.RpPukalDetailTxn.rdl",
+            "SaveFileName": "PukalAccount",
+            "UserId": "hg.cheong",
+            "RptId": 300,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 4
+        },
+        {
+            "Description": "Merchant Miscellaneous Transaction Report",
+            "RptName": "MerchantMiscTxn",
+            "EttyType": 11,
+            "Obj": "dbo.MerchantMiscTxn.rdl",
+            "SaveFileName": "MerchantMiscellanousTxnReport",
+            "UserId": "hg.cheong",
+            "RptId": 1020,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Next Interval Review Date Report",
+            "RptName": "MerchantNIRD",
+            "EttyType": 11,
+            "Obj": "dbo.MerchantNIRD.rdl",
+            "SaveFileName": "MerchantNextIntervalReviewDateReport",
+            "UserId": "hg.cheong",
+            "RptId": 1050,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Reconciliation Report",
+            "RptName": "MerchantReconciliation",
+            "EttyType": 11,
+            "Obj": "dbo.RpMchtRecon.rdl",
+            "SaveFileName": "MerchantReconciliation",
+            "UserId": "hg.cheong",
+            "RptId": 1090,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Reimbursement 3rd Party Report",
+            "RptName": "MerchantReimbursement3rd",
+            "EttyType": 11,
+            "Obj": "dbo.RptMchtReimburse3rd.rdl",
+            "SaveFileName": "MerchantReimburse3rdPartyReport",
+            "UserId": "hg.cheong",
+            "RptId": 1040,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Reimbursement MBB File",
+            "RptName": "MerchantReimburseMBBFile",
+            "EttyType": 0,
+            "Obj": "dbo.RpMchtReimburseMbbFile.spr",
+            "SaveFileName": null,
+            "UserId": "hg.cheong",
+            "RptId": 1094,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Reimbursement None MBB File",
+            "RptName": "MerchantReimburseNoneMBBFile",
+            "EttyType": 0,
+            "Obj": "dbo.RpMchtReimburseNoneMbbFile.spr",
+            "SaveFileName": null,
+            "UserId": "hg.cheong",
+            "RptId": 1093,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Reimbursement Report",
+            "RptName": "MerchantReimbursement",
+            "EttyType": 11,
+            "Obj": "dbo.MerchantReimbursement.rdl",
+            "SaveFileName": "MerchantReimbursementReport",
+            "UserId": "hg.cheong",
+            "RptId": 1030,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Sales Product Report",
+            "RptName": "MerchantSalesProduct",
+            "EttyType": 11,
+            "Obj": "dbo.MerchantSalesProduct.rdl",
+            "SaveFileName": "MerchantProductAnalysis",
+            "UserId": "hg.cheong",
+            "RptId": 1092,
+            "ColData": "EttyId;FromDate;ToDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 2
+        },
+        {
+            "Description": "Merchant Sales Transaction Report",
+            "RptName": "MerchantSales",
+            "EttyType": 11,
+            "Obj": "dbo.MerchantSales.rdl",
+            "SaveFileName": "MerchantSalesReport",
+            "UserId": "hg.cheong",
+            "RptId": 1010,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Settled Batch Report",
+            "RptName": "MerchantSettledBatch",
+            "EttyType": 11,
+            "Obj": "dbo.RpMchtSttlmt.rdl",
+            "SaveFileName": "MerchantSettledBatch",
+            "UserId": "hg.cheong",
+            "RptId": 1070,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant SOA",
+            "RptName": "MerchantSOA",
+            "EttyType": 0,
+            "Obj": "dbo.MerchantSOA.rdl",
+            "SaveFileName": "MerchantSOA",
+            "UserId": "hg.cheong",
+            "RptId": 1905,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 4
+        },
+        {
+            "Description": "Merchant Statement",
+            "RptName": "MerchantStatement",
+            "EttyType": 0,
+            "Obj": "dbo.MerchantStatement.rdl",
+            "SaveFileName": "MerchantStatement",
+            "UserId": "hg.cheong",
+            "RptId": 1091,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 4
+        },
+        {
+            "Description": "Merchant Unposted Transaction Report",
+            "RptName": "MerchantUnpostedTransaction",
+            "EttyType": 11,
+            "Obj": "dbo.RpMchtUnpostedTxn.rdl",
+            "SaveFileName": "MerchantUnpostedTxn",
+            "UserId": "hg.cheong",
+            "RptId": 1051,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Unsettle Batch Report",
+            "RptName": "MerchantUnsettleBatch",
+            "EttyType": 11,
+            "Obj": "dbo.RpMchtUnsttlmt.rdl",
+            "SaveFileName": "MerchantUnsettleBatch",
+            "UserId": "hg.cheong",
+            "RptId": 1071,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "Merchant Upload Transaction Report",
+            "RptName": "MerchantUploadedTransaction",
+            "EttyType": 11,
+            "Obj": "dbo.RpMchtUploadedTxn.rdl",
+            "SaveFileName": "MerchantUploadedTxn",
+            "UserId": "hg.cheong",
+            "RptId": 1080,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "New Customer List",
+            "RptName": "NewCustomer",
+            "EttyType": 1,
+            "Obj": "dbo.RpCustNew.rdl",
+            "SaveFileName": "NewCustomer",
+            "UserId": "hg.cheong",
+            "RptId": 2000,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "New Merchant/Location List",
+            "RptName": "MerchantNew",
+            "EttyType": 11,
+            "Obj": "dbo.MerchantNew.rdl",
+            "SaveFileName": "NewMerchant",
+            "UserId": "hg.cheong",
+            "RptId": 1000,
+            "ColData": "EttyId;PrcsDate",
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "PUKAL AP503 Maintenance File",
+            "RptName": "PUKAL503OutboundFile",
+            "EttyType": 0,
+            "Obj": "dbo.Pukal503Prcsing.spr",
+            "SaveFileName": null,
+            "UserId": "hg.cheong",
+            "RptId": 302,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "PUKAL AP504 Billing File",
+            "RptName": "PUKAL504OutboundFile",
+            "EttyType": 0,
+            "Obj": "dbo.Pukal504Prcsing.spr",
+            "SaveFileName": null,
+            "UserId": "hg.cheong",
+            "RptId": 303,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "SAP File",
+            "RptName": "SAPFile",
+            "EttyType": 0,
+            "Obj": "dbo.RpSapFile.rdl",
+            "SaveFileName": "SAPFile",
+            "UserId": "hg.cheong",
+            "RptId": 401,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        },
+        {
+            "Description": "SAP Report",
+            "RptName": "SAPReport",
+            "EttyType": 0,
+            "Obj": "dbo.RpSap.rdl",
+            "SaveFileName": "SAPReport",
+            "UserId": "hg.cheong",
+            "RptId": 402,
+            "ColData": null,
+            "CrtionDate": "2025-01-15T12:33:14.623",
+            "BitInd": 1
+        }
+    ],
+    "output": [
+        {
+            "parameter": "@ColCnt",
+            "value": 1.0
+        },
+        {
+            "parameter": "@MsgId",
+            "value": 10001
+        },
+        {
+            "parameter": "@Return_Value",
+            "value": 0
+        }
+    ],
+    "rowcount": 40,
+    "columnInfo": [
+        {
+            "title": "Description",
+            "data": "Description",
+            "dataType": "nvarchar",
+            "visible": true
+        },
+        {
+            "title": "RptName",
+            "data": "RptName",
+            "dataType": "varchar",
+            "visible": false
+        },
+        {
+            "title": "EttyType",
+            "data": "EttyType",
+            "dataType": "int",
+            "visible": false
+        },
+        {
+            "title": "Obj",
+            "data": "Obj",
+            "dataType": "varchar",
+            "visible": false
+        },
+        {
+            "title": "SaveFileName",
+            "data": "SaveFileName",
+            "dataType": "nvarchar",
+            "visible": false
+        },
+        {
+            "title": "UserId",
+            "data": "UserId",
+            "dataType": "varchar",
+            "visible": false
+        },
+        {
+            "title": "RptId",
+            "data": "RptId",
+            "dataType": "bigint",
+            "visible": false
+        },
+        {
+            "title": "ColData",
+            "data": "ColData",
+            "dataType": "varchar",
+            "visible": false
+        },
+        {
+            "title": "CrtionDate",
+            "data": "CrtionDate",
+            "dataType": "datetime",
+            "visible": false
+        },
+        {
+            "title": "BitInd",
+            "data": "BitInd",
+            "dataType": "bigint",
+            "visible": false
+        }
+    ],
+    "message": {
+        "msgId": 10001,
+        "dscp": "Record Exists",
+        "msgSeverity": 0,
+        "bitInd": 0
+    },
+    "error": null
+}
+
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"MONTH",
+"BitInd":null
+}

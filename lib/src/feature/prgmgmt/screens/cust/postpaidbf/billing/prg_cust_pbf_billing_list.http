@@ -1,0 +1,11 @@
+##ApiPrgCustPostpaidBFCycleList
+
+POST {{baseUrl}}/sp/ApiPrgCustPostpaidBFCycleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "PrgEttyId": 1,
+}
+### 
+

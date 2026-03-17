@@ -1,0 +1,104 @@
+###
+POST {{baseUrl}}/sp/ApiMgmtSts/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 53,
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlSts/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 112,
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtStsSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 57,
+  "AcctNo":null,
+  "RefType":null,
+  "RefId":null,
+   "EventType":null,
+   "Sts":"S",
+   "RsnCd":"IA",
+   "Note":null,
+   "EffvDate":"2024-08-02",
+   "Reminder":null
+}
+
+
+
+//ApiStsList
+
+###
+POST {{baseUrl}}/sp/ApiStsList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "RefType": "LOCSTS",
+}
+
+//ApiStsList
+
+
+###
+POST {{baseUrl}}/sp/ApiRsnCdList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 57
+}
+###
+
+
+//theHistData
+
+###
+
+
+
+# ApiMgmtStsHist
+# {
+#   "EttyId": "535",
+#   "AcctNo": null
+#}
+
+A//piMgmtCustAcctTxnList
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAcctTxnList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "1381",
+  "PrgEttyId": "1",
+  "EttyId": "null",
+  "AcctId": "119",
+  "TxnCtgry": 0,
+  "MediaNo": "78",
+  "FromDate": "2024-05-08 00:00:00.000",
+  "ToDate": "2025-05-31 00:00:00.000"
+}
+
+{
+  "CustEttyId": "1381",
+  "PrgEttyId": "1",
+  "EttyId": "1382",
+  "AcctId": "119",
+  "TxnCtgry": 0,
+  "MediaNo": "78000000",
+  "FromDate": "2025-05-01 00:00:00.000",
+  "ToDate": "2025-05-31 00:00:00.000"
+}

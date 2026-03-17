@@ -1,0 +1,192 @@
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubsList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+ // "CmpyEttyId": 84
+}
+### 
+
+
+ApiMgmtSubsVhcList
+
+###
+POST {{baseUrl}}/sp/RpCmpySubsDashboard01/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+ // "CmpyEttyId": null
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubs/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  "QuoId": 3,
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubsSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CmpyEttyId": 37,
+     "CustEttyId": 10,
+      "QuotaId": null,
+      "SubsId": null,
+      "SubsDscp":"Subsidy Q1",
+      "SubsidyRefNo": "Ref123",
+      "FromDate": "2023-10-31",
+      "ToDate": "2023-12-31",
+      "QuotaLimit": 1000,
+      "RefreshCycle": "D",
+      "AllocationMethod": "POOL",
+      "Note": null,
+     
+}
+### 
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"QUOTACYCLE",
+"BitInd":null
+}
+###
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"QUOTAALLOCATE",
+"BitInd":null
+}
+###
+
+//VwSubsidyType
+##
+POST {{baseUrl}}/view/async/VwSubsSubsidy HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubsVhcList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "QuoId": 4
+}
+### 
+
+//ApiMgmtCmpySubsVhcList
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubsVhcSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "QuoId": 4
+}
+### 
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubsVhc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  "QuoId": 3,
+  "VhcRgsNo": null,
+  //"VhcId": null,
+  "MbrEttyId":null
+
+}
+
+    {"CustEttyId": custEttyId, 
+    "CmpyEttyId": cmpyEttyId, 
+    "QuoId": quoId, 
+    "VhcRgsNo": vhcRgsNo, 
+    "MbrEttyId": mbrEttyId,
+    "VhcId": vhcId}, showMsg: false);
+### 
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySubsVhcSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "VhcRgsNo": "WGGA1123",
+      "QuotaLimit": 100,
+      "VhcSts": null,
+      "CustEttyId": 16,
+      "CmpyEttyId": 84,
+      "MbrEttyId": null,
+      "QuoId": 3,
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"VhcSts",
+"BitInd":null
+}
+###
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"QUOTASTS",
+"BitInd":null
+}
+###
+
+
+
+
+//VwBillingFreq
+##
+POST {{baseUrl}}/view/async/VwSubsSubsidy HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+
+

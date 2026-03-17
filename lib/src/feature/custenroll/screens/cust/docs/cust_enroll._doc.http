@@ -1,0 +1,103 @@
+//ApiEnrlDocList
+
+
+POST {{baseUrl}}/sp/ApiEnrlDocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "Ettyid": 914,
+  "RpstryType": null,
+//  "Module":"APP"
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiDocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "Ettyid": 914,
+  "RpstryType": null,
+//  "Module":"APP"
+}
+###
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlDoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 10,
+  "RpstryType": null,
+
+
+}
+###
+
+
+POST {{baseUrl}}/sp/ApiEnrlDocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "FileType": "JOBSTMT",
+      "Dscp": "ABC",
+      "Path": "c:",
+      "DocId": null,
+      "EttyId": 10,
+      "RpstryType": "BANK"
+}
+###
+
+#FILETYPE 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"FILETYPE",
+"BitInd":null
+}
+###
+
+//GetLocList
+#
+POST {{baseUrl}}/sp/GetLocList/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocName":"BHP"
+}
+###
+
+//Upload To S3
+#
+POST {{baseUrl}}/s3/upload/10/bank HTTP/1.1
+Authorization: Bearer {{authorization}}
+Content-type: multipart/form-data; boundary=IamSplitter
+
+--IamSplitter
+
+Content-Disposition: form-data; name="files';filename="cat.jpg"
+Content-Type: image/png
+
+< assets/images/logo.png>
+---IamSplitter
+###
+
+//Get File List
+#
+POST {{baseUrl}}/s3/list HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId":"10/APP", 
+    "ModuleName":"mcenroll"
+}
+###

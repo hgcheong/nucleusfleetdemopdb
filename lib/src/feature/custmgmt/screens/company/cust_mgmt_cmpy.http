@@ -1,0 +1,104 @@
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpy/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId":17
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpySave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "TaxCtgry": null,
+  "TaxNo": null,
+  "SrcRef": null,
+  "CmpySize": "C",
+  "BranchCd": null,
+  "CmpySts": "A",
+  "MdfDate": "2024-03-08T18:45:15.05",
+  "CmpyEttyId": "17",
+  "CustEttyId": "16",
+  "CmpyName": "FGV Estate Sdn Bhd",
+  "RgstionName": "FGV Estate Sdn Bhd",
+  "RgstionNo": "102902-U",
+  "RgstionDate": "1980-12-02",
+  "CmpyType": "PARTNER",
+  "BusnType": "DEFAULT",
+  "SegmtType": "DEFAULT",
+  "Region": "CENTRAL"
+}
+### 
+
+#TaxCtgry 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TaxCtgry",
+"BitInd":null
+}
+###
+
+#CmpyType 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CmpyType",
+"BitInd":null
+}
+###
+
+#BusnType 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BusnType",
+"BitInd":null
+}
+###
+
+#BusnSegmt
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BusnSegmt",
+"BitInd":null
+}
+###
+
+
+#Region
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"Region",
+"BitInd":null
+}
+###

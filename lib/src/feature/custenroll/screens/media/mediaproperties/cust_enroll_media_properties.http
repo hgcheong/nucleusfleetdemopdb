@@ -1,0 +1,71 @@
+//ApiEnrlCustMediaTypeList
+##
+POST {{baseUrl}}/sp/ApiEnrlCustMediaTypeList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+   "PrgEttyId": 1,
+}
+###
+
+//ApiEnrlMediaProp
+
+//ApiEnrlMediaProp
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaProp/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 3,
+   "PrgEttyId": 1,
+   "MbrEttyId": 14,
+   "MediaEttyId": 17
+}
+###
+
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "CustEttyId": 4
+}
+###
+
+//ApiEnrlMediaPropSave
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaPropSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+     "CustEttyId": 16,
+      "PrgEttyId": 1,
+      "MbrEttyId": 93,
+      "MediaEttyId": null,
+      "MediaCtgry": "VEHICLE",
+      "MediaType": "CHIP",
+      "ExpMth": 0,
+      "ExpDate": null,
+      "OdmCtrl": "N",
+      "RequireAppvl": "Y",
+      "TacType": "DYNAMIC",
+}
+###
+
+
+#DSGNTION 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TACTYPE",
+"BitInd":null
+}
+###

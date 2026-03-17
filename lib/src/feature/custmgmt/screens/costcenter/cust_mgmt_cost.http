@@ -1,0 +1,50 @@
+
+POST {{baseUrl}}/sp/ApiMgmtCostCtrList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16
+
+}
+### 
+
+//ApiMgmtCostCtrSave
+
+POST {{baseUrl}}/sp/ApiMgmtCostCtrSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "CostCtr": "SALES & MARKETINGS",
+      "Dscp":"BDE",
+      "CustEttyId": 10,
+      "CmpyEttyId": 37,
+      "CostCtrEttyId":null ,
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCostCtr/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CostCtrEttyId": 39
+
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10
+
+}
+### 

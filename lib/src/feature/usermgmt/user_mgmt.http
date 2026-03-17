@@ -1,0 +1,517 @@
+//ApiSignInList 
+
+//ApiSignIn
+###
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "I"
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "E"
+}
+
+//ApiSignIn
+###
+POST {{baseUrl}}/sp/ApiSignInExt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": ""
+}
+
+//ApiSignIn
+###
+POST {{baseUrl}}/sp/ApiSignIn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SignIn": "hg.cheong",
+  "PwdHash": "BGrDQ/nUaO8NfBVvwgF+6x5z2OPQd7APlEzp+oZUvSU=",
+  "UserType": "I",
+  "ApplName":null,
+  "ApplVer": null,
+  "ReqType": "Query"
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UId": 24,
+  "SignIn": "hg.cheong",
+  "PwdHash": "BGrDQ/nUaO8NfBVvwgF+6x5z2OPQd7APlEzp+oZUvSU=",
+  "UserType": "I",
+  "ApplName":"Nucleus",
+  "ApplVer": "1",
+   "Email": "hg.cheong@accenxis.com",
+  "Mobile":"0133377766",
+  "Sts":"A",
+  "AccessRightGrpId":12,
+  "ReqType": "SETUP"
+}
+
+
+# {
+#   "SignIn": null,
+#   "UserType": null,
+#   "ReqType": null,
+#   "FirstName": null,
+#   "LastName": "helmi.osman@bhpetrol.com.my",
+#   "ApplName": null,
+#   "ContactNo": "0133333333",
+#   "Mobile": null,
+#   "Email": "helmi.osman@bhpetrol.com.my",
+#   "AccessRightGrpId": 12
+# }
+//LOGIN,ACTV,Reset,TxnApprov
+###
+POST {{baseUrl}}/sp/ApiSignInUpd/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SignIn": "hgcheong",
+  "ReqType":"RESET",
+  "TokenID":"F60FE0139-91BC-4F78-B73C-3322047C83D9",
+  "UsrId":24,
+  "PwdHash": "BGrDQ/nUaO8NfBVvwgF+6x5z2OPQd7APlEzp+oZUvSU=",
+}
+
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "I",
+  "SignIn": "hg.cheong",
+  "EttyId" : null,
+}
+
+
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInAccessCtrlSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+      "SignIn": "hg.cheong",
+      "UserType": "I",
+      "SetupId": 23,
+      "EttyId": 0,
+      "UId": 24,
+      "AccessRightInd": "D",
+      "GrpId": 1,                 
+      "ModuleId": 68,
+      "ModuleName": "usermgmt/webportaluser",
+    },
+
+//ApiSignInAccessCtrlSave 
+
+
+ApiSignInWebGroupList
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroup/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+   "UserType": "I",
+   "GrpId":12
+
+}
+
+
+
+//ApiSignInWebGroupSave
+###
+POST {{baseUrl}}/sp/ApiSignInWebGroupSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ "UserGrp": "Mgmt",
+      "UserType": "E",
+      "GrpId": null,
+      "MdfDate":null
+   
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+   "UserType": "I",
+   "GrpId": 12
+   
+}
+
+//ApiSignInTmplModuleSave
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+     // "Dscp": "Bulk Media",
+     // "ModuleName": "bulkmedia/main",
+   //  "ModuleType": "BREADCRUMBS",
+      "ModuleId": 135,
+      "UserType": "I",
+      "GrpId": 1,
+      "SetupId": 0
+    }
+
+
+    //ApiSignInTmplModuleDel
+###
+POST {{baseUrl}}/sp/ApiSignInTmplModuleDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+    {
+
+      "ModuleId": 96,
+      "UserType": "I",
+      "GrpId": 1,
+      "SetupId": 23
+    }
+
+
+###
+
+###
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "E"
+}
+
+
+
+//ApiSignInAccessRightInd
+###
+POST {{baseUrl}}/sp/ApiSignInAccessRightInd/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"SignIn":"hg.cheong",
+"UserType":"I",
+"ModuleId":46,
+"Sproc":"ApiSignInAccessRightInd"
+}
+###
+
+
+//Request type is Setup for sign in save
+###
+POST {{baseUrl}}/sp/ApiSignInSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "I",
+  "SignIn":"ali002",
+  "ReqType":null,
+  "Email":"abc@abc.com",
+  "Mobile":"123123123",
+  "ApplName":"cclick",
+  "ApplVer":null
+
+}
+
+(1) ApiSignInRoleList
+- This program is to show internal (I) or external (E) user type in a list.....dropdown list?
+- Allowing end-user to choose more specific - Sign-In or using Email in case user forgot their sign-In or email
+- We cater the search in wildcard ...left and right
+
+//Request type is Setup for sign in save
+###
+POST {{baseUrl}}/sp/ApiSignInRoleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "E",
+  "SignIn" : "",
+  "Email":""
+}
+
+(2) ApiSignInRole
+- Double click on the list ...Return to backend with @SignIn, @UsrId, @UserType and @EttyId
+- The @EttyId must be > 0 if it is an existing CustEttyId otherwise it should be is NULL
+- On screen:
+>>> Provide dropdown list to show CustEttyId
+>>> Provide dropdown list to show UserSts (VwLibRef where RefType = 'USERSTS'
+>>> Provide dropdown list to show UserRole (VwLibRef where RefType = 'USERROLE'
+>>> Provide dropdown list to show AccessSts (VwLibRef where RefType = 'USERSTS'     
+
+###
+POST {{baseUrl}}/sp/ApiSignInRole/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UsrId": 53,
+  "EttyId":1424,
+  "UserType": "E",
+  "SignIn": "ali002",
+}
+
+(3) ApiSignInRoleSave
+Call program
+EXEC dbo.ApiSignInRoleSave
+	@SignIn		,
+	@UsrId		,
+	@UserType	,
+	@EttyId		,
+	@WebEttyUId	 OUTPUT,
+	@UserRole	,
+	@AccessSts	,
+	@MobileNo	,
+	@Email		,
+	@UserId		,
+	@SrcIpAddr	,
+	@MsgId		 OUTPUT
+
+UserSts is the Sign-In status.......AccessSts is the level of CustEttyId access status
+
+///view/async/vwlibref 
+###
+POST {{baseUrl}}/view/async/vwlibref  HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"UserSts"}
+
+
+hi Cheong, plz replace the ApiSignInRoleList by ApiSignInRoleSearch
+
+//ApiSignInRoleSearch
+###
+POST {{baseUrl}}/sp/ApiSignInRoleSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "E",
+  "SignIn" : "ali002",
+  "Email":""
+}
+###
+POST {{baseUrl}}/sp/ApiSignInRoleList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "UsrId": 53,
+      "SignIn":"ali002",
+      "UserType": "E",
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInRole/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "UsrId": 53,
+      "SignIn":"ali002",
+      "UserType": "E",
+      "EttyId":1424
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInRoleSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "UsrId": 53,
+      "SignIn":"ali002",
+      "UserType": "E",
+      "MobileNo":"019999999",
+      "EttyId":1424,
+      "UserRole":"FLTMGR"
+}
+
+
+
+//ApiSignInList
+###
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "E",
+  "SignIn" : "ahchong",
+}
+
+//ApiSignInSave
+
+###
+POST {{baseUrl}}/sp/ApiSignInSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+       "SignIn": "ali002",
+      "ReqType":"A"
+      "UserType": "E",
+
+},
+
+      # "SignIn": "ali002",
+      # "Name": "ali Zhong",
+      # "Email": "ali002@gmail.com",
+      # "MobileNo": "0123237000",
+      # "PrgDscp": null,
+      # "UserStsDscp": "ACTIVE",
+      # "AtvnDate": "2025-04-14T00:00:00",
+      # "TmntionDate": null,
+      # "CrtionDate": "2025-03-26T13:29:35.317",
+      # "CrtBy": "ali002",
+      # "UserTypeDscp": "EXTERNAL USER (WEB)",
+      # "UId": 53,
+      # "UsrId": 53,
+      # "UserType": "E",
+      # "UserSts": "A"
+
+
+  //Sigin IN Save
+  ###
+###
+POST {{baseUrl}}/sp/ApiSignInSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+ "SignIn": "hgcheong.my@gmail.com",
+  "PwdHash": "Ec@rd1234",
+  "Email":"hgcheong.my@gmail.com",
+  "Mobile": "0133333333",
+  "ReqType": "Setup",
+  "UserType": "I",
+  "ApplVer":"1",
+  "ApplName": "Nucleus",
+  "AccessRightGrpId":12,
+  "Sts": "N",
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiSignInSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+ "SignIn": "hgcheong.my@gmail.com",
+  "PwdHash": "Ec@rd1234",
+  "Email":"hgcheong.my@gmail.com",
+  "Mobile": "0133333333",
+  "ReqType": "ACTV",
+  "UserType": "I",
+  "ApplVer":"1",
+  "ApplName": "Nucleus",
+  "AccessRightGrpId":12,
+  "Sts": "A",
+
+}
+
+//ApiSignInUpd
+
+###
+POST {{baseUrl}}/sp/ApiSignInUpd/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+ "SignIn": "hgcheong.my@gmail.com",
+  "PwdHash": "Ec@rd1234",
+  "Email":"hgcheong.my@gmail.com",
+  "Mobile": "0133333333",
+  "ReqType": "ACTV",
+  "UserType": "I",
+  "ApplVer":"1",
+  "ApplName": "Nucleus",
+  "AccessRightGrpId":12,
+  "Sts": "A",
+
+}
+
+//ApiSignInList
+###
+POST {{baseUrl}}/sp/ApiSignInList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "UserType": "E",
+}
+
+
+//ApiSignInRole
+//ApiSignInList
+###
+POST {{baseUrl}}/sp/ApiSignInRole/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SignIn": "abdul@bomba.gov.my",
+  "UserId": "abdul@bomba.gov.my",
+}
+
+  # {
+  #     "UserId": "abdul@bomba.gov.my",
+  #     "Name": "ABDUL RAMLAN",
+  #     "ContactNo": "0196667771",
+  #     "Email": "abdul@bomba.gov.my",
+  #     "Status": "NEW",
+  #     "CreationDate": "2025-09-16T20:44:40.29",
+  #     "CreatedBy": "SYSTEM@PrcsOnboardCust",
+  #     "ModifiedDate": "2025-09-16T20:44:40.29",
+  #     "ModifiedBy": "SYSTEM@PrcsOnboardCust",
+  #     "UId": 178,
+  #     "WUserId": "abdul@bomba.gov.my",
+  #     "EttyId": null,
+  #     "PwdHash": null,
+  #     "UserType": "E",
+  #     "AccessRightGrpId": 0
+  #   },

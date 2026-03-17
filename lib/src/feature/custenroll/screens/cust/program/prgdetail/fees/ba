@@ -1,0 +1,30 @@
+{
+  "submissionUid": "6CXMYB5M46CNA53D73V9TB0J10",
+  "acceptedDocuments": [
+    {
+      "uuid": "1W8VSZZP588XTYW873V9TB0J10",
+      "invoiceCodeNumber": "3002"
+    }
+  ],
+    "rejectedDocuments": [
+    {
+      "invoiceCodeNumber": "3002",
+      "error": {
+        "code": "2",
+        "message": "Validation Error",
+        "target": "3002",
+        "propertyPath": null,
+        "details": [
+          {
+            "code": "CF321",
+            "message": "Document issuance date time is in the future",
+            "target": "DatetimeIssued",
+            "propertyPath": "Invoice.IssueDate AND Invoice.IssueTime",
+            "details": null
+          }
+        ]
+      }
+    }
+  ],
+    "error": "Request payload is identical to a previous payload sent in the last 10 Min. Try to submit payload after 123 seconds."
+}

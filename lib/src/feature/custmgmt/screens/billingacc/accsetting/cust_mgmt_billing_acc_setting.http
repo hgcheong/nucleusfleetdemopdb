@@ -1,0 +1,152 @@
+//ApiEnrlCmpyAutoPymt
+
+
+POST {{baseUrl}}/sp/ApiMgmtCustAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 703, "PrgEttyId": 1, "EttyId": 704, "AcctId": 26, "AcctType": "POSTPAID"}
+### 
+
+//{CustEttyId: 528, PrgEttyId: 529, EttyId: 529, AcctId: 160, AcctType: POSTPAID}
+//ApiMgmtCustBillingAcctPostpaid
+{CustEttyId: 703, PrgEttyId: 1, EttyId: 704, AcctId: 26, AcctType: POSTPAID}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPostpaid/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 703, "PrgEttyId": 1, "EttyId": 704, "AcctId": 26, "AcctType": "POSTPAID"  ,"SchdId": null}
+
+### 
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528
+}
+### 
+
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPostpaid/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"CustEttyId": 10, "PrgEttyId": 1, "EttyId": 37, "AcctId": 29, "AcctType": "POSTPAID", "SchdId": null}
+### 
+
+//ApiMgmtCustBillingAcctPostpaidSave
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPostpaidSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 10,
+    "PrgEttyId": 1,
+    "EttyId": 37,
+    "AcctId": 11,
+    "AcctType":"POSTPAID",
+    "SchdId": null,
+    "CrLimit":null,
+    "MaxCrBal":null,
+    "FncChrgInd":null,
+     "LpcChrgInd":null,
+     "PymtTerm":null,
+     "StmtOptHardcopy":null,
+     "BillingModelId":0,
+     "BillingType":null,
+   //  "BillingEttyType":2,
+     "MdfDate":null
+     
+    
+}
+### 
+
+///sp/GetLibRef/queryasyncnouser
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType": "AUTOEXECDAY", "BitInd": null}
+
+
+//ApiMgmtCustBillingCrLimit
+
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingCrLimit/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+    "PrgEttyId": 1,
+    "EttyId": 529,
+    "AcctId":14
+}
+
+//RpeDrivewayAcctBal
+
+###
+POST {{baseUrl}}/sp/RpeDrivewayAcctBal/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+    "EttyId": 529,
+    "AcctId":14
+}
+
+//SchdId
+###
+POST {{baseUrl}}/view/async/vwcustbillingtype HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//vwColltorCust
+###
+POST {{baseUrl}}/view/async/vwColltorCust HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+POST {{baseUrl}}/view/async/VwAcctMgrCust HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+#   {
+#       "AcctMgrId": 2,
+#       "AcctMgrName": "Ahmad Hidzri Ahmad Rabudzi",
+#       "ContactNo": "3100",
+#       "BitInd": 1,
+#       "Sts": "A"
+#     },
+
+###
+POST {{baseUrl}}/view/async/VwReferrer HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}

@@ -1,0 +1,99 @@
+
+POST {{baseUrl}}/sp/ApiEnrlMchtBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "MchtEttyId": 230,
+      
+}
+### 
+
+//ApiEnrlMchtLocAutoPymt
+POST {{baseUrl}}/sp/ApiEnrlMchtLocAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "MchtEttyId": 100,
+      "EttyId": 102,
+      "PrgEttyId": 1,
+}
+
+VwPymtMethod
+//VwPymtMethod
+###
+POST {{baseUrl}}/view/async/VwPymtMethod HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+
+VwYesNo
+//VwPymtMethod
+###
+POST {{baseUrl}}/view/async/VwYesNo HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//ApiEnrlMchtLocAutoPymtSave
+
+
+###
+POST {{baseUrl}}/sp/ApiEnrlMchtLocAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "DrAutoPymtInd": null,
+      "DrAutoExecDays": null,
+      "DrPymtType": "DDR",
+      "DrBank": null,
+      "DrBranchCd": null,
+      "DrBankAcctNo": null,
+      "DrBankAcctType": null,
+      "DrAcctHolderName": null,
+      "DrPayeeCd": null,
+      "DrPayeeRef": null,
+      "DrBankAcctId": null,
+      "DrSts": null,
+      "CrAutoPymtInd": null,
+      "CrAutoExecDays": null,
+      "CrPymtType": "DCR",
+      "CrBank": null,
+      "CrBranchCd": null,
+      "CrBankAcctNo": null,
+      "CrBankAcctType": null,
+      "CrAcctHolderName": null,
+      "CrPayeeCd": null,
+      "CrPayeeRef": null,
+      "CrBankAcctId": null,
+      "CrSts": null,
+      "MchtEttyId": 100,
+      "EttyId": 102,
+      "PrgEttyId": 1
+}
+
+//ApiEnrlMchtLocAutoPymtList
+
+//ApiEnrlMchtLocAutoPymt
+###
+POST {{baseUrl}}/sp/ApiEnrlMchtLocAutoPymtList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "MchtEttyId": 102,
+   //   "AcctId": 9
+}
+
+//

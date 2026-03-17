@@ -1,0 +1,76 @@
+//ApiMchtMgmtOverview
+
+ApiMgmtMainSearch
+//      final refCd = val['RefCd'];
+                        //       final ettyId = val['EttyId'];
+###
+POST {{baseUrl}}/sp/ApiMgmtMainSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "RefCd": "MCHTNAME",
+  "Str": "bh"
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtLocOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 83,
+  "LocEttyId": 86
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtLocOverviewHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 83,
+  "LocEttyId": 86
+
+}
+### 
+
+//ApiMchtMgmtOverviewChkList
+
+
+POST {{baseUrl}}/sp/ApiMchtMgmtOverviewChkList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 100
+
+}
+### 
+
+//ApiMchtMgmtAppvHistList
+
+POST {{baseUrl}}/sp/ApiMchtMgmtAppvHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 100
+
+}
+### 
+
+//ApiMchtMgmtAppvHistList
+
+POST {{baseUrl}}/sp/ApiMchtMgmtAppvHist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 100
+
+}
+### 

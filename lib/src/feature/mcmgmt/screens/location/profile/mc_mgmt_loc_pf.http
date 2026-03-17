@@ -1,0 +1,94 @@
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+   "MchtEttyId": 55,
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 850,
+   "MchtEttyId": 834,
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "LocNo": "458001020304001",
+      "LocName": "BHPETROL BANDAR BARU SALAK TINGGI",
+      "SiteId": "SELBBST",
+      "DealerType": "MY:COCO",
+      "AgrmtNo": "BBST001",
+      "AgrmtDate": "2023-09-01T00:00:00",
+      "RgstionNo": "E1028",
+      "RgstionName": "BHPETROL BBST SDN BHD",
+      "RgstionDate": "2017-02-10T00:00:00",
+      "CmcmtDate": "2023-10-01T00:00:00",
+      "CmpyType": "LIMITED",
+      "BusnType": "DEFAULT",
+      "SegmtType": "DEFAULT",
+      "CmpySize": "C",
+      "TaxCtgry": "NIL",
+      "TaxNo": "",
+      "GeoLoc": null,
+      "MchtEttyId": 83,
+      "BusnUnitEttyId": 84,
+      "LocEttyId": 86,
+      "LocMdfDate": "2023-09-12T05:13:18.54",
+      "CmpyMdfDate": "2023-09-12T05:13:18.54",
+      "LocSts": "A"
+    }
+
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"DealerType",
+"BitInd":null
+}
+###
+
+
+//ApiMgmtLocSts
+
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"Sts",
+"BitInd":null
+}
+###
+
+###
+
+//ApiMgmtLocStsSave
+
+
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"LocSts",
+"BitInd":null
+}
+###

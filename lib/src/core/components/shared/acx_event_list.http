@@ -1,0 +1,87 @@
+###
+POST {{baseUrl}}/sp/ApiMgmtEventHist/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 834
+}
+###
+
+###
+POST {{baseUrl}}/sp/ApiMgmtEvent/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 834
+}
+###
+
+//ApiMgmtEventSave
+
+###
+POST {{baseUrl}}/sp/ApiMgmtEventSave/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId": 834
+}
+###
+///view/async/VwMyCity
+
+    #  const FbLibView(
+                                      
+    #                         name: 'AccessSts',              
+    #                         label: 'Access Status',
+    #                         searchText: 'Dscp',
+    #                         keyField: 'RefCd',
+    #                         params: {"view":"and RefType='UserSts' and dbo.ufnBitUserActvSusp(BitInd)>0"},
+    #                         querySql: '/view/async/vwlibref/addcond',
+    #                       ),
+
+
+    POST {{baseUrl}}/view/async/VwMyCity HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+{
+
+}
+
+    POST {{baseUrl}}/view/async/vwlibref/addcond HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"view":"and RefType='City'"
+}
+
+###
+    POST {{baseUrl}}/view/async/vwlibref/addcond HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"view":"and RefType='State'"
+}
+
+###
+    POST {{baseUrl}}/view/async/VwMyCity/addcond HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"view":"and RefType like 'MY:07%'"
+}
+
+ ///sp/GetLibRef/queryasyncnouser
+###
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType":"Ctry"
+}

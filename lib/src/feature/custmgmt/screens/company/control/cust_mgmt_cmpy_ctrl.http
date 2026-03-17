@@ -1,0 +1,318 @@
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimit/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  "PrgEttyId": 1,
+  "LimitId": 5
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimitDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  "PrgEttyId": 1,
+  "LimitId": 5,
+  "TxnCtgry":10,
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimitSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 10,
+    "CmpyEttyId": 37,
+    "PrgEttyId": 1,
+    "LimitId": null,
+    "TxnCtgry": 0,
+    "LimitType": "MTH",
+    "LimitMsuremt": "AMT",
+    "MinThsld": 10,
+    "MaxThsld": 12,
+    "CntThsld": 10,
+    "Sts": "A",
+    
+}
+### 
+
+//ApiMgmtCmpyTxnLimitPrdList
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimitPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  "PrgEttyId": 1,
+  "LimitId":5
+}
+### 
+
+
+
+//ApiMgmtCmpyLocAccptPrgList
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37
+}
+### 
+
+//ApiMgmtCmpyLocAccptList
+
+##
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccpt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "AccptId": 6
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "AccptId": 6
+}
+### 
+
+
+//ApiMgmtCmpyLocAccptSave
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "FromTime": "10:00:00",
+      "ToTime": "10:00:01",
+      "FromDate": "2024-01-01",
+      "ToDate": "2024-12-31",
+      "Dscp":"Description SDF",
+      "Mon": 0,
+      "Tue": 0,
+      "Wed": 0,
+      "Thu": 1,
+      "Fri": 0,
+      "Sat": 0,
+      "Sun": 1,
+      "CmpyEttyId": 37,
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "AccptType": "B",
+      "AccptId": 6
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+  "CustEttyId": "528",
+  "CmpyEttyId": "529",
+  "AccptId": null
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+  "CustEttyId": "528",
+  "CmpyEttyId": "529",
+  "AccptId": null
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptLocDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "LocNo": "TEMP29",
+  "LocateId": 3,
+  "AccptId": 5
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptLocSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "AccptId": 5,
+  "LocName": "SULTAN "
+}
+
+###
+# Sample Data
+#  {
+#       "LocNo": "458001020304001",
+#       "LocName": "BHPETROL BANDAR BARU SALAK TINGGI",
+#       "CityName": "SEPANG",
+#       "LocStsDscp": "ACTIVE",
+#       "CmpyEttyId": 37,
+#       "CustEttyId": 10,
+#       "PrgEttyId": 1,
+#       "LocEttyId": 86,
+#       "AccptId": 5
+# },
+
+
+
+
+
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyLocAccptLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "AccptId": 5,
+  "LocNo": "TEMP29"
+}
+### 
+
+//ApiMgmtCmpyTxnLimitPrgList
+
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimitPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37
+}
+### 
+
+//ACCPTTYPE
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ACCPTTYPE",
+"BitInd":null
+}
+###
+
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwLimitType
+##
+POST {{baseUrl}}/view/async/VwLimitType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwBillingValue
+
+##
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+///sp/ApiMgmtCmpyTxnLimitPrgList/queryasync 
+##
+POST {{baseUrl}}/sp/ApiMgmtCmpyTxnLimitPrdSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+  "CustEttyId": "16",
+  "CmpyEttyId": "84",
+  "LimitId": "5",
+  "PrdSts": "N",
+  "PrdCd": "1007"
+}
+###

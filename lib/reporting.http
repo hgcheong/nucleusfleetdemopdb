@@ -1,0 +1,35 @@
+//ApiSignIn
+###
+POST {{baseUrl}}/sp/rprptlist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+###
+
+//ApiSignIn
+###
+POST {{baseUrl}}/sp/rprptInfo/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "RptId": 100,
+
+}
+###
+
+
+//ApiSignIn
+###
+POST {{baseUrl}}/sp/rprptInfo/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "RptId": 100,
+    
+}
+###

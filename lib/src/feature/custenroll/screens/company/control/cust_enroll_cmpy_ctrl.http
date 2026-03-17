@@ -1,0 +1,341 @@
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimitList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+     "CustEttyId": 11,
+      "CmpyEttyId": 56
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimit/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+         "CmpyEttyId": 56,
+      "CustEttyId": 11,
+      "PrgEttyId": 1,
+      "LimitId": 9
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimitDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 10,
+    "CmpyEttyId": 37,
+    "PrgEttyId": 1,
+  "LimitId": 5
+}
+### 
+
+
+POST {{baseUrl}}/view/async/VwPrdCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+###
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimitSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 11,
+    "CmpyEttyId": 56,
+    "PrgEttyId": 1,
+    "LimitId": 9,
+    "TxnCtgry": 0,
+    "LimitType": "MTH",
+    "LimitMsuremt": "AMT",
+    "MinThsld": 1,
+    "MaxThsld": 12,
+    "CntThsld": 10,
+    "Sts": "A",
+    "Dscp":"By Month",
+    "PrdCtgry": "1",
+    "MdfDate": "2024-05-03T18:19:31.983"
+    
+}
+### 
+
+//ApiEnrlCmpyTxnLimitPrdList
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimitPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 16,
+  "CmpyEttyId": 84,
+  "PrgEttyId": 1,
+  "LimitId":5
+}
+### 
+
+
+
+//ApiEnrlCmpyLocAccptPrgList
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37
+}
+### 
+
+//ApiEnrlCmpyLocAccptList
+
+##
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 236,
+  "CmpyEttyId": 238,
+  
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccpt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "CmpyEttyId": 238,
+      "CustEttyId": 236,
+      "PrgEttyId": 1,
+      "AccptId": 22
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "AccptId": 6
+}
+### 
+
+
+//ApiEnrlCmpyLocAccptSave
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "FromTime": "10:00:00",
+      "ToTime": "10:00:01",
+      "FromDate": "2024-01-01",
+      "ToDate": "2024-12-31",
+      "Dscp":"Description SDF",
+      "Mon": 0,
+      "Tue": 0,
+      "Wed": 0,
+      "Thu": 1,
+      "Fri": 0,
+      "Sat": 0,
+      "Sun": 1,
+      "CmpyEttyId": 37,
+      "CustEttyId": 10,
+      "PrgEttyId": 1,
+      "AccptType": "B",
+      "AccptId": 6
+}
+### 
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CmpyEttyId": 238,
+      "CustEttyId": 236,
+      "PrgEttyId": 1,
+      "AccptId": 22
+}
+### 
+
+###
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptLoc/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+       "CmpyEttyId": 108,
+      "CustEttyId": 107,
+      "PrgEttyId": 1,
+  "AccptId": 9,
+        "AccptId": 3,
+          "LocateId": 2,
+           "LocNo": "438000230256901",
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptLocDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "LocNo": "TEMP29",
+  "LocateId": 3,
+  "AccptId": 5
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptLocSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "107",
+  "CmpyEttyId": "108",
+  "PrgEttyId": "1",
+  "AccptId": "3",
+  "LocName": null
+}
+
+###
+# Sample Data
+#  {
+#       "LocNo": "458001020304001",
+#       "LocName": "BHPETROL BANDAR BARU SALAK TINGGI",
+#       "CityName": "SEPANG",
+#       "LocStsDscp": "ACTIVE",
+#       "CmpyEttyId": 37,
+#       "CustEttyId": 10,
+#       "PrgEttyId": 1,
+#       "LocEttyId": 86,
+#       "AccptId": 5
+# },
+
+
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyLocAccptLocSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37,
+  "PrgEttyId": 1,
+  "AccptId": 5,
+  "LocNo": "TEMP29"
+}
+### 
+
+//ApiEnrlCmpyTxnLimitPrgList
+
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimitPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 10,
+  "CmpyEttyId": 37
+}
+### 
+
+//ACCPTTYPE
+
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ACCPTTYPE",
+"BitInd":null
+}
+###
+
+
+//VwLibTxnCtgry
+##
+POST {{baseUrl}}/view/async/VwLibTxnCtgry HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwLimitType
+##
+POST {{baseUrl}}/view/async/VwLimitType HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+//VwBillingValue
+
+##
+POST {{baseUrl}}/view/async/VwBillingValue HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+
+///sp/ApiEnrlCmpyTxnLimitPrgList/queryasync 
+##
+POST {{baseUrl}}/sp/ApiEnrlCmpyTxnLimitPrdSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "1",
+  "CustEttyId": "16",
+  "CmpyEttyId": "84",
+  "LimitId": "5",
+  "PrdSts": "N",
+  "PrdCd": "1007"
+}
+###
+
+
+//ApiTaskCollEventList
+
+POST {{baseUrl}}/sp/ApiTaskCollAcctCorrespondanceList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###

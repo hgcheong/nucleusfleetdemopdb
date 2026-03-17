@@ -1,0 +1,41 @@
+###
+POST {{baseUrl}}/sp/ApiEnrlLocPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"MchtEttyId": 40,
+"LocEttyId": 46
+}
+
+###
+
+
+POST {{baseUrl}}/sp/ApiEnrlLocPrgSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "LocEttyId": 15,
+  "PrgEttyId" : 1,
+  "AccptId": null,
+  "BillingEttyType": 13
+}
+
+//ApiEnrlLocPrgDel
+
+###
+POST {{baseUrl}}/sp/ApiEnrlLocPrgDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+//"MchtEttyId": 100,
+  "LocEttyId": 102,
+  "PrgEttyId" : 4,
+  "AccptId": 33,
+//   "BillingEttyType": 13
+
+
+}

@@ -1,0 +1,4456 @@
+//Update address in api to 40 characters
+//Move loop for setBatchIDDebtorCreditor out of date processbyday
+
+//Shorten the linedescription to 90 as 100 will exceed when combined with batch no
+//Set nonpost for customer and supplier master where status is inactive
+//Add ReceiptNo to financialpurchaseinvoices import and for financial purchase recipts use ostendo document number as journal voucher number
+//Change the description extraction financialpuchasereceipt with supplier code and extract only 100 characters for whole field
+//For TK Bakery Add HQ Code as ProjNo for Autocount only for FINANCIALPURCHASERECEIPTS
+//'FINANCIALPURCHASEVAR,FINANCIALPURCHASEINVOICES,FINANCIALSALESINVOICES';
+//For TK Bakery Remove Paymentment related posting
+//FINANCIALBANKDEPOSITS,FINANCIALAPPLYDEPOSIT,FINANCIALAPPLYPAYMENT,FINANCIALSALESFREIGHT
+//FINANCIALCUSTDEPOSIT,FINANCIALCUSTPAYMENT
+//Add project code-but can't find now aonly
+//Remove extraction of customer and supplier notes
+//Fix AP Tax Code missing
+//V2.0-B15-R143-0.2
+//V2.0-B15-R143-0.1
+//V2.0-B7-R113-0.1
+//V1.9-B4-R15-0.1
+
+
+uses 'ostSettings';
+
+var
+
+dFrom,dTo:variant;
+
+sTemp:string;
+
+
+
+function getTransDate(datefrom,dateto:string;tblname:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct transactiondate) from %s where upper(transactionstatus) = ''READY TO SEND'' and transactiondate >= ''%s'' and transactiondate <= ''%s'' and BATCHFILENO is null',[tblname,datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getBatchToProcess(datefrom,dateto:string;tblname:string):string;
+
+var
+
+_toReturn : variant;
+
+_sql:string;
+
+begin
+
+_sql:=format('select list(distinct cast(BATCHFILENO as integer)) from %s where upper(transactionstatus) <> ''TRANSACTION VALID'' and transactiondate >= ''%s'' and transactiondate <= ''%s''',[tblname,datefrom,dateto]);
+
+logInfo(_sql);
+
+_toReturn :=  getsqlresult(_sql);
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+procedure getProcessByDay(datefrom,dateto:string;listOfTbl:string);
+
+var
+
+toProcess:TStringList;
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+toProcess := TStringList.Create;
+
+_batchToProcess := TStringList.Create;
+
+toProcess.CommaText := listOfTbl;
+
+
+
+for j:=0 to toProcess.Count -1 do
+
+begin
+
+  _batchToProcess.CommaText :=getBatchToProcess(datefrom,dateto, toProcess[j]);
+
+   for k:= 0 to _batchToProcess.Count - 1 do
+
+   begin
+
+     checkCreateGLByBatch(_batchToProcess[k], toProcess[j]);
+
+   end;
+
+end;
+
+end;
+
+
+
+procedure getDetailProcessPR(datefrom,dateto:string);
+
+const
+
+_tblName = 'FINANCIALPURCHASERECEIPTS';
+
+var
+
+toProcess:TStringList;
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+_batchToProcess := TStringList.Create;
+
+//  getBatchId(datefrom,dateto, _tblName);
+
+
+
+  _batchToProcess.CommaText :=getBatchToProcess(datefrom,dateto, _tblName);
+
+   for k:= 0 to _batchToProcess.Count - 1 do
+
+   begin
+
+     checkCreatePRByBatch(_batchToProcess[k]);
+
+   end;
+
+end;
+
+
+
+procedure getProcessDetailCustDeposit(datefrom,dateto:string);
+
+const
+
+_tablename='FINANCIALCUSTDEPOSIT';
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+
+
+j,k:int;
+
+begin
+
+_batchToProcess := TStringList.Create;
+
+//  getBatchId(datefrom,dateto,_tablename);
+
+
+
+  _batchToProcess.CommaText :=getBatchToProcess(datefrom,dateto,_tablename );
+
+   for k:= 0 to _batchToProcess.Count - 1 do
+
+   begin
+
+     checkCreateCustDepositByBatch(_batchToProcess[k])
+
+   end;
+
+end;
+
+
+
+procedure getProcessDetailapplyDeposit(datefrom,dateto:string);
+
+const
+
+_tablename='FINANCIALAPPLYDEPOSIT';
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+
+
+j,k:int;
+
+begin
+
+_batchToProcess := TStringList.Create;
+
+//  getBatchId(datefrom,dateto,_tablename);
+
+
+
+  _batchToProcess.CommaText :=getBatchToProcess(datefrom,dateto,_tablename );
+
+   for k:= 0 to _batchToProcess.Count - 1 do
+
+   begin
+
+     checkCreateapplyDepositByBatch(_batchToProcess[k])
+
+   end;
+
+end;
+
+
+
+procedure getProcessDetailapplyPayment(datefrom,dateto:string);
+
+const
+
+_tablename='FINANCIALAPPLYPAYMENT';
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+
+
+j,k:int;
+
+begin
+
+_batchToProcess := TStringList.Create;
+
+//  getBatchId(datefrom,dateto,_tablename);
+
+
+
+  _batchToProcess.CommaText :=getBatchToProcess(datefrom,dateto,_tablename );
+
+   for k:= 0 to _batchToProcess.Count - 1 do
+
+   begin
+
+     checkCreateapplyPaymentByBatch(_batchToProcess[k])
+
+   end;
+
+end;
+
+
+
+
+
+procedure setBatchIdDebtorCreditor(_batchID:string);
+
+begin
+
+    executesql(format('Update FINANCIALCUSTOMERS set BATCHFILENO = %s where upper(TRANSACTIONSTATUS) = ''READY TO SEND'' '+
+
+   'and BATCHFILENO is null',[_batchID]));
+
+     executesql(format('Update FINANCIALSUPPLIERS set BATCHFILENO = %s where upper(TRANSACTIONSTATUS) = ''READY TO SEND'' '+
+
+   'and BATCHFILENO is null',[_batchID]));
+
+end;
+
+
+
+procedure setBatchIdCustomerApplyPayment(_batchID:string);
+
+var
+
+_sql :string;
+
+begin
+
+    _sql := format('Update CUSTOMERPAYMENTS set %s = ''%s'', %s=''%s'' where PAYMENTSTYLE = ''Match Credits to Invoices'' '+
+
+    'and %s is null ',[cpBatchFile,_batchID,cpStatus,'Ready to Send',cpBatchFile]);
+
+    logInfo(_sql);
+
+    executesql(_sql);
+
+end;
+
+
+
+procedure setBatchIdAllTables(datefrom,dateto,batchID:string);
+
+var
+
+_allTables:TStringList;
+
+_i:integer;
+
+
+
+begin
+
+_allTables := TStringList.Create();
+
+_allTables.CommaText := getGLFinancialTablesForBatch;
+
+
+
+
+
+
+
+  for _i:= 0 to _allTables.Count -1 do
+
+  begin
+
+   executesql(format('Update %s set BATCHFILENO = %s where TransactionDate = ''%s'' and upper(TRANSACTIONSTATUS) = ''READY TO SEND'' '+
+
+   'and BATCHFILENO is null',[_allTables[_i],batchID, datefrom]));
+
+  end;
+
+end;
+
+
+
+
+
+
+
+function getSqlStatementByDoc(DocNo:string;tblname:string):string;
+
+var
+
+toReturn:string;
+
+begin
+
+
+
+Case tblname of
+
+'FINANCIALSALESINVOICES':
+
+begin
+
+toReturn := 'select cast(a.transactiondate as varchar(10)) "DocDate",''HQ'' ProjNo, a.ANALYSISGROUP,  a.INVOICENUMBER "DocNo", '+
+
+'case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice'' '+
+
+'then case when (debitcostcentrecode = (select DEBTORS from COSTCENTREMAP) or debitcostcentrecode = (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) end else '+
+
+'case when (creditcostcentrecode = (select DEBTORS from COSTCENTREMAP) or creditcostcentrecode =  (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then  '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) end end "AccNo", '+
+'case when a.currencycode is null '+
+'then case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXVALUE else -FXVALUE  end '+
+'else case when creditcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXVALUE else -FXVALUE end '+
+'end else case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode) then FXVALUE else -FXVALUE  end '+
+'else case when creditcostcentrecode = ((select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then FXVALUE else -FXVALUE end end end '+
+' "Amount" , '+
+' case when a.currencycode is null '+
+'then case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXTAX else -FXTAX  end '+
+'else case when creditcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXTAX else -FXTAX end '+
+'end else case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode) then FXTAX else -FXTAX  end '+
+'else case when creditcostcentrecode = ((select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then FXTAX else -FXTAX end end end '+
+' "Tax", '+
+
+'(select ' + custCode + ' from CUSTOMERMASTER cm where cm.CUSTOMER =(INVOICECUSTOMER)) as "DebtorCode"'+
+
+' ,a.taxcode "TaxType",''Sales'' "JournalType",'+
+
+' a.BATCHFILENO,a.SOURCEDESCRIPTION "Description",a.SOURCETERMS "DisplayTerm",a.CURRENCYCODE,a.EXCHANGERATE, tc.TAXRATE "TaxRate", a.ORDERSALESPERSON "SalesAgent" '+
+
+'from financialsalesinvoices a,  '+
+
+' SALESINVOICEHEADER sh, TAXCODES tc where sh.INVOICENUMBER = a.INVOICENUMBER and tc.TAXCODE = a.TAXCODE  '+
+
+'and  upper(a.TRANSACTIONSTATUS) <> ''TRANSACTION VALID''  and sh.INVOICEORCREDIT = ''Invoice'' and a.InvoiceNumber =  ''' + DocNo + '''';
+
+
+
+end;
+
+'FINANCIALSALESINVOICESCN':
+
+begin
+
+toReturn := 'select cast(a.transactiondate as varchar(10)) "DocDate",''HQ'' ProjNo, a.INVOICENUMBER "DocNo", '+
+'case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice'' '+
+
+'then case when (debitcostcentrecode = (select DEBTORS from COSTCENTREMAP) or debitcostcentrecode = (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) end else '+
+
+'case when (creditcostcentrecode = (select DEBTORS from COSTCENTREMAP) or creditcostcentrecode =  (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then  '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) end end "AccNo", '+
+
+'case when a.currencycode is null '+
+'then case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXVALUE else -FXVALUE  end '+
+'else case when creditcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXVALUE else -FXVALUE end '+
+'end else case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode) then FXVALUE else -FXVALUE  end '+
+'else case when creditcostcentrecode = ((select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then FXVALUE else -FXVALUE end end end '+
+' "Amount" , '+
+' case when a.currencycode is null '+
+'then case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXTAX else -FXTAX  end '+
+'else case when creditcostcentrecode = (select DEBTORS from COSTCENTREMAP) then FXTAX else -FXTAX end '+
+'end else case when (select sh.invoiceorcredit from SALESINVOICEHEADER sh where sh.invoicenumber = a.invoicenumber) = ''Invoice''' +
+'then case when debitcostcentrecode = (select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode) then FXTAX else -FXTAX  end '+
+'else case when creditcostcentrecode = ((select (cc.DEBTORCOSTCENTRE) from currencycodes cc where cc.CURRENCYCODE = a.currencycode)) then FXTAX else -FXTAX end end end '+
+' "Tax", '+
+
+'(select  ' + custCode + ' from CUSTOMERMASTER cm where cm.CUSTOMER =(INVOICECUSTOMER)) as "DebtorCode"'+
+
+' ,a.taxcode "TaxType",''Sales'' "JournalType",'+
+
+' a.BATCHFILENO,a.SOURCEDESCRIPTION "Description",a.SOURCETERMS "DisplayTerm",a.CURRENCYCODE,a.EXCHANGERATE, tc.TAXRATE "TaxRate", a.ORDERSALESPERSON "SalesAgent" '+
+
+'from financialsalesinvoices a,  '+
+
+' SALESINVOICEHEADER sh, TAXCODES tc where sh.INVOICENUMBER = a.INVOICENUMBER and tc.TAXCODE = a.TAXCODE  '+
+
+'and  upper(a.TRANSACTIONSTATUS) <> ''TRANSACTION VALID''  and sh.INVOICEORCREDIT <> ''Invoice'' and a.Invoicenumber =  ''' + DocNo + '''';
+
+end;
+
+'FINANCIALPURCHASEINVOICES':
+
+begin
+
+toReturn := 'select cast(a.TRANSACTIONDATE as varchar(10)) "DocDate",''HQ'' ProjNo, a.SUPPLIERINVNO "DocNo",a.TAXCODE "TaxType",tc.TAXRATE "TaxRate",' +
+
+'case when debitcostcentrecode = (select CREDITORS from COSTCENTREMAP) then '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) end "AccNo",'+
+
+'FXVALUE "Amount", FXFREIGHTVALUE, '+
+
+'(select ' + supplierCode + ' from SUPPLIERMASTER sm where sm.SUPPLIER =(a.SUPPLIER)) as "CreditorCode",'+
+
+'''PURCHASE'' "JournalType", a.BATCHFILENO,a.INVOICEBATCHNO,a.CURRENCYCODE,a.EXCHANGERATE, ''['' || coalesce((select pl.RECEIPTNUMBER from PURCHASEINVOICELINES pl where pl.SYSUNIQUEID = a.SOURCESYSUNIQUEID), '''') || ''] '' || substring(a.LINEDESCRIPTION from 1 for 90) "LineDescription", a.CREDITTERM "DisplayTerm",'+
+
+' a.INVOICEBATCHNO "Description"'+
+
+' from FINANCIALPURCHASEINVOICES a, TaxCodes tc where a.TAXCODE = tc.TAXCODE and '+
+
+' upper(a.TRANSACTIONSTATUS) <> ''TRANSACTION VALID''  and a.INVOICEBATCHNO = ''' + DocNo + ''' and a.SUPPLIERINVNO  not in  '+
+
+'(select fp2.SUPPLIERINVNO from FINANCIALPURCHASEINVOICES fp2 where cast(fp2.INVOICEBATCHNO as integer) + 100000= a.INVOICEBATCHNO) '+
+
+'and  (select sum(fp3.fxvalue) from FINANCIALPURCHASEINVOICES fp3 where fp3.INVOICEBATCHNO = a.INVOICEBATCHNO) >= 0 ';
+
+end;
+
+'FINANCIALPURCHASEINVOICESDELETE':
+
+begin
+
+toReturn := 'select cast(a.TRANSACTIONDATE as varchar(10)) "DocDate", a.SUPPLIERINVNO "DocNo",' +
+
+'case when debitcostcentrecode = (select CREDITORS from COSTCENTREMAP) then '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) end "AccNo",'+
+
+'FXVALUE "Amount", FXFREIGHTVALUE,'+
+
+'(select ' + supplierCode + ' from SUPPLIERMASTER sm where sm.SUPPLIER =(a.SUPPLIER)) as "CreditorCode",'+
+
+'''PURCHASE'' "JournalType", a.BATCHFILENO,a.INVOICEBATCHNO,a.CURRENCYCODE,a.EXCHANGERATE, a.LINEDESCRIPTION  "LineDescription", a.CREDITTERM "DisplayTerm",'+
+
+' a.INVOICEBATCHNO "Description"'+
+
+' from FINANCIALPURCHASEINVOICES a, TaxCodes tc where a.TAXCODE = tc.TAXCODE and '+
+
+' upper(a.TRANSACTIONSTATUS) <> ''TRANSACTION VALID''  and a.SUPPLIERINVNO = ''' + DocNo + ''' and a.SUPPLIERINVNO  in '+
+
+'(select fp2.SUPPLIERINVNO from FINANCIALPURCHASEINVOICES fp2 where cast(fp2.INVOICEBATCHNO as integer) + 100000= a.INVOICEBATCHNO) '+
+
+' and  (select sum(fp3.fxvalue) from FINANCIALPURCHASEINVOICES fp3 where fp3.INVOICEBATCHNO = a.INVOICEBATCHNO) < 0 '
+
+end;
+
+'FINANCIALPURCHASEINVOICESCN':
+
+begin
+
+toReturn := 'select cast(a.TRANSACTIONDATE as varchar(10)) "DocDate",''HQ'' ProjNo, a.SUPPLIERINVNO "DocNo", a.TAXCODE "TaxType",' +
+
+'case when debitcostcentrecode = (select CREDITORS from COSTCENTREMAP) then '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) end "AccNo",'+
+
+'FXVALUE "Amount", FXFREIGHTVALUE,'+
+
+'(select ' + supplierCode + ' from SUPPLIERMASTER sm where sm.SUPPLIER =(a.SUPPLIER)) as "CreditorCode",'+
+
+'''PURCHASE'' "JournalType", a.BATCHFILENO,a.INVOICEBATCHNO,a.CURRENCYCODE,a.EXCHANGERATE, substring(a.LINEDESCRIPTION from 1 for 90) "LineDescription", a.CREDITTERM "DisplayTerm",'+
+
+'tc.TAXRATE "TaxRate", a.INVOICEBATCHNO "Description"'+
+
+' from FINANCIALPURCHASEINVOICES a, TaxCodes tc where a.TAXCODE = tc.TAXCODE and '+
+
+' upper(a.TRANSACTIONSTATUS) <> ''TRANSACTION VALID''  and a.INVOICEBATCHNO = ''' + DocNo + ''' and a.SUPPLIERINVNO  not in '+
+
+'(select fp2.SUPPLIERINVNO from FINANCIALPURCHASEINVOICES fp2 where cast(fp2.INVOICEBATCHNO as integer) + 100000= a.INVOICEBATCHNO) '+
+
+' and  (select sum(fp3.fxvalue) from FINANCIALPURCHASEINVOICES fp3 where fp3.INVOICEBATCHNO = a.INVOICEBATCHNO) < 0 '
+
+end;
+
+'FINANCIALPURCHASEINVOICESCNDELETE':
+
+begin
+
+toReturn := 'select cast(a.TRANSACTIONDATE as varchar(10)) "DocDate", a.SUPPLIERINVNO "DocNo",' +
+
+'case when debitcostcentrecode = (select CREDITORS from COSTCENTREMAP) then '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) else '+
+
+'(select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) end "AccNo",'+
+
+'FXVALUE "Amount", FXFREIGHTVALUE, '+
+
+'(select ' + supplierCode + ' from SUPPLIERMASTER sm where sm.SUPPLIER =(a.SUPPLIER)) as "CreditorCode",'+
+
+'''PURCHASE'' "JournalType", a.BATCHFILENO,a.INVOICEBATCHNO,a.CURRENCYCODE,a.EXCHANGERATE, a.CREDITTERM "DisplayTerm",'+
+
+'tc.TAXRATE "TaxRate", a.INVOICEBATCHNO "Description"'+
+
+' from FINANCIALPURCHASEINVOICES a, TaxCodes tc where a.TAXCODE = tc.TAXCODE and '+
+
+' upper(a.TRANSACTIONSTATUS) <> ''TRANSACTION VALID''  and a.SUPPLIERINVNO = ''' + DocNo + ''' and a.SUPPLIERINVNO  in  '+
+
+'(select fp2.SUPPLIERINVNO from FINANCIALPURCHASEINVOICES fp2 where cast(fp2.INVOICEBATCHNO as integer) + 100000= a.INVOICEBATCHNO) '+
+
+'and  (select sum(fp3.fxvalue) from FINANCIALPURCHASEINVOICES fp3 where fp3.INVOICEBATCHNO = a.INVOICEBATCHNO) >= 0 ';
+
+end;
+
+'FINANCIALCUSTPAYMENT':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate",''FINANCIALCUSTPAYMENT Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",(select cm.' + custCode + ' from CUSTOMERMASTER '+
+
+'cm where cm.CUSTOMER =(fp.CUSTOMER)) as "DebtorCode",fp.PAYMENTNUMBER "DocNo",(Select LedgerCode from COSTCENTREMASTER '+
+
+'where costcentrecode = debitcostcentrecode) "DebitAcc",(SELECT coalesce(b.LEDGERTYPE,'''') FROM COSTCENTREMASTER a '+
+
+'left join GENERALLEDGERCODES b on a.LEDGERCODE = b.LEDGERCODE where a.costcentrecode = debitcostcentrecode) "DrAccType",'+
+
+'(Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc", '+
+
+'(select coalesce(cp.PAYMENTREFERENCE,'''') from CUSTOMERPAYMENTS cp where cp.PAYMENTNUMBER = fp.PAYMENTNUMBER) "ChequeNo",(SELECT coalesce(b.LEDGERTYPE,'''') '+
+
+'FROM COSTCENTREMASTER a left join GENERALLEDGERCODES b on a.LEDGERCODE = b.LEDGERCODE where a.costcentrecode = creditcostcentrecode) '+
+
+'"CrAccType"  ,coalesce(coalesce((select cp.paymentamount from CUSTOMERPAYMENTS cp where cp.PAYMENTNUMBER = fp.PAYMENTNUMBER),'+
+
+'(select first 1 cp.paymentamount from OSTDEF_CPDELETION cp where cp.PAYMENTNUMBER = fp.PAYMENTNUMBER order by cp.sysuniqueid desc)),FXVALUE) "PAYMENTAMOUNT",'+
+
+'fp.PAYMENTACCOUNT,fp.FXVALUE,fp.PAYMENTMETHOD,coalesce(fp.CURRENCYCODE,''' + defaultCurrency +''') CURRENCYCODE,fp.EXCHANGERATE,cast(fp.SYSUNIQUEID as integer) "UNIQUEID" '+
+
+' from financialcustpayment fp where fp.sysuniqueid='+
+
+DocNo;
+
+end;
+
+'FINANCIALASSYISSUES':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.ORDERNUMBER "DocNo",''FINANCIALASSYISSUES Batch No:'' || cast(fp.BATCHFILENO as Integer)  "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALASSYISSUES fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALASSYRECEIPTS':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.ORDERNUMBER "DocNo",''FINANCIALASSYRECEIPTS Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALASSYRECEIPTS fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALASSYWIPVAR':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.ORDERNUMBER "DocNo",''FINANCIALASSYWIPVAR Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALASSYWIPVAR fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALINVENTORY':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.BATCHFILENO "DocNo",''FINANCIALINVENTORY '' || fp.TRANSACTIONREFERENCE || '' Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALINVENTORY fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.TRANSACTIONREFERENCE = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALJOBISSUES':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.ORDERNUMBER "DocNo",''FINANCIALJOBISSUES Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALJOBISSUES fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALJOBWIPVAR':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.ORDERNUMBER "DocNo",''FINANCIALJOBWIPVAR Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALJOBWIPVAR fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALPURCHASERECEIPTS':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate",''HQ'' ProjNo, fp.ORDERTYPE, fp.ORDERNUMBER "DocNo",substring(''FPRcpt Batch No:'' || cast(fp.BATCHFILENO as Integer) ||  '' '' || fp.SUPPLIER from 1 for 90) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST * fp.EXCHANGERATE "FINANCIALCOST",cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALPURCHASERECEIPTS fp '+
+
+'where fp.BATCHFILENO is not null and fp.ORDERTYPE <> '''' and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALPURCHASERECEIPTSNS':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate",''HQ'' ProjNo, fp.ORDERTYPE, fp.ORDERNUMBER "DocNo",substring(''FPRcpt Batch No:'' || cast(fp.BATCHFILENO as Integer) ||  '' '' || fp.SUPPLIER from 1 for 90) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST * fp.EXCHANGERATE "FINANCIALCOST",cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALPURCHASERECEIPTS fp '+
+
+'where  fp.BATCHFILENO is not null and fp.ORDERTYPE = '''' and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALPURCHASEVAR':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate",''HQ'' ProjNo, fp.ORDERNUMBER "DocNo",substring(''FPRcpt Batch No:'' || cast(fp.BATCHFILENO as Integer) ||  '' '' || fp.SUPPLIER from 1 for 90) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALPURCHASEVAR fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALSALESCOSTS':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.INVOICENUMBER "DocNo",''FINANCIALSALESCOSTS Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALSALESCOSTS fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.INVOICENUMBER = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALSALESFREIGHT':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.INVOICENUMBER "DocNo",''FINANCIALSALESFREIGHT Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FXVALUE "FINANCIALCOST",cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALSALESFREIGHT fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.INVOICENUMBER = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALSALESISSUES':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.ORDERNUMBER "DocNo",''FINANCIALSALESISSUES Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALCOST,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALSALESISSUES fp where  fp.BATCHFILENO is not null and  fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.OrderNumber = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALBANKDEPOSITS':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.BANKINGNUMBER "DocNo",''FINANCIALBANKDEPOSITS Batch No:'' || cast(fp.BATCHFILENO as Integer) '+
+
+'|| '' '' || fp.PAYMENTACCOUNT || '' '' || '+
+
+'fp.BANKINGREFERENCE  || '' Batch No:'' || cast(fp.BATCHFILENO as Integer) "Description",'+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", ' +
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc" ' +
+
+' ,fp.FINANCIALVALUE "FINANCIALCOST",cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO from FINANCIALBANKDEPOSITS fp where fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.BANKINGNUMBER = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALCUSTDEPOSIT':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", ''D'' || fp.DEPOSITNUMBER "DocNo", ''FINANCIALCUSTDEPOSIT Batch No:'' || cast(fp.BATCHFILENO as Integer) '+
+
+' || fp.PAYMENTACCOUNT || '' '' || '+
+
+' fp.PAYMENTMETHOD "Description",(select cm.' + custCode + ' from CUSTOMERMASTER '+
+
+'cm where cm.CUSTOMER =(fp.CUSTOMER)) as "DebtorCode", (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", '+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc"'+
+
+',(select coalesce(cp.PAYMENTREFERENCE,'''') from CUSTOMERDEPOSITS cp where cp.DEPOSITNUMBER = fp.DEPOSITNUMBER) "ChequeNo" '+
+
+' ,fp.FINANCIALVALUE "FXVALUE", fp.PAYMENTMETHOD,fp.PAYMENTACCOUNT,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO,fp.EXCHANGERATE,fp.CURRENCYCODE from FINANCIALCUSTDEPOSIT fp '+
+
+'  where  fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.SYSUNIQUEID = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALAPPLYDEPOSIT':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.SOURCENUMBER "DocNo",''D'' || fp.DEPOSITNUMBER "DEPOSITNUMBER",fp.INVOICENUMBER, ''FINANCIALAPPLYDEPOSIT Batch No:'' || cast(fp.BATCHFILENO as Integer) || '' '' '+
+
+' || '' Deposit No:'' || fp.DEPOSITNUMBER'+  ' || '' Payment No:'' || fp.PAYMENTNUMBER '+
+
+' "Description",(select cm.' + custCode + ' from CUSTOMERMASTER '+
+
+'cm where cm.CUSTOMER =(fp.CUSTOMER)) as "DebtorCode", (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", '+
+
+' (SELECT coalesce(b.LEDGERTYPE,'''') FROM COSTCENTREMASTER a '+
+
+'left join GENERALLEDGERCODES b on a.LEDGERCODE = b.LEDGERCODE where a.costcentrecode = debitcostcentrecode) "DrAccType",  '+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc", (SELECT coalesce(b.LEDGERTYPE,'''') '+
+
+'FROM COSTCENTREMASTER a left join GENERALLEDGERCODES b on a.LEDGERCODE = b.LEDGERCODE where a.costcentrecode = creditcostcentrecode) '+
+
+'"CrAccType" '+
+
+' ,fp.FINANCIALVALUE "FXVALUE",fp.FXCURRENCYCODE, fp.PAYMENTMETHOD,fp.PAYMENTACCOUNT,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", '+
+
+' fp.BATCHFILENO,fp.EXCHANGERATE,fp.CURRENCYCODE,(select cp.APPLIEDAMOUNT from CUSTOMERPAYMENTS cp where cp.PAYMENTNUMBER = fp.SOURCENUMBER) "DEPOSITAPPLIEDAMOUNT", '+
+
+'(select cd.DEPOSITAMOUNT from CUSTOMERDEPOSITS cd where cd.DEPOSITNUMBER = fp.DEPOSITNUMBER) "DEPOSITAMOUNT",'+
+' (select cp.PAYMENTAMOUNT from CUSTOMERPAYMENTS cp where cp.PAYMENTNUMBER = fp.SOURCENUMBER) "PAYMENTAMOUNT" from '+
+
+'FINANCIALAPPLYDEPOSIT fp  where  fp.BATCHFILENO is not null and fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.APPLYORDISCOUNT = ''Apply'' and fp.SYSUNIQUEID = ''' + DocNo + '''';
+
+end;
+
+'FINANCIALAPPLYPAYMENT':
+
+begin
+
+toReturn := 'select cast(fp.TRANSACTIONDATE as varchar(10)) "DocDate", fp.SOURCENUMBER "DocNo",fp.INVOICENUMBER, ''FINANCIALAPPLYPAYMENT Batch No:'' || cast(fp.BATCHFILENO as Integer) || '' '' '+
+
+' "Description",(select cm.' + custCode + ' from CUSTOMERMASTER '+
+
+'cm where cm.CUSTOMER =(fp.CUSTOMER)) as "DebtorCode", (Select LedgerCode from COSTCENTREMASTER where costcentrecode = debitcostcentrecode) "DebitAcc", '+
+
+' (SELECT coalesce(b.LEDGERTYPE,'''') FROM COSTCENTREMASTER a '+
+
+'left join GENERALLEDGERCODES b on a.LEDGERCODE = b.LEDGERCODE where a.costcentrecode = debitcostcentrecode) "DrAccType",  '+
+
+' (Select LedgerCode from COSTCENTREMASTER where costcentrecode = creditcostcentrecode) "CreditAcc", (SELECT coalesce(b.LEDGERTYPE,'''') '+
+
+'FROM COSTCENTREMASTER a left join GENERALLEDGERCODES b on a.LEDGERCODE = b.LEDGERCODE where a.costcentrecode = creditcostcentrecode) '+
+
+'"CrAccType" '+
+
+' ,fp.FINANCIALVALUE "FXVALUE",coalesce(coalesce((select cp.paymentamount from CUSTOMERPAYMENTS cp where cp.PAYMENTNUMBER = fp.PAYMENTNUMBER),'+
+
+'(select first 1 cp.paymentamount from OSTDEF_CPDELETION cp where cp.PAYMENTNUMBER = fp.PAYMENTNUMBER order by cp.sysuniqueid desc)),FXVALUE) "PAYMENTAMOUNT",fp.FXCURRENCYCODE, fp.PAYMENTMETHOD,fp.PAYMENTACCOUNT,cast(fp.SYSUNIQUEID as integer) "UNIQUEID", fp.BATCHFILENO,fp.EXCHANGERATE,fp.CURRENCYCODE from '+
+
+'FINANCIALAPPLYPAYMENT fp  where fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.APPLYORDISCOUNT = ''Apply'' and fp.SYSUNIQUEID = ''' + DocNo + '''';
+
+end;
+
+'CUSTOMERPAYMENTS':
+
+begin
+
+toReturn := 'select cast(fp.PAYMENTDATE as varchar(10)) "DocDate", fp.PAYMENTNUMBER "DocNo",ct.INVOICENUMBER, ''CUSTOMERPAYMENTS Batch No:'' || cast(fp.%s as Integer) '' "Description",(select cm.' + custCode + ' from CUSTOMERMASTER '+
+
+'cm where cm.CUSTOMER =(fp.CUSTOMER)) as "DebtorCode",'+
+
+' fp.APPLIEDAMOUNT ,fp.CURRENCYCODE, fp.PAYMENTEXCHANGERATE,cast(fp.SYSUNIQUEID as integer) "UNIQUEID" from '+
+
+'CUSTOMERPAYMENTTRANS ct join CUSTOMERPAYMENTS cp on ct.PAYMENTNUMBER = cp.PAYMENTNUMBER  where fp.TRANSACTIONSTATUS <> ''Transaction Valid'' and fp.PAYMENTNUMBER = ''' + DocNo + '''';
+
+end;
+
+else
+
+begin
+
+toReturn := '';
+
+end;
+
+end;
+
+  result := toReturn;
+
+
+
+end;
+
+
+
+
+
+function jsontolist(varresponse:string;delchar:string):string;
+
+var
+
+sResult:TStringList;
+
+toReturn:string;
+
+begin
+
+ sResult:=TStringList.Create;
+
+ Delete(varresponse,1,2);
+
+Delete(varresponse,Length(varresponse)-1,2);
+
+varresponse := ReplaceText(varresponse,'},{',delchar);
+
+varresponse := ReplaceText(varresponse,'"','');
+
+//showMessage(varresponse);
+
+sResult.StrictDelimiter := true;
+
+sResult.Delimiter := delchar;
+
+sResult.DelimitedText := varresponse;
+
+toReturn := sResult.DelimitedText;
+
+sResult.Free;
+
+result:=toReturn;
+
+end;
+
+
+
+
+
+
+
+function replacetextbyList(src:string;toreplace:string;delchar:string):string;
+
+var
+
+sList:TStringList;
+
+i:integer;
+
+sResult :string;
+
+begin
+
+    sList := TStringList.Create;
+
+    sList.StrictDelimiter := true;
+
+    sList.CommaText := toreplace;
+
+  //             showMessage(sList.CommaText);
+
+  //             showMessage(inttostr(sList.Count));
+
+    sResult := src;
+
+  for i:= 0 to sList.Count -1  do
+
+begin
+
+
+
+     if(i=0) then
+
+     begin
+
+
+
+           sResult:=   replacetext(sResult, ParseString(sList[i],':',0)+':',ParseString(sList[i],':',1) + '=');
+
+     end
+
+     else
+
+     begin
+
+          sResult:=   replacetext(sResult, ',' + ParseString(sList[i],':',0)+':', #13 + ParseString(sList[i],':',1) + '=');
+
+     end;
+
+
+
+end;
+
+    sList.Free;
+
+   result:= sResult;
+
+end;
+
+
+
+function ParseJsonAsList(src:string;toreplace:string;newLine:string):string;
+
+var
+
+sResult:string;
+
+begin
+
+          sResult := jsontolist(src, #11);
+
+          sResult := replacetextByList(sResult, toreplace, newLine);
+
+          result := sResult;
+
+end;
+
+
+
+
+
+
+
+
+
+function getUpdateSQL(src:string;key:string;tblName:string):string;
+
+var
+
+sItem:TStringList;
+
+sToReturn:string;
+
+i:integer;
+
+begin
+
+sItem := TStringList.Create;
+
+sItem.Text := src;
+
+sToReturn := 'Update ' + tblName  + ' set ' ;
+
+for i:= 0 to sItem.Count -1 do
+
+begin
+
+     if( key <> sItem.Names[i]) then
+
+     begin
+
+        sToReturn := sToReturn +  sItem.Names[i] + '=' + '''' +  sItem.Values[sItem.Names[i]] + ''',';
+
+     end;
+
+
+
+end;
+
+ delete(sToReturn,length(sToReturn),1);
+
+ sToReturn :=  sToReturn + ' where ' + key + ' = ' + '''' + sItem.Values[key] + '''';
+
+ result := sToReturn;
+
+sItem.Free;
+
+end;
+
+
+
+procedure checkCreateCOA;
+
+var
+
+varresponse:string;
+
+varTest:String;
+
+varTestList:TStringList;
+
+varItem:TStringList;
+
+k:integer;
+
+begin
+
+//executesql('delete from GENERALLEDGERCODES');
+
+//HttpPost(URL, Content, ContentType{Opt Default=''}, Username{Opt Default=''}, Password{Opt Default=''}, NewLine{Opt Default='&#10;'}, ProxyHost{Opt Default=''}, ProxyPort{Opt Default=0}, ProxyUser{Opt Default=''}, ProxyPass{Opt Default=''}, RequestCompression{Opt Default=False}, CustomHeaders{Opt Default=''});
+
+//HttpGet(URL, Username{Opt Default=''}, Password{Opt Default=''}, ProxyHost{Opt Default=''}, ProxyPort{Opt Default=0}, ProxyUser{Opt Default=''}, ProxyPass{Opt Default=''},
+
+// RequestCompression{Opt Default=False}, CustomHeaders{Opt Default=''}, ContentType{Opt Default=''});
+
+// HttpPost(Format('%sapi/gl/exists',[serveraddress]), datatosend,'application/json','','','');
+
+   //  varresponse := HttpPost(Format('%s/Maint/gl',[serveraddress]), '','application/json','','','');
+
+     varresponse := HttpGet(Format('%s/Maint/gl', [serveraddress]));
+
+    //   showMessage(ParseJSONAsString(varresponse, '"AccNo"', ':'));
+
+   //  showMessage(replacetext(jsontolist(varresponse,#13),'Description:',#11));
+
+      varTest := 'AccNo:LEDGERCODE,Description:LEDGERDESCRIPTION,SpecialAccType:LEDGERTYPE';
+
+    //   showMessage( ParseJsonAsList(varresponse, varTest));
+
+
+
+         varTestList := TStringList.Create;
+
+          varItem:= TStringList;
+
+         varTestList.Delimiter:= #11;
+
+         varTestList.StrictDelimiter := true;
+
+         varTestList.DelimitedText :=  ParseJsonAsList(varresponse, varTest, #13) ;
+
+
+
+           for k:=0 to varTestList.Count -1 do
+
+           begin
+
+           varItem.Text := varTestList[k];
+
+                        // showMessage(varItem.Values['LEDGERCODE']);
+
+                  if DBValueExists('GENERALLEDGERCODES','LEDGERCODE',varItem.Values['LEDGERCODE'],false) then
+
+                  begin
+
+                        executesql(getUpdateSQL(varItem.Text,'LEDGERCODE','GENERALLEDGERCODES'));
+
+                  end
+
+                  else
+
+                  begin
+
+                    insertRecord('GENERALLEDGERCODES',varTestList[k]);
+
+
+
+                  end;
+
+
+
+           end;
+
+            varTestList.Free;
+
+            varItem.Free;
+
+
+
+end;
+
+
+
+procedure importCurrencyCodes;
+
+var
+
+//select taxtype, description, taxrate from taxtype
+
+varresponse:string;
+
+varTest:String;
+
+varTestList:TStringList;
+
+varItem:TStringList;
+
+k:integer;
+
+begin
+
+
+
+     varresponse := HttpGet(Format('%s/Maint/currency', [serveraddress]));
+
+      varTest := 'CurrencyCode:CURRENCYCODE,CurrencyWord:CODEDESCRIPTION,CurrencySymbol:CURRENCYSYMBOL';
+
+         varTestList := TStringList.Create;
+
+          varItem:= TStringList;
+
+         varTestList.Delimiter:= #11;
+
+         varTestList.StrictDelimiter := true;
+
+         varTestList.DelimitedText :=  ParseJsonAsList(varresponse, varTest, #13) ;
+
+
+
+           for k:=0 to varTestList.Count -1 do
+
+           begin
+
+           varItem.Text := varTestList[k];
+
+
+
+                  if DBValueExists('CURRENCYCODES','CURRENCYCODE',varItem.Values['CURRENCYCODE'],false) then
+
+                  begin
+
+                        executesql(getUpdateSQL(varItem.Text,'CURRENCYCODE','CURRENCYCODES'));
+
+                  end
+
+                  else
+
+                  begin
+
+                  logInfo(varTestList[k]);
+
+                  if (varItem.Values['CURRENCYCODE'] <> defaultCurrency) then
+
+                   begin
+
+                  insertRecord('CURRENCYCODES',varTestList[k]);
+
+                   end;
+
+                  end;
+
+
+
+           end;
+
+            varTestList.Free;
+
+            varItem.Free;
+
+
+
+end;
+
+
+
+procedure importTaxCodes;
+
+var
+
+//select taxtype, description, taxrate from taxtype
+
+varresponse:string;
+
+varTest:String;
+
+varTestList:TStringList;
+
+varItem:TStringList;
+
+k:integer;
+
+begin
+
+//executesql('delete from GENERALLEDGERCODES');
+
+//HttpPost(URL, Content, ContentType{Opt Default=''}, Username{Opt Default=''}, Password{Opt Default=''}, NewLine{Opt Default='&#10;'}, ProxyHost{Opt Default=''}, ProxyPort{Opt Default=0}, ProxyUser{Opt Default=''}, ProxyPass{Opt Default=''}, RequestCompression{Opt Default=False}, CustomHeaders{Opt Default=''});
+
+//HttpGet(URL, Username{Opt Default=''}, Password{Opt Default=''}, ProxyHost{Opt Default=''}, ProxyPort{Opt Default=0}, ProxyUser{Opt Default=''}, ProxyPass{Opt Default=''},
+
+// RequestCompression{Opt Default=False}, CustomHeaders{Opt Default=''}, ContentType{Opt Default=''});
+
+// HttpPost(Format('%sapi/gl/exists',[serveraddress]), datatosend,'application/json','','','');
+
+   //  varresponse := HttpPost(Format('%s/Maint/gl',[serveraddress]), '','application/json','','','');
+
+     varresponse := HttpGet(Format('%s/Maint/tax', [serveraddress]));
+
+  //   showMessage(varresponse);
+
+    //   showMessage(ParseJSONAsString(varresponse, '"AccNo"', ':'));
+
+   //  showMessage(replacetext(jsontolist(varresponse,#13),'Description:',#11));
+
+      varTest := 'taxtype:TAXCODE,description:CODEDESCRIPTION,taxrate:TAXRATE';
+
+    //   showMessage( ParseJsonAsList(varresponse, varTest));
+
+
+
+         varTestList := TStringList.Create;
+
+          varItem:= TStringList;
+
+         varTestList.Delimiter:= #11;
+
+         varTestList.StrictDelimiter := true;
+
+         varTestList.DelimitedText :=  ParseJsonAsList(varresponse, varTest, #13) ;
+
+
+
+           for k:=0 to varTestList.Count -1 do
+
+           begin
+
+           varItem.Text := varTestList[k];
+
+                        // showMessage(varItem.Values['LEDGERCODE']);
+
+                  if DBValueExists('TAXCODES','TAXCODE',varItem.Values['TAXCODE'],false) then
+
+                  begin
+
+                        executesql(getUpdateSQL(varItem.Text,'TAXCODE','TAXCODES'));
+
+                  end
+
+                  else
+
+                  begin
+
+                //  showMessage(varTestList[k]);
+
+                  insertRecord('TAXCODES',varTestList[k]);
+
+
+
+                  end;
+
+
+
+           end;
+
+            varTestList.Free;
+
+            varItem.Free;
+
+
+
+end;
+
+
+
+
+
+
+
+
+
+
+
+procedure checkCreateDebtor;
+
+begin
+
+    getProcessByDetailDebtor;
+
+
+
+end;
+
+
+
+procedure checkCreateDebtorbyBatch(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+//doctoProcess is actually SYSUNIQUEID
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getDebtorByBatch(batchId);
+
+fo('checkCreateDebtorbyBatch' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+   sqlToSend := Format('select %s "AccNo", %s "ControlAccount", fc.customer "CompanyName",fc.customeraddress1 '+
+
+ '"Address1",fc.customeraddress2 "Address2"'+
+
+',fc.customeraddress3 "Address3",fc.customerstate || fc.customercity || fc.customercountry "Address4", fc.customerpostalcode "PostCode",'+
+
+'fc.customerphone "Phone1",'+
+
+'fc.customerfax "Fax1",fc.customerregioncode "AreaCode", fc.salesperson "SalesAgent", fc.customerweb "WebURL", fc.customeremail "EmailAddress", '+
+
+'fc.creditterm "DisplayTerm", cm.CreditLimit "CreditLimit", coalesce(fc.CurrencyCode, ''%s'') "CurrencyCode",fc.insertedorupdated,cm.ForeignCurrency ' +
+
+'  from financialcustomers fc join customermaster cm on fc.customer = cm.customer  where cm.%s is not null and fc.SYSUNIQUEID = %s',
+
+
+[custCode,custDebtorCode,defaultCurrency,custDebtorCode, docToProcess[k]]);
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       loginfo(datatosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+         msg :=HttpPost(Format('%s/Maint/debtor',[serveraddress]),UTF8Encode(datatosend),'application/json','','','');
+
+          logInfo(msg);
+
+           updateStatusDebtor(docToProcess[k], msg, 'FINANCIALCUSTOMERS');
+
+          UpdateProgressCaption('Processing Debtor ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateCreditorbyBatch(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+//doctoProcess is actually SYSUNIQUEID
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getCreditorByBatch(batchId);
+
+logInfo('checkCreateCreditorbyBatch' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+ sqlToSend :=Format('select %s "AccNo", %s "ControlAccount", fs.supplier "CompanyName",fs.supplieraddress1 '+
+
+ '"Address1",fs.supplieraddress2 "Address2"'+
+
+',fs.supplieraddress3 "Address3",fs.supplierstate || fs.suppliercity || fs.suppliercountry "Address4", fs.supplierpostalcode "PostCode",'+
+
+'fs.supplierphone "Phone1",'+
+
+'fs.supplierfax "Fax1",fs.supplierregioncode "AreaCode", fs.supplierweb "WebURL", fs.supplieremail "EmailAddress", '+
+
+'fs.creditterm "DisplayTerm", coalesce(fs.CurrencyCode, ''%s'') "CurrencyCode",cm.ForeignCurrency, ''Inserted'' "INSERTEDORUPDATED" '+
+
+'  from financialsuppliers fs join suppliermaster cm on fs.supplier = cm.supplier  where cm.%s is not null and fs.SYSUNIQUEID = %s',
+
+[supplierCode,supplierCreditorCode,defaultCurrency,supplierCreditorCode, docToProcess[k]]);
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       loginfo(datatosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+         msg :=HttpPost(Format('%s/Maint/creditor',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+          logInfo(msg);
+
+           updateStatusCreditor(docToProcess[k], msg, 'FINANCIALSUPPLIERS');
+
+          UpdateProgressCaption('Processing Creditor ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure updateStatusDebtor(sysid:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+insertSQL:string;
+
+Message:string;
+
+AccNo:string;
+
+CompanyName:string;
+
+begin
+
+
+
+        Message := ParseJsonasString(msg, 'Message');
+
+        logInfo('The message is ' + Message);
+
+        loginfo(ParseJsonasString(msg, 'msg'));
+
+         if(Message <> '0') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where SYSUNIQUEID = ''%s''',[tbl,replacetext(msg,'''',''),sysid]);
+
+              logINfo(sqlUpdate);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+            AccNo := ParseJsonasString(msg, 'AccNo');
+
+            CompanyName:= ParseJsonasString(msg, 'CompanyName');
+
+            if(AccNo <> '') then
+
+            begin
+
+                  insertSQL := Format('update CustomerMaster set %s = ''%s'' where customer = ''%s''',[custCode,AccNo,CompanyName]);
+
+                logInfo(insertSQL);
+
+                executesql(insertSQL);
+
+            end;
+
+
+
+                  sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where SYSUNIQUEID = ''%s''',[tbl,sysid]);
+
+                  logINfo(sqlUpdate);
+
+               executesql(sqlUpdate);
+
+
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+
+
+end;
+
+
+
+procedure updateStatusCreditor(sysid:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+insertSQL:string;
+
+Message:string;
+
+AccNo:string;
+
+CompanyName:string;
+
+begin
+
+
+
+        Message := ParseJsonasString(msg, 'Message');
+
+        loginfo(ParseJsonasString(msg, 'msg'));
+
+         if(Message <> '0') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where SYSUNIQUEID = ''%s''',[tbl,replacetext(msg,'''',''),sysid]);
+
+              logINfo(sqlUpdate);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+            AccNo := ParseJsonasString(msg, 'AccNo');
+
+            CompanyName:= ParseJsonasString(msg, 'CompanyName');
+
+            if(AccNo <> '') then
+
+            begin
+
+            insertSQL := Format('update SupplierMaster set %s = ''%s'' where Supplier = ''%s''',[supplierCode,AccNo,CompanyName]);
+
+                logInfo(insertSQL);
+
+                executesql(insertSQL);
+
+            end;
+
+
+
+                  sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where SYSUNIQUEID = ''%s''',[tbl,sysid]);
+
+                  logINfo(sqlUpdate);
+
+               executesql(sqlUpdate);
+
+
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+
+
+end;
+
+
+
+
+
+procedure checkCreateCreditor;
+
+begin
+
+getProcessByDetailCreditor;
+
+end;
+
+
+
+procedure checkCreateSalesman;
+
+var
+
+datatosend:string;
+
+begin
+
+datatosend := sqltojsondata('SELECT a.RESOURCENAME "SalesAgent",a.RESOURCENAME "Description",''T'' "IsActive" '+
+
+'FROM RESOURCEMASTER a where a.ISSALESPERSON = 1',);
+
+logInfo(datatosend);
+
+if(datatosend <> '') then
+
+begin
+
+HttpPost(Format('%s/Maint/agent',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+end;
+
+end;
+
+
+
+procedure checkCreateArea;
+
+var
+
+datatosend:string;
+
+begin
+
+datatosend := sqltojsondata('select regioncode "AreaCode", codedescription "Description" from CUSTOMERREGIONS union '+
+
+'select regioncode "AreaCode", codedescription "Description" from SUPPLIERREGIONS',);
+
+logInfo(datatosend);
+
+if(datatosend <> '') then
+
+begin
+
+HttpPost(Format('%s/Maint/area',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+end;
+
+end;
+
+
+
+procedure checkCreateTerms;
+
+var
+
+datatosend:string;
+
+begin
+
+datatosend := sqltojsondata('select creditterm "DisplayTerm",  termdays "TermDays", termdaysfrom "TermDaysFrom"  from creditterms');
+
+logInfo(datatosend);
+
+if(datatosend <> '') then
+
+begin
+
+HttpPost(Format('%s/Maint/terms',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+end;
+
+end;
+
+
+
+procedure checkCreateapplyDepositByBatch(batchId:string);
+
+const
+
+tblName='FINANCIALAPPLYDEPOSIT';
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getapplyDepositDocByBatch(batchId);
+
+logInfo('checkCreateapplyDepositByBatch' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],tblName);
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       logInfo(datatosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+          UpdateProgressCaption('Processing Apply Deposit ' + docToProcess[k]);
+
+         msg :=HttpPost(Format('%s/arap/applydeposit',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+         updateStatusCP(docToProcess[k], msg, tblName);
+
+         logInfo(msg);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateapplyPaymentByBatch(batchId:string);
+
+const
+
+tblName='FINANCIALAPPLYPAYMENT';
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getapplyPaymentDocByBatch(batchId);
+
+logInfo('checkCreateapplyPaymentByBatch' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],tblName);
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       logInfo(datatosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+          UpdateProgressCaption('Processing Apply Payment ' + docToProcess[k]);
+
+         msg :=HttpPost(Format('%s/arap/applypayment',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+         updateStatusCP(docToProcess[k], msg, tblName);
+
+         logInfo(msg);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateCustDepositByBatch(batchId:string);
+
+const
+
+tblName='FINANCIALCUSTDEPOSIT';
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getCustomerDepositDocByBatch(batchId);
+
+logInfo('checkCreateCustDepositByBatch' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],tblName);
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+          UpdateProgressCaption('Processing Customer Deposit ' + docToProcess[k]);
+
+         msg :=HttpPost(Format('%s/arap/deposit',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+         updateStatusCP(docToProcess[k], msg, tblName);
+
+         logInfo(msg);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateGLByBatch(batchId:string;tblName:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docTOProcess.StrictDelimiter := true;
+
+docToProcess.CommaText := getGLDocByBatch(batchId,tblName);
+
+logInfo('checkCreateGLByBatch' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],tblName);
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+          UpdateProgressCaption('Processing GL ' + docToProcess[k]);
+
+         msg :=HttpPost(Format('%s/gl/trans',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+         updateStatusGL(docToProcess[k], msg, tblName);
+
+         logInfo(msg);
+
+
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreatePRByBatch(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+doctoProcessNS:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+doctoProcessNS := TStringList.Create;
+
+docToProcess.CommaText := getPRDocByBatch(batchId);
+
+doctoProcessNS.CommaText := getPRNSDocByBatch(batchId);
+
+logInfo('checkCreatePURCHASERECEIPTS' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALPURCHASERECEIPTS');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+          UpdateProgressCaption('Processing FINANCIALPURCHASERECEIPTS ' + docToProcess[k]);
+
+         msg :=HttpPost(Format('%s/gl/trans',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+         updateStatusPR(docToProcess[k], msg);
+
+         logInfo(msg);
+
+       end;
+
+
+
+
+
+  end;
+
+end;
+
+
+
+if (doctoProcessNS.Count>0) then
+
+begin
+
+  for k:=0 to doctoProcessNS.Count -1 do
+
+  begin
+
+
+
+
+
+       sqlToSend := getSqlStatementByDoc(doctoProcessNS[k],'FINANCIALPURCHASERECEIPTSNS');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+          UpdateProgressCaption('Processing FINANCIALPURCHASERECEIPTS ' + doctoProcessNS[k]);
+
+         msg :=HttpPost(Format('%s/gl/trans',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+         updateStatusPRNS(doctoProcessNS[k], msg);
+
+         logInfo(msg);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateARInvoiceTestByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getARDocByBatch(batchId);
+
+logInfo('checkCreateARInvoiceTestByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALSALESINVOICES');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+         msg :=HttpPost(Format('%s/arap/arinvoice',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusAR(docToProcess[k], msg, 'FINANCIALSALESINVOICES');
+
+         logInfo(msg);
+
+          UpdateProgressCaption('Processing Invoice ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateCPByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getCPDocByBatch(batchId);
+
+logInfo('checkCreateCPByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALCUSTPAYMENT');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       loginfo(datatosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+         msg :=HttpPost(Format('%s/arap/payment',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusCP(docToProcess[k], msg, 'FINANCIALCUSTPAYMENT');
+
+          logInfo(msg);
+
+          UpdateProgressCaption('Processing Invoice ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateAPInvoiceTestByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.StrictDelimiter := true;
+
+docToProcess.Delimiter := ',';
+
+docToProcess.DelimitedText := getAPDocByBatch(batchId);
+
+logInfo('checkCreateAPInvoiceTestByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALPURCHASEINVOICES');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       logInfo(datatosend);
+
+
+
+       if(isNotEmptyOstendoJSON(datatosend, 'DocNo')) then
+
+       begin
+
+         msg :=HttpPost(Format('%s/arap/apinvoice',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusAP(docToProcess[k], msg, 'FINANCIALPURCHASEINVOICES');
+
+         logInfo(msg);
+
+          UpdateProgressCaption('Processing Supplier Invoice ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateAPDELETEInvoiceTestByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.StrictDelimiter := true;
+
+docToProcess.Delimiter := ',';
+
+docToProcess.DelimitedText := getAPAPCNDeleteDocByBatch(batchId);
+
+logInfo('checkCreateAPAPCNDELETEInvoiceTestByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALPURCHASEINVOICESDELETE');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+              logInfo(datatosend);
+
+       logInfo(ParseJsonasstring(datatosend,'DocNo',','));
+
+      if(isNotEmptyOstendoJSON(datatosend, 'DocNo')) then
+
+       begin
+
+         msg :=HttpPost(Format('%s/arap/apinvoicedel',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusAPDelete(docToProcess[k], msg, 'FINANCIALPURCHASEINVOICES');
+
+         logInfo(msg);
+
+          UpdateProgressCaption('Processing Supplier Invoice ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateAPCNDELETEInvoiceTestByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.StrictDelimiter := true;
+
+docToProcess.Delimiter := ',';
+
+docToProcess.DelimitedText := getAPAPCNDeleteDocByBatch(batchId);
+
+logInfo('checkCreateAPAPCNDELETEInvoiceTestByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALPURCHASEINVOICESCNDELETE');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       logInfo(datatosend);
+
+       logInfo(ParseJsonasstring(datatosend,'DocNo',','));
+
+    if(isNotEmptyOstendoJSON(datatosend, 'DocNo')) then
+
+       begin
+
+         msg :=HttpPost(Format('%s/arap/apcndel',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusAPDelete(docToProcess[k], msg, 'FINANCIALPURCHASEINVOICES');
+
+         logInfo(msg);
+
+          UpdateProgressCaption('Processing Supplier Invoice AP CN Delete' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure checkCreateAPCNInvoiceTestByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.StrictDelimiter := true;
+
+docToProcess.Delimiter := ',';
+
+//Using getAPDocByBatch because it produce same result
+
+docToProcess.DelimitedText := getAPDocByBatch(batchId);
+
+logInfo('checkCreateAPCNInvoiceTestByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALPURCHASEINVOICESCN');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+   if(isNotEmptyOstendoJSON(datatosend, 'DocNo')) then
+
+       begin
+
+         msg :=HttpPost(Format('%s/arap/apcn',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusAPCN(docToProcess[k], msg, 'FINANCIALPURCHASEINVOICES');
+
+         logInfo(msg);
+
+          UpdateProgressCaption('Processing Supplier Invoice CN ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+procedure updateStatusGL(docno:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+_varKey:string;
+
+begin
+
+     _varKey := getGLFinancialTablesKey(tbl);
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where %s = ''%s'' and TransactionStatus <> ''Transaction Valid''',[tbl,replacetext(msg,'''',''),_varKey,docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where %s = ''%s'' and TransactionStatus <> ''Transaction Valid''',[tbl,_varKey,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+end;
+
+
+
+
+
+procedure updateStatusPR(docno:string;msg:string);
+
+var
+
+sqlUpdate:string;
+
+_varKey:string;
+
+begin
+
+     _varKey := 'ORDERNUMBER' ;
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where %s <> '''' and ORDERNUMBER = ''%s'' and ORDERTYPE <> '''' ',['FINANCIALPURCHASERECEIPTS',replacetext(msg,'''',''),_varKey,docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where %s <> '''' and ORDERNUMBER = ''%s'' and ORDERTYPE <> ''''',['FINANCIALPURCHASERECEIPTS',_varKey,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+end;
+
+
+
+procedure updateStatusPRNS(docno:string;msg:string);
+
+var
+
+sqlUpdate:string;
+
+_varKey:string;
+
+begin
+
+     _varKey := 'ORDERNUMBER' ;
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where %s = ''%s'' and ORDERTYPE = '''' ',['FINANCIALPURCHASERECEIPTS',replacetext(msg,'''',''),_varKey,docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where %s = ''%s'' and ORDERTYPE = '''' ' ,['FINANCIALPURCHASERECEIPTS',_varKey,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+end;
+
+
+
+procedure updateStatusCP(docno:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+begin
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where SYSUNIQUEID = ''%s''',[tbl,replacetext(msg,'''',''),docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where SYSUNIQUEID = ''%s''',[tbl,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+end;
+
+
+
+procedure updateStatusAR(docno:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+begin
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where invoicenumber = ''%s''',[tbl,replacetext(msg,'''',''),docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where invoicenumber = ''%s''',[tbl,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+
+
+end;
+
+
+
+
+
+procedure updateStatusAP(docno:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+begin
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where INVOICEBATCHNO = ''%s''',[tbl,replacetext(msg,'''',''),docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where INVOICEBATCHNO = ''%s''',[tbl,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+
+
+end;
+
+
+
+procedure updateStatusAPDelete(docno:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+begin
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where SUPPLIERINVNO = ''%s''',[tbl,replacetext(msg,'''',''),docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where SUPPLIERINVNO = ''%s''',[tbl,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+
+
+end;
+
+
+
+procedure updateStatusAPCN(docno:string;msg:string;tbl:string);
+
+var
+
+sqlUpdate:string;
+
+begin
+
+         if(msg <> '') then
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Invalid'', TransactionMessage = SUBSTRING(''%s'' from 1 for 300)  '+
+
+              ' where INVOICEBATCHNO = ''%s''',[tbl,replacetext(msg,'''',''),docno]);
+
+              executesql(sqlUpdate);
+
+         end
+
+         else
+
+         begin
+
+         sqlUpdate:= Format('update %s set TransactionStatus = ''Transaction Valid'' ,TransactionMessage = null   '+
+
+              ' where INVOICEBATCHNO = ''%s''',[tbl,docno]);
+
+               executesql(sqlUpdate);
+
+         end;
+
+
+
+logInfo(sqlUpdate);
+
+
+
+end;
+
+
+
+procedure checkCreateCNInvoiceTestByDoc(batchId:string);
+
+var
+
+datatosend:string;
+
+msg:string;
+
+doctoProcess:TStringList;
+
+k:integer;
+
+sqlToSend:string;
+
+begin
+
+docTOProcess:= TStringList.Create;
+
+docToProcess.CommaText := getARCNDocByBatch(batchId);
+
+logInfo('checkCreateCNInvoiceTestByDoc' + docToProcess.CommaText);
+
+if (docToProcess.Count>0) then
+
+begin
+
+  for k:=0 to docToProcess.Count -1 do
+
+  begin
+
+      sqlToSend := getSqlStatementByDoc(docToProcess[k],'FINANCIALSALESINVOICESCN');
+
+      logInfo(sqlToSend);
+
+       datatosend:= sqltojsondata(sqltosend);
+
+       if(datatosend <> '') then
+
+       begin
+
+            msg :=HttpPost(Format('%s/arap/arcn',[serveraddress]), UTF8Encode(datatosend),'application/json','','','');
+
+           updateStatusAR(docToProcess[k], msg, 'FINANCIALSALESINVOICES');
+
+         logInfo(msg);
+
+         UpdateProgressCaption('Processing Invoice ' + docToProcess[k]);
+
+       end;
+
+  end;
+
+end;
+
+end;
+
+
+
+
+
+
+
+
+
+function DaysBetween(datefrom,dateto:TDateTime;):integer;
+
+var
+
+currentDate :TDateTime;
+
+begin
+
+   currentDate := datefrom;
+
+   Result:=0;
+
+   while currentDate < dateto do
+
+   begin
+
+    Inc(Result);
+
+    currentDate := currentdate  + 1;
+
+   end;
+
+end;
+
+
+
+procedure execSetBatchId(datefrom,dateto:string);
+
+var
+
+_dateFrom,_dateTo:date;
+
+_noOfDays,i:integer;
+
+_processDate :string;
+
+_batchID:string;
+
+begin
+
+//execSetTransStatus(datefrom,dateto);
+
+try
+
+begin
+
+ _batchID :=  inttostr(GetGenerator('BATCHFILENO'));
+
+
+
+  _batchID :=  inttostr(GetGenerator('BATCHFILENO'));
+setBatchIdCustomerApplyPayment(batchId);
+_dateFrom := EncodeDate(strtoint(ParseString(dateFrom,'-',0)),strtoint(ParseString(dateFrom,'-',1))
+
+,strtoint(ParseString(dateFrom,'-',2)));
+
+_dateTo := EncodeDate(strtoint(ParseString(dateto,'-',0)),strtoint(ParseString(dateto,'-',1))
+
+,strtoint(ParseString(dateto,'-',2)));
+
+_noOfDays := DaysBetween(_dateFrom,_dateTo);
+
+ShowProgress('Setting Batch No', _noOfDays, False);
+
+setBatchIdDebtorCreditor(_batchID);
+
+for i:=0 to _noOfDays  do
+
+begin
+
+_processDate :=FormatDateTime('yyyy-mm-dd',_dateFrom);
+
+  setBatchIdAllTables(_processDate,_processDate,_batchID);
+
+  _dateFrom := _dateFrom + 1;
+
+  UpdateProgress(i);
+
+end;
+
+end;
+
+finally
+
+  EndProgress;
+
+end;
+
+end;
+
+
+
+procedure execOstBizLinkWithDateCheck(datefrom,dateto:string;);
+
+var
+
+_dateFrom,_dateTo:date;
+_processDate :string;
+_listOfDates: TStringList;
+_listOfTables: TStringList;
+ i,g :integer;
+begin
+
+
+try
+
+begin
+
+ _listOfDates := TStringList.Create;
+ _listOfTables :=TStringList.Create;
+ _listOfTables.CommaText := getGLFinancialTablesForBatch;
+
+for i:=0 to _listOfTables.Count -1  do
+
+begin
+
+  _listOfDates.CommaText := getListOfDateNeedToProcess(dateFrom, dateTo, _listOfTables[i]);
+   ShowProgress('Uploading files', i, False);
+  for g:=0 to _listOfDates.Count -1  do
+  begin
+  execOstBizByDay(_listOfDates[g],_listOfDates[g]);
+  UpdateProgress(i);
+  end;
+
+
+end;
+
+end;
+
+finally
+
+  EndProgress;
+
+end;
+
+//If I call and check the transaction here most likely the transaction status have not been updated. That is why it was moved up.
+
+//execSetTransStatus(datefrom,dateto);
+
+end;
+
+
+procedure execOstBizLink(datefrom,dateto:string;);
+
+var
+
+_dateFrom,_dateTo:date;
+
+_noOfDays,i:integer;
+
+_processDate :string;
+
+begin
+
+//execSetTransStatus(datefrom,dateto);
+
+try
+
+begin
+
+
+
+_dateFrom := EncodeDate(strtoint(ParseString(dateFrom,'-',0)),strtoint(ParseString(dateFrom,'-',1))
+
+,strtoint(ParseString(dateFrom,'-',2)));
+
+_dateTo := EncodeDate(strtoint(ParseString(dateto,'-',0)),strtoint(ParseString(dateto,'-',1))
+
+,strtoint(ParseString(dateto,'-',2)));
+
+_noOfDays := DaysBetween(_dateFrom,_dateTo);
+
+//showMessage(inttostr(_noOfDays));
+
+
+
+//show_noOfDays even 0 because DaysBetween
+
+   ShowProgress('Uploading files', _noOfDays, False);
+
+for i:=0 to _noOfDays  do
+
+begin
+
+_processDate :=FormatDateTime('yyyy-mm-dd',_dateFrom);
+
+
+  execOstBizByDay(_processDate,_processDate);
+
+  _dateFrom := _dateFrom + 1;
+
+  UpdateProgress(i);
+
+end;
+
+end;
+
+finally
+
+  EndProgress;
+
+end;
+
+//If I call and check the transaction here most likely the transaction status have not been updated. That is why it was moved up.
+
+//execSetTransStatus(datefrom,dateto);
+
+end;
+
+
+
+function getTransDateAR(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct transactiondate) from FINANCIALSALESINVOICES where linecode <> ''' +
+
+ignoredesc +''' and upper(transactionstatus) = ''READY TO SEND'' and transactiondate >= ''%s'' and transactiondate <= ''%s'' and BATCHFILENO is null',[datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getTransDateCP(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct transactiondate) from FINANCIALCUSTPAYMENT where '+
+
+' upper(transactionstatus) = ''READY TO SEND'' and transactiondate >= ''%s'' and transactiondate <= ''%s'' and BATCHFILENO is null',[datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getTransDateDebtor(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+//showMessage(dateto);
+
+_toReturn :=  getsqlresult(format('select list( distinct cast(a.SYSDATECREATED as date)) from financialcustomers a '+
+
+' where a.SYSDATECREATED >=''%s'' and a.SYSDATECREATED < dateadd(1 day to date ''%s'') '+
+
+' and upper(transactionstatus) = ''READY TO SEND''  and BATCHFILENO is null ',[datefrom,dateto]));
+
+//loginfo(_toReturn);
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+
+
+function getBatchToProcessAR(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(BATCHFILENO as integer)) from FINANCIALSALESINVOICES where linecode <> ''' + ignoreDesc +
+
+''' and upper(transactionstatus) <> ''TRANSACTION VALID'' and transactiondate >= ''%s'' and transactiondate <= ''%s''',[datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+
+
+function getBatchToProcessCP(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(BATCHFILENO as integer)) from FINANCIALCUSTPAYMENT '+
+
+' where upper(transactionstatus) <> ''TRANSACTION VALID'' and transactiondate >= ''%s'' and transactiondate <= ''%s''',[datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getBatchToProcessDebtor:string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+logInfo('select list(distinct cast(BATCHFILENO as integer)) from FINANCIALCUSTOMERS where '+
+
+' upper(transactionstatus) <> ''TRANSACTION VALID''');
+
+_toReturn :=  getsqlresult('select list(distinct cast(BATCHFILENO as integer)) from FINANCIALCUSTOMERS where '+
+
+' upper(transactionstatus) <> ''TRANSACTION VALID''');
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getBatchToProcessCreditor:string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult('select list(distinct cast(BATCHFILENO as integer)) from FINANCIALSUPPLIERS where '+
+
+' upper(transactionstatus) <> ''TRANSACTION VALID''');
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+
+
+
+
+procedure getProcessByDetailDebtor;
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+//  getBatchIdDebtor;
+
+_batchToProcess := TStringList.Create;
+
+  _batchToProcess.CommaText :=getBatchToProcessDebtor;
+
+      for k:= 0 to _batchToProcess.Count - 1 do
+
+            begin
+
+
+
+              logInfo('Start to Process Debtor Batch' + _batchToProcess[k]);
+
+               checkCreateDebtorbyBatch(_batchToProcess[k]);
+
+               logInfo('Finish Process Debtor Batch' + _batchToProcess[k]);
+
+            end;
+
+end;
+
+
+
+procedure getProcessByDetailCreditor;
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+//  getBatchIdCreditor;
+
+_batchToProcess := TStringList.Create;
+
+  _batchToProcess.CommaText :=getBatchToProcessCreditor;
+
+      for k:= 0 to _batchToProcess.Count - 1 do
+
+            begin
+
+
+
+              logInfo('Start to Process Creditor Batch' + _batchToProcess[k]);
+
+               checkCreateCreditorbyBatch(_batchToProcess[k]);
+
+               logInfo('Finish Process Creditor Batch' + _batchToProcess[k]);
+
+            end;
+
+end;
+
+
+
+procedure getProcessByDetailCP(datefrom,dateto:string);
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+//  getBatchIdCP(datefrom,dateto);
+
+_batchToProcess := TStringList.Create;
+
+  _batchToProcess.CommaText :=getBatchToProcessCP(datefrom,dateto);
+
+      for k:= 0 to _batchToProcess.Count - 1 do
+
+            begin
+
+
+
+              logInfo('Start to Process CP Batch' + _batchToProcess[k]);
+
+               checkCreateCPByDoc(_batchToProcess[k]);
+
+               logInfo('Finish Process CP Batch' + _batchToProcess[k]);
+
+
+
+            end;
+
+end;
+
+
+
+procedure getProcessByDetailAR(datefrom,dateto:string);
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+//  getBatchIdAR(datefrom,dateto);
+
+_batchToProcess := TStringList.Create;
+
+  _batchToProcess.CommaText :=getBatchToProcessAR(datefrom,dateto);
+
+      for k:= 0 to _batchToProcess.Count - 1 do
+
+            begin
+
+              // checkCreateARInvoiceTest(_batchToProcess[k]);
+
+              // checkCreateCNInvoiceTest(_batchToProcess[k]);
+
+              logInfo('Start to Process AR Batch' + _batchToProcess[k]);
+
+               checkCreateARInvoiceTestByDoc(_batchToProcess[k]);
+
+               checkCreateCNInvoiceTestByDoc(_batchToProcess[k]);
+
+               logInfo('Finish Process AR Batch' + _batchToProcess[k]);
+
+
+
+            end;
+
+end;
+
+
+
+procedure getProcessByDetailAP(datefrom,dateto:string);
+
+var
+
+_batchToProcess:TStringList;
+
+_sqlStatement:string;
+
+j,k:int;
+
+begin
+
+//  getBatchIdAP(datefrom,dateto);
+
+_batchToProcess := TStringList.Create;
+
+  _batchToProcess.CommaText :=getBatchToProcessAP(datefrom,dateto);
+
+//  showMessage(_batchToProcess.CommaText);
+
+   for k:= 0 to _batchToProcess.Count - 1 do
+
+   begin
+
+           logInfo('Start to Process AP Batch' + _batchToProcess[k]);
+
+           logInfo('checkCreateAPInvoiceTestByDoc Start Batch:' + _batchToProcess[k]);
+
+           checkCreateAPInvoiceTestByDoc(_batchToProcess[k]);
+
+           logInfo('checkCreateAPInvoiceTestByDoc Finish Batch:' + _batchToProcess[k]);
+
+
+
+           logInfo('checkCreateAPCNInvoiceTestByDoc Start Batch:' + _batchToProcess[k]);
+
+           checkCreateAPCNInvoiceTestByDoc(_batchToProcess[k]);
+
+           logInfo('checkCreateAPCNInvoiceTestByDoc Finish Batch:' + _batchToProcess[k]);
+
+
+
+           logInfo('checkCreateAPDeleteInvoiceTestByDoc Start Batch:' + _batchToProcess[k]);
+
+           checkCreateAPDeleteInvoiceTestByDoc(_batchToProcess[k]);
+
+           logInfo('checkCreateAPDeleteInvoiceTestByDoc Finish Batch:' + _batchToProcess[k]);
+
+
+
+           logInfo('checkCreateAPCNDeleteInvoiceTestByDoc Start Batch:' + _batchToProcess[k]);
+
+           checkCreateAPCNDeleteInvoiceTestByDoc(_batchToProcess[k]);
+
+           logInfo('checkCreateAPCNDeleteInvoiceTestByDoc Finish Batch:' + _batchToProcess[k]);
+
+
+
+           logInfo('Finish Process AP Batch' + _batchToProcess[k]);
+
+   end;
+
+end;
+
+
+
+function getBatchToProcessAP(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(BATCHFILENO as integer)) from FINANCIALPURCHASEINVOICES where '+
+
+' upper(transactionstatus) <> ''TRANSACTION VALID''  and transactiondate >= ''%s'' and transactiondate <= ''%s''',[datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+
+
+function getTransDateAP(datefrom,dateto:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct transactiondate) from FINANCIALPURCHASEINVOICES where upper(transactionstatus) = ''READY TO SEND'' and transactiondate >= ''%s'' and transactiondate <= ''%s'' and BATCHFILENO is null',[datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+
+
+function getDebtorByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(a.SYSUNIQUEID as integer)) from FINANCIALCUSTOMERS a '+
+
+'where a.BATCHFILENO = %s and upper(a.transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getCreditorByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(a.SYSUNIQUEID as integer)) from FINANCIALSUPPLIERS a '+
+
+'where a.BATCHFILENO = %s and upper(a.transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getGLDocByBatch(batchId:string;tblName:string):string;
+
+var
+
+_toReturn : variant;
+
+_varKeyName:string;
+
+_sql:string;
+
+begin
+
+_varKeyName := getGLFinancialTablesKey(tblName);
+
+_sql:=format('select list(distinct a.%s) from %s a where ' +
+
+' BATCHFILENO = %s and upper(transactionstatus) <> ''TRANSACTION VALID''',[_varKeyName,tblName,batchId]);
+
+logInfo(_sql);
+
+_toReturn :=  getsqlresult(_sql);
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getPRDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+_varKeyName:string;
+
+_sql:string;
+
+begin
+
+_varKeyName := 'ORDERNUMBER';
+
+_sql:=format('select list(distinct a.%s) from %s a where ' +
+
+' BATCHFILENO = %s and a.ORDERTYPE <> '''' and upper(transactionstatus) <> ''TRANSACTION VALID''',[_varKeyName,'FINANCIALPURCHASERECEIPTS',batchId]);
+
+logInfo(_sql);
+
+_toReturn :=  getsqlresult(_sql);
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getPRNSDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+_varKeyName:string;
+
+_sql:string;
+
+begin
+
+_varKeyName := 'ORDERNUMBER';
+
+_sql:=format('select list(distinct a.%s) from %s a where ' +
+
+' BATCHFILENO = %s and a.ORDERTYPE = '''' and upper(transactionstatus) <> ''TRANSACTION VALID''',[_varKeyName,'FINANCIALPURCHASERECEIPTS',batchId]);
+
+logInfo(_sql);
+
+_toReturn :=  getsqlresult(_sql);
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getARDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct a.invoicenumber) from FINANCIALSALESINVOICES a, Salesinvoiceheader sh '+
+
+'where sh.invoicenumber = a.invoicenumber and ' +
+
+' BATCHFILENO = %s and sh.invoiceorcredit = ''Invoice'' and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getCPDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(a.SYSUNIQUEID as integer)) from FINANCIALCUSTPAYMENT a '+
+
+'where  ' +
+
+' BATCHFILENO = %s and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getCustomerDepositDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(a.SYSUNIQUEID as integer)) from FINANCIALCUSTDEPOSIT a '+
+
+'where  ' +
+
+' BATCHFILENO = %s and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+
+
+
+
+function getapplyDepositDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(a.SYSUNIQUEID as integer)) from FINANCIALAPPLYDEPOSIT a '+
+
+'where  ' +
+
+' BATCHFILENO = %s and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getapplyPaymentDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct cast(a.SYSUNIQUEID as integer)) from FINANCIALAPPLYPAYMENT a '+
+
+'where  ' +
+
+' BATCHFILENO = %s and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getAPDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct a.INVOICEBATCHNO) from FINANCIALPURCHASEINVOICES a '+
+
+'where  ' +
+
+' BATCHFILENO = %s  and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getAPAPCNDeleteDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct a.SUPPLIERINVNO) from FINANCIALPURCHASEINVOICES a '+
+
+'where  ' +
+
+' BATCHFILENO = %s  and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getARCNDocByBatch(batchId:string):string;
+
+var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct a.invoicenumber) from FINANCIALSALESINVOICES a, Salesinvoiceheader sh '+
+
+'where sh.invoicenumber = a.invoicenumber and ' +
+
+' BATCHFILENO = %s and sh.invoiceorcredit <> ''Invoice'' and upper(transactionstatus) <> ''TRANSACTION VALID''',[batchId]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+function getGLFinancialTables:string;
+
+begin
+
+result := 'FINANCIALPURCHASEVAR,FINANCIALSALESFREIGHT,FINANCIALBANKDEPOSITS';
+
+
+end;
+
+
+
+function getGLFinancialTablesKey(tblName:string):string;
+
+var
+
+myList:TStringList;
+
+begin
+
+myList := TStringList.Create();
+
+myList.CommaText  :='FINANCIALASSYISSUES=ORDERNUMBER,FINANCIALASSYRECEIPTS=ORDERNUMBER,FINANCIALASSYWIPVAR=ORDERNUMBER, '+
+
+'FINANCIALINVENTORY=TRANSACTIONREFERENCE,FINANCIALJOBISSUES=ORDERNUMBER,FINANCIALJOBWIPVAR=ORDERNUMBER,' +
+
+'FINANCIALPURCHASEVAR=ORDERNUMBER,FINANCIALSALESCOSTS=INVOICENUMBER,FINANCIALSALESFREIGHT=INVOICENUMBER,FINANCIALSALESISSUES=ORDERNUMBER,'+
+
+'FINANCIALBANKDEPOSITS=BANKINGNUMBER,FINANCIALCUSTDEPOSIT=DEPOSITNUMBER';
+
+result:= myList.Values[tblName];
+
+end;
+
+
+
+function getGLFinancialTablesForBatch:string;
+
+begin
+
+result := 'FINANCIALPURCHASEVAR,FINANCIALPURCHASEINVOICES,FINANCIALPURCHASERECEIPTS,FINANCIALSALESINVOICES';
+
+end;
+
+function getPeriodicNonPost:string;
+
+begin
+
+result := 'FINANCIALASSYISSUES,FINANCIALASSYRECEIPTS,FINANCIALASSYWIPVAR,FINANCIALINVENTORY'+
+',FINANCIALJOBISSUES,FINANCIALJOBWIPVAR'+
+',FINANCIALSALESCOSTS'+
+',FINANCIALSALESFREIGHT,FINANCIALBANKDEPOSITS' +
+',FINANCIALAPPLYDEPOSIT,FINANCIALAPPLYPAYMENT'+
+',FINANCIALCUSTDEPOSIT,FINANCIALCUSTPAYMENT'+
+',FINANCIALSALESISSUES';
+
+end;
+
+
+
+function getListOfDateNeedToProcess(datefrom,dateto,tblName:string):string;
+
+  var
+
+_toReturn : variant;
+
+begin
+
+_toReturn :=  getsqlresult(format('select list(distinct(extract(YEAR from a.TRANSACTIONDATE) || ''-'' || lpad(extract(MONTH from a.TRANSACTIONDATE),2,0) || ''-'' || lpad(extract(DAY from a.TRANSACTIONDATE),2,0))) '+
+' from %s a '+
+
+'where a.transactiondate >= ''%s'' and a.transactiondate <= ''%s'' and upper(a.transactionstatus) <>  ''TRANSACTION VALID''',[tblName,datefrom,dateto]));
+
+if(_toReturn <> null) then
+
+begin
+
+ result := _toReturn;
+
+end
+
+else
+
+begin
+
+   result := '';
+
+end;
+
+end;
+
+
+
+procedure execOstBizByDay(datefrom,dateto:string;);
+
+begin
+
+
+
+UpdateProgressCaption('Uploading AR for ' + datefrom);
+
+logInfo('Uploading AR for ' + datefrom);
+
+getProcessByDetailAR(datefrom,dateto);
+
+
+
+UpdateProgressCaption('Uploading AP for ' + datefrom);
+
+logInfo('Uploading AP for ' + datefrom);
+
+getProcessByDetailAP(datefrom,dateto);
+
+
+UpdateProgressCaption('Uploading Purchase Receipts for ' + datefrom);
+
+logInfo('Uploading Purchase Receipts for ' + datefrom);
+
+getDetailProcessPR(datefrom,dateto);
+
+
+UpdateProgressCaption('GL transactions for ' + datefrom);
+
+logInfo('GL transactions for ' + datefrom);
+
+getProcessByDay(datefrom,dateto,getGLFinancialTables);
+
+
+
+end;
+
+
+
+procedure execCheckMaster;
+
+
+
+begin
+
+try
+
+begin
+
+
+
+UpdateProgressCaption('Checking Create Debtor');
+
+logInfo('checkCreateDebtor Start');
+
+checkCreateDebtor;
+
+logInfo('checkCreateDebtor Done');
+
+UpdateProgress(7);
+
+
+
+UpdateProgressCaption('Checking Create Creditor');
+
+logInfo('checkCreateCreditor Start');
+
+checkCreateCreditor;
+
+logInfo('checkCreateCreditor Done');
+
+UpdateProgress(10);
+
+
+
+ end;
+
+ finally
+
+   endProgress;
+
+ end;
+
+end;
+
+
+
+function isNotEmptyOstendoJSON(jsondata:string;keytoFind:string):boolean;
+
+begin
+
+   Delete(jsondata, 1,2);
+
+  Delete(jsondata, Length(jsondata)-2 , 2);
+
+
+
+  if(ParseJsonasString(jsondata,keytoFind ) = '') then
+
+  begin
+
+     result:=false;
+
+  end
+
+  else
+
+  begin
+
+      result:=true;
+
+  end;
+
+end;
+
+procedure execSetNonPostCustVendorInactive();
+begin
+   executesql('Update FINANCIALCUSTOMERS set BATCHFILENO = -1,  TRANSACTIONSTATUS = ''Transaction Valid'' where CUSTOMER in (select cm.CUSTOMER from CUSTOMERMASTER cm where cm.CUSTOMERSTATUS = ''InActive'')');
+   executesql('Update FINANCIALSUPPLIERS set BATCHFILENO = -1,  TRANSACTIONSTATUS = ''Transaction Valid'' where SUPPLIER in (select sm.SUPPLIER from SUPPLIERMASTER sm where sm.SUPPLIERSTATUS = ''InActive'')');
+
+end;
+
+procedure execSetNonPost();
+var
+_finNonPosttable:TStringList;
+_i:integer;
+begin
+_finNonPosttable:= TStringList.Create;
+_finNonPosttable.CommaText:= getPeriodicNonPost;
+
+try
+
+begin
+  ShowProgress('Periodic Batch Table Starting', _i, False);
+for _i:=0 to _finNonPosttable.Count -1 do
+begin
+
+    UpdateProgressCaption(_finNonPosttable[_i]);
+    executesql(format('Update %s set BATCHFILENO = -1,  TRANSACTIONSTATUS = ''Transaction Valid'' where BATCHFILENO is null',[_finNonPosttable[_i]]));
+    UpdateProgress(_i);
+end;
+end;
+   finally
+
+   endProgress;
+
+ end;
+end;
+
+procedure showErrorReport();
+var
+_fintable:TStringList;
+_i:integer;
+begin
+_fintable:= TStringList.Create;
+_fintable.CommaText:= getGLFinancialTablesForBatch;
+for _i:=0 to _fintable.Count -1 do
+begin
+  // showMessage(_fintable[_i]);
+  //  OstendoInquiry('PostingStatus'+_fintable[_i]);  '
+  if(isHaveError(_fintable[_i])) then
+  begin
+       OstendoInquiry('PostingStatus'+_fintable[_i]);
+  end;
+  if(isHaveError('FINANCIALCUSTOMERS')) then
+  begin
+        OstendoInquiry('PostingStatusFINANCIALCUSTOMERS');
+  end;
+    if(isHaveError('FINANCIALSUPPLIERS')) then
+  begin
+        OstendoInquiry('PostingStatusFINANCIALSUPPLIERS');
+  end;
+end;
+end;
+
+function isHaveError(tbl:string):boolean;
+var
+_counter:int;
+begin
+ _counter := strtoint(getsqlresult(format('select count(*) from %s sl2 where '+
+' sl2.TRANSACTIONSTATUS = ''Transaction Invalid''',[tbl])));
+if(_counter > 0) then
+begin
+ result:= true;
+end
+else
+begin
+ result:=false;
+end;
+end;
+
+
+
+begin
+
+
+               execSetNonPost;
+               execSetNonPostCustVendorInactive;
+               execSetBatchId(defaultFromDate, FormatDateTime('yyyy-MM-dd',now));
+               execCheckMaster;
+               execOstBizLinkWithDateCheck(defaultFromDate, FormatDateTime('yyyy-MM-dd',now));
+               showErrorReport;
+               showMessage('Done Posting');
+
+
+end.
+

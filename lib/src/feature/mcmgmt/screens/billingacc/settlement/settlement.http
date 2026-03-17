@@ -1,0 +1,123 @@
+//ApiMgmtMchtAcctTxn 
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctSttlmtList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": null,
+  "FromDate": "2025-01-01 00:00:00.000",
+  "ToDate": "2025-06-25 00:00:00.000",
+  "MchtEttyId": "55"
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctSttlmtTxnList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "TadNo": "10000002",
+  "SttlmtDate": "2025-06-05T00:00:00",
+  "LocEttyId": 712,
+  "MchtEttyId": 55,
+  "SttlmtBatchNo": 10,
+  "PrgEttyId":1,
+  "FromDate": 20250101,
+  "ToDate": 20250625
+}
+
+ApiMgmtMchtAcctSttlmtTxnPrdList
+	@MchtEttyId		bigint = NULL,
+	@PrgEttyId		bigint = NULL,
+	@LocEttyId		bigint = NULL,
+	@TxnId			bigint = NULL,
+	@ColCnt			tinyint OUTPUT,
+	@UserId			tUserId = NULL,
+	@SrcIpAddr		tIpAddr = NULL,
+	@MsgId			tMsgId OUTPUT
+
+###
+
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctSttlmtTxnPrdList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "TxnId": 512,
+  "LocEttyId": null,
+  "PrgEttyId":null,
+  "MchtEttyId": null,
+}
+
+//ApiMgmtMchtAcctTxn 
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctSttlmt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "locEttyId": 83,
+  "TadEttyId": null,
+  "FromDate": null,
+  "ToDate": null
+//   "MchtEttyId": 83,
+
+}
+
+
+//ApiMgmtMchtAcctTxn 
+
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtAcctTxn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "mchtEttyId": 83,
+  "TadEttyId": null,
+  "FromDate": null,
+  "ToDate": null
+//   "MchtEttyId": 83,
+}
+
+//ApiMgmtMchtTxnPostedSearch
+###
+POST {{baseUrl}}/sp/ApiMgmtMchtTxnPostedSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "MchtEttyId": 55,
+  "LocEttyId":null,
+  "TxnCtgry":null,
+  "MediaNo":null,
+  "FromDate": null,
+  "ToDate": null
+//   "MchtEttyId": 83,
+}
+
+
+
+
+//.ApiMgmtEttyTadList
+
+###
+POST {{baseUrl}}/sp/ApiMgmtEttyTadList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "LocEttyId": 83,
+  "MchtEttyId": 83,
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtEttyLocList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+  "MchtEttyId": 83,
+}

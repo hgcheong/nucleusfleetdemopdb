@@ -1,0 +1,265 @@
+
+POST {{baseUrl}}/sp/ApiCustMgmtBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 83,
+      
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiCustMgmtAcct/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 83,
+    "PrgEttyId":1,
+     "EttyId": 86,
+      
+}
+### 
+
+//ApiMgmtCustBillingAcctList
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+   
+}
+//ApiMgmtCustAutoPymt
+###
+POST {{baseUrl}}/sp/ApiMgmtCustAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+      "PrgEttyId": 1,
+      "EttyId": 529,
+      "AcctId": 14,
+      "AcctType": "POSTPAID",
+}
+### 
+
+//apimgmtacctbfoverduelist
+###
+POST {{baseUrl}}/sp/apimgmtacctbfoverduelist/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+      "EttyId": 529,
+}
+### 
+
+//ApiMgmtBillingInfo
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPukal/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+      "EttyId": 14,
+      "PrgEttyId": 1
+}
+### 
+
+//ApiMgmtBillingInfo
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPukalSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "AcctOffcSad": "1010",
+  "SortKey": "2009",
+  "TrustFund": "0000",
+  "Vot": "11223",
+  "CustEttyId": "528",
+  "AgencyId": "200042",
+  "AcctId": null,
+  "PukalId": "1",
+  "EttyId": "529",
+  "PrgEttyId": "1",
+  "MdfDate": "2024-07-26 16:13:05.953",
+  "BusnArea": "1000",
+  "DeptGrpCd": "10393009",
+  "Acctble": "29298311",
+  "PrgActvtyCd": "090909090",
+  "ProjCd": "0909090987654321",
+  "ObjCd": "11111110"
+}
+
+POST {{baseUrl}}/sp/ApiMgmtSts/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+     "EttyId": 11,
+      
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiCustMgmtAcctSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+   "PrgDscp": "Xfleet Postpaid",
+      "BillingTo": "458001020304001",
+      "BillingName": "BHPETROL BANDAR BARU SALAK TINGGI",
+      "BillingLevelDscp": "LOCATION",
+      "BillingTypeDscp": "NO BILLING",
+      "AcctTypeDscp": null,
+      "AcctBal": 0.0000,
+      "AcctStsDscp": "ACTIVE",
+      "AcctSts": "A",
+      "PrgEttyId": 1,
+      "CustEttyId": 83,
+      "EttyId": 86,
+      "AcctId": 11,
+      "AcctNo": 86,
+      "AcctType": "REIMBURSE",
+      "BillingEttyType": 13    
+}
+### 
+
+//ApiCustMgmtAcctSttlmt 
+
+
+POST {{baseUrl}}/sp/ApiCustMgmtAcctSttlmt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 83,
+    "PrgEttyId": 1,
+    "EttyId": 86,    
+}
+### 
+
+//ApiCustMgmtTxnPostedSearch
+
+POST {{baseUrl}}/sp/ApiCustMgmtTxnPostedSearch/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "CustEttyId": 83,
+      "LocEttyId": null
+    //  "AcctId": 12
+}
+
+
+//ApiCustMgmtLocAutoPymt
+
+POST {{baseUrl}}/sp/ApiCustMgmtLocAutoPymt/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "CustEttyId": 83,
+      "EttyId": 87,
+      "PrgEttyId": 1,
+    //  "AcctId": 12
+}
+
+//ApiCustMgmtLocAutoPymtSave
+
+
+###
+POST {{baseUrl}}/sp/ApiCustMgmtLocAutoPymtSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+      "DrAutoPymtInd": null,
+      "DrAutoExecDays": null,
+      "DrPymtType": "DDR",
+      "DrBank": null,
+      "DrBranchCd": null,
+      "DrBankAcctNo": null,
+      "DrBankAcctType": null,
+      "DrAcctHolderName": null,
+      "DrPayeeCd": null,
+      "DrPayeeRef": null,
+      "DrBankAcctId": null,
+      "DrSts": null,
+      "CrAutoPymtInd": null,
+      "CrAutoExecDays": null,
+      "CrPymtType": "DCR",
+      "CrBank": null,
+      "CrBranchCd": null,
+      "CrBankAcctNo": null,
+      "CrBankAcctType": null,
+      "CrAcctHolderName": null,
+      "CrPayeeCd": null,
+      "CrPayeeRef": null,
+      "CrBankAcctId": null,
+      "CrSts": null,
+   "CustEttyId": 83,
+      "EttyId": 87,
+      "PrgEttyId": 1
+}
+
+
+//
+//VwBank
+###
+POST {{baseUrl}}/view/async/VwBank HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtAcctBlockSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "PrgEttyId": "4",
+  "AcctId": "157",
+  "FromDate": "2025-05-12 00:00:00.000",
+  "ToDate": "2025-05-14 00:00:00.000",
+  "Note": "Block"
+}
+
+//ApiMgmtCustBillingAcctList
+###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 528,
+   
+}
+
+# EXEC dbo.ApiMgmtAcctBlock
+# 	@AcctId		bigint,
+# 	@PrgEttyId	bigint,
+# 	@UserId		tUserId = NULL,
+# 	@SrcIpAddr	tIpAddr = NULL,
+# 	@MsgId		tMsgId OUTPUT
+
+# --Place NULL to From Date, To Date unblock the account
+# EXEC dbo.ApiMgmtAcctBlockSave
+# 	@AcctId			bigint,
+# 	@PrgEttyId		bigint,
+# 	@FromDate		datetime,
+# 	@ToDate		datetime,
+

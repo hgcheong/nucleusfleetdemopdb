@@ -1,0 +1,193 @@
+
+POST {{baseUrl}}/sp/ApiEnrlCustList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+### 
+
+POST {{baseUrl}}/sp/ApiEnrlCust/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 329
+
+}
+### 
+
+//ApiEnrlCust
+
+POST {{baseUrl}}/sp/ApiLogReqSpList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SpName": "ApiEnrlCustSave"
+}
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{  "CustEttyId": "2",  
+"TaxCtgry": null,  
+"TaxNo": null,  
+"Title":"DN",
+"AcctMgrContactNo": "0132244440", 
+ "AcctMgrId": null,  
+ "CustMdfDate": "2024-06-12 15:48:39.970",  
+ "CmpyMdfDate": "2024-06-12 15:48:39.970",  
+ "ContMdfDate": "2024-06-12 15:48:39.970",  
+ "SrcRef": null,  
+ "CmpyName": "UEM Group Berhad (UEM Group)",  
+ "RgstionName": "UEM Group Berhad",  
+ "RgstionNo": "6551-K",  
+ "RgstionDate": "Jan 27 1989",  
+ "CmpySize": null,  "SegmtType": null,  "BusnType": null,  "CmpyType": null,  "FirstName": "Amran Hafiz",  "LastName": "Affifudin",  "Dsgntion": "DIRECT",  "ApplRef": "UEMGRP",  "ApplSrc": "WEB",  "SubmtDate": "Jun 12 2024",  "AcctMgrName": "Azman Ahmad"}
+### 
+
+
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustOverview/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustOverviewChkList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+
+}
+### 
+
+
+POST {{baseUrl}}/sp/ApiEnrlCustProfile/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 6
+
+}
+
+###
+
+POST {{baseUrl}}/sp/ApiEnrlCustProfileSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+  {
+    "CustEttyId": 6,
+      "CmpyName": "Test",
+      "RgstionName": "Test",
+      "RgstionNo": "123",
+      "RgstionDate": "2023-06-01T00:00:00",
+      "Dsgntion":null,
+      "FirstName": "FirstName",
+      "LastName": "LastNameUpdate",
+      "Title": null,
+          "TaxCtgry": null,
+      "TaxNo": null,
+       "AcctMgrId": 4,
+          "AcctMgrName": "Acct",
+      "AcctMgrContactNo": "123",
+      "ApplRef": null,
+      "ApplSrc": null,
+    "SrcRef": null,
+      "CmpyType": "LIMITED",
+        "BusnType": "DEFAULT",
+           "SegmtType": null,
+      "CmpySize": null,
+       "SubmtDate": "2023-06-01T00:00:00",
+        "CmpyMdfDate": "2023-06-01T00:00:00",
+          "CustMdfDate": "2023-06-01T00:00:00",
+          "ContMdfDate": "2023-06-01T00:00:00",
+        
+    }
+### 
+//DSGNTION
+#DSGNTION 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"BUSNSEGMT",
+"BitInd":null
+}
+###
+
+//DSGNTION
+#DSGNTION 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"DSGNTION",
+"BitInd":null
+}
+###
+
+
+
+#ApplSrc 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"ApplSrc",
+"BitInd":null
+}
+###
+
+#TaxCtgry 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"TaxCtgry",
+"BitInd":null
+}
+###
+
+#APPLSRC 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"APPLSRC",
+"BitInd":null
+}
+###
+
+//VwAcctMgr
+##
+POST {{baseUrl}}/view/async/VwAcctMgrCust HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+###
+
+ApiEnrlEttyList
+
+

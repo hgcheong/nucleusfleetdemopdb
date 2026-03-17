@@ -1,0 +1,100 @@
+###
+//Vendor
+POST {{baseUrl}}/sp/ApiMgmtSiteList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+}
+
+###
+POST {{baseUrl}}/sp/ApiMgmtSiteSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "SiteId": "11",
+  "Street1": "ADD1",
+  "Street2": "ADD2",
+  "Street3": "ADD3",
+  "BusnTimeFrom": "00:00",
+  "BusnTimeTo": "23:55",
+  "SiteName": "11",
+  "PostCd": "47000",
+  "CityCd": "MY:01:AH",
+  "StateCd": "MY:01",
+  "ContactNo": "012344556",
+  "GeoLoc": null,
+  "IconEuro5": "1",
+  "IconMart": "1",
+  "IconATM": "1",
+  "IconFood": "1",
+  "IconWash": "1",
+  "IconEV": "1",
+  "IconTnG": "1",
+  "IconTnGSpot": "1",
+  "IconEpay": "1"
+}
+
+
+###
+POST {{baseUrl}}/sp/ApiMgmtSite/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "SiteId":null
+}
+
+   FbLibView(
+                        name: 'CityCd',
+                        label: 'City',
+                        params: const {},
+                        keyField: 'RefCd',
+                        searchText: 'Dscp',
+                        querySql: '/view/async/VwMyCity',
+                        initialValue: formValue['CityCd'],
+                      ),
+                      //     sbh10,
+                      FbLibView(
+                        name: 'StateCd',
+                        label: 'State',
+                        params: const {"RefType": "STATE", "BitInd": null},
+                        keyField: 'RefCd',
+                        searchText: 'Dscp',
+                        querySql: '/sp/GetLibRef/queryasyncnouser',
+                        initialValue: formValue['StateCd'],
+                      ),
+                      //    sbh10,
+                      FbLibView(
+                        name: 'CtryCd',
+                        label: 'Country',
+                        params: const {"RefType": "CtryCd", "BitInd": null},
+                        keyField: 'RefCd',
+                        searchText: 'Dscp',
+                        querySql: '/sp/GetLibRef/queryasyncnouser',
+                        initialValue: formValue['CtryCd'],
+                      ),
+                  
+                      FormBuilderField(
+                        name: 'GeoLoc',
+                        //  initialValue: addrType,
+                        builder: (FormFieldState f) {
+                          return Container();
+                        },
+                      ),
+
+            "IconEuro5": 1,
+            "IconMart": 1,
+            "IconATM": 1,
+            "IconFood": 1,
+            "IconWash": 1,
+            "IconEV": 1,
+            "IconTnG": 0,
+            "IconTnGSpot": 0,
+            "IconEpay": 0,
+
+
+
+            

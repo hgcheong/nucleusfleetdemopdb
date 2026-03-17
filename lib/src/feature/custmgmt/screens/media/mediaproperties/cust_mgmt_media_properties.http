@@ -1,0 +1,105 @@
+//ApiMgmtMediaProp
+##
+POST {{baseUrl}}/sp/ApiEnrlMediaDsgn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": "985",
+  "PrgEttyId": "1",
+  "MbrEttyId": "997",
+  "MediaEttyId": "998",
+ 
+}
+# {
+#   "CustEttyId": 683,
+#    "PrgEttyId": 1,
+#    "MbrEttyId": 534,
+#    "MediaEttyId": 535,
+#    //   "CardDsgn":"STD",
+#   //  "MediaCtgry": "VEHICLE",
+# }
+###
+
+//ApiMgmtMediaProp
+##
+POST {{baseUrl}}/sp/ApiMgmtMediaAddOnDsgnSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 1262,
+   "PrgEttyId": 1,
+   "MbrEttyId": 93,
+   "CardDsgn":"STD",
+   "NameOnMedia1":"ABC",
+    "NameOnMedia2":"ABCD",
+    "MediaId":null
+   // "MediaCtgry": "VEHICLE",
+}
+###
+
+
+
+#DSGNTION 
+
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{"RefType":"CardDsgn",
+"BitInd":null
+}
+###
+
+
+//ApiMgmtMediaProp
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaProp/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 528,
+   "PrgEttyId": 1,
+   "MbrEttyId": 534,
+   "MediaEttyId": 535,
+   "IssId":13
+}
+
+
+//ApiMgmtMediaProp
+###
+POST {{baseUrl}}/sp/ApiMgmtMediaDsgn/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "CustEttyId": 528,
+   "PrgEttyId": 1,
+   "MbrEttyId": 534,
+   "MediaEttyId": 535,
+   "IssId":13
+}
+###
+
+
+//dbo.RpeDrivewayMediaBal
+
+POST {{baseUrl}}/sp/RpeDrivewayMediaBal/queryasyncoltp HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+  "EttyId":null,
+  "MediaNo":"78971340000630070"
+}
+
+@EttyId		bigint = NULL,
+	@MediaNo	bigint = 78971340000630070,
+	@UserId		tUserId = NULL,
+	@SrcIpAddr	varchar(15) = NULL,
+	@MsgId		tMsgId OUTPUT
+
+
+Pick fields: LimitType, MaxThsId 'TotalLimit', MaxThsId - UtlzedAmt - ExpsrAmt + RevokeAmt 'AvailBal'

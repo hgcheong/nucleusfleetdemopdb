@@ -1,0 +1,40 @@
+//ApiMgmtCustBillingAcctPukal###
+POST {{baseUrl}}/sp/ApiMgmtCustBillingAcctPukal/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CustEttyId": 4,
+    "BDF":null
+}
+### 
+
+//VwPukalBusnArea
+###
+POST {{baseUrl}}/view/async/VwPukalBusnArea HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwPukalBusnArea
+###
+POST {{baseUrl}}/view/async/VwPukalSts HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
+
+//VwPukalBusnArea
+###
+POST {{baseUrl}}/view/async/VwPukalObjCd HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+ 
+}
