@@ -169,7 +169,6 @@ class CustMgmtMediaReissueDialog extends ConsumerWidget {
                                     }
                                   });
                                 }),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtMediaIssueSave', ettyId: mediaEttyId.toString(),),
                                 sbh10,
                                 ElevatedButton(

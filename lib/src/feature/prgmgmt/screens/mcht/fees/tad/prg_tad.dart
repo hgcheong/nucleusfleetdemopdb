@@ -5,7 +5,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
@@ -267,9 +266,7 @@ class PrgMgmtMchtFeesTadForm extends HookConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         const AcxBackToList(listUrl: '././pmfeetadlist'),
-                             sbh10,
                     AcxAuditLogReqBtn('ApiPrgMchtTadFeeSave',)
                       ],
                     ),

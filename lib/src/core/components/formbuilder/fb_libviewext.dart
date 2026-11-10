@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nucleusv2/src/core/components/acx_searchboxmapext.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
 
 class FbLibViewExt extends StatelessWidget {
   const FbLibViewExt({
@@ -33,13 +35,15 @@ class FbLibViewExt extends StatelessWidget {
   final bool showClearBtn;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
     final openDropDownProgKey = GlobalKey<DropdownSearchState<dynamic>>();
     return FormBuilderField(
         name: name,
         builder: (FormFieldState<dynamic> field) {
           return SizedBox(
-            height: 48,
+            height: DiboldTheme.fieldHeight,
             child: AcxSearchBoxMapExt(
               showClearBtn: showClearBtn,
               inputIcon: inputIcon,

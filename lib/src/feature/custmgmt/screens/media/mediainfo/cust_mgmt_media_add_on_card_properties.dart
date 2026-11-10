@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
@@ -203,10 +202,8 @@ class CustMgmtMediaAddOnCardProperties extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxBackToList(
                                 listUrl: '/custmgmt/media/$custEttyId/list/addOn'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtMediaAddOnPropSave', ettyId: mbrEttyId.toString(),)
                           ]),
                         )
@@ -229,7 +226,7 @@ class MediaPropertiesHdr extends StatelessWidget {
             return const NotAuthorised();
 }
     return Container(
-      color: Colors.blue,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: const Row(
         children: [
           Flexible(
@@ -272,7 +269,7 @@ class MediaPropertiesHdr2 extends ConsumerWidget {
     // final mediaMediaCategorySelect =
     //     ref.watch(mediaCustMgmtMediaCategorySelectProvider);
     return Container(
-      color: Colors.blue,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: Column(
         children: [
           Row(

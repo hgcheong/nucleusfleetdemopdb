@@ -337,9 +337,7 @@ class MchtEnrlLocGeneralInfo extends ConsumerWidget {
                         }
                       });
                     }),
-                    sbh10,
                     AcxBackToList(listUrl: '/mcenroll/loc/$mchtEttyId/list'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiEnrlLocSave', ettyId: locEttyId.toString(),)
                   ]),
                 )

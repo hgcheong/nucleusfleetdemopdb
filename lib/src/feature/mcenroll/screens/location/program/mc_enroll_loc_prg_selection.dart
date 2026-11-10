@@ -122,7 +122,6 @@ class MchtEnrlocPrgSelection extends ConsumerWidget {
                         AcxBackToList(
                             listUrl:
                                 '/mcenroll/loc/$mchtEttyId/detail/$locEttyId/program'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiEnrlLocPrgSave', ettyId: locEttyId.toString(),)
                       ],
                     ))

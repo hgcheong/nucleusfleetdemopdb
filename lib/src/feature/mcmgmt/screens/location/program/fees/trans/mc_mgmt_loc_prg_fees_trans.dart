@@ -373,9 +373,7 @@ class MchtMgmtLocPrgTransForm extends ConsumerWidget {
                               });
                             },
                           ),
-                          sbh10,
                           const AcxBackToList(listUrl: '././././list'),
-                          sbh10,
                           AcxAuditLogReqBtn('ApiMgmtLocTxnFeeSave',ettyId: locEttyId.toString(),)
                         ]),
                       )
@@ -672,9 +670,6 @@ class McMgmtLocPlanFeeForm extends ConsumerWidget {
                       // }
                     });
                   },
-                ),
-                const SizedBox(
-                  height: 30,
                 ),
                 AcxAuditLogReqBtn('ApiMgmtLocTxnFeePlanSave', ettyId: locEttyId.toString(),),
                 sbh10,

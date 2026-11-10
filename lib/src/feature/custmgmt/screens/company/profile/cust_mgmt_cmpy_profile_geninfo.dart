@@ -348,9 +348,7 @@ class CustMgmtCmpyProfileGenInfo extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(listUrl: '/custmgmt/cmpy/$custEttyId/list'),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiMgmtCmpySave',ettyId: cmpyEttyId.toString(),)
                     ]),
                   )

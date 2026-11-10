@@ -1,5 +1,6 @@
 
 import 'package:encrypt/encrypt.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
@@ -123,7 +124,7 @@ TextStyle? getFormTextStyle(String fieldName, List<ColumnInfo>? clmInfo){
     final isFound = clmInfo.where((element) => element.data!.toUpperCase() == fieldName.toUpperCase());
     if(isFound.isNotEmpty){
          if (isFound.first.isReq!){
-            return const TextStyle(color: Colors.amber);
+            return const TextStyle(color: DbColors.required);
          }
     } 
 

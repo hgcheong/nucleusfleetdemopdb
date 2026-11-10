@@ -177,7 +177,6 @@ class CustMgmtRiskForm extends HookConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMgmtCrRiskSave',ettyId: custEttyId.toString(),)
                   ]),
                 )

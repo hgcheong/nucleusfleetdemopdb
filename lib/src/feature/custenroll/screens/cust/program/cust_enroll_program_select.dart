@@ -123,7 +123,6 @@ class CustEnrolProgramSelect extends ConsumerWidget {
                               AcxBackToList(
                                   listUrl:
                                       '/custenroll/cust/$custEttyId/program/list'),
-                                      sbh10,
                                       AcxAuditLogReqBtn('ApiEnrlCustPrgSave', ettyId: custEttyId.toString(),)
                             ],
                           ))

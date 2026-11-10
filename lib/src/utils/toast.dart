@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:nucleusv2/src/app.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
 import 'package:nucleusv2/src/feature/theme/app_theme.dart';
@@ -14,7 +15,7 @@ class Toast {
 
   static void newMessageDialog(BuildContext context, String msg) {
     final snackBar = SnackBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: DbColors.primary,
       behavior: SnackBarBehavior.floating,
       content: Row(
         children: [
@@ -37,7 +38,7 @@ class Toast {
   static void newMessage(BuildContext context, Returndata returndata) {
     final snackBar = SnackBar(
       backgroundColor:
-          returndata.message!.msgSeverity == 0 ? Colors.blue : Colors.red,
+          returndata.message!.msgSeverity == 0 ? DbColors.primary : DbColors.danger,
       behavior: SnackBarBehavior.floating,
       content: Row(
         children: [
@@ -60,7 +61,7 @@ class Toast {
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showTopDialog(BuildContext context, Returndata returndata) {
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       backgroundColor:
-          returndata.message!.msgSeverity == 0 ? Colors.blue : Colors.red,
+          returndata.message!.msgSeverity == 0 ? DbColors.primary : DbColors.danger,
       behavior: SnackBarBehavior.floating,
       content: Row(
         children: [
@@ -81,7 +82,7 @@ class Toast {
 
   static void message(String message) {
     final snackBar = SnackBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: DbColors.primary,
       behavior: SnackBarBehavior.floating,
       content: Row(
         children: [
@@ -123,7 +124,7 @@ class Toast {
           ],
         ),
         //  backgroundColor: Theme.of(context).colorScheme.info
-        backgroundColor: Colors.red);
+        backgroundColor: DbColors.danger);
     rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
   }
 

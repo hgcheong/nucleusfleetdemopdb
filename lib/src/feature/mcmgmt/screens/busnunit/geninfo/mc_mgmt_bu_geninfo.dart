@@ -162,10 +162,8 @@ class MchtMgmtBusinessUnitGenInfo extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxBackToList(
                                 listUrl: '/mcmgmt/bu/$mchtEttyId/list'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtBusnUnitSave', ettyId: busnUnitEttyId.toString(),)
                           ],
                         ),

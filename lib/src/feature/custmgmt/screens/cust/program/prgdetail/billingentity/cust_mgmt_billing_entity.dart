@@ -155,7 +155,6 @@ class CustMgmtBillingEntity extends ConsumerWidget {
                                 AcxBackToList(
                                     listUrl:
                                         '/custmgmt/cust/$custEttyId/program/list'),
-                                        sbh10,
                                         AcxAuditLogReqBtn('ApiMgmtCustPrgSave', ettyId: custEttyId.toString(),)
                               ],
                             ))

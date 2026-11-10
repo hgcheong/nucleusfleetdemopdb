@@ -199,9 +199,7 @@ class DataEntrySaleTxn extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(listUrl: '/dataentry/manual/$txnType/list'),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiMnlTxnSave',)
                     ]),
                   )
@@ -470,7 +468,6 @@ class AddProductDialog extends ConsumerWidget {
                                 if (isSuccess(value.message)) {}
                               });
                             }),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMnlTxnItemSave',),
                             sbh10,
                             ElevatedButton(

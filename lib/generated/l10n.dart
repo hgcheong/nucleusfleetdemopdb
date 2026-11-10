@@ -2488,6 +2488,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Subsidy Setup (Enrolment)`
+  String get lblSubsidySetupEnrol {
+    return Intl.message(
+      'Subsidy Setup (Enrolment)',
+      name: 'lblSubsidySetupEnrol',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subsidy Setup`
+  String get lblSubsidySetup {
+    return Intl.message(
+      'Subsidy Setup',
+      name: 'lblSubsidySetup',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

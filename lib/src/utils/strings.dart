@@ -50,3 +50,18 @@ String regexLatitudeStr(String latitude) {
 }
 
 
+
+// Added with subsidyv2 (from archive 2)
+String fmtNumberNoDecimal(dynamic number) {
+  try {
+    final formatter = NumberFormat.decimalPatternDigits(decimalDigits: 0);
+    return formatter.format(double.parse(number.toString()));
+  } catch (e) {
+    return number.toString();
+  }
+}
+
+String fmtDateyyyyMMdd(String date) {
+  final toProcessdate = DateTime.parse(date);
+  return DateFormat('yyyy-MM-dd').format(toProcessdate);
+}

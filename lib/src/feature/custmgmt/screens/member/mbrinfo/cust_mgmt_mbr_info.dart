@@ -203,7 +203,6 @@ class CustMgmtMemberInfoForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxBackToList(
                       listUrl: '/custmgmt/member/$custEttyId/list',
                       fnBeforeNav: () {
@@ -213,7 +212,6 @@ class CustMgmtMemberInfoForm extends ConsumerWidget {
                         };
                       },
                     ),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMgmtMbrSave',ettyId: mbrEttyId.toString(),)
                   ]),
                 )

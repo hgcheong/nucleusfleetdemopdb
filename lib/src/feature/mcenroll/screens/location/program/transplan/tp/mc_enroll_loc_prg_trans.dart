@@ -254,11 +254,9 @@ class McEnrollLocPrgTpForm extends ConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         const AcxBackToList(
                           listUrl: '././list',
                         ),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiEnrlLocTxnPlanSave',ettyId: locEttyId.toString(),)
                       ],
                     ),

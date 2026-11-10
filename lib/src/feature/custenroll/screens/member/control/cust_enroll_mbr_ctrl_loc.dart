@@ -291,11 +291,9 @@ class CustEnrollMemberCtrlLoc extends ConsumerWidget {
                             });
                           },
                         ),
-                        sbh10,
                         AcxBackToList(
                             listUrl:
                                 '/custenroll/member/$custEttyId/detail/$mbrEttyId/control/locaccpt'),
-                                sbh10,
                         AcxAuditLogReqBtn('ApiEnrlMbrLocAccptSave,ApiEnrlLocAccptLocSave,ApiEnrlLocAccptLocDel',ettyId: formNewValue["AccptId"].toString())
                       ],
                     )),
@@ -649,7 +647,6 @@ class CustEnrollMemberCtrlTxnLocList extends HookConsumerWidget {
                   context: context,
                   builder: (context) {
                     return Dialog(
-                        backgroundColor: bgColor,
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(15))),

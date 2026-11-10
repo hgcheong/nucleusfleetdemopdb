@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +15,7 @@ class PlaceholderProvider extends StateNotifier<List<PlaceholderModel>> {
 
     final color = ([
       Colors.red,
-      Colors.blue,
+      DbColors.primary,
       Colors.pink,
       Colors.yellow,
       Colors.green,

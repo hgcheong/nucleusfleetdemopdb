@@ -331,9 +331,7 @@ class AcxDirectorShipForm extends ConsumerWidget {
                                     }
                             });
                           }),
-                          sbh10,
                           AcxBackToList(listUrl: backToListUrl.toString()),
-                               sbh10,
                        AcxAuditLogReqBtn(querySaveSql,ettyId: formValue['IndvdId'].toString(),),
                         ]),
                       )

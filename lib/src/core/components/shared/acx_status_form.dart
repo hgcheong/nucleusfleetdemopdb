@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nucleusv2/constants.dart';
@@ -161,9 +162,7 @@ class AcxStatusForm extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxBackToList(listUrl: backToListUrl.toString()),
-                            sbh10,
                             AcxAuditLogReqBtn(querySaveSql,ettyId: formValue['EttyId'].toString(),)
                           ],
                         ),
@@ -291,7 +290,7 @@ Widget showUserStatus(String? userId) {
   if (userId != null) {
     return Container(
       padding: const EdgeInsets.all(5),
-      color: Colors.blue,
+      color: DbColors.primary,
       child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

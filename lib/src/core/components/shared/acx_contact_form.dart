@@ -341,7 +341,6 @@ isShowResendEmail ? Row(children: [          ElevatedButton(
                               
                             });
                           }),
-                          sbh10,
                                        AcxBackToList(listUrl: backToListUrl.toString()),
                           sbh10,
                           // AcxSaveButton(

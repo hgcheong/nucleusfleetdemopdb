@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/singletons.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/menu_controller.dart';
@@ -67,7 +66,7 @@ class AcxBreadcrumb extends ConsumerWidget implements PreferredSizeWidget {
             },
             child: Text(
               sideDrawerItems[i].title,
-              style: const TextStyle(color: tabBarColor),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
             )),
       );
       toReturn.add(

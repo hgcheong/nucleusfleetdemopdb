@@ -134,9 +134,6 @@ class PlanFeeLocForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
                     AcxAuditLogReqBtn('ApiEnrlLocTadFeePlanSave', ettyId: locEttyId.toString(),),
                     sbh10,
                     ElevatedButton(

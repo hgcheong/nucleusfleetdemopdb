@@ -4,7 +4,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/generated/l10n.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
@@ -136,7 +135,7 @@ class CustEnrollMbrTxnLimitForm extends ConsumerWidget {
                           const SelectableText(
                               'Transaction Category and Spending Limit at Member level'),
                           Container(
-                              color: Colors.blue,
+                              color: Theme.of(context).colorScheme.primaryContainer,
                               child: SelectableText(
                                   'Program selected for Limit Setting :${prgSelected['PrgDscp'].toString()}')),
                           FbText(
@@ -266,11 +265,9 @@ class CustEnrollMbrTxnLimitForm extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(
                           listUrl:
                               '/custenroll/member/$custEttyId/detail/$mbrEttyId/control/translimt'),
-                              sbh10,
                               AcxAuditLogReqBtn('ApiEnrlMbrTxnLimitSave',ettyId: mbrEttyId.toString(),)
                     ]),
                   )

@@ -73,7 +73,6 @@ class CustEnrollMemberCtrlProd extends ConsumerWidget {
             AcxBackToList(
                 listUrl:
                     '/custenroll/member/$custEttyId/detail/$mbrEttyId/control/prodaccpt'),
-                    sbh10,
             AcxAuditLogReqBtn('ApiEnrlMbrPrdAccptSave', ettyId: '$custEttyId|$mbrEttyId|$prgEttyId',)
           ]),
         )

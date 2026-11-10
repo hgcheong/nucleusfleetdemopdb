@@ -152,10 +152,8 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                 }
               });
                     }),
-                          sbh10,
                      const AcxBackToList(
                         listUrl: '/systemconfig/logreq/list'),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiLogReqSpSave', ettyId: id.toString(),)
                   ],
                 ),

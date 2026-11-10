@@ -208,9 +208,7 @@ class CustmgmtSecurityDepForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     const AcxBackToList(listUrl: './././secdep'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApimgmtCrDepSave', ettyId: cmpyEttyId.toString(),)
                   ]),
                 )

@@ -347,12 +347,10 @@ class CustMgmtProgramDisRebTransForm extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(
                         listUrl:
                             '/custmgmt/custprg/$custEttyId/$prgEttyId/$billingEttyType/discandreb/list',
                       ),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiMgmtCustRebateSave', ettyId: custEttyId.toString(),)
                     ]),
                   )
@@ -1264,9 +1262,6 @@ class CustMgmtProgramFeeDiscRebateFeePlanForm extends ConsumerWidget {
                                     ReturndatafreezedProvider(queryFeeForm));
                               });
                             },
-                          ),
-                          const SizedBox(
-                            height: 30,
                           ),
                           AcxAuditLogReqBtn('ApiEnrlCustRebateFeePlanSave',ettyId: custEttyId.toString(),),
                           sbh10,

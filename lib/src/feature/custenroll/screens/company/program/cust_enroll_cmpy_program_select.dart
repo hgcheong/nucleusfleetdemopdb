@@ -152,7 +152,6 @@ class CustEnrollCmpyProgramSelect extends ConsumerWidget {
                                 AcxBackToList(
                                     listUrl:
                                         '/custenroll/cmpy/$custEttyId/detail/$cmpyEttyId/program/list'),
-                                             sbh10,
                         AcxAuditLogReqBtn('ApiEnrlCmpyPrgAccptSave', ettyId: cmpyEttyId.toString(),)
                                         
 

@@ -50,7 +50,7 @@ dependencies:
   logger: ^2.0.1
   riverpod: ^2.4.8
   flutter_riverpod: ^2.4.8
-  google_fonts: ^6.2.1
+  google_fonts: ^6.3.2 # 6.3.2+ needed for newer Flutter FontWeight (non-const map fix)
   flutter_svg: ^2.0.5
   flutter_hooks: ^0.21.2
   hooks_riverpod: ^2.4.8
@@ -81,6 +81,12 @@ dependencies:
   pdf: ^3.11.3
   web: ^1.1.1
   
+# Newer image releases (e.g. 4.11.0) call ZLibDecoder.decodeLazy, which only exists in archive >= 4.4.0.
+# Another package caps archive below that, so pin image to the last version
+# this project resolved cleanly (matches pubspec.lock).
+dependency_overrides:
+  image: 4.5.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

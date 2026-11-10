@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:nucleusv2/constants.dart';
@@ -41,7 +42,7 @@ class CustMgmtDashBoard extends StatelessWidget {
                   ],
                 ),
               ),
-              progressColor: Colors.blue,
+              progressColor: DbColors.primary,
             ),
           ),
           const CardMedium(
@@ -135,7 +136,7 @@ class CustMgmtDashBoard extends StatelessWidget {
                   percent: 0.8,
 
                   //barRadius: const Radius.circular(20),
-                  progressColor: Colors.yellow,
+                  progressColor: DbColors.warning,
                 ),
                 sbh20,
                 CircularPercentIndicator(
@@ -158,7 +159,7 @@ class CustMgmtDashBoard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  progressColor: Colors.blue,
+                  progressColor: DbColors.primary,
                 ),
               ],
             ),
@@ -182,7 +183,7 @@ class CustMgmtDashBoard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  progressColor: Colors.red,
+                  progressColor: DbColors.danger,
                 ),
                 CircularPercentIndicator(
                   radius: 100.0,
@@ -204,7 +205,7 @@ class CustMgmtDashBoard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  progressColor: Colors.blue,
+                  progressColor: DbColors.primary,
                 ),
                 CircularPercentIndicator(
                   radius: 100.0,
@@ -226,7 +227,7 @@ class CustMgmtDashBoard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  progressColor: Colors.green,
+                  progressColor: DbColors.success,
                 ),
               ],
             ),

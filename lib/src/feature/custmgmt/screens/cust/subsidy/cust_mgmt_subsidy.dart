@@ -208,11 +208,9 @@ class CustMgmtSubsidyForm extends ConsumerWidget {
                             });
                           },
                         ),
-                        sbh10,
                         AcxBackToList(
                             listUrl:
                                 '/custmgmt/cust/$custEttyId/subsidy/quota'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtCmpySubsSave',ettyId: custEttyId.toString(),)
                       ],
                     ))

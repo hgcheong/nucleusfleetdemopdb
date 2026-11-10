@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
+import 'package:nucleusv2/src/core/components/acx_action_spacing.dart';
 
 class AcxSaveButtonManual extends HookConsumerWidget {
   const AcxSaveButtonManual({
@@ -17,7 +18,10 @@ class AcxSaveButtonManual extends HookConsumerWidget {
   final IconData? iconData;
   final String message;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) =>
+      AcxActionSpacing(child: _buildButton(context, ref));
+
+  Widget _buildButton(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
 
     if (context.mounted) {

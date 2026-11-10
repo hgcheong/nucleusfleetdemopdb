@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nucleusv2/constants.dart';
 
 class AcxCheckBoxList extends StatelessWidget {
   const AcxCheckBoxList({super.key, required this.listWidget});
@@ -12,7 +11,7 @@ class AcxCheckBoxList extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
-        color: secondaryColor,
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
       child: ListView(
           shrinkWrap: true,

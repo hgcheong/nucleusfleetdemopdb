@@ -229,11 +229,9 @@ class CustMgmtSubsidyForm extends ConsumerWidget {
                             });
                           },
                         ),
-                        sbh10,
                         AcxBackToList(
                             listUrl:
                                 '/custmgmt/cust/$custEttyId/subsidy/quota'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtCmpySubsSave',ettyId: custEttyId.toString(),)
                       ],
                     ))
@@ -381,7 +379,6 @@ class CustMgmtSubsidyVehcList extends ConsumerWidget {
             return Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Dialog(
-                  backgroundColor: bgColor,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   child: CustMgmtSubsidyVehcForm(

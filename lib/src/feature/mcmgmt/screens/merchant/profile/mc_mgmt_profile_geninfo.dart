@@ -305,10 +305,8 @@ class MchtMgmtGeneralInfo extends ConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         AcxBackToList(
                             listUrl: '/mcmgmt/mcht/$mchtEttyId/quickinfo/overview'),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMgmtMchtProfileSave', ettyId: mchtEttyId.toString(),)
                       ]),
                     )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nucleusv2/src/core/app/singletons.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
+import 'package:nucleusv2/src/core/components/acx_action_spacing.dart';
 
 class AcxBackToList extends StatelessWidget {
   const AcxBackToList({
@@ -14,7 +15,10 @@ class AcxBackToList extends StatelessWidget {
   final Function? fnBeforeNav;
   final bool? useFunctionOnly;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>
+      AcxActionSpacing(child: _buildButton(context));
+
+  Widget _buildButton(BuildContext context) {
     return ElevatedButton(
       child: const SizedBox(width: 30, child: Icon(Icons.arrow_back)),
       onPressed: () {

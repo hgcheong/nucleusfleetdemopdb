@@ -28,7 +28,7 @@ class AcxPageView extends ConsumerWidget {
             headerBarWidget != null
                 ? Expanded(
                     child: Container(
-                    color: const Color.fromARGB(255, 70, 74, 83),
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh,
                     child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: headerBarWidget!.toList()),

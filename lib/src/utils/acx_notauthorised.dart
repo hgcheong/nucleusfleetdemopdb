@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 
 class NotAuthorised extends StatelessWidget {
   const NotAuthorised({
@@ -10,7 +11,7 @@ class NotAuthorised extends StatelessWidget {
     return const Center(
       child: Text(
         'Not Authorised',
-        style: TextStyle(color: Colors.red),
+        style: TextStyle(color: DbColors.danger),
       ),
     );
   }

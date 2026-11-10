@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/components/async_value_widget.dart';
 import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbOption extends ConsumerWidget {
   const FbOption({
@@ -24,7 +26,9 @@ class FbOption extends ConsumerWidget {
   final OptionsOrientation orientation;
   final Map<String, dynamic> params;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) => FbField(child: _buildField(context, ref));
+
+  Widget _buildField(BuildContext context, WidgetRef ref) {
     final queryOptions =
         QueryObject(querysql: querysql, params: params, showMsg: false);
     final queryOptionValue = ref.watch(ReturndatafreezedProvider(queryOptions));
@@ -38,7 +42,7 @@ class FbOption extends ConsumerWidget {
             initialValue: initialValue,
             orientation: orientation,
             name: name,
-            activeColor: Colors.green,
+            activeColor: DbColors.primary,
             options: options.data == null? [FormBuilderFieldOption(
                       value: 'No Data',
                       child: Text('No Data'),

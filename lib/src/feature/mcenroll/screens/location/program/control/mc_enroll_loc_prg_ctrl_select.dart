@@ -112,7 +112,6 @@ class MchtEnrlLocPrgControlSelection extends ConsumerWidget {
                         ),
                         sbh10,
                         const AcxBackToList(listUrl: './././list'),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiEnrlLocTxnAccptSave', ettyId: locEttyId.toString(),)
                       ],
                     ))

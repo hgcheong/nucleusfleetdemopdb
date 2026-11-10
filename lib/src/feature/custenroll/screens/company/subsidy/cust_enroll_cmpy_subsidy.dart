@@ -212,11 +212,9 @@ class CustEnrollCompanySubsidyForm extends ConsumerWidget {
                             });
                           },
                         ),
-                        sbh10,
                         AcxBackToList(
                             listUrl:
                                 '/custenroll/cmpy/$custEttyId/detail/$cmpyEttyId/subsidy/quota'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiEnrlCmpySubsSave',ettyId: cmpyEttyId.toString(),)
                       ],
                     ))

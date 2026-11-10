@@ -140,9 +140,7 @@ class RptReimburseSignatoryearchSliver extends ConsumerWidget {
                         }
                       });
                     }),
-                    sbh10,
                     const AcxBackToList(listUrl: '/reimburse/main/out'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMchtReimburseAuthSave', ettyId: "0",)
                   ]),
                 )

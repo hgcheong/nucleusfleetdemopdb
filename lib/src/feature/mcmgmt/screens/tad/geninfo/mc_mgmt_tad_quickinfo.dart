@@ -95,21 +95,19 @@ class MchtMgmtTadForm extends ConsumerWidget {
                 child: Card(
                   child: ListView(
                     children: [
-                      ListTile(
+                         ListTile(
                           leading: const SelectableText('Tad No'),
                           title: SelectableText(formNewValue['TadNo'] ?? '')),
                       ListTile(
                           leading: const SelectableText('InstallDate'),
-                          title: SelectableText(
-                              formNewValue['InstallDate'] ?? '')),
+                          title: SelectableText("${formNewValue['InstallDate'] ?? ''}")),
                       ListTile(
                           leading: const SelectableText('Installer'),
                           title:
                               SelectableText(formNewValue['Installer'] ?? '')),
                       ListTile(
                           leading: const SelectableText('CrtionDate'),
-                          title: SelectableText(
-                              formNewValue['CrtionDate'].toString())),
+                          title: SelectableText("${formNewValue['CrtionDate']  ?? ''}")),
                       ListTile(
                           leading: const SelectableText('CrtBy'),
                           title: SelectableText(formNewValue['CrtBy'] ?? '')),

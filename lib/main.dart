@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -64,7 +65,7 @@ void registerErrorHandlers(ErrorLogger errorLogger) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromRGBO(0, 161, 156, 1),
+        backgroundColor: DbColors.primary700,
         title: Text('An error occurred'.hardcoded),
       ),
       body: SingleChildScrollView(child: SelectableText(details.toString())),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbOptionExt extends StatelessWidget {
   const FbOptionExt({
@@ -19,9 +21,9 @@ class FbOptionExt extends StatelessWidget {
   final OptionsOrientation orientation;
   final Returndata dataext;
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
     return FormBuilderRadioGroup<dynamic>(
       decoration: InputDecoration(
         labelText: label,
@@ -29,7 +31,7 @@ class FbOptionExt extends StatelessWidget {
       initialValue: initialValue,
       orientation: orientation,
       name: name,
-      activeColor: Colors.green,
+      activeColor: DbColors.primary,
       options: dataext.data!
           .toList()
           .map((lang) => FormBuilderFieldOption(

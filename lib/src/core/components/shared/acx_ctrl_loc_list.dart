@@ -57,7 +57,6 @@ class AcxCtrlLocList extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                          backgroundColor: bgColor,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
@@ -111,7 +110,6 @@ class AcxCtrlLocList extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                          backgroundColor: bgColor,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),

@@ -204,11 +204,8 @@ class CustMgmtSecurityDepForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxBackToList(
                         listUrl: '/custmgmt/cust/$custEttyId/criskctrl/secdep'),
-
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMgmtCrDepSave',ettyId: custEttyId.toString(),)
                   ]),
                 )

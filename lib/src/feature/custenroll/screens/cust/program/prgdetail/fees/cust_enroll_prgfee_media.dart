@@ -507,9 +507,6 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                             }
                           });
                         }),
-                        const SizedBox(
-                          height: 30,
-                        ),
                         AcxAuditLogReqBtn('ApiEnrlCustMediaFeePlanSave',ettyId:  custEttyId.toString(),),
                         sbh10,
                         ElevatedButton(

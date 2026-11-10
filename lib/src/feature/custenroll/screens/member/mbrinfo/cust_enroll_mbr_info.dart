@@ -228,7 +228,6 @@ class CustEnrollMemberInfoForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxBackToList(
                       listUrl: '/custenroll/member/$custEttyId/list',
                       fnBeforeNav: () {
@@ -238,7 +237,6 @@ class CustEnrollMemberInfoForm extends ConsumerWidget {
                         };
                       },
                     ),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiEnrlMbrSave', ettyId: mbrEttyId.toString(),)
                   ]),
                 )

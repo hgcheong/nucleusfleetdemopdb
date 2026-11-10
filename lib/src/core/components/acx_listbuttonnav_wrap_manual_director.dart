@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
@@ -127,7 +128,7 @@ class AcxListButtonNavWrapManualDirector extends ConsumerWidget {
                                        lineWidth: 6.0,
                                        percent: returnData.data![i]["ShareHolding"]/100,
                                        center: SelectableText("${returnData.data![i]["ShareHolding"]}% \nShare"),
-                                       progressColor: Colors.blue,
+                                       progressColor: DbColors.primary,
                                      ),
                         ],),
                       ),
@@ -226,7 +227,7 @@ class AcxListButtonNavWrapManualDirector extends ConsumerWidget {
                   animationDuration: 1500,
                   percent: returnData.data![0]["TtlShareHolding"]/100,
                   //barRadius: const Radius.circular(20),
-                  progressColor: Colors.yellow,
+                  progressColor: DbColors.warning,
                 ),
               Container(
                 padding: const EdgeInsets.all(30),

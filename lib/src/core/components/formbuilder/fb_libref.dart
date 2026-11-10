@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/components/acx_searchboxmap.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbLibref extends StatelessWidget {
   const FbLibref({
@@ -27,7 +28,9 @@ class FbLibref extends StatelessWidget {
   final Function? onClearPress;
   final bool readOnly;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
   //  final openDropDownProgKey = GlobalKey<DropdownSearchState<dynamic>>();
     return FormBuilderField(
         name: name,

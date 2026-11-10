@@ -6,7 +6,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/base_screen.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
@@ -379,9 +378,7 @@ var custEttyId = getOutputValue(value.output, '@CustEttyId');
                         }
                       });
                     }),
-                    sbh10,
                     const AcxBackToList(listUrl: '/custenroll/main'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiEnrlCustSave',ettyId: custEttyId.toString(),)
                   ]),
                 )

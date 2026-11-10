@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbNumber1to100 extends StatelessWidget {
   const FbNumber1to100(
@@ -19,7 +20,9 @@ class FbNumber1to100 extends StatelessWidget {
   final int? maxLength;
   final Function(String?)? onChanged;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
     RegExp pattern = RegExp(r'^[1-9][0-9]?$|^100$');
     return FormBuilderTextField(
       name: name,

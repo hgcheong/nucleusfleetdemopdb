@@ -214,7 +214,6 @@ class CustEnrollBillingAccPostPaid extends ConsumerWidget {
                       const AcxBackToList(
                         listUrl: '././././list',
                       ),
-                           sbh10,
                     AcxAuditLogReqBtn('ApiEnrlCustBillingAcctPostpaidSave', ettyId: formNewValue['AcctId'],)
                     ],
                   ))

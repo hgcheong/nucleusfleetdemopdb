@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/components/async_value_widget.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
@@ -46,7 +45,7 @@ class AcxListButtonNav extends HookConsumerWidget {
                 height: 110,
                 width: 180.0,
                 decoration: BoxDecoration(
-                  color: primaryColor,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Padding(
@@ -66,7 +65,7 @@ class AcxListButtonNav extends HookConsumerWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: primaryColor,
+                            color: Theme.of(context).colorScheme.primaryContainer,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

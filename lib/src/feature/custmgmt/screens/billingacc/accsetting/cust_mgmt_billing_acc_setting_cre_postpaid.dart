@@ -282,11 +282,9 @@ class CustMgmtBillingAccPostPaid extends ConsumerWidget {
                           }
                         });
                       }),
-                      sbh10,
                       const AcxBackToList(
                         listUrl: '././././list',
                       ),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiMgmtCustBillingAcctPostpaidSave',ettyId: formNewValue["AcctId"].toString(),),
                     ],
                   ))

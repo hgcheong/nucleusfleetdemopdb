@@ -1,0 +1,149 @@
+POST {{baseUrl}}/sp/ApiMgmtCbpPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+
+//ApiEnrlCbpList
+###
+POST {{baseUrl}}/sp/ApiEnrlCbpList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CbPrgType":"SUBS",
+     "CbId":1,
+     "PrgEttyId": 1,
+}
+
+//ApiEnrlCbp
+###
+POST {{baseUrl}}/sp/ApiEnrlCbp/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "EttyId" : 1303,
+    "CbId":1,
+    "CbPrgEttyId": 1,
+    "PrgEttyId":1,
+    "CbQuoId":1
+}
+
+//ApiEnrlCbpChildList
+###
+POST {{baseUrl}}/sp/ApiEnrlCbpChildList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "EttyId" : 1303,
+    "CbId":1,
+    "CbQuoId":1
+}
+
+//ApiEnrlCbpChildList
+###
+POST {{baseUrl}}/sp/ApiEnrlCbpChild/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId" : 1303,
+    "CbId":1,
+    "CbQuoId":1,
+    "VhcRgsNo":"ABC 1234",
+    "ChildId":null
+}
+
+//ApiEnrlCbpChildSave
+###
+POST {{baseUrl}}/sp/ApiEnrlCbpChildSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CbQuoId":"1",
+    "ChildId":null,
+    "FromDate":'2026-09-01',
+    "ToDate":null,
+    "QuoLimit": "1000",
+    "MbrEttyId":1308,
+    "VhcRgsNo": "ABC 1234",
+    "VhcId":null,
+    "CbId":1,
+    "EttyId" : "1303"
+}
+
+//ApiEnrlCbpChildSave
+###
+POST {{baseUrl}}/sp/ApiEnrlCbpChildDel/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CbQuoId":"1",
+    "ChildId":null,
+}
+
+
+
+//ApiEnrlCbpSave
+###
+POST {{baseUrl}}/sp/ApiEnrlCbpSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "RefNo": "RE23122",
+      "FromDate": "2026-08-01",
+      "ToDate": "2030-08-01",
+      "QuoLimit": "15001",
+     "AllocMethod": "DIST",
+      "Note": "First Sub",
+      "CbId": 1,
+      "CbPrgEttyId": 1,
+      "EttyId": 1303,
+      "CbQuoId": null,
+      "PrgEttyId": 1
+}
+
+//ApiEnrlEtty
+###
+POST {{baseUrl}}/sp/ApiEnrlEtty/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId":1303,
+    "Hierarchy " : 4
+}
+
+
+###
+//MnM
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "ACTVSUSPSTS",
+"BitInd": null
+}
+
+//MnM
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "CBQUOTAALLOC",
+"BitInd": null
+}
+
+//EttyID = 123 (customer) and @Hierarchy = 4 It shows all the member of a customer 

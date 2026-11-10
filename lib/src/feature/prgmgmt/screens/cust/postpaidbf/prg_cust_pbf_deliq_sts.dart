@@ -150,7 +150,6 @@ class PrgCustPbfDeliqStsForm extends ConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiPrgCustPostpaidBFDelqcSave',ettyId: prgEttyId.toString(),)
                       ]),
                     )

@@ -148,7 +148,6 @@ class UserMgmtWebGroupDtl extends ConsumerWidget {
                             children: [
                               const AcxBackToList(
                                   listUrl: '/usermgmt/webgroup'),
-                              sbh10,
                               AcxSaveButtonManual(onSave: () {
                                   if (isPageDeniedAction(AcxAuthAccess.actionDeniedList, wid)) {
                                   Toast.message("Action Not Authorised");
@@ -182,7 +181,6 @@ class UserMgmtWebGroupDtl extends ConsumerWidget {
                                   }
                                 });
                               }),
-                                   sbh10,
                             AcxAuditLogReqBtn('ApiSignInWebGroupSave',)
                             ],
                           ),

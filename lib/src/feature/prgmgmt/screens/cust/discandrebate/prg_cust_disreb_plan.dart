@@ -373,11 +373,9 @@ class PrgCustDisRebTransForm extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(
                         listUrl: '/prgmgmt/custsetup/$prgEttyId/pcdislanding',
                       ),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiPrgCustRebateSave',ettyId: prgEttyId.toString(),)
                     ]),
                   ),
@@ -618,7 +616,6 @@ class PrgCustFeeTxnLocList extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                          backgroundColor: bgColor,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
@@ -1272,9 +1269,6 @@ class PrgCustDiscRebatePlanListForm extends ConsumerWidget {
                               }
                             });
                           },
-                        ),
-                        const SizedBox(
-                          height: 30,
                         ),
                         AcxAuditLogReqBtn('ApiPrgCustRebatePlanSave',ettyId: prgEttyId.toString(),),
                         sbh10,

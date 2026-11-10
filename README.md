@@ -20,7 +20,7 @@ Steps to Add A new Form
 2)Add to Constructor the Id field
 
 
-flutter build web --base-href "/nucleusfleet/"
+flutter build web --base-href "/nucleusfleet_demo/"
 
 if intl_util not generating run this command dart run intl_utils:generate
 

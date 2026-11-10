@@ -31,3 +31,5 @@ linter:
 analyzer:
   exclude:
     - "**/*.g.dart"
+    - build/**
+    - web/**

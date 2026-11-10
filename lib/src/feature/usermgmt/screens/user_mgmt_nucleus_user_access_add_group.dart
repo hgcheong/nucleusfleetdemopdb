@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,6 @@ class UserMgmtNucleusUserAccessAddGroup extends HookConsumerWidget {
                                   return;
                                 }
                       }),
-                      sbh10,
                       const AcxBackToList(listUrl: '/usermgmt/nucleususer'),
                     ],
                   ),
@@ -357,7 +357,7 @@ Widget showUserStatus(String? userId) {
   // if (userId != null) {
   return Container(
     padding: const EdgeInsets.all(5),
-    color: Colors.blue,
+    color: DbColors.primary,
     child:
         const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

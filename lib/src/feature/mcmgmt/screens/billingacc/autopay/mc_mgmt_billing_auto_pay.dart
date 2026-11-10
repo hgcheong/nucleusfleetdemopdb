@@ -277,11 +277,9 @@ class MerchantMgmtSetupBankForm extends ConsumerWidget {
                                     });
                                   },
                                 ),
-                                sbh10,
                                 AcxBackToList(
                               listUrl: './list',
                                 ),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtMchtLocAutoPymtSave', ettyId: ettyId.toString(),)
                               ]),
                             )

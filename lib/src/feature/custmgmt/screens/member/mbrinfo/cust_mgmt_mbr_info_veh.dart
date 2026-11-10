@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
@@ -203,7 +202,6 @@ class CustMgmtMemberInfoVehicleForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMgmtMbrVhcSave', ettyId: convStrNewOrNullToNull(formNewValue["VhcId"]).toString(),)
          
                   ]),

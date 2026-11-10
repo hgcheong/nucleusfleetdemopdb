@@ -316,11 +316,9 @@ class MchtMgmtLocGeneralInfo extends ConsumerWidget {
                               }
                             });
                           }),
-                          sbh10,
                           const AcxBackToList(
                             listUrl: '././list',
                           ),
-                          sbh10,
                           AcxAuditLogReqBtn('ApiMgmtLocSave', ettyId: locEttyId.toString(),)
                         ],
                       ),

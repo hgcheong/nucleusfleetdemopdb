@@ -291,7 +291,6 @@ class CustMgmtMemberCtrlLoc extends ConsumerWidget {
                         AcxBackToList(
                             listUrl:
                                 '/custmgmt/member/$custEttyId/detail/$mbrEttyId/control/locaccpt'),
-                                sbh10,
                         AcxAuditLogReqBtn('ApiMgmtMbrLocAccptSave,ApiMgmtLocAccptLocSave,ApiMgmtLocAccptLocDel',ettyId: formNewValue["AccptId"].toString(),)
                       ],
                     )),

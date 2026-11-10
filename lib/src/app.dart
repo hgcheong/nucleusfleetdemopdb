@@ -9,6 +9,7 @@ import 'package:nucleusv2/src/feature/locale/locale_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nucleusv2/src/feature/theme/theme_provider.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 GlobalKey<State<BottomNavigationBar>> bottomNavigationBar =
@@ -41,39 +42,9 @@ class App extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData(
-        fontFamily: 'Arial',
-        colorSchemeSeed: Color.fromRGBO(255, 64, 0, 1),
-        useMaterial3: true,
-        brightness: Brightness.light,
-      ),
-
-      darkTheme: ThemeData(
-        fontFamily: 'Arial',
-      //  colorSchemeSeed: bgColor,
-        colorSchemeSeed: Color.fromRGBO(61, 57, 53, 1),
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        //                 textTheme:
-        //     const TextTheme(
-
-        //   bodyLarge:TextStyle(fontSize: 12.0, ),
-        //   bodyMedium:TextStyle(fontSize: 12.0, ),
-        //   bodySmall:TextStyle(fontSize: 12.0, ),
-        //   displayLarge: TextStyle(fontSize: 12.0,),
-        //   displayMedium: TextStyle(fontSize: 12.0, ),
-        //  displaySmall: TextStyle(fontSize: 12.0, ),
-        //  headlineLarge: TextStyle(fontSize: 12.0,),
-        //  headlineMedium: TextStyle(fontSize: 12.0, ),
-        //  headlineSmall:TextStyle(fontSize: 12.0, ),
-        // //  labelLarge: TextStyle(fontSize: 12.0),
-        // //  labelMedium: TextStyle(fontSize: 12.0, ),
-        // //  labelSmall: TextStyle(fontSize: 12.0, ),
-        //  titleLarge: TextStyle(fontSize: 12.0,),
-        //  titleMedium:TextStyle(fontSize: 12.0, ),
-        //  titleSmall:TextStyle(fontSize: 12.0, ),
-        // )
-      ),
+      // DiBold theme — palette lives in lib/src/feature/theme/db_colors.dart
+      theme: DiboldTheme.light(),
+      darkTheme: DiboldTheme.dark(),
       //  theme: AppTheme.light(context).themeData,
       //  darkTheme: AppTheme.dark(context).themeData,
       //   theme: AppTheme.light(context).themeData.copyWith(colorScheme:MaterialTheme.lightScheme() ),

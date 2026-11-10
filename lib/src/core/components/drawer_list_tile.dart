@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nucleusv2/constants.dart';
@@ -17,7 +18,7 @@ class DrawerListTile extends ConsumerWidget {
       this.svgSrc,
       required this.press,
       this.theIcon,
-      this.thecolor = Colors.white54});
+      this.thecolor = DbColors.slate500});
   final String? title, svgSrc;
   final int wid;
   final int? wPid;
@@ -182,7 +183,7 @@ class DrawerListTileSideTab extends ConsumerWidget {
       this.titleType,
       this.titleParam,
       this.theIcon,
-      this.thecolor = Colors.white54,
+      this.thecolor = DbColors.slate500,
       this.hightlightColor = bgColor,
       this.tooltipMessage});
 

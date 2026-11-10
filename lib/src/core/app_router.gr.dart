@@ -11,6 +11,26 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i819;
 import 'package:flutter/material.dart' as _i820;
+import 'package:nucleusv2/src/feature/custenroll/screens/cust/subsidyv2/cust_enroll_subsidy2.dart'
+    as _i822;
+import 'package:nucleusv2/src/feature/custenroll/screens/cust/subsidyv2/cust_enroll_subsidy2_cust_landing.dart'
+    as _i823;
+import 'package:nucleusv2/src/feature/custenroll/screens/cust/subsidyv2/cust_enroll_subsidy2_cust_list.dart'
+    as _i824;
+import 'package:nucleusv2/src/feature/custenroll/screens/cust/subsidyv2/cust_enroll_subsidy2_landing.dart'
+    as _i825;
+import 'package:nucleusv2/src/feature/custenroll/screens/cust/subsidyv2/cust_enroll_subsidy2_list.dart'
+    as _i826;
+import 'package:nucleusv2/src/feature/custmgmt/screens/cust/subsidyv2/cust_mgmt_subsidy2.dart'
+    as _i827;
+import 'package:nucleusv2/src/feature/custmgmt/screens/cust/subsidyv2/cust_mgmt_subsidy2_cust_landing.dart'
+    as _i828;
+import 'package:nucleusv2/src/feature/custmgmt/screens/cust/subsidyv2/cust_mgmt_subsidy2_cust_list.dart'
+    as _i829;
+import 'package:nucleusv2/src/feature/custmgmt/screens/cust/subsidyv2/cust_mgmt_subsidy2_landing.dart'
+    as _i830;
+import 'package:nucleusv2/src/feature/custmgmt/screens/cust/subsidyv2/cust_mgmt_subsidy2_list.dart'
+    as _i831;
 import 'package:nucleusv2/src/core/components/shared/acx_status_dialog.dart'
     as _i1;
 import 'package:nucleusv2/src/core/components/shared/acx_status_form.dart'
@@ -34098,6 +34118,446 @@ class WorkFlowContainer extends _i819.PageRouteInfo<void> {
     name,
     builder: (data) {
       return const _i818.WorkFlowContainer();
+    },
+  );
+}
+
+/// generated route for
+/// [_i822.CustEnrollSubsidy2]
+class CustEnrollSubsidy2 extends _i819.PageRouteInfo<CustEnrollSubsidy2Args> {
+  CustEnrollSubsidy2({
+    _i820.Key? key,
+    String? cbPrgEttyId,
+    String? ettyId,
+    String? cbQuoId,
+    List<_i819.PageRouteInfo>? children,
+  }) : super(
+         CustEnrollSubsidy2.name,
+         args: CustEnrollSubsidy2Args(
+           key: key,
+           cbPrgEttyId: cbPrgEttyId,
+           ettyId: ettyId,
+           cbQuoId: cbQuoId,
+         ),
+         rawPathParams: {
+           'cbPrgEttyId': cbPrgEttyId,
+           'ettyId': ettyId,
+           'cbQuoId': cbQuoId,
+         },
+         initialChildren: children,
+       );
+
+  static const String name = 'CustEnrollSubsidy2';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CustEnrollSubsidy2Args>(
+        orElse: () => CustEnrollSubsidy2Args(
+          cbPrgEttyId: pathParams.optString('cbPrgEttyId'),
+          ettyId: pathParams.optString('ettyId'),
+          cbQuoId: pathParams.optString('cbQuoId'),
+        ),
+      );
+      return _i822.CustEnrollSubsidy2(
+        key: args.key,
+        chargeType: pathParams.optString('chargeType'),
+        prgEttyId: pathParams.optString('prgEttyId'),
+        cbId: pathParams.optString('cbId'),
+        cbPrgEttyId: args.cbPrgEttyId,
+        ettyId: args.ettyId,
+        cbQuoId: args.cbQuoId,
+      );
+    },
+  );
+}
+
+class CustEnrollSubsidy2Args {
+  const CustEnrollSubsidy2Args({
+    this.key,
+    this.cbPrgEttyId,
+    this.ettyId,
+    this.cbQuoId,
+  });
+
+  final _i820.Key? key;
+
+  final String? cbPrgEttyId;
+
+  final String? ettyId;
+
+  final String? cbQuoId;
+
+  @override
+  String toString() {
+    return 'CustEnrollSubsidy2Args{key: $key, cbPrgEttyId: $cbPrgEttyId, ettyId: $ettyId, cbQuoId: $cbQuoId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CustEnrollSubsidy2Args) return false;
+    return key == other.key &&
+        cbPrgEttyId == other.cbPrgEttyId &&
+        ettyId == other.ettyId &&
+        cbQuoId == other.cbQuoId;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ cbPrgEttyId.hashCode ^ ettyId.hashCode ^ cbQuoId.hashCode;
+}
+
+/// generated route for
+/// [_i823.CustEnrollSubsidy2CustLanding]
+class CustEnrollSubsidy2CustLanding extends _i819.PageRouteInfo<void> {
+  const CustEnrollSubsidy2CustLanding({List<_i819.PageRouteInfo>? children})
+    : super(CustEnrollSubsidy2CustLanding.name, initialChildren: children);
+
+  static const String name = 'CustEnrollSubsidy2CustLanding';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i823.CustEnrollSubsidy2CustLanding();
+    },
+  );
+}
+
+/// generated route for
+/// [_i824.CustEnrollSubsidy2CustList]
+class CustEnrollSubsidy2CustList
+    extends _i819.PageRouteInfo<CustEnrollSubsidy2CustListArgs> {
+  CustEnrollSubsidy2CustList({
+    _i820.Key? key,
+    String? cbId,
+    String? prgEttyId,
+    String? chargeType,
+    List<_i819.PageRouteInfo>? children,
+  }) : super(
+         CustEnrollSubsidy2CustList.name,
+         args: CustEnrollSubsidy2CustListArgs(
+           key: key,
+           cbId: cbId,
+           prgEttyId: prgEttyId,
+           chargeType: chargeType,
+         ),
+         rawPathParams: {
+           'cbId': cbId,
+           'prgEttyId': prgEttyId,
+           'chargeType': chargeType,
+         },
+         initialChildren: children,
+       );
+
+  static const String name = 'CustEnrollSubsidy2CustList';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CustEnrollSubsidy2CustListArgs>(
+        orElse: () => CustEnrollSubsidy2CustListArgs(
+          cbId: pathParams.optString('cbId'),
+          prgEttyId: pathParams.optString('prgEttyId'),
+          chargeType: pathParams.optString('chargeType'),
+        ),
+      );
+      return _i824.CustEnrollSubsidy2CustList(
+        key: args.key,
+        cbId: args.cbId,
+        prgEttyId: args.prgEttyId,
+        chargeType: args.chargeType,
+      );
+    },
+  );
+}
+
+class CustEnrollSubsidy2CustListArgs {
+  const CustEnrollSubsidy2CustListArgs({
+    this.key,
+    this.cbId,
+    this.prgEttyId,
+    this.chargeType,
+  });
+
+  final _i820.Key? key;
+
+  final String? cbId;
+
+  final String? prgEttyId;
+
+  final String? chargeType;
+
+  @override
+  String toString() {
+    return 'CustEnrollSubsidy2CustListArgs{key: $key, cbId: $cbId, prgEttyId: $prgEttyId, chargeType: $chargeType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CustEnrollSubsidy2CustListArgs) return false;
+    return key == other.key &&
+        cbId == other.cbId &&
+        prgEttyId == other.prgEttyId &&
+        chargeType == other.chargeType;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ cbId.hashCode ^ prgEttyId.hashCode ^ chargeType.hashCode;
+}
+
+/// generated route for
+/// [_i825.CustEnrollSubsidy2Landing]
+class CustEnrollSubsidy2Landing extends _i819.PageRouteInfo<void> {
+  const CustEnrollSubsidy2Landing({List<_i819.PageRouteInfo>? children})
+    : super(CustEnrollSubsidy2Landing.name, initialChildren: children);
+
+  static const String name = 'CustEnrollSubsidy2Landing';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i825.CustEnrollSubsidy2Landing();
+    },
+  );
+}
+
+/// generated route for
+/// [_i826.CustEnrollSubsidy2List]
+class CustEnrollSubsidy2List extends _i819.PageRouteInfo<void> {
+  const CustEnrollSubsidy2List({List<_i819.PageRouteInfo>? children})
+    : super(CustEnrollSubsidy2List.name, initialChildren: children);
+
+  static const String name = 'CustEnrollSubsidy2List';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i826.CustEnrollSubsidy2List();
+    },
+  );
+}
+
+/// generated route for
+/// [_i827.CustMgmtSubsidy2]
+class CustMgmtSubsidy2 extends _i819.PageRouteInfo<CustMgmtSubsidy2Args> {
+  CustMgmtSubsidy2({
+    _i820.Key? key,
+    String? cbPrgEttyId,
+    String? ettyId,
+    String? cbQuoId,
+    List<_i819.PageRouteInfo>? children,
+  }) : super(
+         CustMgmtSubsidy2.name,
+         args: CustMgmtSubsidy2Args(
+           key: key,
+           cbPrgEttyId: cbPrgEttyId,
+           ettyId: ettyId,
+           cbQuoId: cbQuoId,
+         ),
+         rawPathParams: {
+           'cbPrgEttyId': cbPrgEttyId,
+           'ettyId': ettyId,
+           'cbQuoId': cbQuoId,
+         },
+         initialChildren: children,
+       );
+
+  static const String name = 'CustMgmtSubsidy2';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CustMgmtSubsidy2Args>(
+        orElse: () => CustMgmtSubsidy2Args(
+          cbPrgEttyId: pathParams.optString('cbPrgEttyId'),
+          ettyId: pathParams.optString('ettyId'),
+          cbQuoId: pathParams.optString('cbQuoId'),
+        ),
+      );
+      return _i827.CustMgmtSubsidy2(
+        key: args.key,
+        chargeType: pathParams.optString('chargeType'),
+        prgEttyId: pathParams.optString('prgEttyId'),
+        cbId: pathParams.optString('cbId'),
+        cbPrgEttyId: args.cbPrgEttyId,
+        ettyId: args.ettyId,
+        cbQuoId: args.cbQuoId,
+      );
+    },
+  );
+}
+
+class CustMgmtSubsidy2Args {
+  const CustMgmtSubsidy2Args({
+    this.key,
+    this.cbPrgEttyId,
+    this.ettyId,
+    this.cbQuoId,
+  });
+
+  final _i820.Key? key;
+
+  final String? cbPrgEttyId;
+
+  final String? ettyId;
+
+  final String? cbQuoId;
+
+  @override
+  String toString() {
+    return 'CustMgmtSubsidy2Args{key: $key, cbPrgEttyId: $cbPrgEttyId, ettyId: $ettyId, cbQuoId: $cbQuoId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CustMgmtSubsidy2Args) return false;
+    return key == other.key &&
+        cbPrgEttyId == other.cbPrgEttyId &&
+        ettyId == other.ettyId &&
+        cbQuoId == other.cbQuoId;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ cbPrgEttyId.hashCode ^ ettyId.hashCode ^ cbQuoId.hashCode;
+}
+
+/// generated route for
+/// [_i828.CustmgmtSubsidy2CustLanding]
+class CustmgmtSubsidy2CustLanding extends _i819.PageRouteInfo<void> {
+  const CustmgmtSubsidy2CustLanding({List<_i819.PageRouteInfo>? children})
+    : super(CustmgmtSubsidy2CustLanding.name, initialChildren: children);
+
+  static const String name = 'CustmgmtSubsidy2CustLanding';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i828.CustmgmtSubsidy2CustLanding();
+    },
+  );
+}
+
+/// generated route for
+/// [_i829.CustmgmtSubsidy2CustList]
+class CustmgmtSubsidy2CustList
+    extends _i819.PageRouteInfo<CustmgmtSubsidy2CustListArgs> {
+  CustmgmtSubsidy2CustList({
+    _i820.Key? key,
+    String? cbId,
+    String? prgEttyId,
+    String? chargeType,
+    List<_i819.PageRouteInfo>? children,
+  }) : super(
+         CustmgmtSubsidy2CustList.name,
+         args: CustmgmtSubsidy2CustListArgs(
+           key: key,
+           cbId: cbId,
+           prgEttyId: prgEttyId,
+           chargeType: chargeType,
+         ),
+         rawPathParams: {
+           'cbId': cbId,
+           'prgEttyId': prgEttyId,
+           'chargeType': chargeType,
+         },
+         initialChildren: children,
+       );
+
+  static const String name = 'CustmgmtSubsidy2CustList';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CustmgmtSubsidy2CustListArgs>(
+        orElse: () => CustmgmtSubsidy2CustListArgs(
+          cbId: pathParams.optString('cbId'),
+          prgEttyId: pathParams.optString('prgEttyId'),
+          chargeType: pathParams.optString('chargeType'),
+        ),
+      );
+      return _i829.CustmgmtSubsidy2CustList(
+        key: args.key,
+        cbId: args.cbId,
+        prgEttyId: args.prgEttyId,
+        chargeType: args.chargeType,
+      );
+    },
+  );
+}
+
+class CustmgmtSubsidy2CustListArgs {
+  const CustmgmtSubsidy2CustListArgs({
+    this.key,
+    this.cbId,
+    this.prgEttyId,
+    this.chargeType,
+  });
+
+  final _i820.Key? key;
+
+  final String? cbId;
+
+  final String? prgEttyId;
+
+  final String? chargeType;
+
+  @override
+  String toString() {
+    return 'CustmgmtSubsidy2CustListArgs{key: $key, cbId: $cbId, prgEttyId: $prgEttyId, chargeType: $chargeType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CustmgmtSubsidy2CustListArgs) return false;
+    return key == other.key &&
+        cbId == other.cbId &&
+        prgEttyId == other.prgEttyId &&
+        chargeType == other.chargeType;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ cbId.hashCode ^ prgEttyId.hashCode ^ chargeType.hashCode;
+}
+
+/// generated route for
+/// [_i830.CustmgmtSubsidy2Landing]
+class CustmgmtSubsidy2Landing extends _i819.PageRouteInfo<void> {
+  const CustmgmtSubsidy2Landing({List<_i819.PageRouteInfo>? children})
+    : super(CustmgmtSubsidy2Landing.name, initialChildren: children);
+
+  static const String name = 'CustmgmtSubsidy2Landing';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i830.CustmgmtSubsidy2Landing();
+    },
+  );
+}
+
+/// generated route for
+/// [_i831.CustmgmtSubsidy2List]
+class CustmgmtSubsidy2List extends _i819.PageRouteInfo<void> {
+  const CustmgmtSubsidy2List({List<_i819.PageRouteInfo>? children})
+    : super(CustmgmtSubsidy2List.name, initialChildren: children);
+
+  static const String name = 'CustmgmtSubsidy2List';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i831.CustmgmtSubsidy2List();
     },
   );
 }

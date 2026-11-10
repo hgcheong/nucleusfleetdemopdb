@@ -146,7 +146,7 @@ class CustMgmtMbrTxnLimitForm extends ConsumerWidget {
                           const SelectableText(
                               'Transaction Category and Spending Limit at Member level'),
                           Container(
-                              color: Colors.blue,
+                              color: Theme.of(context).colorScheme.primaryContainer,
                               child: SelectableText(
                                   'Program selected for Limit Setting :${formNewValue['PrgDscp'].toString()}')),
                           FbText(
@@ -288,7 +288,6 @@ class CustMgmtMbrTxnLimitForm extends ConsumerWidget {
                       AcxBackToList(
                           listUrl:
                               '/custmgmt/member/$custEttyId/detail/$mbrEttyId/control/translimt'),
-                                                           sbh10,
                         AcxAuditLogReqBtn('ApiMgmtMbrTxnLimitSave,ApiMgmtLocAccptLocSave,ApiMgmtLocAccptLocDel',ettyId: formNewValue["LimitId"].toString(),)
                     ]),
                   )

@@ -409,7 +409,7 @@ class RoleAssignDialog extends ConsumerWidget{
                                   }
                               
                                 });
-                    }),sbh10, 
+                    }), 
                     AcxAuditLogReqBtn('ApiSignInRoleSave',ettyId: formRoleAssign['EttyId'].toString(),),
                     ettyId == null || ettyId=="" ? Container():
                     AcxSaveButtonManual(
@@ -454,7 +454,7 @@ class RoleAssignDialog extends ConsumerWidget{
                                 });
 
               }
-                    }),sbh10,
+                    }),
                                 AcxBackToList(listUrl: '',useFunctionOnly: true,fnBeforeNav: (){
    if (context.mounted) {
                                           context.maybePop();

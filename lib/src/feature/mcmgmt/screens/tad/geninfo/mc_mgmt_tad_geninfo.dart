@@ -307,10 +307,8 @@ class MchtMgmtTadForm extends ConsumerWidget {
                             });
                           },
                         ),
-                        sbh10,
                         // '/mcenroll/tad/$mchtEttyId/geninfo/$tadEttyId/$tadId');
                          AcxBackToList(listUrl: '/mcmgmt/tad/$mchtEttyId/list'),
-                         sbh10,
                          AcxAuditLogReqBtn('ApiMgmtMchtTadSave',ettyId: tadEttyId.toString(),)
                       ],
                     ),

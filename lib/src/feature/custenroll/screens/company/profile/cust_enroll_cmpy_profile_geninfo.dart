@@ -301,10 +301,8 @@ class CustEnrollCmpyProfileGenInfo extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(
                           listUrl: '/custenroll/cmpy/$custEttyId/list'),
-                          sbh10,
                       AcxAuditLogReqBtn('ApiEnrlCmpySave', ettyId: cmpyEttyId.toString(),) 
                     ]),
                   )

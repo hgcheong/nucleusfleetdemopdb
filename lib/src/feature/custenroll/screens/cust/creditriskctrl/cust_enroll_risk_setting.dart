@@ -177,7 +177,6 @@ class CustEnrollRiskForm extends HookConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiEnrlCrRiskSave',ettyId: custEttyId.toString(),)
                   ]),
                 )

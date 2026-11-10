@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/components/async_value_widget.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
@@ -57,7 +57,7 @@ class AcxListButtonNavWrapSelect extends HookConsumerWidget {
                 height: 110,
                 width: 180.0,
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 255, 72, 0),
+                  color: DbColors.primary,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Padding(
@@ -79,7 +79,7 @@ class AcxListButtonNavWrapSelect extends HookConsumerWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: const Color.fromARGB(255, 255, 72, 0),
+                            color: DbColors.primary,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,7 +107,7 @@ class AcxListButtonNavWrapSelect extends HookConsumerWidget {
                 height: 110,
                 width: 180.0,
                 decoration: BoxDecoration(
-                  color: primaryColor,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Padding(
@@ -129,7 +129,7 @@ class AcxListButtonNavWrapSelect extends HookConsumerWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: primaryColor,
+                            color: Theme.of(context).colorScheme.primaryContainer,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

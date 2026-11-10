@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 //import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbDateTimePicker extends StatelessWidget {
   const FbDateTimePicker({
@@ -24,7 +25,9 @@ class FbDateTimePicker extends StatelessWidget {
   final TextStyle? labelStyle;
   final String formatTypeStr;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
     return FormBuilderDateTimePicker(
       
       valueTransformer: (v) {

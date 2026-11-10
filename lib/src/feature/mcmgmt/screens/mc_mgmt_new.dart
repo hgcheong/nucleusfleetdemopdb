@@ -4,7 +4,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 
 import 'package:nucleusv2/src/core/app_router.dart';
@@ -376,9 +375,7 @@ class MchtMgmtForm extends ConsumerWidget {
                         }
                       });
                     }),
-                    sbh10,
                     const AcxBackToList(listUrl: '/mcmgmt/main'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMgmtMchtProfileSave',ettyId: mchtEttyId.toString(),)
                   ]),
                 )

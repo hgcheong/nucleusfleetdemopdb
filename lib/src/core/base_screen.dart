@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nucleusv2/constants.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:nucleusv2/generated/l10n.dart';
 import 'package:nucleusv2/src/config/seo/seo.dart';
 import 'package:nucleusv2/src/core/app/session_provider.dart';
@@ -226,7 +227,7 @@ Widget provideTitle(String title) {
     width: 50,
     child: SvgPicture.asset(
       'assets/images/shelllogo.svg',
-      colorFilter: const ColorFilter.mode(Colors.white54, BlendMode.srcIn),
+      colorFilter: const ColorFilter.mode(DbColors.primary, BlendMode.srcIn),
       height: 50,
       width: 50,
       allowDrawingOutsideViewBox: true,
@@ -1022,6 +1023,14 @@ Widget provideSideBar(String sideBar) {
             title: S.current.newB2BEnrollMent,
             svgSrc: 'assets/icons/cube.svg',
             route: '/custenroll/cust/new'),
+      ]);
+    case "custmgmt/setup":
+      return AcxSideDrawer([
+        DrawerItem(
+            wid: 20,
+            title: S.current.homeScreenTitle,
+            svgSrc: 'assets/icons/home.svg',
+            route: '/dashboard/home'),
       ]);
     case "subsidy/setup":
       return AcxSideDrawer([

@@ -187,8 +187,7 @@ class UserMgmtWebPortalUser extends BaseScreen {
                                               "EttyId":
                                                   currentUser['EttyId'] == 0
                                                       ? null
-                                                      : currentUser['EttyId']
-                                                          .toString(),
+                                                      :  convStrNewOrNullToNull(currentUser['EttyId']),
                                               "UserType":
                                                   currentUser['UserType']
                                             },
@@ -201,8 +200,7 @@ class UserMgmtWebPortalUser extends BaseScreen {
                                                 ettyId:
                                                     currentUser['EttyId'] == 0
                                                         ? null
-                                                        : currentUser['EttyId']
-                                                            .toString(),
+                                                        : convStrNewOrNullToNull(currentUser['EttyId']),
                                                 signIn: currentUser['UserId'],
                                                 userType:
                                                     currentUser['UserType']));
@@ -288,7 +286,6 @@ class UserMgmtWebPortalUser extends BaseScreen {
                           }
                         });
                               }),
-                                   sbh10,
                     AcxAuditLogReqBtn('ApiSignInSave',),
                     sbh10,
                               PopupMenuButton(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/generated/l10n.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
@@ -228,7 +229,7 @@ class SideDrawer extends ConsumerWidget {
               child: DrawerListTile(
         wid: 0,
         title: 'Build v10618',
-        thecolor: Color.fromRGBO(255, 64, 0, 1),
+        thecolor: DbColors.primary,
         press: () async {
  await showAcxDialog(
                               context,

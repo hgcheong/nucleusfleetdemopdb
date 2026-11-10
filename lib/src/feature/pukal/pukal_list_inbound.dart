@@ -420,14 +420,13 @@ class ApiMgmtCustBillingPukalSaveDialog extends ConsumerWidget{
                                   }
                               
                                 });
-                    }),sbh10, 
+                    }), 
                                 AcxBackToList(listUrl: '',useFunctionOnly: true,fnBeforeNav: (){
    if (context.mounted) {
                                           context.maybePop();
                                         }
                                },
                         ),
-                             sbh10,
                     AcxAuditLogReqBtn('ApiMgmtCustBillingAcctPukalInboundTxnSave',)
                   ],
                 ),)

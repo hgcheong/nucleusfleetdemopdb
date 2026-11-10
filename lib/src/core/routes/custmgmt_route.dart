@@ -10,6 +10,32 @@ final custmgmtTabRouter = CustomRoute(
     page: CustMgmtContainer.page,
     maintainState: false,
     children: [
+       AutoRoute(
+                      path: 'subsidy2',
+                      page: CustmgmtSubsidy2Landing.page,
+                      maintainState: false,
+                      children: [
+                        
+                        AutoRoute(
+                            path: 'list',
+                            page: CustmgmtSubsidy2List.page,
+                            maintainState: false,
+                            initial: true),
+                            AutoRoute(path:'cbp/:chargeType/:prgEttyId/:cbId',
+                            page:CustmgmtSubsidy2CustLanding.page,children:[
+AutoRoute(
+
+                            path: 'cbplist',
+                            page: CustmgmtSubsidy2CustList.page,
+                            initial:true,
+                            maintainState: false),
+                            AutoRoute(
+                          path: 'cbpdtl/:cbPrgEttyId/:ettyId/:cbQuoId',
+                          usesPathAsKey: true,
+                          page: CustMgmtSubsidy2.page,
+                          maintainState: false,
+                        ),
+                            ]),]),
       AutoRoute(
           path: 'main', page: CustMgmtListRoute.page, maintainState: false),
       // AutoRoute(

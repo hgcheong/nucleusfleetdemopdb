@@ -1,18 +1,19 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 
 // const _primaryColor = Colors.blue;
 //
-const _primaryColor = Color.fromARGB(255, 70, 74, 83);
+const _primaryColor = DbColors.primary; // DiBold (was Color.fromARGB(255, 70, 74, 83))
 //const _secondaryColor = Colors.orange;
-const _secondaryColor = Colors.green;
-const _successColor = Colors.green;
-const _infoColor = Colors.white70;
-const _warningColor = Colors.amber;
-const _dangerColor = Colors.red;
+const _secondaryColor = DbColors.primary700; // DiBold (was Colors.green)
+const _successColor = DbColors.success;
+const _infoColor = DbColors.info;
+const _warningColor = DbColors.warning;
+const _dangerColor = DbColors.danger;
 
-const _textColorDark = Color(0xFF121212);
+const _textColorDark = DbColors.slate900;
 const _textColorLight = Color(0xFFf6f6f6);
 
 enum AppColorVariant {

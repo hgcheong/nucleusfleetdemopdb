@@ -1,41 +1,40 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:trina_grid/trina_grid.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 
-//const primaryColor = Color(0xFF2697FF);
-const primaryColor = Color.fromARGB(255, 70, 74, 83);
-const secondaryColor = Color(0xFF2A2D3E);
-//const primarylightColor = Color.fromARGB(255, 255, 255, 255);
-const primarylightColor = Color.fromARGB(255, 184, 56, 56);
-const secondarylightColor = Color.fromARGB(255, 67, 89, 212);
+// ── DiBold theme colours ─────────────────────────────────────────────────
+// Previous values kept in comments for reference / rollback.
+const primaryColor = DbColors.primary700; // was Color.fromARGB(255, 70, 74, 83)
+const secondaryColor = DbColors.slate600; // was Color(0xFF2A2D3E)
+const primarylightColor = DbColors.primary; // was Color.fromARGB(255, 184, 56, 56)
+const secondarylightColor = DbColors.primary400; // was Color.fromARGB(255, 67, 89, 212)
 
-const bgColor = Color(0xFF212332);
+const bgColor = DbColors.slate900; // was Color(0xFF212332)
 
 //This one affect the side tab
-//const colorSelected = Color.fromARGB(255, 221, 219, 219);
-//const colorSelected = Color.fromARGB(255, 211, 185, 185);
-const colorSelected = Color.fromARGB(255, 184, 56, 56);
-//const colorSelected = Color.fromARGB(255, 70, 74, 83);
-//const colorUnSelected = Colors.white54;
-const colorUnSelected = Color.fromARGB(255, 67, 89, 212);
+const colorSelected = DbColors.primary; // was Color.fromARGB(255, 184, 56, 56)
+const colorUnSelected = DbColors.slate500; // was Color.fromARGB(255, 67, 89, 212)
 
-const tabBarColor = Color.fromARGB(255, 210, 125, 6);
-// const tabBarLabelStyle = TextStyle(fontSize: 10, fontWeight: FontWeight.bold);
-// const tabBarUnselectedStyle = TextStyle(fontSize: 10);
+// Selected icon in side tab / side drawer
+const tabBarColor = DbColors.primary; // was Color.fromARGB(255, 210, 125, 6)
 
 const tabBarLabelStyle = TextStyle(fontWeight: FontWeight.bold);
 const tabBarUnselectedStyle = TextStyle();
 
 const defaultPadding = 16.0;
+const radiusGrid = 12.0; // DiBold rounded corners
 const defaultFontSize = 12.0;
 const defaultDropDownSize = 16.0;
 const defaultFloatlableSize = 14.0;
-const defaultFontFamily = 'Arial';
-const defaultWhite = Colors.white54;
+// null = inherit the theme font (Nunito Sans, DiBold's typeface).
+// Set back to 'Arial' to use the bundled Arial font instead.
+const String? defaultFontFamily = null;
+const defaultWhite = DbColors.slate500; // was Colors.white54
 const defaultTextStyle = TextStyle(
-    fontSize: defaultFontSize, fontFamily: 'Arial', color: Colors.white);
+    fontSize: defaultFontSize, fontFamily: defaultFontFamily, color: Colors.white);
 const defaultWhiteTextStyle = TextStyle(
-    fontSize: defaultFontSize, fontFamily: 'Arial', color: Colors.black);
+    fontSize: defaultFontSize, fontFamily: defaultFontFamily, color: Colors.black);
 const defaultTrans = TransitionsBuilders.fadeIn;
 const defaultTransTime = 400;
 const svgPath = "assets/icons/";
@@ -53,13 +52,24 @@ const defaultWhitePlutoConfig = TrinaGridConfiguration(
       enableColumnBorderVertical: false,
       enableCellBorderVertical: false,
       enableCellBorderHorizontal: false,
-      cellTextStyle:
-          TextStyle(fontSize: defaultFontSize, fontFamily: defaultFontFamily),
-      columnTextStyle:
-          TextStyle(fontSize: defaultFontSize, fontFamily: defaultFontFamily),
-      gridBorderRadius: BorderRadius.all(Radius.circular(10)),
-      borderColor: secondaryColor,
-      activatedColor: Colors.blue,
+      cellTextStyle: TextStyle(
+          fontSize: defaultFontSize,
+          fontFamily: defaultFontFamily,
+          color: DbColors.slate800),
+      columnTextStyle: TextStyle(
+          fontSize: defaultFontSize,
+          fontFamily: defaultFontFamily,
+          fontWeight: FontWeight.w700,
+          color: DbColors.slate600),
+      gridBorderRadius: BorderRadius.all(Radius.circular(radiusGrid)),
+      gridBackgroundColor: DbColors.white,
+      rowColor: DbColors.white,
+      borderColor: DbColors.slate200,
+      gridBorderColor: DbColors.slate200,
+      activatedColor: DbColors.primary50,
+      activatedBorderColor: DbColors.primary,
+      iconColor: DbColors.slate600,
+      menuBackgroundColor: DbColors.white,
     ));
 
 const defaultDarkPlutoConfig = TrinaGridConfiguration.dark(
@@ -75,17 +85,20 @@ const defaultDarkPlutoConfig = TrinaGridConfiguration.dark(
         cellTextStyle: TextStyle(
             fontSize: defaultFontSize,
             fontFamily: defaultFontFamily,
-            color: Colors.white),
+            color: DbColors.slate100),
         columnTextStyle: TextStyle(
             fontSize: defaultFontSize,
             fontFamily: defaultFontFamily,
-            color: Colors.white),
-        gridBorderRadius: BorderRadius.all(Radius.circular(10)),
-        borderColor: secondaryColor,
-        rowColor:  Color.fromRGBO(61, 57, 53, 1),
-        activatedColor: Colors.blue,
-     //   gridBackgroundColor: secondaryColor
-     gridBackgroundColor: Color.fromRGBO(61, 57, 53, 1),
+            color: DbColors.slate100),
+        gridBorderRadius: BorderRadius.all(Radius.circular(radiusGrid)),
+        borderColor: DbColors.slate700,
+        gridBorderColor: DbColors.slate600,
+        rowColor: DbColors.slate800,
+        activatedColor: DbColors.primary900,
+        activatedBorderColor: DbColors.primary400,
+        iconColor: DbColors.slate300,
+        menuBackgroundColor: DbColors.slate700,
+        gridBackgroundColor: DbColors.slate800,
         ));
 
 typedef ManyOperation = Function(int firstNo, int secondNo);
@@ -133,7 +146,7 @@ const hdrStyle = TextStyle(fontWeight: FontWeight.bold);
 const boldStyle = TextStyle(fontWeight: FontWeight.bold);
 const lblStyle = TextStyle(fontSize: 12);
 const appTextStyle =
-    TextStyle(fontWeight: FontWeight.bold, color: Colors.lightBlue);
+    TextStyle(fontWeight: FontWeight.bold, color: DbColors.primary);
 
  const regexLatitute = r'^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$';
 

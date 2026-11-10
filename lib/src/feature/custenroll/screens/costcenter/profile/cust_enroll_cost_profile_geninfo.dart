@@ -248,10 +248,8 @@ class CustEnrollCostCenProfileForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxBackToList(
                         listUrl: '/custenroll/costcen/$custEttyId/list'),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiEnrlCostCtrSave',ettyId: costCtrEttyId.toString(),)
                   ]),
                 )

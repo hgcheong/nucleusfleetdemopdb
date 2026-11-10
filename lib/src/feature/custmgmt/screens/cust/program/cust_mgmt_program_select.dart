@@ -127,7 +127,6 @@ class CustMgmtProgramSelect extends ConsumerWidget {
                         sbh10,
                         AcxBackToList(
                             listUrl: '/custmgmt/cust/$custEttyId/program/list'),
-                            sbh10,
                         AcxAuditLogReqBtn('ApiMgmtCustPrgSave', ettyId: custEttyId.toString(),)
                       ],
                     ))

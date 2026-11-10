@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nucleusv2/src/core/components/shared/acx_audit_log_req_list.dart';
+import 'package:nucleusv2/src/core/components/acx_action_spacing.dart';
 
 class AcxAuditLogReqBtn extends HookConsumerWidget {
   const AcxAuditLogReqBtn(this.spName, {super.key,this.ettyId = "0",});
@@ -8,7 +9,10 @@ class AcxAuditLogReqBtn extends HookConsumerWidget {
   final String spName;
   final String ettyId;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) =>
+      AcxActionSpacing(child: _buildButton(context, ref));
+
+  Widget _buildButton(BuildContext context, WidgetRef ref) {
    return  Tooltip(
     message: 'Audit Log',
      child: ElevatedButton(

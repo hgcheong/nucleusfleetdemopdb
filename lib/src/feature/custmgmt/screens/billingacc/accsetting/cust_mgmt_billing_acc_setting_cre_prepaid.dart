@@ -160,9 +160,7 @@ class CustMgmtBillingAccPrePaid extends ConsumerWidget {
                           }
                         });
                       }),
-                      sbh10,
                       const AcxBackToList(listUrl: '././././list'),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiMgmtCustBillingAcctPrePaidSave',ettyId: formNewValue["AcctId"].toString(),),
                     ],
                   ))

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbChoiceChipOptionExt extends StatelessWidget {
   const FbChoiceChipOptionExt({
@@ -25,9 +26,9 @@ class FbChoiceChipOptionExt extends StatelessWidget {
   final Returndata dataext;
   final Map<String, Icon> iconList;
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
     return dataext.data == null
         ? const Text('No Data')
         : FormBuilderChoiceChips<dynamic>(

@@ -342,7 +342,6 @@ class CustGeneralInfo extends ConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiEnrlCustProfileSave',ettyId: custEttyId.toString(),)
                         //  const AcxBackToList(listUrl: '/custenroll/main' )
                       ]),

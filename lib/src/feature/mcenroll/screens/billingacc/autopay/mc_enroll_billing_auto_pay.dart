@@ -271,11 +271,9 @@ class MerchantEnrollSetupBankForm extends ConsumerWidget {
                                           });
                                         },
                                       ),
-                                      sbh10,
                                       AcxBackToList(
                                         listUrl: '/mcenroll/billingAccount/$mchtEttyId/list',
                                       ),
-                                      sbh10,
                                       AcxAuditLogReqBtn('ApiEnrlMchtLocAutoPymtSave',ettyId: formNewValue['EttyId'].toString(),)
                    ],),)
                     ],

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
@@ -2908,7 +2909,7 @@ void exportToCsv(TrinaGridStateManager stateManager, String title) async {
         }
 void exportToPdf(TrinaGridStateManager stateManager, String title) async {
 
-  Color headerColor = Color.fromRGBO(255, 6, 4, 1);
+  Color headerColor = DbColors.primary700;
   Color textColor = Colors.black;
   //  final format = PdfPageFormat.a4.landscape;
   //          final themeData = pw.ThemeData(

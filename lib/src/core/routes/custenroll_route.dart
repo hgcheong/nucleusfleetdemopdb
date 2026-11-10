@@ -10,6 +10,32 @@ final custenrollTabRouter = CustomRoute(
     page: CustEnrollContainer.page,
     maintainState: false,
     children: [
+    AutoRoute(
+                      path: 'subsidy2',
+                      page: CustEnrollSubsidy2Landing.page,
+                      maintainState: false,
+                      children: [
+                        
+                        AutoRoute(
+                            path: 'list',
+                            page: CustEnrollSubsidy2List.page,
+                            maintainState: false,
+                            initial: true),
+                            AutoRoute(path:'cbp/:chargeType/:prgEttyId/:cbId',
+                            page:CustEnrollSubsidy2CustLanding.page,children:[
+AutoRoute(
+
+                            path: 'cbplist',
+                            page: CustEnrollSubsidy2CustList.page,
+                            initial:true,
+                            maintainState: false),
+                            AutoRoute(
+                          path: 'cbpdtl/:cbPrgEttyId/:ettyId/:cbQuoId',
+                          usesPathAsKey: true,
+                          page: CustEnrollSubsidy2.page,
+                          maintainState: false,
+                        ),
+                            ]),]),
       AutoRoute(
           path: 'main', page: CustEnrollListRoute.page, meta:const {"SetupId":6000}, maintainState: false),
       // AutoRoute(

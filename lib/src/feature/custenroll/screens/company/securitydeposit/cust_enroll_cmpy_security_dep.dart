@@ -202,9 +202,7 @@ class CustEnrollSecurityDepForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     const AcxBackToList(listUrl: './././secdep'),
-                         sbh10,
                     AcxAuditLogReqBtn('ApiEnrlCrDepSave',ettyId:  cmpyEttyId.toString(),)
                     
                   ]),

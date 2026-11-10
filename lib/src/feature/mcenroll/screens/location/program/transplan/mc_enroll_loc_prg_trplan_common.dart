@@ -233,7 +233,6 @@ class MchtEnrlFepTransForm extends HookConsumerWidget {
                           }
                         });
                       }),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiPrgMchtTxnSave',ettyId: prgId.toString(),),
                       sbh10,
                       IconButton(
@@ -525,9 +524,6 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                           }
                         });
                       },
-                    ),
-                    const SizedBox(
-                      height: 30,
                     ),
                     AcxAuditLogReqBtn('ApiPrgMchtTxnPlanSave', ettyId: mchtEttyId.toString(),),
                     sbh10,

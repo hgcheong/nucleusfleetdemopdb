@@ -5,7 +5,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/generated/l10n.dart';
 
 import 'package:nucleusv2/src/core/app_router.dart';
@@ -151,7 +150,7 @@ class CustMgmtCmpyTxnLimitForm extends ConsumerWidget {
                           const SelectableText(
                               'Transaction Category and Spending Limit at Company level'),
                           Container(
-                              color: Colors.blue,
+                              color: Theme.of(context).colorScheme.primaryContainer,
                               child: SelectableText(
                                   'Program selected for Limit Setting :${prgSelected['Program'].toString()}')),
                           FbLibView(
@@ -286,50 +285,9 @@ class CustMgmtCmpyTxnLimitForm extends ConsumerWidget {
                           });
                         },
                       ),
-                      // ElevatedButton(
-                      //   onPressed: () async {
-                      //     formKey.currentState!.save();
-                      //     Map<String, dynamic> toPost = convertFormValueToSave(
-                      //         Map.from(formKey.currentState!.value),
-                      //         theData.columnInfo);
-                      //     final querySave = QueryObject(
-                      //         querysql:
-                      //             '/sp/ApiMgmtCmpyTxnLimitSave/queryasync',
-                      //         params: toPost,
-                      //         showMsg: false);
-
-                      //     final saveResult = ref.read(
-                      //         ReturndatafreezedProvider(querySave).future);
-                      //     saveResult.then((value) {
-                      //       Toast.showresult(value);
-                      //       if (isSuccess(value.message)) {
-                      //         // saveProdList(
-                      //         //     formSwitchValue,
-                      //         //     ref,
-                      //         //     limitId.toString(),
-                      //         //     prgEttyId.toString(),
-                      //         //     custEttyId.toString(),
-                      //         //     cmpyEttyId.toString(),
-                      //         //     queryPrdList);
-                      //         if (context.mounted) {
-                      //           singleton<AppRouter>()
-                      //               .navigatePath(getAfterSavePath(
-                      //                   context, value.output, '@LimitId'))
-                      //               .then((val) {
-                      //             ref.invalidate(
-                      //                 ReturndatafreezedProvider(query));
-                      //           });
-                      //         }
-                      //       }
-                      //     });
-                      //   },
-                      //   child: const Icon(Icons.save),
-                      // ),
-                      sbh10,
                       AcxBackToList(
                           listUrl:
                               '/custmgmt/cmpy/$custEttyId/detail/$cmpyEttyId/control/translimt'),
-                              sbh10,
                               AcxAuditLogReqBtn('ApiMgmtCmpyTxnLimitSave',ettyId: formNewValue["LimitId"].toString(),)
                     ]),
                   )

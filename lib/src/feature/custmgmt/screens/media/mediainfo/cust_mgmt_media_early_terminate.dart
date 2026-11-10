@@ -164,7 +164,6 @@ class CustMgmtEarlyTerminateDialog extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMgmtMediaTerminateSave', ettyId: mediaEttyId.toString(),),
                             sbh10,
                             ElevatedButton(

@@ -254,6 +254,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Strong Password",
     ),
     "lblSubDate": MessageLookupByLibrary.simpleMessage("Sumission Date"),
+    "lblSubsidySetup": MessageLookupByLibrary.simpleMessage("Subsidy Setup"),
+    "lblSubsidySetupEnrol": MessageLookupByLibrary.simpleMessage(
+      "Subsidy Setup (Enrolment)",
+    ),
     "lblSubPrgMgmt": MessageLookupByLibrary.simpleMessage(
       "Subsidy Program Management",
     ),

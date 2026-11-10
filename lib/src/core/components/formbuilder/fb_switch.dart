@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbSwitch extends StatelessWidget {
   const FbSwitch({
@@ -15,7 +16,9 @@ class FbSwitch extends StatelessWidget {
   final String? initialValue;
   final Function(bool?)? onChanged;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => FbField(child: _buildField(context));
+
+  Widget _buildField(BuildContext context) {
     return FormBuilderSwitch(
       decoration: InputDecoration.collapsed(
         hintText: label,

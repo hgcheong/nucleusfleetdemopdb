@@ -154,7 +154,6 @@ class MediaRenwewalDialog extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMgmtMediaRenewSave',ettyId: mediaEttyId.toString(),),
                             sbh10,
                             ElevatedButton(

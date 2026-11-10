@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:nucleusv2/constants.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
@@ -155,7 +155,7 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                                   ),
                                   // initialValue: 'LASTDAY',
                                   name: 'FncCalcMethod',
-                                  activeColor: Colors.green,
+                                  activeColor: DbColors.primary,
                                   options: afterOptionData.data!
                                       .toList()
                                       .map((lang) => FormBuilderFieldOption(
@@ -275,7 +275,6 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiPrgCustPostpaidOIChrgSave',ettyId: prgEttyId.toString(),)
                           ]),
                         )

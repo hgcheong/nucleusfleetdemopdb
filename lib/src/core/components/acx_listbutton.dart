@@ -50,8 +50,11 @@ class AcxListButton extends HookConsumerWidget {
                       Icon(Icons.card_giftcard,
                           color: sSelectedKey.value ==
                                   returnData.data![i][keyField]
-                              ? Colors.black
-                              : const Color.fromARGB(255, 192, 205, 215)),
+                              ? Theme.of(context).colorScheme.onPrimary
+                              : Theme.of(context)
+                                  .colorScheme
+                                  .onPrimary
+                                  .withValues(alpha: 0.55)),
                       Text(returnData.data![i][displayfield]),
                     ]),
               ));

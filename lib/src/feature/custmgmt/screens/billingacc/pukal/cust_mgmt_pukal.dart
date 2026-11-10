@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -130,7 +131,7 @@ class MerchantMgmtPukalForm extends ConsumerWidget {
                               child: ListView(
                                 //   crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SelectableText("Kod Agensi 200042", style: TextStyle(color: Colors.lightBlue),),
+                                  SelectableText("Kod Agensi 200042", style: TextStyle(color: DbColors.primary),),
                                    const Row(
                                     children: [
                                       Expanded(
@@ -192,7 +193,7 @@ class MerchantMgmtPukalForm extends ConsumerWidget {
                               child: ListView(
                                   //   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                         SelectableText("Butir-Butir Akaun Pukal", style: TextStyle(color: Colors.lightBlue),),
+                                         SelectableText("Butir-Butir Akaun Pukal", style: TextStyle(color: DbColors.primary),),
                                     // FbText(name: 'BusnArea',label:'Business Area',),
                                     //'BUSNAREAPUKAL'
                                     // Row(
@@ -304,11 +305,9 @@ class MerchantMgmtPukalForm extends ConsumerWidget {
                                 });
                               },
                             ),
-                            sbh10,
                             const AcxBackToList(
                               listUrl: './list',
                             ),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMgmtCustBillingAcctPukalSave',ettyId: formNewValue["AcctId"].toString(),),
                           ]),
                         ),

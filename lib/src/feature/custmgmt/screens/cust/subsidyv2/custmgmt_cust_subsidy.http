@@ -1,0 +1,139 @@
+POST {{baseUrl}}/sp/ApiMgmtCbpPrgList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+}
+
+//ApimgmtCbpList
+###
+POST {{baseUrl}}/sp/ApimgmtCbpList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CbPrgType":"SUBS",
+     "CbId":1,
+     "PrgEttyId": 7,
+    
+}
+
+//ApimgmtCbp
+###
+POST {{baseUrl}}/sp/ApimgmtCbp/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "EttyId" : 6017,
+    "CbId":1,
+    "CbPrgEttyId": 17,
+    "PrgEttyId":1,
+    "CbQuoId":11
+}
+
+//ApimgmtCbpChildList
+###
+POST {{baseUrl}}/sp/ApimgmtCbpChildList/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+    "EttyId" : 1303,
+    "CbId":1,
+    "CbQuoId":1
+}
+
+//ApimgmtCbpChildList
+###
+POST {{baseUrl}}/sp/ApimgmtCbpChild/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId" : 1303,
+    "CbId":1,
+    "CbQuoId":1,
+    "VhcRgsNo":"ABC 1234",
+    "ChildId":null
+}
+
+//ApimgmtCbpChildSave
+###
+POST {{baseUrl}}/sp/ApimgmtCbpChildSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "CbQuoId":"1",
+    "ChildId":null,
+    "FromDate":'2026-09-01',
+    "ToDate":null,
+    "QuoLimit": "1000",
+    "MbrEttyId":1308,
+    "VhcRgsNo": "ABC 1234",
+    "VhcId":null,
+    "CbId":1,
+    "EttyId" : "1303"
+}
+
+
+
+//ApimgmtCbpSave
+###
+POST {{baseUrl}}/sp/ApimgmtCbpSave/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+
+      "RefNo": "RE23122",
+      "FromDate": "2026-08-01",
+      "ToDate": "2030-08-01",
+      "QuoLimit": "15001",
+     "AllocMethod": "DIST",
+      "Note": "First Sub",
+      "CbId": 1,
+      "CbPrgEttyId": 1,
+      "EttyId": 1303,
+      "CbQuoId": null,
+      "PrgEttyId": 1
+}
+
+//ApimgmtEtty
+###
+POST {{baseUrl}}/sp/ApimgmtEtty/queryasync HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+    "EttyId":6017,
+    "Hierarchy " : 3
+}
+
+
+###
+//MnM
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "ACTVSUSPSTS",
+"BitInd": null
+}
+
+//MnM
+###
+POST {{baseUrl}}/sp/GetLibRef/queryasyncnouser HTTP/1.1
+Authorization: Bearer {{authorization}}
+content-type: application/json
+
+{
+"RefType": "CBQUOTAALLOC",
+"BitInd": null
+}
+
+//EttyID = 123 (customer) and @Hierarchy = 4 It shows all the member of a customer 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 
 class AcxCheckBoxListQuery extends ConsumerWidget {
@@ -54,7 +53,7 @@ class AcxCheckBoxListQuery extends ConsumerWidget {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5.0),
-                color: secondaryColor,
+                color: Theme.of(context).colorScheme.surfaceContainerHigh,
               ),
               child: ListView(
                   shrinkWrap: true,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AcxAppBar extends ConsumerWidget {
@@ -13,7 +14,7 @@ class AcxAppBar extends ConsumerWidget {
     toReturn = AppBar(
       centerTitle: false,
       backgroundColor: Colors.red,
-      foregroundColor: Colors.blue,
+      foregroundColor: DbColors.primary,
       shadowColor: Colors.yellow,
       leading: IconButton(
         icon: const Icon(Icons.shopping_cart),

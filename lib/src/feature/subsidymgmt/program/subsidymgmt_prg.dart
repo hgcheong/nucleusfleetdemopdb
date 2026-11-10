@@ -103,7 +103,6 @@ class SusidyPrgMgmtForm extends ConsumerWidget {
                               searchText: 'Dscp',
                               querySql: '/view/async/VwBillingFreq'),
                           // FbLibView(name: 'SubsidyType', label: 'Subsidy type', params: {}, keyField: 'SubsidyId', searchText: 'Dscp', querySql: '/view/async/VwSubsSubsidy'),
-                  
                           FbOption(
                             name: 'SubsidyType',
                             label: 'Type of Subsidy',
@@ -189,9 +188,7 @@ class SusidyPrgMgmtForm extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       const AcxBackToList(listUrl: '/subsidy/main'),
-                      sbh10,
                       AcxAuditLogReqBtn('ApiPrgSubsSave',)
                     ]),
                   )

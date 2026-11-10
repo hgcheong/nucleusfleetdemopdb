@@ -373,7 +373,6 @@ class CustGeneralInfo extends ConsumerWidget {
                         AcxBackToList(
                             listUrl:
                                 '/custmgmt/cust/$custEttyId/quickinfo/overview'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtCustProfileSave',ettyId: custEttyId.toString(),)
                       ]),
                     )

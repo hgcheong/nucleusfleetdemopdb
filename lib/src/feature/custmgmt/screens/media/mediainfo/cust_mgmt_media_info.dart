@@ -532,7 +532,7 @@ class MediaPropertiesHdr extends StatelessWidget {
             return const NotAuthorised();
 }
     return Container(
-      color: Colors.blue,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: const Row(
         children: [
           Flexible(
@@ -577,7 +577,7 @@ class MediaPropertiesHdr2 extends ConsumerWidget {
     final mediaMediaCategorySelect =
         ref.watch(mediaCustMgmtMediaCategorySelectProvider);
     return Container(
-      color: Colors.blue,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: Column(
         children: [
           Row(

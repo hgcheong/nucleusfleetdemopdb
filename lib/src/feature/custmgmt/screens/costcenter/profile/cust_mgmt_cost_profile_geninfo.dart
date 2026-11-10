@@ -217,9 +217,7 @@ class CustMgmtCostCenProfileForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxBackToList(listUrl: '/custmgmt/costcen/$custEttyId/list'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiMgmtCostCtrSave', ettyId: costCtrEttyId.toString(),)
 
                   ]),

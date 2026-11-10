@@ -5,7 +5,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
 import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
@@ -281,11 +280,9 @@ class PrgCustFeeTransForm extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
                       AcxBackToList(
                           listUrl:
                               '/prgmgmt/custsetup/$prgEttyId/pcfeelanding/pcfeemtranslist'),
-                              sbh10,
                       AcxAuditLogReqBtn('ApiPrgCustTxnFeeSave',ettyId: prgEttyId.toString(),)
                     ]),
                   )

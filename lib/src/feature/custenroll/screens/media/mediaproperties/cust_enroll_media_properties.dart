@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
@@ -215,10 +214,8 @@ class CustEnrollMediaProperties extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxBackToList(
                                 listUrl: '/custenroll/media/$custEttyId/list'),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiEnrlMediaPropSave',ettyId: mediaEttyId.toString(),)
                           ]),
                         )
@@ -245,7 +242,7 @@ class MediaPropertiesHdr2 extends ConsumerWidget {
     }
     final mediaHolderName = ref.watch(mediaMediaHolderNameProvider);
     return Container(
-      color: Colors.blue,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: Column(
         children: [
           Row(

@@ -295,11 +295,9 @@ class CustEnrollCmpyCtrlLoc extends ConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         AcxBackToList(
                             listUrl:
                                 '/custenroll/cmpy/$custEttyId/detail/$cmpyEttyId/control/locaccpt'),
-                            sbh10,
                         AcxAuditLogReqBtn('ApiEnrlCmpyLocAccptSave,ApiEnrlLocAccptLocSave,ApiEnrlLocAccptLocDel',ettyId: formNewValue["AccptId"].toString(),)
                       ],
                     )),
@@ -374,7 +372,6 @@ class CustEnrollCmpyCtrlLocList extends ConsumerWidget {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                          backgroundColor: bgColor,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
@@ -614,7 +611,6 @@ class CustEnrollCmpyCtrlTxnLocList extends HookConsumerWidget {
                       context: context,
                       builder: (context) {
                         return const Dialog(
-                            backgroundColor: bgColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),
@@ -665,7 +661,6 @@ class CustEnrollCmpyCtrlTxnLocList extends HookConsumerWidget {
                   context: context,
                   builder: (context) {
                     return Dialog(
-                        backgroundColor: bgColor,
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(15))),

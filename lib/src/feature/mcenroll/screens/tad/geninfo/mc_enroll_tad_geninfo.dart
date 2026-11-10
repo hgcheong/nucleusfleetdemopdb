@@ -233,7 +233,6 @@ class MchtEnrlTadForm extends ConsumerWidget {
                             });
                           },
                         ),
-                        sbh10,
                         AcxBackToList(
                           listUrl: '/mcenroll/tad/$mchtEttyId/list',
                           fnBeforeNav: () {
@@ -244,7 +243,6 @@ class MchtEnrlTadForm extends ConsumerWidget {
                             };
                           },
                         ),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiEnrlMchtTadSave', ettyId: tadEttyId.toString(),)
                       ],
                     ),

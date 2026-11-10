@@ -677,7 +677,6 @@ class SusbsidyPlanPrgLocList extends HookConsumerWidget {
                       context: context,
                       builder: (context) {
                         return Dialog(
-                            backgroundColor: bgColor,
                             shape: const RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),
@@ -733,7 +732,6 @@ class SusbsidyPlanPrgLocList extends HookConsumerWidget {
                         height: 400,
                         width: 400,
                         child: Dialog(
-                            backgroundColor: bgColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),

@@ -126,7 +126,6 @@ class CustMgmgtBillingAccCreBalDialog extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMgmtCustBillingCrLimitSave',ettyId: formValue["AcctId"].toString(),),
                             sbh10,
                             ElevatedButton(

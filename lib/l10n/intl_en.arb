@@ -283,5 +283,7 @@
   "sbInbound":"Inbound",
   "tabPukal":"Pukal",
   "tabCardBalance":"Card Balance",
-  "menuQueryOLTP":"OLTP Rejection"
+  "menuQueryOLTP":"OLTP Rejection",
+  "lblSubsidySetupEnrol":"Subsidy Setup (Enrolment)",
+  "lblSubsidySetup":"Subsidy Setup"
 }

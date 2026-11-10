@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -128,7 +129,6 @@ class UserMgmtWebPortalUserChangeStatus extends BaseScreen {
                                   return;
                                 }
                       }),
-                      sbh10,
                       const AcxBackToList(listUrl: '/usermgmt/webportaluser'),
                       PopupMenuButton(
                         icon: const Icon(Icons.more_vert),
@@ -435,7 +435,7 @@ Widget showUserStatus(String? userId) {
   if (userId != null) {
     return Container(
       padding: const EdgeInsets.all(5),
-      color: Colors.blue,
+      color: DbColors.primary,
       child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

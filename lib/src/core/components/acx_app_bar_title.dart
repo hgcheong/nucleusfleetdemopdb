@@ -12,11 +12,11 @@ class AcxAppBarTitle extends ConsumerWidget {
     return Text(
       theTitle.toString(),
       //   maxLines: 2,
-      style: const TextStyle(
+      style: TextStyle(
           fontSize: defaultFontSize,
           fontFamily: defaultFontFamily,
           fontWeight: FontWeight.bold,
-          color: Colors.lightBlue),
+          color: Theme.of(context).colorScheme.primary),
     );
   }
 }

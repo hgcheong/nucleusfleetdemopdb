@@ -176,9 +176,7 @@ class MchtEnrlBusinessUnitGenInfo extends ConsumerWidget {
                             }
                           });
                         }),
-                        sbh10,
                         AcxBackToList(listUrl: '/mcenroll/bu/$mchtEttyId/list'),
-                        sbh10,
                         AcxAuditLogReqBtn('ApiEnrlMchtBusnUnitSave',ettyId: busnUnitEttyId.toString(),)
                       ],
                     ),

@@ -4,7 +4,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:nucleusv2/constants.dart';
 
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/base_screen.dart';
@@ -114,12 +113,12 @@ class BuildViewInfo extends HookWidget {
         Expanded(
             flex: 6,
             child: Container(
-              color: secondaryColor,
+              color: Theme.of(context).colorScheme.surfaceContainerHigh,
               child: Column(
                 children: [
                   Expanded(
                       child: Container(
-                    color: Colors.blue,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                     child: const Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -157,7 +156,7 @@ class BuildViewInfo extends HookWidget {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          color: bgColor,
+                          color: Theme.of(context).colorScheme.surfaceContainer,
                           child: IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.save),

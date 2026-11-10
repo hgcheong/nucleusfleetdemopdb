@@ -132,7 +132,6 @@ class CustMgmtBillingAcctBlockDialog extends ConsumerWidget {
                                     }
                                   });
                                 }),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtAcctBlockSave',ettyId: acctId.toString(),),
                                 sbh10,
                                 ElevatedButton(
@@ -334,7 +333,6 @@ class CustMgmtBillingAcctBlockDialog extends ConsumerWidget {
                                     }
                                   });
                                 }),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtAcctBlockSave', ettyId: acctId.toString(),),
                                 sbh10,
                                 ElevatedButton(

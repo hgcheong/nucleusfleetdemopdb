@@ -131,9 +131,6 @@ class AcxVwTxnPlanForm extends ConsumerWidget {
                             }
                           });
                         }),
-                        const SizedBox(
-                          height: 30,
-                        ),
                         AcxAuditLogReqBtn(querySaveSql,),
                         sbh10,
                         ElevatedButton(

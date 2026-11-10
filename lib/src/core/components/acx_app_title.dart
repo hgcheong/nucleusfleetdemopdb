@@ -11,11 +11,11 @@ class AcxAppTitle extends StatelessWidget {
       softWrap: true,
       pageTitle.toString(),
       maxLines: 2,
-      style: const TextStyle(
+      style: TextStyle(
           fontFamily: defaultFontFamily,
           fontSize: defaultFontSize,
           fontWeight: FontWeight.bold,
-          color: Colors.lightBlue),
+          color: Theme.of(context).colorScheme.primary),
     );
   }
 }

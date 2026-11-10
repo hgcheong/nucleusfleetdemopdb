@@ -128,7 +128,6 @@ class CustMgmgtBillingAccTempCreBalDialog extends ConsumerWidget {
                                 }
                               });
                             }),
-                            sbh10,
                             AcxAuditLogReqBtn('ApiMgmtCustBillingTempCrSave',ettyId: formValue["AcctId"].toString(),),
                             sbh10,
                             ElevatedButton(

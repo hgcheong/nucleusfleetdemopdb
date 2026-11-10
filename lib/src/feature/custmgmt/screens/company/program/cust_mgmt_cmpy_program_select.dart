@@ -152,7 +152,6 @@ class CustMgmtCmpyProgramSelect extends ConsumerWidget {
                                 AcxBackToList(
                                     listUrl:
                                         '/custmgmt/cmpy/$custEttyId/detail/$cmpyEttyId/program/list'),
-                                        sbh10,
                                         AcxAuditLogReqBtn('ApiMgmtCmpyPrgAccptSave',ettyId: cmpyEttyId.toString(),)
 
                                 ///custmgmt/cmpy/528/detail/529/program/list

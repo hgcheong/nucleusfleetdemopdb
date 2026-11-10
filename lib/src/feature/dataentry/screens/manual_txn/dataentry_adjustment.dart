@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 
 import 'package:nucleusv2/src/core/app_router.dart';
 import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
@@ -195,9 +194,7 @@ class DataEntryAdjustmentTxn extends ConsumerWidget {
                           });
                         },
                       ),
-                      sbh10,
-                      AcxBackToList(listUrl: '/dataentry/manual/$txnType/list'),
-                      sbh10, 
+                      AcxBackToList(listUrl: '/dataentry/manual/$txnType/list'), 
                       AcxAuditLogReqBtn('ApiMnlTxnAdjSave')
                     ]),
                   )

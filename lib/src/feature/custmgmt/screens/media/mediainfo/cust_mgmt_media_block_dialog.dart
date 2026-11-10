@@ -175,7 +175,6 @@ class CustMgmtMediaBlockDialog extends ConsumerWidget {
                                     }
                                   });
                                 }),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtMediaBlockSave',ettyId: mediaEttyId.toString(),),
                                 sbh10,
                                 ElevatedButton(
@@ -372,7 +371,6 @@ class CustMgmtMediaBlockDialog extends ConsumerWidget {
                                     }
                                   });
                                 }),
-                                sbh10,
                                 AcxAuditLogReqBtn('ApiMgmtMediaBlockSave',ettyId: mediaEttyId.toString(),),
                                 sbh10,
                                 ElevatedButton(

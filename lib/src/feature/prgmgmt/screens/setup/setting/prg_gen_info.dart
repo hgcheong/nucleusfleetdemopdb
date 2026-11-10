@@ -7,7 +7,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:intl/intl.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/api_acxdatatable.dart';
 import 'package:nucleusv2/src/core/app/api_acxlangkeyval.dart';
 
@@ -385,14 +384,12 @@ class BuildMainFormNotStateFull extends HookConsumerWidget {
                                             });
                                           },
                                         ),
-                                        sbh10,
                                         AcxBackToList(
                                           fnBeforeNav: () {
                                             clearTitle(ref);
                                           },
                                           listUrl: './././main',
                                         ),
-                                             sbh10,
                     AcxAuditLogReqBtn('ApiPrgSave',)
                                       ],
                                     ))

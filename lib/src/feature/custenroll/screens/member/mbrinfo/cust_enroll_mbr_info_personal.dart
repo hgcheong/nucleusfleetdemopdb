@@ -215,7 +215,6 @@ class CustEnrollMemberInfoPersonalForm extends ConsumerWidget {
                         });
                       },
                     ),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiEnrlMbrPsnlSave',ettyId: convStrNewOrNullToNull(formNewValue["PersonId"]).toString(),)
                   ]),
                 )

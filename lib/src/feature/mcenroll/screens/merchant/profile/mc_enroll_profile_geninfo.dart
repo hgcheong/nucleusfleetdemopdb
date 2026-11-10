@@ -270,9 +270,7 @@ class MchtEnrlGeneralInfo extends ConsumerWidget {
                         }
                       });
                     }),
-                    sbh10,
                     const AcxBackToList(listUrl: '/mcenroll/main'),
-                    sbh10,
                     AcxAuditLogReqBtn('ApiEnrlMchtSave', ettyId: mchtEttyId.toString(),)
                   ]),
                 )
