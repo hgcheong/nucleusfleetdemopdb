@@ -100,35 +100,35 @@ class CustMgmtMediaInfo extends ConsumerWidget {
           }
 
           var imgName = 'assets/images/card_bg.png';
-          var backImgName = 'assets/images/card_bg.png';
+          var backImgName = 'assets/images/fleet_card_back.png';
           var driverName = '';
           var vehicleNumber = '';
 switch ('${formNewValue["PrgDscp"]}|${formNewValue["MediaCtgry"]}') {
   case 'X-Fleet Kad Inden|STANDALONE':
     imgName = 'assets/images/pdb_kenderaan.png';
-    backImgName = 'assets/images/MasterBack.png';
+    backImgName = 'assets/images/fleet_card_back.png';
     driverName = formNewValue['EmbossLine2'] ?? "";
     vehicleNumber = formNewValue['VhcRgsNo'] ?? "";
       case 'X-Fleet Kad Inden|MASTER':
     imgName = 'assets/images/pdb_kenderaan.png';
-    backImgName = 'assets/images/MasterBack.png';
+    backImgName = 'assets/images/fleet_card_back.png';
     driverName = formNewValue['EmbossLine2'] ?? "";
     vehicleNumber = formNewValue['VhcRgsNo'] ?? "";
   case 'X-Fleet Kad Inden|VEHICLE':
         imgName = 'assets/images/pdb_kenderaan.png';
-        backImgName = 'assets/images/KenderaanBack.png';
+        backImgName = 'assets/images/fleet_card_back.png';
         driverName = '';
         vehicleNumber = formNewValue['VhcRgsNo'] ?? "";
   case 'X-Fleet Kad Inden|DRIVER':
        imgName = 'assets/images/pdb_kenderaan.png';
-       backImgName = 'assets/images/PemanduBack.png';
+       backImgName = 'assets/images/fleet_card_back.png';
       driverName = formNewValue['EmbossLine2'] ?? "";
       vehicleNumber = '';
   default:
       imgName = 'assets/images/pdb_kenderaan.png';
 }
           
-          return Row(
+          return Row(crossAxisAlignment: CrossAxisAlignment.start, 
             children: [
               Expanded(
                 flex: 5,

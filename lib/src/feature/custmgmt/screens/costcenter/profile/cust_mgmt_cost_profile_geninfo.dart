@@ -85,7 +85,7 @@ class CustMgmtCostCenProfileForm extends ConsumerWidget {
         return FormBuilder(
             key: custMgmtCmpyFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 //   "TaxCtgry": null,
 

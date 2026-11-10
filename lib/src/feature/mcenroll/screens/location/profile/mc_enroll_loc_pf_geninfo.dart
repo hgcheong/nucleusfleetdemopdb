@@ -94,7 +94,7 @@ class MchtEnrlLocGeneralInfo extends ConsumerWidget {
         return FormBuilder(
             key: mchtLocEnrollFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 const FbHiddenDateTime(name: 'LocMdfDate'),
                 const FbHiddenDateTime(name: 'CmpyMdfDate'),
@@ -111,7 +111,7 @@ class MchtEnrlLocGeneralInfo extends ConsumerWidget {
                           const Row(
                             children: [  Expanded(
                               flex: 1,
-                              child:  FbText(name: 'LocNo', label: 'Location No')),sbw10,
+                              child:  FbText(name: 'LocNo', label: 'Location No')),fbFieldGap,
                       Expanded(
                         flex: 1,
                         child: FbText(name: 'LocName', label: 'Location Name')),
@@ -120,7 +120,7 @@ class MchtEnrlLocGeneralInfo extends ConsumerWidget {
                          
                                        Row(
                                          children: [
-                                          Expanded(flex: 1, child: FbText(name: "MId", label: "MId"),),  sbw10,
+                                          Expanded(flex: 1, child: FbText(name: "MId", label: "MId"),),  fbFieldGap,
                                            Expanded(flex: 1,
                                                                        child: FbLibViewMultiDisplay(
                                                                          listsearchText: ['SiteId','SiteName','CityDscp','StateDscp'],
@@ -213,7 +213,7 @@ class MchtEnrlLocGeneralInfo extends ConsumerWidget {
                                 child: FbText(
                                     name: 'AgrmtNo',
                                     label: 'Agreement Number')),
-                            Flexible(
+                            fbFieldGap, Flexible(
                               child: FbDateTimePicker(
                                   name: 'AgrmtDate', label: 'Agreement Date'),
                             ),
@@ -238,7 +238,7 @@ class MchtEnrlLocGeneralInfo extends ConsumerWidget {
                             const Expanded(
                                 child:
                                     FbText(name: 'TaxNo', label: 'Tax Number')),
-                            Expanded(
+                            fbFieldGap, Expanded(
                               child: FbLibref(
                                   name: 'TaxCtgry',
                                   initialValue: formNewValue['TaxCtgry'],

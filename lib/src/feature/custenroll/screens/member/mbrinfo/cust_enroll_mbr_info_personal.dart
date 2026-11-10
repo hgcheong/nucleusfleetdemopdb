@@ -5,7 +5,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/generated/l10n.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
@@ -89,7 +88,7 @@ class CustEnrollMemberInfoPersonalForm extends ConsumerWidget {
         return FormBuilder(
             key: custEnrollPsnlFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 //   "TaxCtgry": null,
 
@@ -136,7 +135,7 @@ class CustEnrollMemberInfoPersonalForm extends ConsumerWidget {
                                   "RefType": "TITLE",
                                   "BitInd": null
                                 })),
-                            sbw10,
+                            fbFieldGap,
                             Expanded(
                                 child: FbLibref(
                                     label: 'Gender',

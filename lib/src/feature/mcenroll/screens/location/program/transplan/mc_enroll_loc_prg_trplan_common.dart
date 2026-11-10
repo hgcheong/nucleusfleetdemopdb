@@ -88,7 +88,7 @@ class MchtEnrlFepTransForm extends HookConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   Flexible(
                     flex: 5,
@@ -456,7 +456,7 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                     name: 'MsgTypePlanId'),
                 Flexible(
                     flex: 2,
-                    child: FormBuilderField(
+                    child: FbField(child: FormBuilderField(
                         name: 'TxnPlan',
                         builder: (field) {
                           return AcxSearchBoxMap(
@@ -470,7 +470,7 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                               searchText: 'TxnPlanDscp',
                               keyField: 'TxnPlan',
                               params: const {});
-                        })),
+                        }))),
                 const Flexible(
                   flex: 2,
                   child: Row(
@@ -480,9 +480,7 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                         name: 'FromDate',
                         label: 'From Date',
                       )),
-                      SizedBox(
-                        width: 30,
-                      ),
+                      fbFieldGap,
                       Expanded(
                           child: FbDateTimePicker(
                         name: 'ToDate',

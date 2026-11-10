@@ -115,7 +115,7 @@ class CustEnrollCostCenProfileForm extends ConsumerWidget {
         return FormBuilder(
             key: custEnrollCmpyFormKey,
             initialValue: formValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 //   "TaxCtgry": null,
 

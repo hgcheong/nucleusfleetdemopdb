@@ -88,7 +88,7 @@ class CustEnrollSecurityDepForm extends ConsumerWidget {
         return FormBuilder(
             key: custEnrollSecurityDepFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                const FbHiddenText(name: 'CustEttyId'),
                 const FbHiddenText(name: 'CmpyEttyId'),

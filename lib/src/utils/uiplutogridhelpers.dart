@@ -1173,6 +1173,27 @@ late TrinaGridStateManager stateManager;
 }
 
 
+
+/// Calls a grid `onSelected` / `onSelectedTap` callback whatever shape it
+/// was written in. The parameter is an untyped `Function?`, so a callback
+/// with the wrong number or type of arguments used to crash on double-tap
+/// (DDC `dcall` error). Supported shapes:
+///   (TrinaRow row) {...}            — the current convention
+///   () {...}                        — no argument
+///   (Map<String, TrinaCell> cells)  — older cell-map style
+void callOnSelected(Function onSelected, TrinaRow row) {
+  if (onSelected is void Function(TrinaRow)) {
+    onSelected(row);
+  } else if (onSelected is void Function()) {
+    onSelected();
+  } else if (onSelected is void Function(Map<String, TrinaCell>)) {
+    onSelected(row.cells);
+  } else {
+    debugPrint('onSelected callback has an unsupported signature: '
+        '${onSelected.runtimeType}');
+  }
+}
+
 Widget buildDataTableExtUniqueKey(
     Returndata srcReturnData,
     TrinaGridConfiguration defaultPlutoConfig,
@@ -1278,7 +1299,7 @@ late TrinaGridStateManager stateManager;
 
             if (onSelected != null) {
               //changed to by row instead of cells like extcheckbox
-              onSelected(event.row);
+              callOnSelected(onSelected, event.row);
             }
           },
           onLoaded: (TrinaGridOnLoadedEvent event) {

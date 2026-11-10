@@ -76,7 +76,7 @@ class CustEnrollBillingAccPostPaid extends ConsumerWidget {
             initialValue: formNewValue,
             child: SizedBox(
                 height: 1280,
-                child: Row(children: [
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   const FbHiddenText(name: 'CustEttyId'),
                   const FbHiddenText(name: 'PrgEttyId'),
                   const FbHiddenText(name: 'EttyId'),

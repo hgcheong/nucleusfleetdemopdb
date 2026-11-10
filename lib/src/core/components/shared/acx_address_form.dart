@@ -10,6 +10,7 @@ import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 
 import 'acx_address_controller.dart';
+import 'package:nucleusv2/src/core/components/acx_action_spacing.dart';
 
 class AcxAddressForm extends ConsumerWidget {
   const AcxAddressForm(
@@ -121,38 +122,38 @@ class AcxAddressForm extends ConsumerWidget {
                                   children: [
                                     Text(formValue['AddrType'] +
                                         ' Address'),
-                                    FormBuilderTextField(
+                                    FbField(child: FormBuilderTextField(
                                       name: 'BdgName',
                                       decoration: const InputDecoration(
                                         labelText: 'Building Name',
                                         floatingLabelBehavior:
                                             FloatingLabelBehavior.always,
                                       ),
-                                    ),
-                                    FormBuilderTextField(
+                                    )),
+                                    FbField(child: FormBuilderTextField(
                                       name: 'Street1',
                                       decoration: const InputDecoration(
                                         labelText: 'Address Line 1',
                                         floatingLabelBehavior:
                                             FloatingLabelBehavior.always,
                                       ),
-                                    ),
-                                    FormBuilderTextField(
+                                    )),
+                                    FbField(child: FormBuilderTextField(
                                       name: 'Street2',
                                       decoration: const InputDecoration(
                                         labelText: 'Address Line 2',
                                         floatingLabelBehavior:
                                             FloatingLabelBehavior.always,
                                       ),
-                                    ),
-                                    FormBuilderTextField(
+                                    )),
+                                    FbField(child: FormBuilderTextField(
                                       name: 'Street3',
                                       decoration: const InputDecoration(
                                         labelText: 'Address Line 3',
                                         floatingLabelBehavior:
                                             FloatingLabelBehavior.always,
                                       ),
-                                    ),
+                                    )),
                                   ],
                                 ),
                               ),
@@ -164,7 +165,10 @@ class AcxAddressForm extends ConsumerWidget {
                   ),
                   Flexible(
                     flex: 5,
-                    child: Column(children: [
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      // matches the left column; the blank Text mirrors its title line
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       const Text(" "),
       
                       //   sbh10,
@@ -254,7 +258,7 @@ class AcxAddressForm extends ConsumerWidget {
                         },
                       ),
 
-                    ]),
+                    ])),
                   ),
                   sbw10,
                   Flexible(
@@ -291,8 +295,7 @@ class AcxAddressForm extends ConsumerWidget {
                         });
                       }),
                       AcxBackToList(listUrl: backToListUrl.toString()),
-                         sbh10,
-                           ElevatedButton(onPressed: (){
+                           AcxActionSpacing(child: ElevatedButton(onPressed: (){
                                formKeyAddForm.currentState!.save();
                         final myVal = formKeyAddForm.currentState!.value;
                        ref.read(addCopyProvider.notifier).state = {
@@ -308,9 +311,8 @@ class AcxAddressForm extends ConsumerWidget {
 
                       },       child: const SizedBox(width: 30, child: Tooltip(
                         message: 'Copy',
-                        child: Icon(Icons.copy))),),
-                      sbh10,
-                      ElevatedButton(onPressed: (){
+                        child: Icon(Icons.copy))),)),
+                      AcxActionSpacing(child: ElevatedButton(onPressed: (){
                         
                         final myVal = ref.read(addCopyProvider.notifier).state;
                       ref.read(myStateCityProvider.notifier).state = myVal["StateCd"];
@@ -328,8 +330,7 @@ class AcxAddressForm extends ConsumerWidget {
 
                       }, child: const SizedBox(width: 30, child: Tooltip(
                         message: 'Paste',
-                        child: Icon(Icons.paste))),),             
-                      sbh10,
+                        child: Icon(Icons.paste))),)),
                       AcxAuditLogReqBtn(querySaveSql,ettyId: formValue['AddrId'].toString(),),
                     ]),
                   )

@@ -80,7 +80,7 @@ class CustEnrollCmpyCtrlCrEvaDetail extends ConsumerWidget {
           return FormBuilder(
               key: formKeyEva,
               initialValue: formNewValue,
-              child: Row(children: [
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 const FbHiddenText(name: 'CustEttyId'),
                 const FbHiddenText(name: 'CmpyEttyId'),
                 const FbHiddenText(name: 'CrScoreId'),
@@ -135,11 +135,11 @@ class CustEnrollCmpyCtrlCrEvaDetail extends ConsumerWidget {
                                         "CustEttyId": custEttyId.toString()
                                       },
                                     )),
-                                    sbw20,
+                                    fbFieldGap,
                                     const Expanded(
                                         child: FbNumber(
                                             name: 'FinYear', label: 'Year')),
-                                    sbw20,
+                                    fbFieldGap,
                                     Expanded(
                                       child: FbLibref(
                                         name: 'FinMonth',

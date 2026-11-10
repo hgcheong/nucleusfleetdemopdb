@@ -87,7 +87,7 @@ class PrgCustPymtBankForm extends ConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -162,7 +162,7 @@ class PrgCustPymtBankForm extends ConsumerWidget {
                                   label: 'Payee Code',
                                 ),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                   name: 'DrPayeeRef',
                                   label: 'Payee Reference',

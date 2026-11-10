@@ -130,7 +130,7 @@ class CustEnrollProgramDisRebTransForm extends ConsumerWidget {
               onChanged: () {
                 formKeyCustEnrollDisReb.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -408,7 +408,7 @@ class CustEnrollProgramDisRebprdList extends ConsumerWidget {
                   //  Expanded(flex: 1, child: SelectableText(item['PrdDscp'])),
                   Expanded(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['PrdSts'] == 'N' ? false : true,
                       name: item['PrdCd'],
                       title: SelectableText(item['PrdDscp']),
@@ -420,7 +420,7 @@ class CustEnrollProgramDisRebprdList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));
@@ -1088,14 +1088,13 @@ class CustEnrollProgramFeeDiscRebateFeePlanForm extends ConsumerWidget {
                           ),
                         ],
                       ),
+                      fbFieldBottomGap,
                       const Row(
                         children: [
                           Expanded(
                               child: FbDateTimePicker(
                                   name: 'FromDate', label: 'From Date')),
-                          SizedBox(
-                            width: 30,
-                          ),
+                          fbFieldGap,
                           Expanded(
                             child: FbDateTimePicker(
                                 name: 'ToDate', label: 'To Date'),

@@ -107,13 +107,13 @@ class PrgCustPreCreditForm extends ConsumerWidget {
                           return Container();
                         },
                         name: 'CrExpDate'),
-                    FormBuilderSwitch(
+                    FbField(child: FormBuilderSwitch(
                       name: 'Reloadable',
                       title: const SelectableText('Reloadable'),
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                     const Align(
                         alignment: Alignment.centerLeft,
                         child: SelectableText('Credit Balance')),

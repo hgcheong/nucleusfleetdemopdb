@@ -207,7 +207,7 @@ this.cbPrgEttyId,
                             Flexible(
                                 child: FbDateTimePicker(
                                     name: 'FromDate', label: 'From Date')),
-                                    sbw10,
+                                    fbFieldGap,
                             Flexible(
                               child: FbDateTimePicker(
                                 name: 'ToDate',
@@ -605,7 +605,7 @@ class CustEnrollCmpySubsidy2VehcForm extends ConsumerWidget {
                             Flexible(
                                 child: FbDateTimePicker(
                                     name: 'FromDate', label: 'From Date')),
-                                    sbw10,
+                                    fbFieldGap,
                             Flexible(
                               child: FbDateTimePicker(
                                 name: 'ToDate',

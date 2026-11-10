@@ -91,7 +91,7 @@ class PrgCustPOIBillingForm extends ConsumerWidget {
               key: formKeyCustPOI,
               autovalidateMode: AutovalidateMode.always,
               initialValue: formNewValue,
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -115,14 +115,14 @@ class PrgCustPOIBillingForm extends ConsumerWidget {
                           ),
                           const SelectableText(
                               'Auto knock-off open payment with same Invoice amount'),
-                          FormBuilderSwitch(
+                          FbField(child: FormBuilderSwitch(
                             name: 'MatchPymtInvcInd',
                             title: const SelectableText(
                                 'Open Payment auto matching'),
                             valueTransformer: (value) {
                               return value == false ? 'N' : 'Y';
                             },
-                          ),
+                          )),
                           const FbText(
                             name: 'DelqcBlockDays',
                             label:

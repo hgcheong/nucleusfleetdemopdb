@@ -123,7 +123,7 @@ class MchtMgmtLocPrgTransForm extends ConsumerWidget {
               child: SingleChildScrollView(
                 child: SizedBox(
                   height: 1280,
-                  child: Row(
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
                       const FbHiddenDateTime(name: 'FromDate'),
                       const FbHiddenDateTime(name: 'ToDate'),
@@ -619,9 +619,7 @@ class McMgmtLocPlanFeeForm extends ConsumerWidget {
                       Flexible(
                           child: FbDateTimePicker(
                               label: 'From Date', name: 'FromDate')),
-                      SizedBox(
-                        width: 30,
-                      ),
+                      fbFieldGap,
                       Flexible(
                           child: FbDateTimePicker(
                               label: 'To Date', name: 'ToDate')),

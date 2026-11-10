@@ -84,7 +84,7 @@ class AcxStatusDialog extends ConsumerWidget {
                         ),
                         Expanded(
                           flex: 2,
-                          child: Row(
+                          child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                             children: [
                               Expanded(
                                   flex: 11,

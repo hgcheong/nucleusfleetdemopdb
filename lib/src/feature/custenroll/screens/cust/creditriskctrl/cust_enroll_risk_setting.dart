@@ -81,7 +81,7 @@ class CustEnrollRiskForm extends HookConsumerWidget {
               onChanged: () {
                 custEnrollCreditRiskFormKey.currentState!.save();
               },
-              child: Row(children: [
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 sbw54,
                 Flexible(
                     flex: 5,

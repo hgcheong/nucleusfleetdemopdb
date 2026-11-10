@@ -77,7 +77,7 @@ class MchtEnrlBusinessUnitGenInfo extends ConsumerWidget {
           return FormBuilder(
               key: mchtEnrlBUFormKey,
               initialValue: formNewValue,
-              child: Row(children: [
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Expanded(
                   flex: 5,
                   child: Padding(

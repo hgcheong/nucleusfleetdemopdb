@@ -123,7 +123,7 @@ class CustMgmtTxnBilledLanding extends ConsumerWidget {
                             name: 'FromDate',
                             label: 'From Date',
                           )),
-                          sbw10,
+                          fbFieldGap,
                           Flexible(
                               child: FbDateTimePicker(
                                   name: 'ToDate', label: 'To Date'))

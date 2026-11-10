@@ -36,7 +36,7 @@ class CustMgmtMediaSelect extends ConsumerWidget {
     return FormBuilder(
         key: custMgmtCmpyFormKey,
         initialValue: formNewValue,
-        child: Row(
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
             Expanded(
               flex: 5,

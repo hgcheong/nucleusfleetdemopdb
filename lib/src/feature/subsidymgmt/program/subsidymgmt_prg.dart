@@ -77,7 +77,7 @@ class SusidyPrgMgmtForm extends ConsumerWidget {
               onChanged: () {
                 formKeySubsidyPrg.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   const FbHiddenText(name: 'SubsId'),
                   const Expanded(
@@ -258,7 +258,7 @@ class SubsidyProgramSetupPrdList extends ConsumerWidget {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['PrdSts'] == 'N' ? false : true,
                       name: item['PrdCd'],
                       title: SelectableText(item['PrdDscp']),
@@ -270,7 +270,7 @@ class SubsidyProgramSetupPrdList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));

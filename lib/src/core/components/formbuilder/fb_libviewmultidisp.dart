@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nucleusv2/src/core/components/acx_searchboxmapmultidisp.dart';
 import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
-import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
 
 class FbLibViewMultiDisplay extends StatelessWidget {
   const FbLibViewMultiDisplay({
@@ -40,7 +39,9 @@ class FbLibViewMultiDisplay extends StatelessWidget {
         name: name,
         builder: (FormFieldState<dynamic> field) {
           return SizedBox(
-            height: DiboldTheme.fieldHeight,
+            // No fixed height: a fixed 48px box was shorter than the
+            // dropdown plus its floating label, so it spilled into the gap
+            // below. The dropdown keeps a 48px minimum on its own.
             child: AcxSearchBoxMapMultiDisplay(
                 openDropDownProgKey: openDropDownProgKey,
                 inputIcon: inputIcon,

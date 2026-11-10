@@ -100,7 +100,7 @@ class CustMgmtTxnRecentLanding extends StatelessWidget {
                           const Flexible(
                               child: FbDateTimePicker(
                                   name: 'From', label: 'From Date')),
-                          sbw10,
+                          fbFieldGap,
                           const Flexible(
                               child: FbDateTimePicker(
                                   name: 'ToDate', label: 'To Date')),

@@ -158,7 +158,7 @@ class MchtMgmtForm extends ConsumerWidget {
         return FormBuilder(
             key: mchtMgmtFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 const FbHiddenText(name: 'MchtEttyId'),
                 Expanded(
@@ -175,7 +175,7 @@ class MchtMgmtForm extends ConsumerWidget {
                                 child: FbText(
                                     name: 'AgrmtNo',
                                     label: 'Agreement Number')),
-                            Flexible(
+                            fbFieldGap, Flexible(
                                 child: FbDateTimePicker(
                                     name: 'AgrmtDate', label: 'Agreement Date'))
                           ],
@@ -194,7 +194,7 @@ class MchtMgmtForm extends ConsumerWidget {
                                 child: FbText(
                                     name: 'RgstionNo',
                                     label: 'Business Registration No')),
-                            Flexible(
+                            fbFieldGap, Flexible(
                                 child: FbDateTimePicker(
                                     name: 'RgstionDate',
                                     label: 'Date of Incorporation'))
@@ -212,10 +212,10 @@ class MchtMgmtForm extends ConsumerWidget {
                                     "BitInd": null,
                                   }),
                             ),
-                            const Expanded(
+                            fbFieldGap, const Expanded(
                                 child:
                                     FbText(name: 'TaxNo', label: 'Tax Number')),
-                            Expanded(
+                            fbFieldGap, Expanded(
                               child: FbLibref(
                                   name: 'TaxCtgry',
                                   initialValue: formNewValue['TaxCtgry'],

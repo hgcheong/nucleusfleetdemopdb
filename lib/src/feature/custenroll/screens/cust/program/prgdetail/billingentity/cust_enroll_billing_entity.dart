@@ -71,7 +71,7 @@ class CustEnrollBillingEntity extends ConsumerWidget {
                   ),
                   const SelectableText(
                       'You are about to sign up a new Program, please select a type of Billing Level'),
-                  Row(
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, 
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Expanded(

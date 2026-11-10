@@ -97,7 +97,7 @@ class CustGeneralInfo extends ConsumerWidget {
             child: FormBuilder(
                 key: custMgmtFormKey,
                 initialValue: formNewValue,
-                child: Row(
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                   children: [
                     const FbHiddenText( name: 'CustEttyId'),
                     const FbHiddenText( name: 'TaxCtgry'),

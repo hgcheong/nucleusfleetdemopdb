@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
-import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class FbAutoComplete extends ConsumerWidget {
   const FbAutoComplete({

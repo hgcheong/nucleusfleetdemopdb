@@ -97,7 +97,7 @@ class MchtMgmtLocGeneralInfo extends ConsumerWidget {
             child: SingleChildScrollView(
               child: SizedBox(
                 height: 1280,
-                child: Row(
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                   children: [
                     Expanded(
                       flex: 5,
@@ -116,7 +116,7 @@ class MchtMgmtLocGeneralInfo extends ConsumerWidget {
                              const Row(
                             children: [  Expanded(
                               flex: 1,
-                              child:  FbText(name: 'LocNo', label: 'Location No', readOnly: true,)),sbw10,
+                              child:  FbText(name: 'LocNo', label: 'Location No', readOnly: true,)),fbFieldGap,
                       Expanded(
                         flex: 1,
                         child: FbText(name: 'LocName', label: 'Location Name')),
@@ -125,7 +125,7 @@ class MchtMgmtLocGeneralInfo extends ConsumerWidget {
                          
                                        Row(
                                          children: [
-                                          Expanded(flex: 1, child: FbText(name: "MId", label: "MId"),),  sbw10,
+                                          Expanded(flex: 1, child: FbText(name: "MId", label: "MId"),),  fbFieldGap,
                                            Expanded(flex: 1,
                                                                        child: FbLibViewMultiDisplay(
                                                                          listsearchText: ['SiteId','SiteName','CityDscp','StateDscp'],

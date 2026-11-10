@@ -91,7 +91,7 @@ class PrgCustCtrlTxnLimitForm extends ConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   const FbHiddenText(name: 'PrgEttyId'),
                   Expanded(
@@ -147,7 +147,7 @@ class PrgCustCtrlTxnLimitForm extends ConsumerWidget {
                                     name: 'MinThsld',
                                     label: S.of(context).lblMin),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                     name: 'MaxThsld',
                                     label: S.of(context).lblMax),
@@ -309,7 +309,7 @@ class PrgCustCtrlTxnprdList extends ConsumerWidget {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['Sts'] == 'N' ? false : true,
                       name: item['PrdCd'],
                       title: SelectableText(item['PrdDscp']),
@@ -320,7 +320,7 @@ class PrgCustCtrlTxnprdList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));

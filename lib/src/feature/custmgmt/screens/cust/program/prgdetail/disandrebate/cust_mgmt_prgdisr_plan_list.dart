@@ -46,9 +46,9 @@ class CustMgmtProgramDisRebPlanList extends ConsumerWidget {
           return Column(
             children: [
     
-              Flexible(
-                flex: 1,
-                child: Row(
+              // switch row sizes to its content (was Flexible(flex: 1), which
+              // squeezed it when zoomed in)
+              Row(
                   children: [
                     Expanded(
                       flex: 6,
@@ -83,7 +83,6 @@ class CustMgmtProgramDisRebPlanList extends ConsumerWidget {
                     )
                   ],
                 ),
-              ),
               Expanded(
                 flex: 11,
                 child: AcxTrinaGridExtDataCheckBox(

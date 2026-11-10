@@ -172,7 +172,7 @@ class BuildMainFormNotStateFull extends HookConsumerWidget {
                             autovalidateMode: AutovalidateMode.disabled,
                             key: _prgSetupFormKey,
                             skipDisabled: true,
-                            child: Row(
+                            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                               children: [
                                 Expanded(
                                   flex: 6,
@@ -201,7 +201,7 @@ class BuildMainFormNotStateFull extends HookConsumerWidget {
                                       Row(
                                         children: [
                                           Expanded(
-                                            child: FormBuilderDateTimePicker(
+                                            child: FbField(child: FormBuilderDateTimePicker(
                                               valueTransformer: (v) {
                                                 // return v!.toIso8601String();
                                                 if (v == null) {
@@ -236,13 +236,13 @@ class BuildMainFormNotStateFull extends HookConsumerWidget {
                                               initialTime: const TimeOfDay(
                                                   hour: 8, minute: 0),
 
-                                            ),
+                                            )),
                                           ),
                                           const SizedBox(
                                             width: 30,
                                           ),
                                           Expanded(
-                                            child: FormBuilderDateTimePicker(
+                                            child: FbField(child: FormBuilderDateTimePicker(
                                               valueTransformer: (v) {
                                                 if (v == null) {
                                                   return null;
@@ -275,7 +275,7 @@ class BuildMainFormNotStateFull extends HookConsumerWidget {
                                               initialTime: const TimeOfDay(
                                                   hour: 8, minute: 0),
                                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                                            ),
+                                            )),
                                           )
                                         ],
                                       ),
@@ -290,13 +290,13 @@ class BuildMainFormNotStateFull extends HookConsumerWidget {
                                       const SizedBox(
                                         height: 20,
                                       ),
-                                      FormBuilderChoiceChips(
+                                      FbField(child: FormBuilderChoiceChips(
                                         name: 'PrgType',
                                         options: getChipOptions(
                                             prgTypeData.value!.data!,
                                             'PrgType',
                                             'Dscp'),
-                                      ),
+                                      )),
                                       const SizedBox(
                                         height: 30,
                                       ),

@@ -180,7 +180,7 @@ class RptQueryAutoGenSearchSliver extends ConsumerWidget {
                             label: 'Loc No',
                             name: 'LocNo',
                           )),
-                          sbw20,
+                          fbFieldGap,
                           Expanded(
                               child: FbNumber(label: 'TAD No', name: 'TadNo')),
                         ],

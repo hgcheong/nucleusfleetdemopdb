@@ -9,6 +9,8 @@ import 'package:nucleusv2/src/core/components/alert_dialogs.dart';
 import 'package:nucleusv2/src/core/models/libref/libref.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
 import 'package:nucleusv2/src/utils/helpers.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class AcxSearchBox extends HookConsumerWidget {
   final String querysql;
@@ -43,7 +45,10 @@ class AcxSearchBox extends HookConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) =>
+      FbFieldIfNeeded(child: _buildBox(context, ref));
+
+  Widget _buildBox(BuildContext context, WidgetRef ref) {
     final isLoading = useState<bool>(false);
     final theResult = useState<Returndata>(Returndata());
 
@@ -90,6 +95,10 @@ class AcxSearchBox extends HookConsumerWidget {
       decoratorProps: DropDownDecoratorProps(
           baseStyle: TextStyle(fontSize:defaultDropDownSize),
           decoration: InputDecoration(
+            // Same height as every other form field (DiboldTheme.fieldHeight).
+            isDense: true,
+            constraints: const BoxConstraints(minHeight: DiboldTheme.fieldHeight),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           floatingLabelStyle: TextStyle(fontSize: defaultFloatlableSize),
           labelText: inputText,

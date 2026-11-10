@@ -501,9 +501,7 @@ class SubsidyRateForm extends ConsumerWidget {
                             name: 'FromDate',
                             label: 'From Date',
                           )),
-                          SizedBox(
-                            width: 30,
-                          ),
+                          fbFieldGap,
                           Expanded(
                               child: FbDateTimePicker(
                             name: 'ToDate',
@@ -995,7 +993,7 @@ class SubsidyProgramVechList extends ConsumerWidget {
                 children: [
                   Flexible(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['VhcTypeSts'] == 'N' ? false : true,
                       name: item['VhcType'],
                       title: Text(
@@ -1011,7 +1009,7 @@ class SubsidyProgramVechList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));

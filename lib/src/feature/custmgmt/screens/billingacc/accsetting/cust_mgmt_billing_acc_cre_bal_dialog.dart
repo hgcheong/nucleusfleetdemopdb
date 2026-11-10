@@ -67,7 +67,7 @@ class CustMgmgtBillingAccCreBalDialog extends ConsumerWidget {
                 ),
                 Expanded(
                   flex: 4,
-                  child: Row(
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
                       Expanded(
                           flex: 11,

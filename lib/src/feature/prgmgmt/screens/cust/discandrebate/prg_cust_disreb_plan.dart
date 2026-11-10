@@ -107,7 +107,7 @@ class PrgCustDisRebTransForm extends ConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -224,7 +224,7 @@ class PrgCustDisRebTransForm extends ConsumerWidget {
                             child: Row(
                               children: [
                                 Expanded(
-                                  child: FormBuilderDateTimePicker(
+                                  child: FbField(child: FormBuilderDateTimePicker(
                                     valueTransformer: (v) {
                                       // return v!.toIso8601String();
                                       if (v != null) {
@@ -249,13 +249,13 @@ class PrgCustDisRebTransForm extends ConsumerWidget {
                                     ),
                                     initialTime:
                                         const TimeOfDay(hour: 8, minute: 0),
-                                  ),
+                                  )),
                                 ),
                                 const SizedBox(
                                   width: 30,
                                 ),
                                 Expanded(
-                                  child: FormBuilderDateTimePicker(
+                                  child: FbField(child: FormBuilderDateTimePicker(
                                     valueTransformer: (v) {
                                       if (v != null) {
                                         return DateFormat('yMMMEd').format(v);
@@ -277,7 +277,7 @@ class PrgCustDisRebTransForm extends ConsumerWidget {
                                     ),
                                     initialTime:
                                         const TimeOfDay(hour: 8, minute: 0),
-                                  ),
+                                  )),
                                 )
                               ],
                             ),
@@ -477,7 +477,7 @@ class PrgCustDisRebprdList extends ConsumerWidget {
                   //  Expanded(flex: 1, child: SelectableText(item['PrdDscp'])),
                   Expanded(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['Sts'] == 'N' || item['Sts'] == null
                           ? false
                           : true,
@@ -491,7 +491,7 @@ class PrgCustDisRebprdList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));
@@ -1136,7 +1136,7 @@ class PrgCustDiscRebatePlanListForm extends ConsumerWidget {
                         name: 'PlanId'),
                     Flexible(
                         flex: 2,
-                        child: FormBuilderField(
+                        child: FbField(child: FormBuilderField(
                             name: 'TxnPlan',
                             builder: (field) {
                               return AcxSearchBoxMap(
@@ -1153,13 +1153,13 @@ class PrgCustDiscRebatePlanListForm extends ConsumerWidget {
                                   searchText: 'TxnPlanDscp',
                                   keyField: 'TxnPlan',
                                   params: const {});
-                            })),
+                            }))),
                     Flexible(
                       flex: 2,
                       child: Row(
                         children: [
                           Expanded(
-                            child: FormBuilderDateTimePicker(
+                            child: FbField(child: FormBuilderDateTimePicker(
                               valueTransformer: (v) {
                                 // return v!.toIso8601String();
                                 if (v != null) {
@@ -1185,13 +1185,13 @@ class PrgCustDiscRebatePlanListForm extends ConsumerWidget {
                               ),
                               initialTime: const TimeOfDay(hour: 8, minute: 0),
                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                            ),
+                            )),
                           ),
                           const SizedBox(
                             width: 30,
                           ),
                           Expanded(
-                            child: FormBuilderDateTimePicker(
+                            child: FbField(child: FormBuilderDateTimePicker(
                               valueTransformer: (v) {
                                 // return v!.toIso8601String();
                                 if (v != null) {
@@ -1217,7 +1217,7 @@ class PrgCustDiscRebatePlanListForm extends ConsumerWidget {
                               ),
                               initialTime: const TimeOfDay(hour: 8, minute: 0),
                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                            ),
+                            )),
                           )
                         ],
                       ),

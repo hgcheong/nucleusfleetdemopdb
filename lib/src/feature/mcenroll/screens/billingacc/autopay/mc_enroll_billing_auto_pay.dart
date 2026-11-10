@@ -108,7 +108,7 @@ class MerchantEnrollSetupBankForm extends ConsumerWidget {
               child: SingleChildScrollView(
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 1.2,
-                  child: Row(
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
                       Expanded(
                         flex: 5,
@@ -214,7 +214,7 @@ class MerchantEnrollSetupBankForm extends ConsumerWidget {
                                                 label: 'Payee Code',
                                               ),
                                             ),
-                                            sbw10,
+                                            fbFieldGap,
                                             Expanded(
                                               child: FbText(
                                                 name: 'CrPayeeRef',

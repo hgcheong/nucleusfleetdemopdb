@@ -33,7 +33,7 @@ class FromDateToDateRpt extends ConsumerWidget {
               const Expanded(
                   child:
                       FbDateTimePicker(name: 'FromDate', label: 'From Date')),
-              const Expanded(
+              fbFieldGap, const Expanded(
                   child: FbDateTimePicker(name: 'ToDate', label: 'To Date')),
 
               IconButton(

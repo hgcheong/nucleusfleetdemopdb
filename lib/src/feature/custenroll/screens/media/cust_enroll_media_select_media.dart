@@ -34,7 +34,7 @@ class CustEnrollMediaSelect extends ConsumerWidget {
     return FormBuilder(
         key: custEnrollCmpyFormKey,
         initialValue: formNewValue,
-        child: Row(
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
             Expanded(
               flex: 5,

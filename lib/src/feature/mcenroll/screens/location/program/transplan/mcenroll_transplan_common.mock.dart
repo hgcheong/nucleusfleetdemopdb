@@ -17,6 +17,7 @@ import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
 import 'package:nucleusv2/src/feature/mcenroll/screens/location/program/transplan/transplanmock.dart';
 import 'package:nucleusv2/src/utils/strings.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class McEnrollTransPlanCommonFormMock extends ConsumerWidget {
   const McEnrollTransPlanCommonFormMock(
@@ -81,7 +82,7 @@ class PrgMgmtMchtFepTransForm extends HookConsumerWidget {
         onChanged: () {
           formKey.currentState!.save();
         },
-        child: Row(
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
             Flexible(
               flex: 5,
@@ -431,7 +432,7 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                     name: 'MsgTypePlanId'),
                 Flexible(
                     flex: 2,
-                    child: FormBuilderField(
+                    child: FbField(child: FormBuilderField(
                         name: 'TxnPlan',
                         builder: (field) {
                           return AcxSearchBoxMap(
@@ -445,7 +446,7 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                               searchText: 'TxnPlanDscp',
                               keyField: 'TxnPlan',
                               params: const {});
-                        })),
+                        }))),
                 const Flexible(
                   flex: 2,
                   child: Row(
@@ -455,9 +456,7 @@ class PlanFeeFormPrgFeeTrans extends ConsumerWidget {
                         name: 'FromDate',
                         label: 'From Date',
                       )),
-                      SizedBox(
-                        width: 30,
-                      ),
+                      fbFieldGap,
                       Expanded(
                           child: FbDateTimePicker(
                         name: 'ToDate',

@@ -160,7 +160,7 @@ class MchtMgmtTxnOltpLanding extends ConsumerWidget {
                               //   padding: EdgeInsets.only(left: 8),
                               //   child: Icon(Icons.store),
                               // ),
-                              sbw20,
+                              fbFieldGap,
                               const Expanded(
                                   child: FbText(
                                 label: 'Loc No',

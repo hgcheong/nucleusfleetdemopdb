@@ -161,7 +161,7 @@ class CustMgmtSubsidyForm extends ConsumerWidget {
                             Flexible(
                                 child: FbDateTimePicker(
                                     name: 'FromDate', label: 'FromDate')),
-                            Flexible(
+                            fbFieldGap, Flexible(
                               child: FbDateTimePicker(
                                 name: 'ToDate',
                                 label: 'To Date',

@@ -64,7 +64,7 @@ class CustEnrollBillingAccPrePaid extends ConsumerWidget {
             initialValue: formNewValue,
             child: SizedBox(
                 height: 1280,
-                child: Row(children: [
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   const Flexible(
                     flex: 3,
                     child: Column(children: [

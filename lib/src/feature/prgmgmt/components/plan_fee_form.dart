@@ -75,7 +75,7 @@ class PlanFeeForm extends ConsumerWidget {
                           name: 'FeeId'),
                       Flexible(
                           flex: 2,
-                          child: FormBuilderField(
+                          child: FbField(child: FormBuilderField(
                               name: 'TxnPlan',
                               builder: (field) {
                                 return AcxSearchBoxMap(
@@ -91,7 +91,7 @@ class PlanFeeForm extends ConsumerWidget {
                                     searchText: 'TxnPlanDscp',
                                     keyField: 'TxnPlan',
                                     params: const {});
-                              })),
+                              }))),
                       const Flexible(
                         flex: 2,
                         child: Row(
@@ -102,9 +102,7 @@ class PlanFeeForm extends ConsumerWidget {
                                 label: 'From Date',
                               ),
                             ),
-                            SizedBox(
-                              width: 30,
-                            ),
+                            fbFieldGap,
                             Flexible(
                               child: FbDateTimePicker(
                                 name: 'ToDate',

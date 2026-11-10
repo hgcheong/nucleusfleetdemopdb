@@ -61,7 +61,7 @@ class AcxStatusForm extends ConsumerWidget {
                 ),
                 Expanded(
                   flex: 3,
-                  child: Row(
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
                       Expanded(
                           flex: 10,

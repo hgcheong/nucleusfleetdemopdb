@@ -571,9 +571,7 @@ class McEnrlLocPlanFeeForm extends ConsumerWidget {
                       Flexible(
                           child: FbDateTimePicker(
                               label: 'From Date', name: 'FromDate')),
-                      SizedBox(
-                        width: 30,
-                      ),
+                      fbFieldGap,
                       Flexible(
                           child: FbDateTimePicker(
                               label: 'To Date', name: 'ToDate')),

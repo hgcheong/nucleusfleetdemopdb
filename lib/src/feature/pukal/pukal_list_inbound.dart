@@ -321,7 +321,7 @@ class ApiMgmtCustBillingPukalSaveDialog extends ConsumerWidget{
 };
  return FormBuilder(
             key: formCustPukalBilling,
-            initialValue: formRoleAssign, child: Row(
+            initialValue: formRoleAssign, child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 Expanded(
                   flex:5,

@@ -14,6 +14,7 @@ import 'package:nucleusv2/src/core/components/formbuilder/fb_libview.dart';
 import 'package:nucleusv2/src/core/components/formbuilder/fb_text.dart';
 import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 const int wid=524;
 
@@ -119,7 +120,7 @@ class CustEnrollMemberInfoVehicleForm extends ConsumerWidget {
                                   name: 'RgstionDate',
                                   label: S.of(context).lblVehRgsDate),
                             ),
-                            Flexible(
+                            fbFieldGap, Flexible(
                               child: FbDateTimePicker(
                                   name: 'RoadTaxExpDate',
                                   label: S.of(context).lblRoadTaxExp),

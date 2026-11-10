@@ -112,7 +112,7 @@ class PrgCustMediaMTypeForm extends ConsumerWidget {
                     onChanged: () {
                       formKey.currentState!.save();
                     },
-                    child: Row(
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                       children: [
                         FormBuilderField(
                           name: 'PrgEttyId',
@@ -192,53 +192,53 @@ class PrgCustMediaMTypeForm extends ConsumerWidget {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: FormBuilderSwitch(
+                                      child: FbField(child: FormBuilderSwitch(
                                         name: 'RequireImprint',
                                         title: const SelectableText(
                                             'Card Imprint'),
                                         valueTransformer: (value) {
                                           return value == false ? 'N' : 'Y';
                                         },
-                                      ),
+                                      )),
                                     ),
                                     Expanded(
-                                      child: FormBuilderSwitch(
+                                      child: FbField(child: FormBuilderSwitch(
                                         name: 'RequireTac',
                                         title: const SelectableText(
                                             'Require Transaction TAC'),
                                         valueTransformer: (value) {
                                           return value == false ? 'N' : 'Y';
                                         },
-                                      ),
+                                      )),
                                     ),
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: FormBuilderSwitch(
+                                      child: FbField(child: FormBuilderSwitch(
                                         name: 'RequireAtvtion',
                                         title: const SelectableText(
                                             'Media Require Activation'),
                                         valueTransformer: (value) {
                                           return value == false ? 'N' : 'Y';
                                         },
-                                      ),
+                                      )),
                                     ),
                                     Expanded(
-                                      child: FormBuilderSwitch(
+                                      child: FbField(child: FormBuilderSwitch(
                                         name: 'AutoRnwl',
                                         title: const SelectableText(
                                             'Auto Renewal'),
                                         valueTransformer: (value) {
                                           return value == false ? 'N' : 'Y';
                                         },
-                                      ),
+                                      )),
                                     ),
                                   ],
                                 ),
                                 Expanded(
-                                  child: FormBuilderRadioGroup<dynamic>(
+                                  child: FbField(child: FormBuilderRadioGroup<dynamic>(
                                     decoration: const InputDecoration(
                                       labelText: 'Type of Transaction TAC',
                                     ),
@@ -253,7 +253,7 @@ class PrgCustMediaMTypeForm extends ConsumerWidget {
                                                   SelectableText(lang['Dscp']),
                                             ))
                                         .toList(growable: false),
-                                  ),
+                                  )),
                                 ),
                               ]),
                         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/api_service.dart';
 import 'package:nucleusv2/src/core/app/env.dart';
 import 'package:nucleusv2/src/core/app/singletons.dart';
@@ -48,7 +47,7 @@ case 'GLReconciliation':
                   const Expanded(
                       child: FbDateTimePicker(
                           name: 'FromDate', label: 'From Date')),
-                 sbw10,
+                 fbFieldGap,
                   const Expanded(
                       child:
                           FbDateTimePicker(name: 'ToDate', label: 'To Date')),
@@ -98,7 +97,7 @@ case 'GLReconciliation':
                   const Expanded(
                       child: FbDateTimePicker(
                           name: 'FromDate', label: 'From Date')),
-                 sbw10,
+                 fbFieldGap,
                   const Expanded(
                       child:
                           FbDateTimePicker(name: 'ToDate', label: 'To Date')),
@@ -169,7 +168,7 @@ case 'GLReconciliation':
                   const Expanded(
                       child: FbDateTimePicker(
                           name: 'FromDate', label: 'Process Date')),
-                  const Expanded(
+                  fbFieldGap, const Expanded(
                       child:
                           FbDateTimePicker(name: 'ToDate', label: 'To Date')),
                   IconButton(
@@ -230,7 +229,7 @@ case 'GLReconciliation':
                   const Expanded(
                       child: FbDateTimePicker(
                           name: 'FromDate', label: 'From Date')),
-                  const Expanded(
+                  fbFieldGap, const Expanded(
                       child:
                           FbDateTimePicker(name: 'ToDate', label: 'To Date')),
                   IconButton(
@@ -288,7 +287,7 @@ case 'GLReconciliation':
                   const Expanded(
                       child: FbDateTimePicker(
                           name: 'FromDate', label: 'From Date')),
-                  const Expanded(
+                  fbFieldGap, const Expanded(
                       child:
                           FbDateTimePicker(name: 'ToDate', label: 'To Date')),
                   IconButton(
@@ -347,7 +346,7 @@ case 'GLReconciliation':
                   const Expanded(
                       child: FbDateTimePicker(
                           name: 'FromDate', label: 'From Date')),
-                  const Expanded(
+                  fbFieldGap, const Expanded(
                       child:
                           FbDateTimePicker(name: 'ToDate', label: 'To Date')),
                   IconButton(
@@ -385,7 +384,7 @@ case 'GLReconciliation':
                   singleton<AppRouter>().maybePop();
                 },
                 child: const Icon(Icons.close)),
-            FormBuilderRadioGroup(
+            FbField(child: FormBuilderRadioGroup(
               name: 'switch',
               initialValue: 'MCHTNAME',
               onChanged: (val) {
@@ -402,7 +401,7 @@ case 'GLReconciliation':
                   child: Text('Location'),
                 )
               ],
-            ),
+            )),
             MerchantMiscTxn(
               rptViewerKey: rptViewerKey,
               initialVal: initialVal,

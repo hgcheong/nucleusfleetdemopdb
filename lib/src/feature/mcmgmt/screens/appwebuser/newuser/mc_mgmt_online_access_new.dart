@@ -48,7 +48,7 @@ class MchtMgmtOnlineAccessNew extends ConsumerWidget {
     return FormBuilder(
       key: mcmtNewUserKey,
       initialValue: formNewValue,
-      child: Row(
+      child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
         children: [
           Expanded(
             flex: 5,

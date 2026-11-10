@@ -68,7 +68,7 @@ class CustMgmgtBillingAccTempCreBalDialog extends ConsumerWidget {
                 ),
                 Expanded(
                   flex: 4,
-                  child: Row(
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
                       Expanded(
                           flex: 11,
@@ -169,7 +169,7 @@ class CustMgmgtBillingAccTempCreBalDialog extends ConsumerWidget {
                                             child: FbDateTimePicker(
                                                 name: 'FromDate',
                                                 label: 'From Date')),
-                                        sbw10,
+                                        fbFieldGap,
                                         Expanded(
                                             child: FbDateTimePicker(
                                                 name: 'ToDate',

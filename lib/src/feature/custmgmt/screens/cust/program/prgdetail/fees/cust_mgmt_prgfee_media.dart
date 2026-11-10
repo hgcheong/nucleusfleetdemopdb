@@ -103,7 +103,7 @@ class CustMgmtProgramFeeMediaForm extends ConsumerWidget {
                       toReturnWidget
                           .add(SelectableText('Media Fees for $mediaType'));
 
-                      toReturnWidget.add(Row(
+                      toReturnWidget.add(Row(crossAxisAlignment: CrossAxisAlignment.start, 
                         children: [
                           Expanded(
                               flex: 3,
@@ -462,7 +462,7 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            child: FormBuilderDateTimePicker(
+                            child: FbField(child: FormBuilderDateTimePicker(
                               valueTransformer: (v) {
                                 // return v!.toIso8601String();
                                 return DateFormat('yMMMEd').format(v!);
@@ -486,13 +486,13 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                               ),
                               initialTime: const TimeOfDay(hour: 8, minute: 0),
                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                            ),
+                            )),
                           ),
                           const SizedBox(
                             width: 30,
                           ),
                           Expanded(
-                            child: FormBuilderDateTimePicker(
+                            child: FbField(child: FormBuilderDateTimePicker(
                               valueTransformer: (v) {
                                 // return v!.toIso8601String();
                                 return DateFormat('yMMMEd').format(v!);
@@ -512,7 +512,7 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                               ),
                               initialTime: const TimeOfDay(hour: 8, minute: 0),
                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                            ),
+                            )),
                           )
                         ],
                       ),

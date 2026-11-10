@@ -115,7 +115,7 @@ class MerchantMgmtPukalForm extends ConsumerWidget {
               child: SingleChildScrollView(
                 child: SizedBox(
                   height: 1280,
-                  child: Row(
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
                       Expanded(
                         flex: 5,

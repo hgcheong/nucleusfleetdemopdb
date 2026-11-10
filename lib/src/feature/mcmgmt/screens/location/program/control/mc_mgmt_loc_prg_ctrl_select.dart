@@ -68,7 +68,7 @@ class MchtMgmtLocPrgControlSelection extends ConsumerWidget {
                 listOfButton: const [],
               ),
               const SelectableText('You are about add a new trnsaction type'),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 //   const FbHiddenText(name: 'MchtEttyId'),
                 const FbHiddenText(name: 'PrgEttyId'),
                 const FbHiddenText(name: 'LocEttyId'),

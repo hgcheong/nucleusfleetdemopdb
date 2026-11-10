@@ -12,7 +12,6 @@ import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
 import 'package:nucleusv2/src/core/components/acx_navbuttontemplate.dart';
 import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
 import 'package:nucleusv2/src/core/components/acx_searchboxmap.dart';
-import 'package:nucleusv2/src/core/components/formbuilder/fb_hiddentext.dart';
 import 'package:nucleusv2/src/core/components/formbuilder/fb_imports.dart';
 import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
 import 'package:nucleusv2/src/feature/custmgmt/custmgmt_controller.dart';
@@ -67,7 +66,7 @@ class CustMgmtProgramSelect extends ConsumerWidget {
               ),
               const SelectableText(
                   'You are about to sign up a new Program, please select a type of Billing Level'),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Flexible(
                     flex: 2,
                     child: FormBuilderField(

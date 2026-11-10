@@ -112,7 +112,7 @@ class CustEnrollMemberInfoForm extends ConsumerWidget {
         return FormBuilder(
             key: custEnrollCmpyFormKey,
             initialValue: formValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 Expanded(
                   flex: 5,

@@ -83,7 +83,7 @@ class PrgCustPbfBillingForm extends ConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -117,7 +117,7 @@ class PrgCustPbfBillingForm extends ConsumerWidget {
                              
                                 ),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                   name: 'MinRepymtAmt',
                                   label: 'Or (whichever is higher)',
@@ -134,7 +134,7 @@ class PrgCustPbfBillingForm extends ConsumerWidget {
                                    label: 'Statement due days',
                                 ),
                               ),
-                               Expanded(
+                               fbFieldGap, Expanded(
                                 child: FbText(
                                   name: 'GracePeriod',
                                   label: 'Overdue Grace Period',

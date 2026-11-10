@@ -81,7 +81,7 @@ class CustMgmtRiskForm extends HookConsumerWidget {
               onChanged: () {
                 custMgmtCreditRiskFormKey.currentState!.save();
               },
-              child: Row(children: [
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 sbw54,
                 Flexible(
                     flex: 5,

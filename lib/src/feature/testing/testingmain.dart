@@ -36,7 +36,7 @@ class TestingMain extends StatelessWidget {
                 child: Row(
                   children: [
                     const Expanded(child: FbText(name: 'row', label:'row')),
-                    const Expanded(child: FbText(name: 'column', label:'column')),
+                    fbFieldGap, const Expanded(child: FbText(name: 'column', label:'column')),
                     Expanded(
                       child: ElevatedButton(
                           onPressed: () {

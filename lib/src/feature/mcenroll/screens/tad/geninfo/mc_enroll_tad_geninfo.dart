@@ -114,7 +114,7 @@ class MchtEnrlTadForm extends ConsumerWidget {
                       Row(
                                 children: [
                                   Expanded(child: FbText(name: 'TadNo', label: 'TAD No.')),
-                                  sbw10,
+                                  fbFieldGap,
                                   Expanded(child: FbText(name: 'TId', label: 'TID'))
                                 ],
                               ),
@@ -185,7 +185,7 @@ class MchtEnrlTadForm extends ConsumerWidget {
                                       child: FbText(
                                           name: 'Installer', label: 'Installer'),
                                     ),
-                                    sbw10,
+                                    fbFieldGap,
                                    Expanded(
                                       child: FbDateTimePicker(
                                       name: 'InstallDate',

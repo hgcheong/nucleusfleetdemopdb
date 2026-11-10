@@ -24,6 +24,7 @@ import 'package:nucleusv2/src/utils/helpers.dart';
 import 'package:nucleusv2/src/utils/strings.dart';
 
 import 'package:trina_grid/trina_grid.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 const int wid=836;
 
@@ -141,7 +142,7 @@ class CustMgmtProgramDisRebTransForm extends ConsumerWidget {
               onChanged: () {
                 formKeyCustMgmtDisReb.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -430,7 +431,7 @@ class CustMgmtProgramDisRebprdList extends ConsumerWidget {
                   //  Expanded(flex: 1, child: SelectableText(item['PrdDscp'])),
                   Expanded(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['PrdSts'] == 'N' ? false : true,
                       name: item['PrdCd'],
                       title: SelectableText(item['PrdDscp']),
@@ -442,7 +443,7 @@ class CustMgmtProgramDisRebprdList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));
@@ -1189,7 +1190,7 @@ class CustMgmtProgramFeeDiscRebateFeePlanForm extends ConsumerWidget {
                             return Container();
                           },
                           name: 'PlanId'),
-                      FormBuilderField(
+                      FbField(child: FormBuilderField(
                           name: 'TxnPlan',
                           builder: (field) {
                             return AcxSearchBoxMap(
@@ -1206,15 +1207,13 @@ class CustMgmtProgramFeeDiscRebateFeePlanForm extends ConsumerWidget {
                                 searchText: 'TxnPlanDscp',
                                 keyField: 'TxnPlan',
                                 params: const {});
-                          }),
+                          })),
                       const Row(
                         children: [
                           Expanded(
                               child: FbDateTimePicker(
                                   name: 'FromDate', label: 'From Date')),
-                          SizedBox(
-                            width: 30,
-                          ),
+                          fbFieldGap,
                           Expanded(
                             child: FbDateTimePicker(
                                 name: 'ToDate', label: 'To Date'),

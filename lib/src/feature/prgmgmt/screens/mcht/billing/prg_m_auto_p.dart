@@ -109,7 +109,7 @@ class MerchantSetupBankForm extends ConsumerWidget {
               onChanged: () {
                 pmbillingautopKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -186,7 +186,7 @@ class MerchantSetupBankForm extends ConsumerWidget {
 
                                 ),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                   name: 'CrPayeeRef',
                                    label: 'Payee Reference',
@@ -205,13 +205,13 @@ class MerchantSetupBankForm extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          FormBuilderSwitch(
+                          FbField(child: FormBuilderSwitch(
                             name: 'DrAutoPymtInd',
                             title: const SelectableText('Auto Debit'),
                             valueTransformer: (value) {
                               return value == false ? 'N' : 'Y';
                             },
-                          ),
+                          )),
                           FormBuilderField(
                             name: 'DrPymtType',
                             builder: (FormFieldState f) {
@@ -267,7 +267,7 @@ class MerchantSetupBankForm extends ConsumerWidget {
                                   label: 'Payee Code',
                                 ),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                   name: 'DrPayeeRef',
                                   label: 'Payee Reference',

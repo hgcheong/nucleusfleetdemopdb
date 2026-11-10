@@ -102,7 +102,7 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                     onChanged: () {
                       formKey.currentState!.save();
                     },
-                    child: Row(
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                       children: [
                         FormBuilderField(
                           name: 'PrgEttyId',
@@ -135,13 +135,13 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FormBuilderSwitch(
+                                FbField(child: FormBuilderSwitch(
                                   name: 'FncChrgInd',
                                   title: const SelectableText('Finance Charge'),
                                   valueTransformer: (value) {
                                     return value == false ? 'N' : 'Y';
                                   },
-                                ),
+                                )),
                                const FbText(
                                   name: 'FncChrgFreeThsld',
                                    label: 'Interest Free Threshold',
@@ -149,7 +149,7 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                                 ),
                                 const SelectableText(
                                     'Finance Charge will be impose after the interest free period, calculate based on'),
-                                FormBuilderRadioGroup<dynamic>(
+                                FbField(child: FormBuilderRadioGroup<dynamic>(
                                   decoration: const InputDecoration(
                                     labelText: '',
                                   ),
@@ -163,7 +163,7 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                                             child: SelectableText(lang['Dscp']),
                                           ))
                                       .toList(growable: false),
-                                ),
+                                )),
                                 const SizedBox(
                                   height: 10,
                                 ),
@@ -190,14 +190,14 @@ class PrgCustPOILpcForm extends ConsumerWidget {
                               children: [
                                 Flexible(
                                   flex: 1,
-                                  child: FormBuilderSwitch(
+                                  child: FbField(child: FormBuilderSwitch(
                                     name: 'LpcChrgInd',
                                     title: const SelectableText(
                                         'Late Payment Charge'),
                                     valueTransformer: (value) {
                                       return value == false ? 'N' : 'Y';
                                     },
-                                  ),
+                                  )),
                                 ),
                                 const Flexible(
                                   flex: 1,
@@ -746,7 +746,7 @@ class PrgCustPOIFinLpcFinChargePlanForm extends ConsumerWidget {
                     name: 'TxnPlanRefNo'),
                 Flexible(
                     flex: 2,
-                    child: FormBuilderField(
+                    child: FbField(child: FormBuilderField(
                         name: 'TxnPlan',
                         builder: (field) {
                           return AcxSearchBoxMap(
@@ -760,13 +760,13 @@ class PrgCustPOIFinLpcFinChargePlanForm extends ConsumerWidget {
                               searchText: 'TxnPlanDscp',
                               keyField: 'TxnPlan',
                               params: const {});
-                        })),
+                        }))),
                 Flexible(
                   flex: 2,
                   child: Row(
                     children: [
                       Expanded(
-                        child: FormBuilderDateTimePicker(
+                        child: FbField(child: FormBuilderDateTimePicker(
                           valueTransformer: (v) {
                             // return v!.toIso8601String();
                             return DateFormat('yMMMEd').format(v!);
@@ -789,13 +789,13 @@ class PrgCustPOIFinLpcFinChargePlanForm extends ConsumerWidget {
                           ),
                           initialTime: const TimeOfDay(hour: 8, minute: 0),
                           // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                        ),
+                        )),
                       ),
                       const SizedBox(
                         width: 30,
                       ),
                       Expanded(
-                        child: FormBuilderDateTimePicker(
+                        child: FbField(child: FormBuilderDateTimePicker(
                           valueTransformer: (v) {
                             // return v!.toIso8601String();
                             return DateFormat('yMMMEd').format(v!);
@@ -818,7 +818,7 @@ class PrgCustPOIFinLpcFinChargePlanForm extends ConsumerWidget {
                           ),
                           initialTime: const TimeOfDay(hour: 8, minute: 0),
                           // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                        ),
+                        )),
                       )
                     ],
                   ),

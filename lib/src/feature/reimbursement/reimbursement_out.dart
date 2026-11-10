@@ -159,7 +159,7 @@ class RptReimburseAutoGenSearchSliver extends ConsumerWidget {
                       ),
                       sbw20,
                       Expanded(child: FbDateTimePickerYear(label: 'Year', name: 'Yr',initialValue: DateTime.now(),),),
-                      sbw10,
+                      fbFieldGap,
                          Expanded(
                            child: FbLibView(
                                                    name: 'Mn',

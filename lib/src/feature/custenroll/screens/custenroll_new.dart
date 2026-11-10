@@ -157,7 +157,7 @@ class CustEnrollForm extends ConsumerWidget {
         return FormBuilder(
             key: custEnrollFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 const FbHiddenDateTime(name: 'CustMdfDate'),
                 const FbHiddenDateTime(name: 'CmpyMdfDate'),
@@ -273,7 +273,7 @@ class CustEnrollForm extends ConsumerWidget {
                                   label: 'Work Phone No.',
                               ),
                             ),
-                            Expanded(
+                            fbFieldGap, Expanded(
                               child: FbText(
                                 name: 'OfficeExtNo',
                                 label: 'Extension',

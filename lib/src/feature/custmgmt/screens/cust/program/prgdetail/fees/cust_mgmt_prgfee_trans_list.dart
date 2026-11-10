@@ -50,9 +50,9 @@ class CustMgmtProgramFeeTransList extends ConsumerWidget {
 
           return Column(
             children: [
-              Flexible(
-                flex: 1,
-                child: Row(
+              // switch row sizes to its content (was Flexible(flex: 1), which
+              // squeezed it when zoomed in)
+              Row(
                   children: [
                     const SizedBox(
                       width: 54,
@@ -90,7 +90,6 @@ class CustMgmtProgramFeeTransList extends ConsumerWidget {
                     )
                   ],
                 ),
-              ),
               Expanded(
                 flex: 11,
                 child: AcxTrinaGridExtDataCheckBox(

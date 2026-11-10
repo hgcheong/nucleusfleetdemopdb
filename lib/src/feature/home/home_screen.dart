@@ -25,6 +25,7 @@ import 'package:nucleusv2/src/feature/home/pie_chart_sample1.dart';
 import 'package:nucleusv2/src/feature/home/pie_chart_sample2.dart';
 import 'package:nucleusv2/src/feature/home/pie_chart_sample3.dart';
 import 'package:nucleusv2/src/utils/appbartitle.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 const int wid=169;
 
@@ -311,7 +312,7 @@ class VwAttrForm extends HookConsumerWidget {
             child: FormBuilder(
               key: formMainSearchKey,
               initialValue: formNewValue,
-              child: FormBuilderRadioGroup<dynamic>(
+              child: FbField(child: FormBuilderRadioGroup<dynamic>(
                 onChanged: (val) {
                   ref.read(mainSearchSearchFieldProvider.notifier).state =
                       "${val.toString().split('|').first}|${val.toString().split('|').elementAt(1)}|${val.toString().split('|').last == "1" ? "Str" : "Int"}";
@@ -334,7 +335,7 @@ class VwAttrForm extends HookConsumerWidget {
                               child: SelectableText(lang['Dscp'].toString())),
                         ))
                     .toList(growable: false),
-              ),
+              )),
             ),
           );
         },

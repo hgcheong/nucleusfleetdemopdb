@@ -8,6 +8,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/api_acxdatatable.dart';
 import 'package:nucleusv2/src/core/components/alert_dialogs.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class AcxSearchBoxMap extends HookConsumerWidget {
   const AcxSearchBoxMap(
@@ -64,7 +66,10 @@ class AcxSearchBoxMap extends HookConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) =>
+      FbFieldIfNeeded(child: _buildBox(context, ref));
+
+  Widget _buildBox(BuildContext context, WidgetRef ref) {
     final isLoading = useState<bool>(false);
     final theResult = useState<List<dynamic>>([]);
 
@@ -139,6 +144,10 @@ clearButtonProps: ClearButtonProps(
         decoratorProps: DropDownDecoratorProps(
           baseStyle: TextStyle(fontSize:defaultDropDownSize),
           decoration: InputDecoration(
+            // Same height as every other form field (DiboldTheme.fieldHeight).
+            isDense: true,
+            constraints: const BoxConstraints(minHeight: DiboldTheme.fieldHeight),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           floatingLabelStyle: TextStyle(fontSize: defaultFloatlableSize),
           labelText: inputText,
@@ -195,6 +204,10 @@ suffixProps: DropdownSuffixProps(  clearButtonProps: ClearButtonProps(
     decoratorProps: DropDownDecoratorProps(
           baseStyle: TextStyle(fontSize:defaultDropDownSize),
           decoration: InputDecoration(
+            // Same height as every other form field (DiboldTheme.fieldHeight).
+            isDense: true,
+            constraints: const BoxConstraints(minHeight: DiboldTheme.fieldHeight),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           floatingLabelStyle: TextStyle(fontSize: defaultFloatlableSize),
           labelText: inputText,

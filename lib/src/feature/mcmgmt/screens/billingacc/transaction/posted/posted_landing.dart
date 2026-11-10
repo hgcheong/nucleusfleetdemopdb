@@ -121,7 +121,7 @@ class MchtMgmtTxnPostedLanding extends ConsumerWidget {
                             Flexible(
                                 child: FbDateTimePicker(
                                     name: 'FromDate', label: 'From Date')),
-                            sbw10,
+                            fbFieldGap,
                             Flexible(
                                 child: FbDateTimePicker(
                                     name: 'ToDate', label: 'To Date'))

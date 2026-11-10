@@ -100,7 +100,7 @@ class CustEnrollMemberCtrlLoc extends ConsumerWidget {
                       const FbHiddenText(name: 'AccptId'),
                       const FbText(name: 'Dscp', label: 'Description'),
                       const SelectableText('Type of Acceptance'),
-                      FormBuilderRadioGroup(
+                      FbField(child: FormBuilderRadioGroup(
                         orientation: OptionsOrientation.horizontal,
                         name: 'AccptType',
                         options: const [
@@ -113,80 +113,80 @@ class CustEnrollMemberCtrlLoc extends ConsumerWidget {
                             child: Icon(Icons.playlist_remove),
                           )
                         ],
-                      ),
+                      )),
                       const SelectableText('Valid Transaction Day'),
                       Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Mon',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('M'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Tue',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('T'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Wed',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('W'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Thu',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('T'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Fri',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('F'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Sat',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('S'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                             Expanded(
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                   name: 'Sun',
                                   options: const [
                                     FormBuilderChipOption(
                                       value: "1",
                                       child: SelectableText('S'),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                           ]),
                       const Row(
@@ -194,7 +194,7 @@ class CustEnrollMemberCtrlLoc extends ConsumerWidget {
                           Flexible(
                               child: FbTimePicker(
                                   label: 'From Time', name: 'FromTime')),
-                          Flexible(
+                          fbFieldGap, Flexible(
                             child: FbTimePicker(
                               label: 'To Time',
                               name: 'ToTime',
@@ -207,7 +207,7 @@ class CustEnrollMemberCtrlLoc extends ConsumerWidget {
                           Flexible(
                               child: FbDateTimePicker(
                                   label: 'From Date', name: 'FromDate')),
-                          Flexible(
+                          fbFieldGap, Flexible(
                             child: FbDateTimePicker(
                               label: 'To Date',
                               name: 'ToDate',

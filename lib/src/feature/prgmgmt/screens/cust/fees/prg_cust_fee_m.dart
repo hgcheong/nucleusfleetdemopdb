@@ -15,6 +15,7 @@ import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
 import 'package:nucleusv2/src/utils/helpers.dart';
 import 'package:nucleusv2/src/utils/strings.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 const int wid=756;
 
@@ -70,7 +71,7 @@ class PrgCustFeeMediaForm extends ConsumerWidget {
           if (theData.data!.isNotEmpty) {
             List<dynamic>? mediaList = theData.data;
             List<Widget> toReturnWidget = [];
-            toReturnWidget.add(Row(
+            toReturnWidget.add(Row(crossAxisAlignment: CrossAxisAlignment.start, 
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SelectableText('Media Fees for $mediaType'),
@@ -361,7 +362,7 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                         name: 'MediaType'),
                     Flexible(
                         flex: 2,
-                        child: FormBuilderField(
+                        child: FbField(child: FormBuilderField(
                             name: 'TxnPlan',
                             builder: (field) {
                               return AcxSearchBoxMap(
@@ -378,13 +379,13 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                                   searchText: 'TxnPlanDscp',
                                   keyField: 'TxnPlan',
                                   params: const {});
-                            })),
+                            }))),
                     Flexible(
                       flex: 2,
                       child: Row(
                         children: [
                           Expanded(
-                            child: FormBuilderDateTimePicker(
+                            child: FbField(child: FormBuilderDateTimePicker(
                               valueTransformer: (v) {
                                 // return v!.toIso8601String();
                                 if (v != null) {
@@ -410,13 +411,13 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                               ),
                               initialTime: const TimeOfDay(hour: 8, minute: 0),
                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                            ),
+                            )),
                           ),
                           const SizedBox(
                             width: 30,
                           ),
                           Expanded(
-                            child: FormBuilderDateTimePicker(
+                            child: FbField(child: FormBuilderDateTimePicker(
                               valueTransformer: (v) {
                                 if (v != null) {
                                   return DateFormat('yMMMEd').format(v);
@@ -441,7 +442,7 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                               ),
                               initialTime: const TimeOfDay(hour: 8, minute: 0),
                               // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                            ),
+                            )),
                           )
                         ],
                       ),

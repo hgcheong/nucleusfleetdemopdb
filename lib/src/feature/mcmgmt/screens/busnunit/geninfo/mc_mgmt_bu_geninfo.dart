@@ -65,7 +65,7 @@ class MchtMgmtBusinessUnitGenInfo extends ConsumerWidget {
               child: SingleChildScrollView(
                 child: SizedBox(
                   height: 1280,
-                  child: Row(children: [
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Expanded(
                       flex: 5,
                       child: Padding(

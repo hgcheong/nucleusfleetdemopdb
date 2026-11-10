@@ -105,7 +105,7 @@ class CustEnrollProgramFeeTransForm extends ConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'MdfDate',
@@ -605,9 +605,7 @@ class CustEnrollProgramFeeTxnFeePlanForm extends ConsumerWidget {
                             Expanded(
                                 child: FbDateTimePicker(
                                     name: 'FromDate', label: 'From Date')),
-                            SizedBox(
-                              width: 30,
-                            ),
+                            fbFieldGap,
                             Expanded(
                                 child: FbDateTimePicker(
                                     name: 'ToDate', label: 'To Date'))

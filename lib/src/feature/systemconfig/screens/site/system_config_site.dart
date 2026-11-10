@@ -113,7 +113,7 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                                                      Row(
                                                                        children: [
                                                                          Expanded(child: FbNumberRegex(name: 'Lat', label: 'Latitude (-90 to 90 )')),
-                                                                         sbw10,
+                                                                         fbFieldGap,
                                                                              Expanded(child: FbNumberRegex(name: 'Long',label:'Longtitude (-180 to 180)')),
                                                                        ],
                                                                      ),
@@ -125,7 +125,7 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                     Flexible(
                         child: FbTimePicker(
                             label: 'From Time', name: 'BusnTimeFrom')),
-                            sbw10,
+                            fbFieldGap,
                     Flexible(
                       child: FbTimePicker(
                         label: 'To Time',
@@ -291,7 +291,7 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(width: 110,
-                          child: FormBuilderChoiceChips(
+                          child: FbField(child: FormBuilderChoiceChips(
                             tooltip: 'Euro 5 Diesel',
                               name: 'IconEuro5',
                               options: [
@@ -299,11 +299,11 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                   value: "1",
                                  child: Image.asset('assets/images/BEuro5.png',height: 25,),
                                 ),
-                              ]),
+                              ])),
                         ),
                      
                         SizedBox(width: 110,
-                          child: FormBuilderChoiceChips(
+                          child: FbField(child: FormBuilderChoiceChips(
                             tooltip: 'BH Petrol Mart',
                               name: 'IconMart',
                               options:  [
@@ -311,12 +311,12 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                   value: "1",
                                   child: Image.asset('assets/images/BMarket.png',height: 25,),
                                 ),
-                              ]),
+                              ])),
                         ),
                               
                         SizedBox(
                           width: 110,
-                          child: FormBuilderChoiceChips(
+                          child: FbField(child: FormBuilderChoiceChips(
                             tooltip: 'ATM',
                               name: 'IconATM',
                               options:  [
@@ -324,11 +324,11 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                   value: "1",
                                          child: Image.asset('assets/images/BATM.png',height: 25,),
                                 ),
-                              ]),
+                              ])),
                         ),
                            
                                            SizedBox(width: 110,
-                                             child: FormBuilderChoiceChips(
+                                             child: FbField(child: FormBuilderChoiceChips(
                                               tooltip: 'Food',
                                                  name: 'IconFood',
                                                  options:  [
@@ -336,11 +336,11 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                                      value: "1",
                                                  child: Image.asset('assets/images/BFood.png',height: 25,),
                                                    ),
-                                                 ]),
+                                                 ])),
                                            ),
                               
                         SizedBox(width: 110,
-                          child: FormBuilderChoiceChips(
+                          child: FbField(child: FormBuilderChoiceChips(
                             tooltip: 'Car Wash',
                               name: 'IconWash',
                               options:  [
@@ -348,11 +348,11 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                   value: "1",
                           child: Image.asset('assets/images/BCarWash.png',height: 25,),
                                 ),
-                              ]),
+                              ])),
                         ),
                            
                             SizedBox(width: 110,
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                 tooltip: 'EV',
                                   name: 'IconEV',
                                   options:  [
@@ -360,12 +360,12 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                       value: "1",
                               child: Image.asset('assets/images/BGreen.png',height: 25,),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                     
                       
                             SizedBox(width: 110,
-                              child: FormBuilderChoiceChips(
+                              child: FbField(child: FormBuilderChoiceChips(
                                 tooltip: 'Touch n Go',
                                   name: 'IconTnG',
                                   options: [
@@ -373,11 +373,11 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                       value: "1",
                                       child: Image.asset('assets/images/BTng.png',height: 25,),
                                     ),
-                                  ]),
+                                  ])),
                             ),
                      
                         SizedBox(width: 110,
-                          child: FormBuilderChoiceChips(
+                          child: FbField(child: FormBuilderChoiceChips(
                             tooltip: 'Touch ‘n Go Spot (formerly Touch ‘n Go Customer Services Centre)',
                               name: 'IconTnGSpot',
                               options: [
@@ -385,10 +385,10 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                   value: "1",
                                   child: Image.asset('assets/images/tngspot.png',height: 25,),
                                 ),
-                              ]),
+                              ])),
                         ),
                         SizedBox(width: 110,
-                          child: FormBuilderChoiceChips(
+                          child: FbField(child: FormBuilderChoiceChips(
                             tooltip: 'ePay',
                               name: 'IconEpay',
                               options: [
@@ -396,7 +396,7 @@ final qres = ref.watch(ReturndatafreezedProvider(qo));
                                   value: "1",
                               child: Image.asset('assets/images/BePay.png',height: 25,),
                                 ),
-                              ]),
+                              ])),
                         ),
                      
                       ]),

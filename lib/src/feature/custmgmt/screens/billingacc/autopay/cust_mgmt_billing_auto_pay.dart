@@ -105,7 +105,7 @@ class CustomerEnrollSetupBankForm extends ConsumerWidget {
               onChanged: () {
                 mcenrlautopKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -129,13 +129,13 @@ class CustomerEnrollSetupBankForm extends ConsumerWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            FormBuilderSwitch(
+                            FbField(child: FormBuilderSwitch(
                               name: 'AutoPymtInd',
                               title: const SelectableText('Auto Debit'),
                               valueTransformer: (value) {
                                 return value == false ? 'N' : 'Y';
                               },
-                            ),
+                            )),
                             FormBuilderField(
                               name: 'PymtType',
                               builder: (FormFieldState f) {
@@ -196,7 +196,7 @@ class CustomerEnrollSetupBankForm extends ConsumerWidget {
                                 
                                   ),
                                 ),
-                                Expanded(
+                                fbFieldGap, Expanded(
                                   child: FbText(
                                     name: 'PayeeRef',
                                     label: 'Payee Reference',

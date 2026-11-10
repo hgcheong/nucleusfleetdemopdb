@@ -40,7 +40,7 @@ class CustEnrollMemberCtrlProd extends ConsumerWidget {
           "MbrEttyId": mbrEttyId
         },
         showMsg: false);
-    return Row(
+    return Row(crossAxisAlignment: CrossAxisAlignment.start, 
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
@@ -132,7 +132,7 @@ class CustEnrollMbrCtrlTxnprdList extends ConsumerWidget {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: FormBuilderSwitch(
+                    child: FbField(child: FormBuilderSwitch(
                       initialValue: item['PrdSts'] == 'N' ? false : true,
                       name: item['PrdCd'],
                       title: SelectableText(item['PrdDscp']),
@@ -143,7 +143,7 @@ class CustEnrollMbrCtrlTxnprdList extends ConsumerWidget {
                       valueTransformer: (value) {
                         return value == false ? 'N' : 'Y';
                       },
-                    ),
+                    )),
                   )
                 ],
               ));

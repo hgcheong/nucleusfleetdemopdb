@@ -88,7 +88,7 @@ class CustEnrlBilAccBankForm extends ConsumerWidget {
               onChanged: () {
                 billingAccautopKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   Expanded(
                     flex: 5,
@@ -157,7 +157,7 @@ class CustEnrlBilAccBankForm extends ConsumerWidget {
                                     label: 'Payee Code'
                                 ),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                   name: 'PayeeRef',
                                   label: 'Payee Reference'

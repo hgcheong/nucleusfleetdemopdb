@@ -7,6 +7,7 @@ import 'package:nucleusv2/src/core/app/api_acxdatatable.dart';
 import 'package:nucleusv2/src/core/components/acx_searchmainprovider.dart';
 import 'package:nucleusv2/src/core/components/alert_dialogs.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
 
 class AcxSearchMainExt extends ConsumerWidget {
   const AcxSearchMainExt(
@@ -104,6 +105,10 @@ class AcxSearchMainExt extends ConsumerWidget {
      decoratorProps: DropDownDecoratorProps(
           baseStyle: TextStyle(fontSize:defaultDropDownSize),
           decoration: InputDecoration(
+            // Same height as every other form field (DiboldTheme.fieldHeight).
+            isDense: true,
+            constraints: const BoxConstraints(minHeight: DiboldTheme.fieldHeight),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           floatingLabelStyle: TextStyle(fontSize: defaultFloatlableSize),
           labelText: inputText,

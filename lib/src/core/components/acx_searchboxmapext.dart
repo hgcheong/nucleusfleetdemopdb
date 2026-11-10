@@ -3,6 +3,8 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class AcxSearchBoxMapExt extends StatelessWidget {
   const AcxSearchBoxMapExt(
@@ -51,7 +53,10 @@ class AcxSearchBoxMapExt extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>
+      FbFieldIfNeeded(child: _buildBox(context));
+
+  Widget _buildBox(BuildContext context) {
     return DropdownSearch<dynamic>(
       suffixProps: DropdownSuffixProps(    clearButtonProps:  ClearButtonProps(
             icon: IconButton(onPressed: (){
@@ -89,6 +94,10 @@ class AcxSearchBoxMapExt extends StatelessWidget {
      decoratorProps: DropDownDecoratorProps(
           baseStyle: TextStyle(fontSize:defaultDropDownSize),
           decoration: InputDecoration(
+            // Same height as every other form field (DiboldTheme.fieldHeight).
+            isDense: true,
+            constraints: const BoxConstraints(minHeight: DiboldTheme.fieldHeight),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           floatingLabelStyle: TextStyle(fontSize: defaultFloatlableSize),
           labelText: inputText,

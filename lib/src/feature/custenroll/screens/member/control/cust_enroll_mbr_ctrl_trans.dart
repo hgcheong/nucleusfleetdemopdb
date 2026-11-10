@@ -119,7 +119,7 @@ class CustEnrollMbrTxnLimitForm extends ConsumerWidget {
               onChanged: () {
                 formKeyCustEnrollMbrCtrlTxn.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   const FbHiddenText(name: 'PrgEttyId'),
                   const FbHiddenText(name: 'CustEttyId'),
@@ -180,7 +180,7 @@ class CustEnrollMbrTxnLimitForm extends ConsumerWidget {
                                     name: 'MinThsld',
                                     label: S.of(context).lblMin),
                               ),
-                              Expanded(
+                              fbFieldGap, Expanded(
                                 child: FbText(
                                     name: 'MaxThsld',
                                     label: S.of(context).lblMax),

@@ -139,7 +139,7 @@ class CustMgmtForm extends ConsumerWidget {
         return FormBuilder(
             key: custMgmtFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 const FbHiddenText(name: 'CustEttyId'),
                 //    "Title": null,
@@ -228,7 +228,7 @@ class CustMgmtForm extends ConsumerWidget {
                                 label: 'Phone No.',
                               ),
                             ),
-                             Expanded(
+                             fbFieldGap, Expanded(
                               child: FbText(
                                 name: 'OfficeExtNo',
                                 label: 'Extension',

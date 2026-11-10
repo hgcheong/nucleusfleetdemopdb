@@ -101,7 +101,7 @@ class CustEnrollProgramFeeMediaForm extends ConsumerWidget {
                       toReturnWidget
                           .add(SelectableText('Media Fees for $mediaType'));
 
-                      toReturnWidget.add(Row(
+                      toReturnWidget.add(Row(crossAxisAlignment: CrossAxisAlignment.start, 
                         children: [
                           Expanded(
                               flex: 3,
@@ -462,9 +462,7 @@ class PrgCustFeePlanListForm extends ConsumerWidget {
                           Expanded(
                               child: FbDateTimePicker(
                                   name: 'FromDate', label: 'From Date')),
-                          SizedBox(
-                            width: 30,
-                          ),
+                          fbFieldGap,
                           Expanded(
                               child: FbDateTimePicker(
                                   name: 'ToDate', label: 'To Date'))

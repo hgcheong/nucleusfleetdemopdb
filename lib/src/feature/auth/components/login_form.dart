@@ -9,6 +9,7 @@ import 'package:nucleusv2/src/core/components/buttons.dart';
 import 'package:nucleusv2/src/feature/auth/providers/login_form_provider.dart';
 import 'package:nucleusv2/src/feature/brand/components/brand_logo.dart';
 import 'package:nucleusv2/src/feature/theme/app_theme.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class LoginForm extends BaseComponent {
   LoginForm({super.key});
@@ -79,7 +80,8 @@ class LoginForm extends BaseComponent {
         //   width: 35,
         Positioned(
           width: 320,
-          height: 320,
+          // no fixed height: the card grows with its content, so the
+          // field spacing can't push it into an overflow
           left: 10,
           top: 80,
           child: Center(
@@ -98,13 +100,15 @@ class LoginForm extends BaseComponent {
                         const Text('Nucleus Portal',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),),
                         sbh20,
                         const Icon(Icons.account_circle_rounded),
-                        TextFormField(
+                        FbField(
+                          child: TextFormField(
                           decoration: const InputDecoration(
                             label: SelectableText("User ID or Email"),
                           ),
                           controller: loginFormProvider.emailController,
-                        ),
-                        TextFormField(
+                        )),
+                        FbField(
+                          child: TextFormField(
                           decoration: const InputDecoration(
                             label: SelectableText("Password"),
                           ),
@@ -116,7 +120,7 @@ class LoginForm extends BaseComponent {
                             }
                             loginFormProvider.submit();
                           },
-                        ),
+                        )),
                
                         sbh10,
                                    Opacity(

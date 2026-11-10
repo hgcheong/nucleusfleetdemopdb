@@ -4,7 +4,6 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/app/acx_returndata_provider.dart';
 
 import 'package:nucleusv2/src/core/app_router.dart';
@@ -137,7 +136,7 @@ class MchtEnrollForm extends ConsumerWidget {
         return FormBuilder(
             key: mchtEnrollFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 const FbHiddenText(name: 'MchtEttyId'),
                 Expanded(
@@ -154,7 +153,7 @@ class MchtEnrollForm extends ConsumerWidget {
                                 child: FbText(
                                     name: 'AgrmtNo',
                                     label: 'Agreement Number')),
-                            Expanded(
+                            fbFieldGap, Expanded(
                               child: FbDateTimePicker(
                                   name: 'AgrmtDate', label: 'Agreement Date'),
                             )
@@ -198,7 +197,7 @@ class MchtEnrollForm extends ConsumerWidget {
                                   name: 'RgstionDate',
                                   label: 'Date of Incorporation'),
                             ),
-                            sbw10,
+                            fbFieldGap,
                                    Expanded(
                               child: FbLibref(
                                   name: 'CmpySize',
@@ -216,7 +215,7 @@ class MchtEnrollForm extends ConsumerWidget {
                             const Expanded(
                                 child:
                                     FbText(name: 'TaxNo', label: 'Tax Number')),
-                            sbw10,
+                            fbFieldGap,
                             Expanded(
                               child: FbLibref(
                                   name: 'TaxCtgry',

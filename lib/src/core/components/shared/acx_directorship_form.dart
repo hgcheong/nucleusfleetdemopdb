@@ -121,7 +121,7 @@ class AcxDirectorShipForm extends ConsumerWidget {
                                                                        initialValue: formValue['Title'],
                                                                      ),
                                                                      
-                                           ),sbw10,    Expanded(
+                                           ),fbFieldGap,    Expanded(
                                                   flex: 8,
                                                    child: FbLibView(
                                                                        name: 'Directorship',
@@ -138,14 +138,14 @@ class AcxDirectorShipForm extends ConsumerWidget {
                                        ),
                                        Row(children: [ Expanded(
                                                 flex: 8,
-                                                 child: FormBuilderTextField(
+                                                 child: FbField(child: FormBuilderTextField(
                                                                                            name: 'FullName',
                                                                                            decoration: const InputDecoration(
                                                                                              labelText: 'Name',
                                                                                              floatingLabelBehavior:
                                                   FloatingLabelBehavior.always,
                                                                                            ),
-                                                                                         ),
+                                                                                         )),
                                                ),],),
                                     
                                   
@@ -158,7 +158,7 @@ class AcxDirectorShipForm extends ConsumerWidget {
                                                                                                 label: 'Share Holding %',
                                                                                                    ),
                                                          ),
-                                                          sbw10,
+                                                          fbFieldGap,
                                                      Expanded(
                                                       flex: 8,
                                                        child: FbLibView(
@@ -185,9 +185,9 @@ class AcxDirectorShipForm extends ConsumerWidget {
                             keyField: "RefCd",
                             searchText: "Dscp",
                             querySql: '/sp/GetLibRef/queryasyncnouser')),
-                            sbw10,
+                            fbFieldGap,
                         Expanded(child:FbText(name: 'PsnlId', label: S.of(context).lblIDNumber)),
-                        sbw10,
+                        fbFieldGap,
                                             Expanded(
                                               child: FbLibView(
                                                                          name: 'DirectorshipSts',
@@ -228,7 +228,7 @@ class AcxDirectorShipForm extends ConsumerWidget {
                                                   initialValue:
                                                       formValue['WorkPhoneNo'],
                                                 )),
-                                                sbw10,
+                                                fbFieldGap,
                                                         
                                                 Flexible(
                                                     child: FbText(
@@ -237,7 +237,7 @@ class AcxDirectorShipForm extends ConsumerWidget {
                                                   initialValue:
                                                       formValue['WorkPhoneExt'],
                                                 )),
-                                                 Flexible(
+                                                 fbFieldGap, Flexible(
                                                 child: FbText(
                                               name: "FaxNo",
                                               label: "Fax No.",

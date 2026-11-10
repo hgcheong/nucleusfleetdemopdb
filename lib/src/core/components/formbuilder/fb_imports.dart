@@ -1,3 +1,4 @@
+export 'fb_field.dart';
 export 'fb_date_timetext.dart';
 export 'fb_dtpw_time.dart';
 export 'fb_dtp.dart';

@@ -15,6 +15,7 @@ import 'package:nucleusv2/src/core/components/formbuilder/fb_libview.dart';
 import 'package:nucleusv2/src/core/components/formbuilder/fb_text.dart';
 import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
 import 'package:nucleusv2/src/core/models/returndata/returndata.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 const int wid=638;
 
@@ -92,7 +93,7 @@ class CustMgmtMemberInfoVehicleForm extends ConsumerWidget {
         return FormBuilder(
             key: custMgmtVehFormKey,
             initialValue: formNewValue,
-            child: Row(
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 //   "TaxCtgry": null,
 
@@ -122,7 +123,7 @@ class CustMgmtMemberInfoVehicleForm extends ConsumerWidget {
                                   name: 'VhcRgsDate',
                                   label: S.of(context).lblVehRgsDate),
                             ),
-                            Flexible(
+                            fbFieldGap, Flexible(
                               child: FbDateTimePicker(
                                   name: 'RoadTaxExpDate',
                                   label: S.of(context).lblRoadTaxExp),

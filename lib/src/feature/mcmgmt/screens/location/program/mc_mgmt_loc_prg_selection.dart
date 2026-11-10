@@ -75,7 +75,7 @@ class MchtMgmtocPrgSelection extends ConsumerWidget {
               ),
               const SelectableText(
                   'You are about to sign up a new Program, please select a type of Billing Level'),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 //   const FbHiddenText(name: 'MchtEttyId'),
                 const FbHiddenText(name: 'PrgEttyId'),
                 const FbHiddenText(name: 'LocEttyId'),

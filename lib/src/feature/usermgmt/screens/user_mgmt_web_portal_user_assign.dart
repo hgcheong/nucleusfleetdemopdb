@@ -102,7 +102,7 @@ class UserMgmtWebPortalUserForm extends ConsumerWidget {
     //final isNewUser = convStrNewOrNullToNull(userId);
            return Scaffold(
             
-          body: Row(
+          body: Row(crossAxisAlignment: CrossAxisAlignment.start, 
             children: [
               Expanded(
                 flex:11,
@@ -311,7 +311,7 @@ class RoleAssignDialog extends ConsumerWidget{
 };
  return FormBuilder(
             key: formKeyRoleAssignDialog,
-            initialValue: formRoleAssign, child: Row(
+            initialValue: formRoleAssign, child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
                 Expanded(
                   flex:11,

@@ -89,7 +89,7 @@ class PrgCustFeeTransForm extends ConsumerWidget {
               onChanged: () {
                 formKey.currentState!.save();
               },
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   FormBuilderField(
                     name: 'PrgEttyId',
@@ -520,7 +520,7 @@ class PrgCustTxnFeePlanForm extends ConsumerWidget {
                           name: 'PlanId'),
                       Flexible(
                           flex: 2,
-                          child: FormBuilderField(
+                          child: FbField(child: FormBuilderField(
                               name: 'TxnPlan',
                               builder: (field) {
                                 return AcxSearchBoxMap(
@@ -537,13 +537,13 @@ class PrgCustTxnFeePlanForm extends ConsumerWidget {
                                     searchText: 'TxnPlanDscp',
                                     keyField: 'TxnPlan',
                                     params: const {});
-                              })),
+                              }))),
                       Flexible(
                         flex: 2,
                         child: Row(
                           children: [
                             Expanded(
-                              child: FormBuilderDateTimePicker(
+                              child: FbField(child: FormBuilderDateTimePicker(
                                 valueTransformer: (v) {
                                   // return v!.toIso8601String();
                                   return DateFormat('yMMMEd').format(v!);
@@ -568,13 +568,13 @@ class PrgCustTxnFeePlanForm extends ConsumerWidget {
                                 initialTime:
                                     const TimeOfDay(hour: 8, minute: 0),
                                 // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                              ),
+                              )),
                             ),
                             const SizedBox(
                               width: 30,
                             ),
                             Expanded(
-                              child: FormBuilderDateTimePicker(
+                              child: FbField(child: FormBuilderDateTimePicker(
                                 valueTransformer: (v) {
                                   // return v!.toIso8601String();
                                   return DateFormat('yMMMEd').format(v!);
@@ -599,7 +599,7 @@ class PrgCustTxnFeePlanForm extends ConsumerWidget {
                                 initialTime:
                                     const TimeOfDay(hour: 8, minute: 0),
                                 // locale: const Locale.fromSubtags(languageCode: 'fr'),
-                              ),
+                              )),
                             )
                           ],
                         ),

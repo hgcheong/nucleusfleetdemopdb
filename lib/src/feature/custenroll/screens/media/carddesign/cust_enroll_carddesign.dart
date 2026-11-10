@@ -74,7 +74,7 @@ class CustEnrollMediaDesign extends ConsumerWidget {
             },
             child: SizedBox(
               height: 1280,
-              child: Row(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   Flexible(
                     flex: 3,

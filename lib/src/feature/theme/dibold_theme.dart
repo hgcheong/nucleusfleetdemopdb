@@ -33,6 +33,9 @@ class DiboldTheme {
   /// between those buttons and their neighbours.
   static const double actionSpacing = 10;
 
+  /// Fixed size shared by the save, back-to-list and audit-log buttons.
+  static const Size actionButtonSize = Size(64, 40);
+
   // ── Colour schemes ────────────────────────────────────────────────────────
   static const ColorScheme lightScheme = ColorScheme(
     brightness: Brightness.light,
@@ -286,11 +289,34 @@ class DiboldTheme {
         fillColor: WidgetStateProperty.resolveWith(
             (s) => s.contains(WidgetState.selected) ? cs.primary : cs.outline),
       ),
+      // Explicit off-state colours: Material's defaults use the outline
+      // colour for both the off thumb and the track border, which in dark
+      // mode (slate-600 on a slate-800 card) made the off switch disappear.
       switchTheme: SwitchThemeData(
-        thumbColor: WidgetStateProperty.resolveWith(
-            (s) => s.contains(WidgetState.selected) ? cs.onPrimary : null),
-        trackColor: WidgetStateProperty.resolveWith(
-            (s) => s.contains(WidgetState.selected) ? cs.primary : null),
+        thumbColor: WidgetStateProperty.resolveWith((s) {
+          final on = s.contains(WidgetState.selected);
+          Color c = on
+              ? cs.onPrimary
+              : (isDark ? DbColors.slate300 : DbColors.slate500);
+          if (s.contains(WidgetState.disabled)) c = c.withValues(alpha: 0.5);
+          return c;
+        }),
+        trackColor: WidgetStateProperty.resolveWith((s) {
+          final on = s.contains(WidgetState.selected);
+          Color c = on
+              ? cs.primary
+              : (isDark ? DbColors.slate900 : DbColors.slate200);
+          if (s.contains(WidgetState.disabled)) c = c.withValues(alpha: 0.5);
+          return c;
+        }),
+        trackOutlineColor: WidgetStateProperty.resolveWith((s) {
+          if (s.contains(WidgetState.selected)) return Colors.transparent;
+          final c = isDark ? DbColors.slate400 : DbColors.slate300;
+          return s.contains(WidgetState.disabled)
+              ? c.withValues(alpha: 0.5)
+              : c;
+        }),
+        trackOutlineWidth: const WidgetStatePropertyAll(2),
       ),
 
       listTileTheme: ListTileThemeData(

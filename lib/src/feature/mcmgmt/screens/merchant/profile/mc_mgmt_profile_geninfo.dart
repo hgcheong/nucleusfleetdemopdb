@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/components/acx_audit_log_req_btn.dart';
 import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
 import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
@@ -90,7 +89,7 @@ class MchtMgmtGeneralInfo extends ConsumerWidget {
             child: FormBuilder(
                 key: mchtMgmtFormKey,
                 initialValue: formNewValue,
-                child: Row(
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                   children: [
                     const FbHiddenText( name: 'MchtEttyId'),
                     const FbHiddenText(name: 'Region'),
@@ -108,7 +107,7 @@ class MchtMgmtGeneralInfo extends ConsumerWidget {
                                     child: FbText(
                                         name: 'AgrmtNo',
                                         label: 'Agreement Number')),
-                                        sbw10,
+                                        fbFieldGap,
                                 Expanded(
                                     child: FbDateTimePicker(
                                         name: 'AgrmtDate', label: 'Agreement Date'))
@@ -156,7 +155,7 @@ class MchtMgmtGeneralInfo extends ConsumerWidget {
                                   name: 'RgstionDate',
                                   label: 'Date of Incorporation'),
                             ),
-                            sbw10,
+                            fbFieldGap,
                                    Expanded(
                               child: FbLibref(
                                   name: 'CmpySize',
@@ -175,7 +174,7 @@ class MchtMgmtGeneralInfo extends ConsumerWidget {
                             const Expanded(
                                 child:
                                     FbText(name: 'TaxNo', label: 'Tax Number')),
-                           sbw10,
+                           fbFieldGap,
                             Expanded(
                               child: FbLibref(
                                   name: 'TaxCtgry',

@@ -8,6 +8,7 @@ import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 
 import '../../../utils/utils_import.dart';
+import 'package:nucleusv2/src/core/components/acx_action_spacing.dart';
 
 class AcxContactForm extends ConsumerWidget {
   const AcxContactForm({
@@ -191,7 +192,7 @@ class AcxContactForm extends ConsumerWidget {
                                               initialValue:
                                                   formNewValue['WorkPhoneNo'],
                                             )),
-                                            sbw10,
+                                            fbFieldGap,
                                                     
                                             Flexible(
                                                 child: FbText(
@@ -200,7 +201,7 @@ class AcxContactForm extends ConsumerWidget {
                                               initialValue:
                                                   formNewValue['WorkPhoneExt'],
                                             )),
-                                            Flexible(
+                                            fbFieldGap, Flexible(
                                                 child: FbText(
                                               name: "FaxNo",
                                               label: "Fax No.",
@@ -342,9 +343,8 @@ isShowResendEmail ? Row(children: [          ElevatedButton(
                             });
                           }),
                                        AcxBackToList(listUrl: backToListUrl.toString()),
-                          sbh10,
                           // AcxSaveButton(
-                                   ElevatedButton(onPressed: (){
+                                   AcxActionSpacing(child: ElevatedButton(onPressed: (){
                                formKeyContactForm.currentState!.save();
                         final myVal = formKeyContactForm.currentState!.value;
                        ref.read(contactCopyContactProvider.notifier).state = {
@@ -364,11 +364,9 @@ isShowResendEmail ? Row(children: [          ElevatedButton(
 
                       },       child: const SizedBox(width: 30, child: Tooltip(
                         message: 'Copy',
-                        child: Icon(Icons.copy))),),
-                        
-                      sbh10,
+                        child: Icon(Icons.copy))),)),
                
-                      ElevatedButton(onPressed: (){
+                      AcxActionSpacing(child: ElevatedButton(onPressed: (){
                         
                         final myVal = ref.read(contactCopyContactProvider.notifier).state;
     
@@ -390,8 +388,7 @@ isShowResendEmail ? Row(children: [          ElevatedButton(
 
                       }, child: const SizedBox(width: 30, child: Tooltip(
                         message: 'Paste',
-                        child: Icon(Icons.paste))),), 
-                          sbh10,
+                        child: Icon(Icons.paste))),)),
                     
                       AcxAuditLogReqBtn(querySaveSql,ettyId: formNewValue['ContactId'].toString(),),
                          

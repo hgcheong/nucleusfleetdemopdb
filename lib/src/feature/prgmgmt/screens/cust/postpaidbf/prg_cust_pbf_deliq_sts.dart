@@ -101,7 +101,7 @@ class PrgCustPbfDeliqStsForm extends ConsumerWidget {
                 key: formDeliqStsFormKey,
                 autovalidateMode: AutovalidateMode.always,
                 initialValue: formNewValue,
-                child: Row(
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, 
                   children: [
                     sbw54,
                     const Flexible(

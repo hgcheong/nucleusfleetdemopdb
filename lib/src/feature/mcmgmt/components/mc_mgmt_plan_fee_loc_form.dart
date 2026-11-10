@@ -8,6 +8,7 @@ import 'package:nucleusv2/src/core/components/acx_searchboxmap.dart';
 import 'package:nucleusv2/src/core/components/formbuilder/fb_dtp.dart';
 import 'package:nucleusv2/src/core/models/query_object_freezed.dart';
 import 'package:nucleusv2/src/utils/toast.dart';
+import 'package:nucleusv2/src/core/components/formbuilder/fb_field.dart';
 
 class MchtMgmtPlanFeeLocForm extends ConsumerWidget {
   const MchtMgmtPlanFeeLocForm(
@@ -62,7 +63,7 @@ class MchtMgmtPlanFeeLocForm extends ConsumerWidget {
                     name: 'FeeId'),
                 Flexible(
                     flex: 2,
-                    child: FormBuilderField(
+                    child: FbField(child: FormBuilderField(
                         name: 'TxnPlan',
                         builder: (field) {
                           return AcxSearchBoxMap(
@@ -76,7 +77,7 @@ class MchtMgmtPlanFeeLocForm extends ConsumerWidget {
                               searchText: 'TxnPlanDscp',
                               keyField: 'TxnPlan',
                               params: const {});
-                        })),
+                        }))),
                 const Flexible(
                   flex: 2,
                   child: Row(
@@ -87,9 +88,7 @@ class MchtMgmtPlanFeeLocForm extends ConsumerWidget {
                           label: 'From Date',
                         ),
                       ),
-                      SizedBox(
-                        width: 30,
-                      ),
+                      fbFieldGap,
                       Flexible(
                         child: FbDateTimePicker(
                           name: 'ToDate',

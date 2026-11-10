@@ -140,7 +140,7 @@ class CustMgmtMemberInfoPersonalForm extends ConsumerWidget {
                                   "RefType": "TITLE",
                                   "BitInd": null
                                 })),
-                            sbw10,
+                            fbFieldGap,
                             Expanded(
                                 child: FbLibref(
                                     label: 'Gender',
