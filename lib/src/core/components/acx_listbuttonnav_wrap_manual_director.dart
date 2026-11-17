@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nucleusv2/src/feature/theme/db_colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/utils/dialogs.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:nucleusv2/src/core/components/acx_nav_tile.dart';
+import 'package:nucleusv2/src/feature/theme/dibold_theme.dart';
 
 //With external query object so that I can refresh it
 class AcxListButtonNavWrapManualDirector extends ConsumerWidget {
@@ -45,209 +45,81 @@ class AcxListButtonNavWrapManualDirector extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final value = ref.watch(ReturndatafreezedProvider(query));
+    final cs = Theme.of(context).colorScheme;
+    final text = Theme.of(context).textTheme;
+
+    double pct(Object? v) => (((v as num?) ?? 0) / 100).clamp(0.0, 1.0).toDouble();
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: AsyncValueWidget<Returndata>(
+        value: value,
         data: (Returndata returnData) {
-          if (returnData.data == null) {
-                        return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                sbw54,
-                const Text('No Record'),
-                addNew != null
-                    ? Align(
-                        alignment: Alignment.topRight,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              addNew!();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              shape: const CircleBorder(),
-                              padding: const EdgeInsets.all(24),
-                            ),
-                            child: const Icon(
-                              Icons.add,
-                            )),
-                      )
-                    : Container()
-              ],
-            );
+          if (returnData.data == null || returnData.data![0][keyField] == null) {
+            return AcxNavEmpty(onAdd: addNew == null ? null : () => addNew!());
           }
-          if (returnData.data![0][keyField] == null) {
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                sbw54,
-                const Text('No Record'),
-                addNew != null
-                    ? Align(
-                        alignment: Alignment.topRight,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              addNew!();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              shape: const CircleBorder(),
-                              padding: const EdgeInsets.all(24),
-                            ),
-                            child: const Icon(
-                              Icons.add,
-                            )),
-                      )
-                    : Container()
-              ],
-            );
-          }
-          List<Widget> toAdd = [];
-
-          for (var i = 0; i < returnData.data!.length; i++) {
-            if (filterField != null && filterValue != null) {
-              if (returnData.data![i][filterField] != filterValue) {
-                continue;
-              }
-            }
-    
-            toAdd.add(SizedBox(
+          final rows = returnData.data!;
+          final toAdd = <Widget>[];
+          for (final item in rows) {
+            final dynamic row = item;
+            if (filterField != null && filterValue != null && row[filterField] != filterValue) continue;
+            toAdd.add(AcxNavTile(
+              width: 320,
               height: 150,
-              width: 300.0,
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                  
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                         CircularPercentIndicator(
-                                       radius: 45.0,
-                                       lineWidth: 6.0,
-                                       percent: returnData.data![i]["ShareHolding"]/100,
-                                       center: SelectableText("${returnData.data![i]["ShareHolding"]}% \nShare"),
-                                       progressColor: DbColors.primary,
-                                     ),
-                        ],),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          children: [
-                                      
-                            Flexible(
-                              child: SingleChildScrollView(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 16.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      ...displayfield.map((element) {
-                                        final val = returnData.data![i][element];
-                                        if(element == 'ShareHolding'){
-                                          return const SizedBox(height: 0,width: 0);
-                                        }
-                                        if (val != null) {
-                                          return Text(
-                                            returnData.data![i][element].toString(),
-                                            overflow: TextOverflow.ellipsis,
-                                          );
-                                        } else {
-                                          return const Text('');
-                                        }
-                                      })
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [returnData.data![i]["ContactId"] == null? Container():
-                                deleteSelectedRef != null
-                                    ? IconButton(
-                                        onPressed: () async {
-                                          bool confirmed = await ConfirmDialog.show(
-                                              title:
-                                                  'Are you Sure to delete the record?');
-                        
-                                          if (confirmed) {
-                                            deleteSelectedRef!(returnData.data![i]);
-                                          }
-                                        },
-                                        icon: const Icon(Icons.delete))
-                                    : Container(),
-                                IconButton(
-                                    onPressed: () {
-                                      returnSelectedRef(returnData.data![i]);
-                                    },
-                                    icon: const Icon(Icons.edit))
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+              leading: CircularPercentIndicator(
+                radius: 36.0,
+                lineWidth: 6.0,
+                percent: pct(row["ShareHolding"]),
+                circularStrokeCap: CircularStrokeCap.round,
+                backgroundColor: cs.surfaceContainerHighest,
+                progressColor: cs.primary,
+                center: Text(
+                  '${row["ShareHolding"] ?? 0}%\nShare',
+                  textAlign: TextAlign.center,
+                  style: text.labelSmall?.copyWith(fontWeight: FontWeight.w700, color: cs.onSurface),
                 ),
               ),
-            ));
-            toAdd.add(const SizedBox(
-              width: 10,
+              lines: [
+                for (final f in displayfield)
+                  if (f != 'ShareHolding') row[f]?.toString(),
+              ],
+              selected: selectedKey != null && row[keyField]?.toString() == selectedKey,
+              onEdit: () => returnSelectedRef(row),
+              onDelete: row["ContactId"] == null || deleteSelectedRef == null
+                  ? null
+                  : () async {
+                      final confirmed = await ConfirmDialog.show(title: 'Are you Sure to delete the record?');
+                      if (confirmed == true) deleteSelectedRef!(row);
+                    },
             ));
           }
-
-          addNew != null
-              ? toAdd.add(Align(
-                  alignment: Alignment.topRight,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        addNew!();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        padding: const EdgeInsets.all(24),
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                      )),
-                ))
-              : Container();
-
-          Widget toReturnWidget = Column(
+          if (addNew != null) {
+            toAdd.add(AcxNavAddTile(width: 320, height: 150, onTap: () => addNew!()));
+          }
+          final total = rows[0]["TtlShareHolding"];
+          return Column(
             children: [
-              SelectableText('${returnData.data!.length} ShareHolder/Director${returnData.data!.length > 1 ? 's':''} hold ${returnData.data![0]["TtlShareHolding"]}/100% of Company Shares'),
-                LinearPercentIndicator(
-                  alignment: MainAxisAlignment.center,
-                  width: 230,
-                  animation: true,
-                  lineHeight: 15.0,
-                  animationDuration: 1500,
-                  percent: returnData.data![0]["TtlShareHolding"]/100,
-                  //barRadius: const Radius.circular(20),
-                  progressColor: DbColors.warning,
-                ),
-              Container(
-                padding: const EdgeInsets.all(30),
-                // color: Colors.red,
-                child: SingleChildScrollView(
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.start,
-                    direction: Axis.horizontal,
-                    runSpacing: 5.0,
-                    spacing: 5.0,
-                    children: toAdd,
-                  ),
-                ),
+              const SizedBox(height: 8),
+              SelectableText(
+                '${rows.length} ShareHolder/Director${rows.length > 1 ? 's' : ''} hold $total/100% of Company Shares',
+                style: text.bodyMedium?.copyWith(fontWeight: FontWeight.w600, color: cs.onSurface),
               ),
+              const SizedBox(height: 8),
+              LinearPercentIndicator(
+                alignment: MainAxisAlignment.center,
+                width: 260,
+                animation: true,
+                lineHeight: 12.0,
+                animationDuration: 1500,
+                percent: pct(total),
+                barRadius: const Radius.circular(6),
+                backgroundColor: cs.surfaceContainerHighest,
+                progressColor: context.dbStatus.warning,
+              ),
+              SingleChildScrollView(child: AcxNavWrapLayout(children: toAdd)),
             ],
           );
-
-          return toReturnWidget;
         },
-        value: value,
       ),
     );
   }

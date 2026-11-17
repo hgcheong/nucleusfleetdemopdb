@@ -15,6 +15,7 @@ import 'package:nucleusv2/src/core/menu_controller.dart';
 import 'package:nucleusv2/src/utils/helpers.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:trina_grid/trina_grid.dart';
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/widgets/adj_request_approval_btn.dart';
 
 const int wid=353;
 
@@ -197,6 +198,32 @@ class DataEntrySaleTxn extends ConsumerWidget {
                               });
                             }
                           });
+                        },
+                      ),
+                      // Sends this transaction to Task Approval > Data Entry Approval.
+                      AdjRequestApprovalBtn(
+                        formKey: dataEntryManualFormKey,
+                        screen: 'Sale',
+                        txnType: txnType,
+                        txnId: txnId,
+                        path: '/dataentry/manual/$txnType/sale/$txnId',
+                        fields: const {
+                          'AcctId': 'Account',
+                          'TxnPlan': 'Transaction Plan',
+                          'MediaNo': 'Media No.',
+                          'AuthMediaNo': 'Auth Media No.',
+                          'AuthCd': 'Auth Code',
+                          'TadNo': 'TAD Number',
+                          'TxnAmt': 'Transaction Amount',
+                          'TxnDate': 'Date',
+                          'TxnTime': 'Transaction Time',
+                          'DocNo': 'Ref Doc No.',
+                          'RcptNo': 'Receipt No.',
+                          'OdmReading': 'Odometer Reading',
+                          'Stan': 'Stan',
+                          'Rrn': 'Retrieval Reference Number',
+                          'TxnSts': 'Transaction Status',
+                          'Dscp': 'Transaction Description',
                         },
                       ),
                       AcxBackToList(listUrl: '/dataentry/manual/$txnType/list'),

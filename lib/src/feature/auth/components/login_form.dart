@@ -6,6 +6,7 @@ import 'package:nucleusv2/src/core/app/singletons.dart';
 import 'package:nucleusv2/src/core/app/storage.dart';
 import 'package:nucleusv2/src/core/base_component.dart';
 import 'package:nucleusv2/src/core/components/buttons.dart';
+import 'package:nucleusv2/src/feature/auth/components/login_splash.dart';
 import 'package:nucleusv2/src/feature/auth/providers/login_form_provider.dart';
 import 'package:nucleusv2/src/feature/brand/components/brand_logo.dart';
 import 'package:nucleusv2/src/feature/theme/app_theme.dart';
@@ -48,6 +49,7 @@ class LoginForm extends BaseComponent {
       )));
     }
     final loginFormProvider = ref.read(loginFormStateNotifierProvider.notifier);
+    final splashStep = ref.watch(loginSplashStepProvider);
   //  final loginFormModel = ref.watch(loginFormStateNotifierProvider);
     int hours = DateTime.now().hour;
     String filename = "";
@@ -165,6 +167,19 @@ class LoginForm extends BaseComponent {
                   ),
                 ),
               ),
+            ),
+          ),
+        ),
+        // Sign-in splash: fades in when "Sign In or Login" is pressed and
+        // stays until the dashboard opens or sign-in fails.
+        Positioned.fill(
+          child: IgnorePointer(
+            ignoring: splashStep == null,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: splashStep == null
+                  ? const SizedBox.shrink(key: ValueKey('no-splash'))
+                  : LoginSplash(key: const ValueKey('splash'), step: splashStep),
             ),
           ),
         ),

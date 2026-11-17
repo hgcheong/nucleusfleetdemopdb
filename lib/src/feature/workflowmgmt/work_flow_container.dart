@@ -3,7 +3,9 @@ import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:flutter/material.dart';
 import 'package:nucleusv2/src/core/base_component.dart';
 
-const int wid=208;
+// Page id for the workflow module. Not in the server's access list, so the
+// module shows for everyone; add it there to restrict access.
+const int wid=9300;
 
 @RoutePage()
 class WorkFlowContainer extends BaseComponent {

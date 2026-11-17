@@ -9,6 +9,7 @@ import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
 import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/widgets/adj_request_approval_btn.dart';
 
 const int wid=339;
 
@@ -170,6 +171,23 @@ class DataEntryFeeTxn extends ConsumerWidget {
                               });
                             }
                           });
+                        },
+                      ),
+                      // Sends this transaction to Task Approval > Data Entry Approval.
+                      AdjRequestApprovalBtn(
+                        formKey: dataEntryManualFormKey,
+                        screen: 'Fee',
+                        txnType: txnType,
+                        txnId: txnId,
+                        path: '/dataentry/manual/$txnType/fee/$txnId',
+                        fields: const {
+                          'AcctId': 'Account',
+                          'TxnPlan': 'Transaction Plan',
+                          'TxnAmt': 'Transaction Amount',
+                          'TxnDate': 'Date',
+                          'DocNo': 'Ref Doc No.',
+                          'RcptNo': 'Receipt No.',
+                          'Dscp': 'Transaction Description',
                         },
                       ),
                       AcxBackToList(listUrl: '/dataentry/manual/$txnType/list'),

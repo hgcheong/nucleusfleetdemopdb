@@ -8,6 +8,7 @@ import 'package:nucleusv2/src/core/app_router.gr.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/core/models/accessmodel/accessmodel.dart';
 import 'package:nucleusv2/src/feature/usermgmt/screens/user_mgmt_controller.dart';
+import 'package:nucleusv2/src/feature/auth/components/login_splash.dart';
 import 'package:nucleusv2/src/feature/auth/services/auth_service.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 import 'package:nucleusv2/src/utils/validation.dart';
@@ -44,6 +45,15 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
 
     emailController.addListener(_updateState);
     passwordController.addListener(_updateState);
+
+    // After sign-out, make sure the form comes back ready: no splash and not
+    // stuck in Processing.
+    ref.listen<SessionModel>(sessionStateNotifierProvider, (prev, next) {
+      if (prev?.isAuthenticated == true && !next.isAuthenticated) {
+        _splash(null);
+        if (state.isProcessing) _updateState(status: LoginFormStatus.Dirty);
+      }
+    });
 
     // Debug helper for remembering the preferred login credentials
     // Can be updated in the .env file
@@ -111,9 +121,27 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
     }
   }
 
-  Future<void> submit() async {
-    _updateState(status: LoginFormStatus.Processing);
+  void _splash(LoginSplashStep? step) => ref.read(loginSplashStepProvider.notifier).state = step;
 
+  /// Keeps the splash up for at least [_splashMin] so it doesn't just flash.
+  static const _splashMin = Duration(milliseconds: 1200);
+
+  Future<void> submit() async {
+    // Already signing in (the splash is up).
+    if (state.isProcessing && ref.read(loginSplashStepProvider) != null) return;
+    final started = DateTime.now();
+    _updateState(status: LoginFormStatus.Processing);
+    _splash(LoginSplashStep.checking);
+    try {
+      await _submit(started);
+    } catch (_) {
+      _splash(null);
+      _updateState(status: LoginFormStatus.Error);
+      rethrow;
+    }
+  }
+
+  Future<void> _submit(DateTime started) async {
     // read(loadingProvider.notifier).start();
 
     final loginResult =
@@ -139,6 +167,7 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
             .read(sessionStateNotifierProvider.notifier)
             .setToken(loginResult.token!);
         // read(loadingProvider.notifier).complete();
+        _splash(LoginSplashStep.access);
 
         final access = QueryObject(
             querysql: '/sp/ApiSignInAccessCtrlList/queryasync',
@@ -177,16 +206,31 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
           }
         }
 
-        await singleton<AppRouter>().push(const DashboardContainer());
+        _splash(LoginSplashStep.opening);
+        final shown = DateTime.now().difference(started);
+        if (shown < _splashMin) await Future<void>.delayed(_splashMin - shown);
+
+        // Not awaited: push() only completes when the dashboard is popped,
+        // which never happens on sign-out (it is replaced), so awaiting it
+        // left the splash and the Processing status in place for the next
+        // sign-in.
+        singleton<AppRouter>().push(const DashboardContainer());
+        _splash(null);
         Toast.message("Welcome back!");
         clear();
         _updateState(status: LoginFormStatus.Success);
+      } else {
+        // Sign-in refused (wrong details etc.): back to the form.
+        _splash(null);
+        _updateState(status: LoginFormStatus.Error);
+        Toast.error(loginResult.errorMsg ?? 'Sign in failed. Check your user ID and password.');
       }
 
       // read(loadingProvider.notifier).complete();
   
     }
     else{
+           _splash(null);
            _updateState(status: LoginFormStatus.Error);
 
           

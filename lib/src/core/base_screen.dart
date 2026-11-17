@@ -237,6 +237,19 @@ Widget provideTitle(String title) {
 
 PreferredSizeWidget provideBreadCrumb(String breadcrumbId, {String id = ""}) {
   switch (breadcrumbId) {
+    case "workflowmgmt":
+      return AcxBreadcrumb([
+        DrawerItem(
+            wid: 9311,
+            title: S.current.homeScreenTitle,
+            svgSrc: 'assets/icons/home.svg',
+            route: '/dashboard/home'),
+        DrawerItem(
+            wid: 9312,
+            title: 'Task Approval',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/adjustment')
+      ]);
     case "mcmgmt/tadstatus":
       return AcxBreadcrumb([
         DrawerItem(
@@ -916,6 +929,39 @@ Widget provideSideTab(String sideTab, {String id = ""}) {
 Widget provideSideBar(String sideBar) {
 
   switch (sideBar) {
+    case "workflowmgmt":
+      return AcxSideDrawer([
+        DrawerItem(
+            wid: 9313,
+            title: 'Adjustment Approval',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/adjustment'),
+        DrawerItem(
+            wid: 9314,
+            title: 'Bulk Payment Approval',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/bulkpayment'),
+        DrawerItem(
+            wid: 9315,
+            title: 'Bank Guarantee Expiry',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/bankguarantee'),
+        DrawerItem(
+            wid: 9316,
+            title: 'LPC Charges',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/lpc'),
+        DrawerItem(
+            wid: 9317,
+            title: 'Data Entry Approval',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/dataentry'),
+        DrawerItem(
+            wid: 9318,
+            title: 'Credit Adjustment',
+            svgSrc: 'assets/icons/menu_task.svg',
+            route: '/workflowmgmt/creditadj'),
+      ]);
     case "usermgmt/nucleususer":
       return AcxSideDrawer([
         DrawerItem(

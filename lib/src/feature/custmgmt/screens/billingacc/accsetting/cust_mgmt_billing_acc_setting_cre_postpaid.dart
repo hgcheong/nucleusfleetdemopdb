@@ -14,6 +14,7 @@ import 'package:nucleusv2/src/feature/custmgmt/screens/billingacc/accsetting/cus
 import 'package:nucleusv2/src/feature/custmgmt/screens/billingacc/cust_mgmt_billing_block_dialog.dart';
 import 'package:nucleusv2/src/feature/custmgmt/screens/billingacc/cust_mgmt_billing_provider.dart';
 import 'package:nucleusv2/src/utils/helpers.dart';
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/widgets/adj_credit_request_btn.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
 
 const int wid=530;
@@ -286,6 +287,12 @@ class CustMgmtBillingAccPostPaid extends ConsumerWidget {
                         listUrl: '././././list',
                       ),
                       AcxAuditLogReqBtn('ApiMgmtCustBillingAcctPostpaidSave',ettyId: formNewValue["AcctId"].toString(),),
+                      // Task Approval: raise a credit limit adjustment for this account.
+                      AdjCreditRequestBtn(
+                        accountNumber: formNewValue['AcctNo'] ?? formNewValue['AcctId'],
+                        customerName: formNewValue['BillingTo'] ?? formNewValue['Dscp'],
+                        currentLimit: formNewValue['CrLimit'],
+                      ),
                     ],
                   ))
                 ]),

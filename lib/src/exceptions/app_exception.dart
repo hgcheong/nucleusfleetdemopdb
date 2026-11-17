@@ -1,5 +1,5 @@
+import '/src/localization/string_hardcoded.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nucleusv2/src/localization/string_hardcoded.dart';
 
 part 'app_exception.freezed.dart';
 

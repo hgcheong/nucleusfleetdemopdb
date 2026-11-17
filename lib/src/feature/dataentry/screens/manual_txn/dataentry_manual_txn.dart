@@ -9,6 +9,7 @@ import 'package:nucleusv2/src/core/components/acx_back_to_list.dart';
 import 'package:nucleusv2/src/core/components/acx_savebuttonmanual.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/widgets/adj_request_approval_btn.dart';
 
 const int wid=340;
 
@@ -187,6 +188,32 @@ class DataEntryManualTxn extends ConsumerWidget {
                               );
                             }
                           });
+                        },
+                      ),
+                      // Sends this transaction to Task Approval > Data Entry Approval.
+                      AdjRequestApprovalBtn(
+                        formKey: dataEntryManualFormKey,
+                        screen: 'Manual transaction',
+                        txnType: txnType,
+                        txnId: txnId,
+                        path: '/dataentry/manual/$txnType/dtl/$txnId',
+                        fields: const {
+                          'AcctId': 'Account',
+                          'TxnPlan': 'Transaction Plan',
+                          'MediaNo': 'Media No.',
+                          'AuthMediaNo': 'Auth Media No.',
+                          'AuthCd': 'Auth Code',
+                          'TadNo': 'TAD Number',
+                          'TxnAmt': 'Transaction Amount',
+                          'TxnDate': 'Date',
+                          'TxnTime': 'Transaction Time',
+                          'DocNo': 'Ref Doc No.',
+                          'RcptNo': 'Receipt No.',
+                          'OdmReading': 'Odometer Reading',
+                          'Stan': 'Stan',
+                          'Rrn': 'Retrieval Reference Number',
+                          'TxnSts': 'Transaction Status',
+                          'Dscp': 'Transaction Description',
                         },
                       ),
                       AcxBackToList(listUrl: '/dataentry/manual/$txnType/list'),

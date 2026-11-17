@@ -87,7 +87,7 @@ class AppRouter extends RootStackRouter {
         subsidymgmtTabRouter,
         // onlinemtrTabRouter,
         prgmgmtTabRouter,
-        // workflowmgmtTabRouter,
+        workflowmgmtTabRouter,
         usermgmtTabRouter,
         systemconfigTabRouter,
         testTabRouter,
@@ -117,12 +117,32 @@ final onlinemtrTabRouter = CustomRoute(
     page: OnlineNetworkMtrContainer.page,
     children: const []);
 
+// Task Approval (lib/src/feature/workflowmgmt/adjustment). :kind is one of
+// adjustment, bulkpayment, bankguarantee, lpc (see AdjKind). Runs on local
+// data only; see adjustment/adj_store.dart.
 final workflowmgmtTabRouter = CustomRoute(
     transitionsBuilder: defaultTrans,
-     duration: Duration(milliseconds: defaultTransTime),
+    duration: Duration(milliseconds: defaultTransTime),
     path: "/workflowmgmt",
     page: WorkFlowContainer.page,
-    children: const []);
+    children: [
+      RedirectRoute(path: '', redirectTo: 'adjustment'),
+      AutoRoute(
+          path: ':kind/new',
+          page: AdjApprovalNewRequest.page,
+          usesPathAsKey: true,
+          maintainState: false),
+      AutoRoute(
+          path: ':kind/view/:refcode',
+          page: AdjApprovalDetail.page,
+          usesPathAsKey: true,
+          maintainState: false),
+      AutoRoute(
+          path: ':kind',
+          page: AdjApprovalDashboard.page,
+          usesPathAsKey: true,
+          maintainState: false),
+    ]);
 
 final dashboardTabRouter = CustomRoute(
   transitionsBuilder: defaultTrans,

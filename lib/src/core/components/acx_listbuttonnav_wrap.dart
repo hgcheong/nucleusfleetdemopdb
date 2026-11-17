@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nucleusv2/constants.dart';
 import 'package:nucleusv2/src/core/core_imports.dart';
 import 'package:nucleusv2/src/utils/utils_import.dart';
+import 'package:nucleusv2/src/core/components/acx_nav_tile.dart';
 
 class AcxListButtonNavWrap extends HookConsumerWidget {
   const AcxListButtonNavWrap(
@@ -32,153 +32,62 @@ class AcxListButtonNavWrap extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //  final sSelectedKey = useState(selectedKey);
-    final query =
-        QueryObject(querysql: querysql, params: params, showMsg: false);
+    final query = QueryObject(querysql: querysql, params: params, showMsg: false);
     final value = ref.watch(ReturndatafreezedProvider(query));
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: AsyncValueWidget<Returndata>(
+        value: value,
         data: (Returndata returnData) {
           if (returnData.data == null) {
-            return const Text('No data');
+            return const AcxNavEmpty(message: 'No data');
           }
           if (returnData.data![0][keyField] == null) {
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                sbw54,
-                const Text('No Record'),
-                ElevatedButton(
-                    onPressed: () {
-                      addNew!();
-                    },
-                    child: const Icon(Icons.add))
-              ],
-            );
+            return AcxNavEmpty(onAdd: addNew == null ? null : () => addNew!());
           }
-          List<Widget> toAdd = [];
-
-          for (var i = 0; i < returnData.data!.length; i++) {
-            // if (filterField != null && filterValue != null) {
-            //   if (returnData.data![i][filterField] != filterValue) {
-            //     continue;
-            //   }
-            // }
-
-            if (filterField == null) {
-              // continue;
-            } else {
+          final toAdd = <Widget>[];
+          for (final item in returnData.data!) {
+            final dynamic row = item;
+            if (filterField != null) {
               if (filterValue == "!null") {
-                if (returnData.data![i][filterField] != null) {
-                } else {
-                  continue;
-                }
-              } else {
-                if (returnData.data![i][filterField] != filterValue) {
-                  continue;
-                }
+                if (row[filterField] == null) continue;
+              } else if (row[filterField] != filterValue) {
+                continue;
               }
             }
-
-            toAdd.add(SizedBox(
+            toAdd.add(AcxNavTile(
+              width: 300,
               height: 150,
-              width: 300.0,
-              child: Card(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // IconButton(onPressed: (){
-                      //   ref.invalidate(ReturndatafreezedProvider(query));
-                      // }, icon: const Icon(Icons.refresh)
-                      // ),
-                      ...displayfield.map((element) {
-                        final val = returnData.data![i][element];
-
-                        if (val != null) {
-                          return Text(
-                            returnData.data![i][element].toString(),
-                            overflow: TextOverflow.ellipsis,
-                          );
-                        } else {
-                          return const Text('');
-                        }
-                      }),
-                      // Text(returnData.data![i][displayfield]),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          deleteSelectedRef != null
-                              ? IconButton(
-                                  onPressed: () async {
-                                    bool confirmed = await ConfirmDialog.show(
-                                        title:
-                                            'Are you Sure to delete the record?');
-
-                                    if (confirmed) {
-                                      deleteSelectedRef!(returnData.data![i]);
-                                    }
-                                  },
-                                  icon: const Icon(Icons.delete))
-                              : Container(),
-                          Flexible(
-                            child: IconButton(
-                                onPressed: () async {
-                                  returnSelectedRef(returnData.data![i]);
-                                },
-                                icon: Icon(editIcon)),
-                          )
-                        ],
-                      )
-                    ]),
-              ),
-            ));
-            toAdd.add(const SizedBox(
-              width: 10,
+              lines: [for (final f in displayfield) row[f]?.toString()],
+              selected: selectedKey != null && row[keyField]?.toString() == selectedKey,
+              editIcon: editIcon,
+              onEdit: () => returnSelectedRef(row),
+              onDelete: deleteSelectedRef == null
+                  ? null
+                  : () async {
+                      final confirmed = await ConfirmDialog.show(title: 'Are you Sure to delete the record?');
+                      if (confirmed == true) deleteSelectedRef!(row);
+                    },
             ));
           }
-
-          addNew != null
-              ? toAdd.add(Align(
-                  alignment: Alignment.topRight,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        addNew!();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        padding: const EdgeInsets.all(24),
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                      )),
-                ))
-              : Container();
-          Widget toReturnWidget = Container(
-            padding: const EdgeInsets.all(30),
-            // color: Colors.red,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(
-                    onPressed: () {
-                      ref.invalidate(ReturndatafreezedProvider(query));
-                    },
-                    icon: const Icon(Icons.refresh)),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.start,
-                  direction: Axis.horizontal,
-                  runSpacing: 5.0,
-                  spacing: 5.0,
-                  children: toAdd,
+          if (addNew != null) {
+            toAdd.add(AcxNavAddTile(width: 300, height: 150, onTap: () => addNew!()));
+          }
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 22, top: 8),
+                child: IconButton(
+                  tooltip: 'Refresh',
+                  onPressed: () => ref.invalidate(ReturndatafreezedProvider(query)),
+                  icon: const Icon(Icons.refresh),
                 ),
-              ],
-            ),
+              ),
+              AcxNavWrapLayout(children: toAdd),
+            ],
           );
-
-          return toReturnWidget;
         },
-        value: value,
       ),
     );
   }

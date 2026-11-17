@@ -25,6 +25,20 @@ class SideDrawer extends ConsumerWidget {
 
     // return const Placeholder();
     List<DrawerListTile> defaultList = [
+      DrawerListTile(
+        wid: 9310,
+        title: 'Task Approval',
+        svgSrc: "${svgPath}menu_task.svg",
+        thecolor: currentMenuSelected == 'Task Approval'
+            ? tabBarColor
+            : colorUnSelected,
+        press: () {
+          ref.read(menuMainDrawerSelectProvider.notifier).state =
+              'Task Approval';
+          ref.read(appBarTitleProvider.notifier).state = "";
+          singleton<AppRouter>().navigatePath("/workflowmgmt/adjustment");
+        },
+      ),
       // DrawerListTile(
       //   wid: 120,
       //   title: S.of(context).sbTaskQueue,

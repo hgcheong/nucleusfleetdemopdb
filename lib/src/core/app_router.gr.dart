@@ -1642,6 +1642,12 @@ import 'package:nucleusv2/src/feature/usermgmt/user_mgmt_container.dart'
     as _i794;
 import 'package:nucleusv2/src/feature/workflowmgmt/work_flow_container.dart'
     as _i818;
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/screens/adj_dashboard_screen.dart'
+    as _i9301;
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/screens/adj_detail_screen.dart'
+    as _i9302;
+import 'package:nucleusv2/src/feature/workflowmgmt/adjustment/screens/adj_new_screen.dart'
+    as _i9303;
 
 /// generated route for
 /// [_i1.AcxStatusDialog]
@@ -1890,6 +1896,54 @@ class AcxTaskApprovalDialogArgs {
   @override
   int get hashCode =>
       key.hashCode ^ wfCd.hashCode ^ wfPrcsId.hashCode ^ recId.hashCode;
+}
+
+/// generated route for
+/// [_i9301.AdjApprovalDashboard]
+class AdjApprovalDashboard extends _i819.PageRouteInfo<void> {
+  const AdjApprovalDashboard({List<_i819.PageRouteInfo>? children})
+      : super(AdjApprovalDashboard.name, initialChildren: children);
+
+  static const String name = 'AdjApprovalDashboard';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9301.AdjApprovalDashboard();
+    },
+  );
+}
+
+/// generated route for
+/// [_i9302.AdjApprovalDetail]
+class AdjApprovalDetail extends _i819.PageRouteInfo<void> {
+  const AdjApprovalDetail({List<_i819.PageRouteInfo>? children})
+      : super(AdjApprovalDetail.name, initialChildren: children);
+
+  static const String name = 'AdjApprovalDetail';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9302.AdjApprovalDetail();
+    },
+  );
+}
+
+/// generated route for
+/// [_i9303.AdjApprovalNewRequest]
+class AdjApprovalNewRequest extends _i819.PageRouteInfo<void> {
+  const AdjApprovalNewRequest({List<_i819.PageRouteInfo>? children})
+      : super(AdjApprovalNewRequest.name, initialChildren: children);
+
+  static const String name = 'AdjApprovalNewRequest';
+
+  static _i819.PageInfo page = _i819.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9303.AdjApprovalNewRequest();
+    },
+  );
 }
 
 /// generated route for
