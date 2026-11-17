@@ -67,7 +67,7 @@ class AuthService extends ApiService {
       'ReqType': 'LOGIN',
       //  'ApplName': kIsWeb ? 'Web' : 'App|${appl.appName}|$deviceData',
       // 'ApplVer': '${appl.version}|${appl.buildNumber}'
-      'ApplName': 'Web10618',
+      'ApplName': 'Web10619',
       'ApplVer': '1.0'
     };
 
@@ -79,12 +79,42 @@ class AuthService extends ApiService {
         return const LoginResult(twoFa: true);
       }
 
+      // No token means the sign-in was refused (wrong password, locked
+      // user...). Return the server's reason so the login form can show it.
+      final access = response['access_token'];
+      if (access is! String || access.isEmpty) {
+        // Empty response: postHttp has already shown the error message.
+        if (response.isEmpty) return const LoginResult(errorMsg: '');
+        return LoginResult(errorMsg: _loginErrorText(response) ?? _wrongDetails);
+      }
+
       final token = Token.fromJson(response);
 
       return LoginResult(token: token);
     } catch (e) {
-      return null;
+      return const LoginResult(errorMsg: _wrongDetails);
     }
+  }
+
+  static const _wrongDetails = 'Sign in failed. Check your user ID and password and try again.';
+
+  /// Error text from a sign-in response, whichever shape it comes in.
+  static String? _loginErrorText(Map<String, dynamic> r) {
+    String? text(Object? v) => (v is String && v.trim().isNotEmpty && v != 'null') ? v.trim() : null;
+    final msg = r['message'];
+    if (msg is Map) {
+      final dscp = text(msg['dscp']);
+      if (dscp != null) {
+        final id = text('${msg['msgId'] ?? ''}');
+        return id == null ? dscp : '[$id] $dscp';
+      }
+    }
+    final err = r['error'];
+    if (err is Map) {
+      final t = text(err['errorMessage']) ?? text(err['message']);
+      if (t != null) return t;
+    }
+    return text(msg) ?? text(err) ?? text(r['errorMessage']) ?? text(r['error_description']);
   }
 
   Future<bool> validateLoginCredentials({

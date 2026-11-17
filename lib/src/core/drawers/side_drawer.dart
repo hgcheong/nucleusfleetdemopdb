@@ -242,7 +242,7 @@ class SideDrawer extends ConsumerWidget {
               flex: 1,
               child: DrawerListTile(
         wid: 0,
-        title: 'Build v10618',
+        title: 'Build v10619',
         thecolor: DbColors.primary,
         press: () async {
  await showAcxDialog(

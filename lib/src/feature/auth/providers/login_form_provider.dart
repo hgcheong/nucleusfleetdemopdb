@@ -126,6 +126,8 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
   /// Keeps the splash up for at least [_splashMin] so it doesn't just flash.
   static const _splashMin = Duration(milliseconds: 1200);
 
+  static const _failedText = 'Sign in failed. Check your user ID and password and try again.';
+
   Future<void> submit() async {
     // Already signing in (the splash is up).
     if (state.isProcessing && ref.read(loginSplashStepProvider) != null) return;
@@ -134,10 +136,13 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
     _splash(LoginSplashStep.checking);
     try {
       await _submit(started);
-    } catch (_) {
+    } catch (e) {
+      // Anything unexpected (bad token, access list failed...): back to the
+      // form with a message instead of failing silently.
+      debugPrint('Sign in failed: $e');
       _splash(null);
       _updateState(status: LoginFormStatus.Error);
-      rethrow;
+      Toast.error(_failedText);
     }
   }
 
@@ -223,7 +228,9 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
         // Sign-in refused (wrong details etc.): back to the form.
         _splash(null);
         _updateState(status: LoginFormStatus.Error);
-        Toast.error(loginResult.errorMsg ?? 'Sign in failed. Check your user ID and password.');
+        // Empty message: the error was already shown by the API layer.
+        final msg = loginResult.errorMsg;
+        if (msg == null || msg.isNotEmpty) Toast.error(msg ?? _failedText);
       }
 
       // read(loadingProvider.notifier).complete();
@@ -234,7 +241,7 @@ class LoginFormProvider extends StateNotifier<LoginFormModel> {
            _updateState(status: LoginFormStatus.Error);
 
           
-      Toast.error();
+      Toast.error(_failedText);
     }
 
 //   Future<void> submit() async {

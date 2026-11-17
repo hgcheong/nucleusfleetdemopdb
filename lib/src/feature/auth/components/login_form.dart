@@ -22,7 +22,7 @@ class LoginForm extends BaseComponent {
     
 
       final version = Env.appVersion;
-    if(version != "10618"){
+    if(version != "10619"){
       return Scaffold(
         body:  Center(
       child: Column(
@@ -32,7 +32,7 @@ class LoginForm extends BaseComponent {
               // maxWidth: 300,
               ),
               sbh20,
-         Text("Version 10618 is available. Please Clear Your Browser Cache For Files & Reload Nucleus",),
+         Text("Version 10619 is available. Please Clear Your Browser Cache For Files & Reload Nucleus",),
           const SizedBox(
             height: 80,
           ),
